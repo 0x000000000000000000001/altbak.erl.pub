@@ -10,6 +10,18 @@ require_once __DIR__ . '/../Control.Plus/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
@@ -17,108 +29,61 @@ $Prim_undefined = function() { throw new \Exception("undefined"); };
 $Control_Alternative_Alternative__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Alternative_guard
-$Control_Alternative_guard = (function() use (&$Control_Applicative_pure, &$Prim_undefined, &$Control_Plus_empty, &$Data_Unit_unit) {
-  $__fn = function($dictAlternative) use (&$Control_Applicative_pure, &$Prim_undefined, &$Control_Plus_empty, &$Data_Unit_unit, &$__fn) {
+$Control_Alternative_guard = (function() {
+  $__fn = function($dictAlternative) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$pure = ($Control_Applicative_pure)((($dictAlternative)->Applicative0)($Prim_undefined));
-$empty = ($Control_Plus_empty)((($dictAlternative)->Plus1)($Prim_undefined));
-    $__res = (function() use ($pure, &$Data_Unit_unit, $empty) {
-  $__body = function($v) use ($pure, &$Data_Unit_unit, $empty) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$pure = ($GLOBALS['Control_Applicative_pure'])((($dictAlternative)->Applicative0)($GLOBALS['Prim_undefined']));
+$empty = ($GLOBALS['Control_Plus_empty'])((($dictAlternative)->Plus1)($GLOBALS['Prim_undefined']));
+    $__res = (function() use ($pure, $empty) {
+  $__body = function($v) use ($pure, $empty) {
     $__case_0 = $v;
     if (($__case_0 === true)) {
-return ($pure)($Data_Unit_unit);
+return ($pure)($GLOBALS['Data_Unit_unit']);
 } else {
-;
-};
-    if (($__case_0 === false)) {
+if (($__case_0 === false)) {
 return $empty;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($v) use ($pure, &$Data_Unit_unit, $empty, $__body, &$__fn) {
+  $__fn = function($v) use ($pure, $empty, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Alternative_alternativeArray
-$Control_Alternative_alternativeArray = ($Control_Alternative_Alternative__dollar__Dict)((object)["Applicative0" => (function() use (&$Control_Applicative_applicativeArray) {
-  $__fn = function($__dollar____unused) use (&$Control_Applicative_applicativeArray, &$__fn) {
+$Control_Alternative_alternativeArray = ($GLOBALS['Control_Alternative_Alternative__dollar__Dict'])((object)["Applicative0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Control_Applicative_applicativeArray;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Control_Applicative_applicativeArray'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Plus1" => (function() use (&$Control_Plus_plusArray) {
-  $__fn = function($__dollar____unused) use (&$Control_Plus_plusArray, &$__fn) {
+})(), "Plus1" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Control_Plus_plusArray;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Control_Plus_plusArray'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);

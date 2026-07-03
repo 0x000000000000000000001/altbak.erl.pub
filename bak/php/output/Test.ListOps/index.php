@@ -13,20 +13,32 @@ require_once __DIR__ . '/../Effect.Console/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.ListOps/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Test_ListOps_lessThan
-$Test_ListOps_lessThan = ($Data_Ord_lessThan)($Data_Ord_ordInt);
+$Test_ListOps_lessThan = ($GLOBALS['Data_Ord_lessThan'])($GLOBALS['Data_Ord_ordInt']);
 
 // Test_ListOps_sub
-$Test_ListOps_sub = ($Data_Ring_sub)($Data_Ring_ringInt);
+$Test_ListOps_sub = ($GLOBALS['Data_Ring_sub'])($GLOBALS['Data_Ring_ringInt']);
 
 // Test_ListOps_eq
-$Test_ListOps_eq = ($Data_Eq_eq)($Data_Eq_eqInt);
+$Test_ListOps_eq = ($GLOBALS['Data_Eq_eq'])($GLOBALS['Data_Eq_eqInt']);
 
 // Test_ListOps_mod
-$Test_ListOps_mod = ($Data_EuclideanRing_mod)($Data_EuclideanRing_euclideanRingInt);
+$Test_ListOps_mod = ($GLOBALS['Data_EuclideanRing_mod'])($GLOBALS['Data_EuclideanRing_euclideanRingInt']);
 
 // Test_ListOps_Nil
 $Test_ListOps_Nil = (object)["tag" => "Nil", "values" => []];
@@ -35,90 +47,54 @@ $Test_ListOps_Nil = (object)["tag" => "Nil", "values" => []];
 $Test_ListOps_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Test_ListOps_range
-$Test_ListOps_range = (function() use (&$Test_ListOps_lessThan, &$Test_ListOps_sub, &$Test_ListOps_Cons, &$Test_ListOps_Nil) {
-  $__fn = function($start, $end = null) use (&$Test_ListOps_lessThan, &$Test_ListOps_sub, &$Test_ListOps_Cons, &$Test_ListOps_Nil, &$__fn) {
+$Test_ListOps_range = (function() {
+  $__fn = function($start, $end = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$go = (function() use (&$Test_ListOps_lessThan, $start, &$go, &$Test_ListOps_sub, &$Test_ListOps_Cons) {
-  $__fn = function($curr, $acc = null) use (&$Test_ListOps_lessThan, $start, &$go, &$Test_ListOps_sub, &$Test_ListOps_Cons, &$__fn) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+$go = (function() use ($start, &$go) {
+  $__fn = function($curr, $acc = null) use ($start, &$go, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = (function($curr, $acc) use (&$Test_ListOps_lessThan, $start, &$go, &$Test_ListOps_sub, &$Test_ListOps_Cons) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
 while (true) {
-$__case_0 = ($Test_ListOps_lessThan)($curr, $start);
+$__case_0 = ($GLOBALS['Test_ListOps_lessThan'])($curr, $start);
 if (($__case_0 === true)) {
 return $acc;
 } else {
-;
-};
 if (true) {
-$__tco_tmp_0 = ($Test_ListOps_sub)($curr, 1);
-$__tco_tmp_1 = ($Test_ListOps_Cons)($curr, $acc);
+$__tco_tmp_0 = ($GLOBALS['Test_ListOps_sub'])($curr, 1);
+$__tco_tmp_1 = ($GLOBALS['Test_ListOps_Cons'])($curr, $acc);
 $curr = $__tco_tmp_0;
 $acc = $__tco_tmp_1;
 continue;
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
-}
-})($curr, $acc);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+};
+};
+};
+    $__res = null;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    $__res = ($go)($end, $Test_ListOps_Nil);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+    $__res = ($go)($end, $GLOBALS['Test_ListOps_Nil']);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Test_ListOps_foldl
-$Test_ListOps_foldl = (function() use (&$Test_ListOps_foldl) {
-  $__fn = function($v, $v1 = null, $v2 = null) use (&$Test_ListOps_foldl, &$__fn) {
+$Test_ListOps_foldl = (function() {
+  $__fn = function($v, $v1 = null, $v2 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = (function($v, $v1, $v2) use (&$Test_ListOps_foldl) {
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -127,8 +103,6 @@ if ((($__case_2)->tag === "Nil")) {
 $acc = $__case_1;
 return $acc;
 } else {
-;
-};
 if ((($__case_2)->tag === "Cons")) {
 $f = $__case_0;
 $acc = $__case_1;
@@ -142,40 +116,25 @@ $v1 = $__tco_tmp_1;
 $v2 = $__tco_tmp_2;
 continue;
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
-}
-})($v, $v1, $v2);
-    if ($__num > 3) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__res;
+};
+};
+};
+    $__res = null;
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })();
 
 // Test_ListOps_filterEvens
-$Test_ListOps_filterEvens = (function() use (&$Test_ListOps_eq, &$Test_ListOps_mod, &$Test_ListOps_Cons, &$Test_ListOps_Nil) {
-  $__fn = function($lst) use (&$Test_ListOps_eq, &$Test_ListOps_mod, &$Test_ListOps_Cons, &$Test_ListOps_Nil, &$__fn) {
+$Test_ListOps_filterEvens = (function() {
+  $__fn = function($lst) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$go = (function() use (&$Test_ListOps_eq, &$Test_ListOps_mod, &$go, &$Test_ListOps_Cons) {
-  $__fn = function($v, $v1 = null) use (&$Test_ListOps_eq, &$Test_ListOps_mod, &$go, &$Test_ListOps_Cons, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = (function($v, $v1) use (&$Test_ListOps_eq, &$Test_ListOps_mod, &$go, &$Test_ListOps_Cons) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -183,22 +142,18 @@ if ((($__case_0)->tag === "Nil")) {
 $acc = $__case_1;
 return $acc;
 } else {
-;
-};
 if ((($__case_0)->tag === "Cons")) {
 $x = ($__case_0)->values[0];
 $xs = ($__case_0)->values[1];
 $acc = $__case_1;
-$__case_0 = ($Test_ListOps_eq)(($Test_ListOps_mod)($x, 2), 0);
+$__case_0 = ($GLOBALS['Test_ListOps_eq'])(($GLOBALS['Test_ListOps_mod'])($x, 2), 0);
 if (($__case_0 === true)) {
 $__tco_tmp_0 = $xs;
-$__tco_tmp_1 = ($Test_ListOps_Cons)($x, $acc);
+$__tco_tmp_1 = ($GLOBALS['Test_ListOps_Cons'])($x, $acc);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue;
 } else {
-;
-};
 if (true) {
 $__tco_tmp_0 = $xs;
 $__tco_tmp_1 = $acc;
@@ -206,39 +161,31 @@ $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue;
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
+};
+};
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
-}
-})($v, $v1);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+};
+};
+};
+    $__res = null;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    $__res = ($go)($lst, $Test_ListOps_Nil);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+    $__res = ($go)($lst, $GLOBALS['Test_ListOps_Nil']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Test_ListOps_sumEvens
-$Test_ListOps_sumEvens = ($Test_ListOps_foldl)(($Data_Semiring_add)($Data_Semiring_semiringInt), 0, ($Test_ListOps_filterEvens)(($Test_ListOps_range)(1, 900)));
+$Test_ListOps_sumEvens = ($GLOBALS['Test_ListOps_foldl'])(($GLOBALS['Data_Semiring_add'])($GLOBALS['Data_Semiring_semiringInt']), 0, ($GLOBALS['Test_ListOps_filterEvens'])(($GLOBALS['Test_ListOps_range'])(1, 900)));
 
 // Test_ListOps_describe
-$Test_ListOps_describe = ($Effect_Console_log)("List Processing (900 elements):");
+$Test_ListOps_describe = ($GLOBALS['Effect_Console_log'])("List Processing (900 elements):");
 
 // Test_ListOps_act
-$Test_ListOps_act = ($Effect_Console_logShow)($Data_Show_showInt, $Test_ListOps_sumEvens);
+$Test_ListOps_act = ($GLOBALS['Effect_Console_logShow'])($GLOBALS['Data_Show_showInt'], $GLOBALS['Test_ListOps_sumEvens']);
 

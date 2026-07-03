@@ -9,6 +9,18 @@ require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 if (!function_exists('phpurs_uncurry2')) {
 function phpurs_uncurry2($fn) {
@@ -63,271 +75,145 @@ function phpurs_uncurry5($fn) {
 $Effect_Console_log = function($s) { return function() use(&$s) { print($s . "\n"); }; };
 
 // Effect_Console_discard
-$Effect_Console_discard = ($Control_Bind_discard)($Control_Bind_discardUnit, $Effect_bindEffect);
+$Effect_Console_discard = ($GLOBALS['Control_Bind_discard'])($GLOBALS['Control_Bind_discardUnit'], $GLOBALS['Effect_bindEffect']);
 
 // Effect_Console_bind
-$Effect_Console_bind = ($Control_Bind_bind)($Effect_bindEffect);
+$Effect_Console_bind = ($GLOBALS['Control_Bind_bind'])($GLOBALS['Effect_bindEffect']);
 
 // Effect_Console_pure
-$Effect_Console_pure = ($Control_Applicative_pure)($Effect_applicativeEffect);
+$Effect_Console_pure = ($GLOBALS['Control_Applicative_pure'])($GLOBALS['Effect_applicativeEffect']);
 
 // Effect_Console_warnShow
-$Effect_Console_warnShow = (function() use (&$Data_Show_show, &$Effect_Console_warn) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Effect_Console_warn, &$__fn) {
+$Effect_Console_warnShow = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = (function() use (&$Effect_Console_warn, $show) {
-  $__fn = function($a) use (&$Effect_Console_warn, $show, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = (function() use ($show) {
+  $__fn = function($a) use ($show, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_warn)(($show)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_warn'])(($show)($a));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Console_logShow
-$Effect_Console_logShow = (function() use (&$Data_Show_show, &$Effect_Console_log) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Effect_Console_log, &$__fn) {
+$Effect_Console_logShow = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = (function() use (&$Effect_Console_log, $show) {
-  $__fn = function($a) use (&$Effect_Console_log, $show, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = (function() use ($show) {
+  $__fn = function($a) use ($show, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_log)(($show)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_log'])(($show)($a));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Console_infoShow
-$Effect_Console_infoShow = (function() use (&$Data_Show_show, &$Effect_Console_info) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Effect_Console_info, &$__fn) {
+$Effect_Console_infoShow = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = (function() use (&$Effect_Console_info, $show) {
-  $__fn = function($a) use (&$Effect_Console_info, $show, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = (function() use ($show) {
+  $__fn = function($a) use ($show, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_info)(($show)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_info'])(($show)($a));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Console_grouped
-$Effect_Console_grouped = (function() use (&$Effect_Console_discard, &$Effect_Console_group, &$Effect_Console_bind, &$Effect_Console_groupEnd, &$Effect_Console_pure) {
-  $__fn = function($name, $inner = null) use (&$Effect_Console_discard, &$Effect_Console_group, &$Effect_Console_bind, &$Effect_Console_groupEnd, &$Effect_Console_pure, &$__fn) {
+$Effect_Console_grouped = (function() {
+  $__fn = function($name, $inner = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_discard)(($Effect_Console_group)($name), (function() use (&$Effect_Console_bind, $inner, &$Effect_Console_discard, &$Effect_Console_groupEnd, &$Effect_Console_pure) {
-  $__fn = function($__dollar____unused) use (&$Effect_Console_bind, $inner, &$Effect_Console_discard, &$Effect_Console_groupEnd, &$Effect_Console_pure, &$__fn) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = ($GLOBALS['Effect_Console_discard'])(($GLOBALS['Effect_Console_group'])($name), (function() use ($inner) {
+  $__fn = function($__dollar____unused) use ($inner, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_bind)($inner, (function() use (&$Effect_Console_discard, &$Effect_Console_groupEnd, &$Effect_Console_pure) {
-  $__fn = function($result) use (&$Effect_Console_discard, &$Effect_Console_groupEnd, &$Effect_Console_pure, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_bind'])($inner, (function() {
+  $__fn = function($result) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_discard)($Effect_Console_groupEnd, (function() use (&$Effect_Console_pure, $result) {
-  $__fn = function($__dollar____unused) use (&$Effect_Console_pure, $result, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_discard'])($GLOBALS['Effect_Console_groupEnd'], (function() use ($result) {
+  $__fn = function($__dollar____unused) use ($result, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_pure)($result);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_pure'])($result);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Console_errorShow
-$Effect_Console_errorShow = (function() use (&$Data_Show_show, &$Effect_Console_error) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Effect_Console_error, &$__fn) {
+$Effect_Console_errorShow = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = (function() use (&$Effect_Console_error, $show) {
-  $__fn = function($a) use (&$Effect_Console_error, $show, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = (function() use ($show) {
+  $__fn = function($a) use ($show, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_error)(($show)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_error'])(($show)($a));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Console_debugShow
-$Effect_Console_debugShow = (function() use (&$Data_Show_show, &$Effect_Console_debug) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Effect_Console_debug, &$__fn) {
+$Effect_Console_debugShow = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = (function() use (&$Effect_Console_debug, $show) {
-  $__fn = function($a) use (&$Effect_Console_debug, $show, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = (function() use ($show) {
+  $__fn = function($a) use ($show, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Console_debug)(($show)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Console_debug'])(($show)($a));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

@@ -17,126 +17,91 @@ require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Monoid_Multiplicative_append
-$Data_Monoid_Multiplicative_append = ($Data_Semigroup_append)($Data_Semigroup_semigroupString);
+$Data_Monoid_Multiplicative_append = ($GLOBALS['Data_Semigroup_append'])($GLOBALS['Data_Semigroup_semigroupString']);
 
 // Data_Monoid_Multiplicative_Multiplicative
 $Data_Monoid_Multiplicative_Multiplicative = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_showMultiplicative
-$Data_Monoid_Multiplicative_showMultiplicative = (function() use (&$Data_Show_show, &$Data_Show_Show__dollar__Dict, &$Data_Monoid_Multiplicative_append) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Data_Show_Show__dollar__Dict, &$Data_Monoid_Multiplicative_append, &$__fn) {
+$Data_Monoid_Multiplicative_showMultiplicative = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = ($Data_Show_Show__dollar__Dict)((object)["show" => (function() use (&$Data_Monoid_Multiplicative_append, $show) {
-  $__body = function($v) use (&$Data_Monoid_Multiplicative_append, $show) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = ($GLOBALS['Data_Show_Show__dollar__Dict'])((object)["show" => (function() use ($show) {
+  $__body = function($v) use ($show) {
     $__case_0 = $v;
     if (true) {
 $a = $__case_0;
-return ($Data_Monoid_Multiplicative_append)("(Multiplicative ", ($Data_Monoid_Multiplicative_append)(($show)($a), ")"));
+return ($GLOBALS['Data_Monoid_Multiplicative_append'])("(Multiplicative ", ($GLOBALS['Data_Monoid_Multiplicative_append'])(($show)($a), ")"));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Data_Monoid_Multiplicative_append, $show, $__body, &$__fn) {
+  $__fn = function($v) use ($show, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_semigroupMultiplicative
-$Data_Monoid_Multiplicative_semigroupMultiplicative = (function() use (&$Data_Semiring_mul, &$Data_Semigroup_Semigroup__dollar__Dict, &$Data_Monoid_Multiplicative_Multiplicative) {
-  $__fn = function($dictSemiring) use (&$Data_Semiring_mul, &$Data_Semigroup_Semigroup__dollar__Dict, &$Data_Monoid_Multiplicative_Multiplicative, &$__fn) {
+$Data_Monoid_Multiplicative_semigroupMultiplicative = (function() {
+  $__fn = function($dictSemiring) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$mul = ($Data_Semiring_mul)($dictSemiring);
-    $__res = ($Data_Semigroup_Semigroup__dollar__Dict)((object)["append" => (function() use (&$Data_Monoid_Multiplicative_Multiplicative, $mul) {
-  $__body = function($v, $v1) use (&$Data_Monoid_Multiplicative_Multiplicative, $mul) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$mul = ($GLOBALS['Data_Semiring_mul'])($dictSemiring);
+    $__res = ($GLOBALS['Data_Semigroup_Semigroup__dollar__Dict'])((object)["append" => (function() use ($mul) {
+  $__body = function($v, $v1) use ($mul) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $a = $__case_0;
 $b = $__case_1;
-return ($Data_Monoid_Multiplicative_Multiplicative)(($mul)($a, $b));
+return ($GLOBALS['Data_Monoid_Multiplicative_Multiplicative'])(($mul)($a, $b));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Monoid_Multiplicative_Multiplicative, $mul, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($mul, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -145,86 +110,49 @@ return ($Data_Monoid_Multiplicative_Multiplicative)(($mul)($a, $b));
 $Data_Monoid_Multiplicative_ordMultiplicative = (function() {
   $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $dictOrd;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_monoidMultiplicative
-$Data_Monoid_Multiplicative_monoidMultiplicative = (function() use (&$Data_Monoid_Multiplicative_semigroupMultiplicative, &$Data_Monoid_Monoid__dollar__Dict, &$Data_Monoid_Multiplicative_Multiplicative, &$Data_Semiring_one) {
-  $__fn = function($dictSemiring) use (&$Data_Monoid_Multiplicative_semigroupMultiplicative, &$Data_Monoid_Monoid__dollar__Dict, &$Data_Monoid_Multiplicative_Multiplicative, &$Data_Semiring_one, &$__fn) {
+$Data_Monoid_Multiplicative_monoidMultiplicative = (function() {
+  $__fn = function($dictSemiring) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$semigroupMultiplicative1 = ($Data_Monoid_Multiplicative_semigroupMultiplicative)($dictSemiring);
-    $__res = ($Data_Monoid_Monoid__dollar__Dict)((object)["mempty" => ($Data_Monoid_Multiplicative_Multiplicative)(($Data_Semiring_one)($dictSemiring)), "Semigroup0" => (function() use ($semigroupMultiplicative1) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$semigroupMultiplicative1 = ($GLOBALS['Data_Monoid_Multiplicative_semigroupMultiplicative'])($dictSemiring);
+    $__res = ($GLOBALS['Data_Monoid_Monoid__dollar__Dict'])((object)["mempty" => ($GLOBALS['Data_Monoid_Multiplicative_Multiplicative'])(($GLOBALS['Data_Semiring_one'])($dictSemiring)), "Semigroup0" => (function() use ($semigroupMultiplicative1) {
   $__fn = function($__dollar____unused) use ($semigroupMultiplicative1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $semigroupMultiplicative1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_functorMultiplicative
-$Data_Monoid_Multiplicative_functorMultiplicative = ($Data_Functor_Functor__dollar__Dict)((object)["map" => (function() use (&$Data_Monoid_Multiplicative_Multiplicative) {
-  $__body = function($f, $m) use (&$Data_Monoid_Multiplicative_Multiplicative) {
+$Data_Monoid_Multiplicative_functorMultiplicative = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((object)["map" => (function() {
+  $__body = function($f, $m) {
     $__case_0 = $m;
     if (true) {
 $v = $__case_0;
-return ($Data_Monoid_Multiplicative_Multiplicative)(($f)($v));
+return ($GLOBALS['Data_Monoid_Multiplicative_Multiplicative'])(($f)($v));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $m = null) use (&$Data_Monoid_Multiplicative_Multiplicative, $__body, &$__fn) {
+  $__fn = function($f, $m = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $m);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $m);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $m);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
@@ -233,75 +161,39 @@ return ($Data_Monoid_Multiplicative_Multiplicative)(($f)($v));
 $Data_Monoid_Multiplicative_eqMultiplicative = (function() {
   $__fn = function($dictEq) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $dictEq;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_eq1Multiplicative
-$Data_Monoid_Multiplicative_eq1Multiplicative = ($Data_Eq_Eq1__dollar__Dict)((object)["eq1" => (function() use (&$Data_Eq_eq, &$Data_Monoid_Multiplicative_eqMultiplicative) {
-  $__fn = function($dictEq) use (&$Data_Eq_eq, &$Data_Monoid_Multiplicative_eqMultiplicative, &$__fn) {
+$Data_Monoid_Multiplicative_eq1Multiplicative = ($GLOBALS['Data_Eq_Eq1__dollar__Dict'])((object)["eq1" => (function() {
+  $__fn = function($dictEq) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Eq_eq)(($Data_Monoid_Multiplicative_eqMultiplicative)($dictEq));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Eq_eq'])(($GLOBALS['Data_Monoid_Multiplicative_eqMultiplicative'])($dictEq));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Monoid_Multiplicative_ord1Multiplicative
-$Data_Monoid_Multiplicative_ord1Multiplicative = ($Data_Ord_Ord1__dollar__Dict)((object)["compare1" => (function() use (&$Data_Ord_compare, &$Data_Monoid_Multiplicative_ordMultiplicative) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$Data_Monoid_Multiplicative_ordMultiplicative, &$__fn) {
+$Data_Monoid_Multiplicative_ord1Multiplicative = ($GLOBALS['Data_Ord_Ord1__dollar__Dict'])((object)["compare1" => (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Ord_compare)(($Data_Monoid_Multiplicative_ordMultiplicative)($dictOrd));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Ord_compare'])(($GLOBALS['Data_Monoid_Multiplicative_ordMultiplicative'])($dictOrd));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Eq10" => (function() use (&$Data_Monoid_Multiplicative_eq1Multiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_eq1Multiplicative, &$__fn) {
+})(), "Eq10" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_eq1Multiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_eq1Multiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
@@ -310,73 +202,45 @@ $Data_Monoid_Multiplicative_ord1Multiplicative = ($Data_Ord_Ord1__dollar__Dict)(
 $Data_Monoid_Multiplicative_boundedMultiplicative = (function() {
   $__fn = function($dictBounded) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $dictBounded;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Monoid_Multiplicative_applyMultiplicative
-$Data_Monoid_Multiplicative_applyMultiplicative = ($Control_Apply_Apply__dollar__Dict)((object)["apply" => (function() use (&$Data_Monoid_Multiplicative_Multiplicative) {
-  $__body = function($v, $v1) use (&$Data_Monoid_Multiplicative_Multiplicative) {
+$Data_Monoid_Multiplicative_applyMultiplicative = ($GLOBALS['Control_Apply_Apply__dollar__Dict'])((object)["apply" => (function() {
+  $__body = function($v, $v1) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $f = $__case_0;
 $x = $__case_1;
-return ($Data_Monoid_Multiplicative_Multiplicative)(($f)($x));
+return ($GLOBALS['Data_Monoid_Multiplicative_Multiplicative'])(($f)($x));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Monoid_Multiplicative_Multiplicative, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => (function() use (&$Data_Monoid_Multiplicative_functorMultiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_functorMultiplicative, &$__fn) {
+})(), "Functor0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_functorMultiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_functorMultiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Monoid_Multiplicative_bindMultiplicative
-$Data_Monoid_Multiplicative_bindMultiplicative = ($Control_Bind_Bind__dollar__Dict)((object)["bind" => (function() {
+$Data_Monoid_Multiplicative_bindMultiplicative = ($GLOBALS['Control_Bind_Bind__dollar__Dict'])((object)["bind" => (function() {
   $__body = function($v, $f) {
     $__case_0 = $v;
     $__case_1 = $f;
@@ -385,98 +249,52 @@ $x = $__case_0;
 $f1 = $__case_1;
 return ($f1)($x);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($v, $f = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $f);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $f);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $f);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => (function() use (&$Data_Monoid_Multiplicative_applyMultiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_applyMultiplicative, &$__fn) {
+})(), "Apply0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_applyMultiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Monoid_Multiplicative_applicativeMultiplicative
-$Data_Monoid_Multiplicative_applicativeMultiplicative = ($Control_Applicative_Applicative__dollar__Dict)((object)["pure" => $Data_Monoid_Multiplicative_Multiplicative, "Apply0" => (function() use (&$Data_Monoid_Multiplicative_applyMultiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_applyMultiplicative, &$__fn) {
+$Data_Monoid_Multiplicative_applicativeMultiplicative = ($GLOBALS['Control_Applicative_Applicative__dollar__Dict'])((object)["pure" => $GLOBALS['Data_Monoid_Multiplicative_Multiplicative'], "Apply0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_applyMultiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Monoid_Multiplicative_monadMultiplicative
-$Data_Monoid_Multiplicative_monadMultiplicative = ($Control_Monad_Monad__dollar__Dict)((object)["Applicative0" => (function() use (&$Data_Monoid_Multiplicative_applicativeMultiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_applicativeMultiplicative, &$__fn) {
+$Data_Monoid_Multiplicative_monadMultiplicative = ($GLOBALS['Control_Monad_Monad__dollar__Dict'])((object)["Applicative0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_applicativeMultiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_applicativeMultiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Bind1" => (function() use (&$Data_Monoid_Multiplicative_bindMultiplicative) {
-  $__fn = function($__dollar____unused) use (&$Data_Monoid_Multiplicative_bindMultiplicative, &$__fn) {
+})(), "Bind1" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Monoid_Multiplicative_bindMultiplicative;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Monoid_Multiplicative_bindMultiplicative'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);

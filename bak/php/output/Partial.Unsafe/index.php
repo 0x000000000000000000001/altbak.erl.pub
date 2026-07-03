@@ -5,6 +5,18 @@ namespace Partial\Unsafe;
 require_once __DIR__ . '/../Partial/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 if (!function_exists('phpurs_uncurry2')) {
 function phpurs_uncurry2($fn) {
@@ -58,44 +70,26 @@ function phpurs_uncurry5($fn) {
 $Partial_Unsafe__unsafePartial = function($f) { return $f(); };
 
 // Partial_Unsafe_crashWith
-$Partial_Unsafe_crashWith = ($Partial_crashWith)($Prim_undefined);
+$Partial_Unsafe_crashWith = ($GLOBALS['Partial_crashWith'])($GLOBALS['Prim_undefined']);
 
 // Partial_Unsafe_unsafePartial
-$Partial_Unsafe_unsafePartial = $Partial_Unsafe__unsafePartial;
+$Partial_Unsafe_unsafePartial = $GLOBALS['Partial_Unsafe__unsafePartial'];
 
 // Partial_Unsafe_unsafeCrashWith
-$Partial_Unsafe_unsafeCrashWith = (function() use (&$Partial_Unsafe_unsafePartial, &$Partial_Unsafe_crashWith) {
-  $__fn = function($msg) use (&$Partial_Unsafe_unsafePartial, &$Partial_Unsafe_crashWith, &$__fn) {
+$Partial_Unsafe_unsafeCrashWith = (function() {
+  $__fn = function($msg) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Partial_Unsafe_unsafePartial)((function() use (&$Partial_Unsafe_crashWith, $msg) {
-  $__fn = function($__dollar____unused) use (&$Partial_Unsafe_crashWith, $msg, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Partial_Unsafe_unsafePartial'])((function() use ($msg) {
+  $__fn = function($__dollar____unused) use ($msg, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Partial_Unsafe_crashWith)($msg);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Partial_Unsafe_crashWith'])($msg);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

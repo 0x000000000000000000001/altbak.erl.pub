@@ -5,6 +5,18 @@ namespace Data\Symbol;
 require_once __DIR__ . '/../Data.Symbol/index.php';
 require_once __DIR__ . '/../Type.Proxy/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
@@ -12,73 +24,37 @@ $Prim_undefined = function() { throw new \Exception("undefined"); };
 $Data_Symbol_IsSymbol__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Symbol_reifySymbol
-$Data_Symbol_reifySymbol = (function() use (&$Data_Symbol_unsafeCoerce, &$Type_Proxy_Proxy) {
-  $__fn = function($s, $f = null) use (&$Data_Symbol_unsafeCoerce, &$Type_Proxy_Proxy, &$__fn) {
+$Data_Symbol_reifySymbol = (function() {
+  $__fn = function($s, $f = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$coerce = $Data_Symbol_unsafeCoerce;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+$coerce = $GLOBALS['Data_Symbol_unsafeCoerce'];
     $__res = ($coerce)((function() use ($f) {
   $__fn = function($dictIsSymbol) use ($f, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($f)($dictIsSymbol);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })(), (object)["reflectSymbol" => (function() use ($s) {
   $__fn = function($v) use ($s, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $s;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})()], $Type_Proxy_Proxy);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+})()], $GLOBALS['Type_Proxy_Proxy']);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
@@ -91,24 +67,14 @@ $Data_Symbol_reflectSymbol = (function() {
 $v = $__case_0;
 return ($v)->reflectSymbol;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

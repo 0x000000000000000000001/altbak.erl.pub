@@ -7,28 +7,31 @@ require_once __DIR__ . '/../Data.EuclideanRing/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_DivisionRing_div
-$Data_DivisionRing_div = ($Data_EuclideanRing_div)($Data_EuclideanRing_euclideanRingNumber);
+$Data_DivisionRing_div = ($GLOBALS['Data_EuclideanRing_div'])($GLOBALS['Data_EuclideanRing_euclideanRingNumber']);
 
 // Data_DivisionRing_DivisionRing$Dict
 $Data_DivisionRing_DivisionRing__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -41,139 +44,75 @@ $Data_DivisionRing_recip = (function() {
 $v = $__case_0;
 return ($v)->recip;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_DivisionRing_rightDiv
-$Data_DivisionRing_rightDiv = (function() use (&$Data_Semiring_mul, &$Prim_undefined, &$Data_DivisionRing_recip) {
-  $__fn = function($dictDivisionRing) use (&$Data_Semiring_mul, &$Prim_undefined, &$Data_DivisionRing_recip, &$__fn) {
+$Data_DivisionRing_rightDiv = (function() {
+  $__fn = function($dictDivisionRing) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$mul = ($Data_Semiring_mul)((((($dictDivisionRing)->Ring0)($Prim_undefined))->Semiring0)($Prim_undefined));
-$recip1 = ($Data_DivisionRing_recip)($dictDivisionRing);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$mul = ($GLOBALS['Data_Semiring_mul'])((((($dictDivisionRing)->Ring0)($GLOBALS['Prim_undefined']))->Semiring0)($GLOBALS['Prim_undefined']));
+$recip1 = ($GLOBALS['Data_DivisionRing_recip'])($dictDivisionRing);
     $__res = (function() use ($mul, $recip1) {
   $__fn = function($a, $b = null) use ($mul, $recip1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = ($mul)($a, ($recip1)($b));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_DivisionRing_leftDiv
-$Data_DivisionRing_leftDiv = (function() use (&$Data_Semiring_mul, &$Prim_undefined, &$Data_DivisionRing_recip) {
-  $__fn = function($dictDivisionRing) use (&$Data_Semiring_mul, &$Prim_undefined, &$Data_DivisionRing_recip, &$__fn) {
+$Data_DivisionRing_leftDiv = (function() {
+  $__fn = function($dictDivisionRing) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$mul = ($Data_Semiring_mul)((((($dictDivisionRing)->Ring0)($Prim_undefined))->Semiring0)($Prim_undefined));
-$recip1 = ($Data_DivisionRing_recip)($dictDivisionRing);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$mul = ($GLOBALS['Data_Semiring_mul'])((((($dictDivisionRing)->Ring0)($GLOBALS['Prim_undefined']))->Semiring0)($GLOBALS['Prim_undefined']));
+$recip1 = ($GLOBALS['Data_DivisionRing_recip'])($dictDivisionRing);
     $__res = (function() use ($mul, $recip1) {
   $__fn = function($a, $b = null) use ($mul, $recip1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = ($mul)(($recip1)($b), $a);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_DivisionRing_divisionringNumber
-$Data_DivisionRing_divisionringNumber = ($Data_DivisionRing_DivisionRing__dollar__Dict)((object)["recip" => (function() use (&$Data_DivisionRing_div) {
-  $__fn = function($x) use (&$Data_DivisionRing_div, &$__fn) {
+$Data_DivisionRing_divisionringNumber = ($GLOBALS['Data_DivisionRing_DivisionRing__dollar__Dict'])((object)["recip" => (function() {
+  $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_DivisionRing_div)(1.0, $x);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_DivisionRing_div'])(1.0, $x);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Ring0" => (function() use (&$Data_Ring_ringNumber) {
-  $__fn = function($__dollar____unused) use (&$Data_Ring_ringNumber, &$__fn) {
+})(), "Ring0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ring_ringNumber;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Ring_ringNumber'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);

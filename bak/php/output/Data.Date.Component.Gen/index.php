@@ -13,111 +13,78 @@ require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Date_Component_Gen_compose
-$Data_Date_Component_Gen_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Data_Date_Component_Gen_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Data_Date_Component_Gen_fromJust
-$Data_Date_Component_Gen_fromJust = ($Data_Maybe_fromJust)($Prim_undefined);
+$Data_Date_Component_Gen_fromJust = ($GLOBALS['Data_Maybe_fromJust'])($GLOBALS['Prim_undefined']);
 
 // Data_Date_Component_Gen_toEnum
-$Data_Date_Component_Gen_toEnum = ($Data_Enum_toEnum)($Data_Date_Component_boundedEnumYear);
+$Data_Date_Component_Gen_toEnum = ($GLOBALS['Data_Enum_toEnum'])($GLOBALS['Data_Date_Component_boundedEnumYear']);
 
 // Data_Date_Component_Gen_genYear
-$Data_Date_Component_Gen_genYear = (function() use (&$Data_Functor_map, &$Prim_undefined, &$Data_Date_Component_Gen_compose, &$Partial_Unsafe_unsafePartial, &$Data_Date_Component_Gen_fromJust, &$Data_Date_Component_Gen_toEnum, &$Control_Monad_Gen_Class_chooseInt) {
-  $__fn = function($dictMonadGen) use (&$Data_Functor_map, &$Prim_undefined, &$Data_Date_Component_Gen_compose, &$Partial_Unsafe_unsafePartial, &$Data_Date_Component_Gen_fromJust, &$Data_Date_Component_Gen_toEnum, &$Control_Monad_Gen_Class_chooseInt, &$__fn) {
+$Data_Date_Component_Gen_genYear = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Functor_map)((((((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined))->Apply0)($Prim_undefined))->Functor0)($Prim_undefined), ($Data_Date_Component_Gen_compose)(($Partial_Unsafe_unsafePartial)((function() use (&$Data_Date_Component_Gen_fromJust) {
-  $__fn = function($__dollar____unused) use (&$Data_Date_Component_Gen_fromJust, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Functor_map'])((((((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']))->Apply0)($GLOBALS['Prim_undefined']))->Functor0)($GLOBALS['Prim_undefined']), ($GLOBALS['Data_Date_Component_Gen_compose'])(($GLOBALS['Partial_Unsafe_unsafePartial'])((function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Date_Component_Gen_fromJust;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Date_Component_Gen_fromJust'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})()), $Data_Date_Component_Gen_toEnum), ($Control_Monad_Gen_Class_chooseInt)($dictMonadGen, 1900, 2100));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+})()), $GLOBALS['Data_Date_Component_Gen_toEnum']), ($GLOBALS['Control_Monad_Gen_Class_chooseInt'])($dictMonadGen, 1900, 2100));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Date_Component_Gen_genWeekday
-$Data_Date_Component_Gen_genWeekday = (function() use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumWeekday) {
-  $__fn = function($dictMonadGen) use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumWeekday, &$__fn) {
+$Data_Date_Component_Gen_genWeekday = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Enum_Gen_genBoundedEnum)($dictMonadGen, $Data_Date_Component_boundedEnumWeekday);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Enum_Gen_genBoundedEnum'])($dictMonadGen, $GLOBALS['Data_Date_Component_boundedEnumWeekday']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Date_Component_Gen_genMonth
-$Data_Date_Component_Gen_genMonth = (function() use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumMonth) {
-  $__fn = function($dictMonadGen) use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumMonth, &$__fn) {
+$Data_Date_Component_Gen_genMonth = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Enum_Gen_genBoundedEnum)($dictMonadGen, $Data_Date_Component_boundedEnumMonth);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Enum_Gen_genBoundedEnum'])($dictMonadGen, $GLOBALS['Data_Date_Component_boundedEnumMonth']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Date_Component_Gen_genDay
-$Data_Date_Component_Gen_genDay = (function() use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumDay) {
-  $__fn = function($dictMonadGen) use (&$Data_Enum_Gen_genBoundedEnum, &$Data_Date_Component_boundedEnumDay, &$__fn) {
+$Data_Date_Component_Gen_genDay = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Enum_Gen_genBoundedEnum)($dictMonadGen, $Data_Date_Component_boundedEnumDay);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Enum_Gen_genBoundedEnum'])($dictMonadGen, $GLOBALS['Data_Date_Component_boundedEnumDay']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

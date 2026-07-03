@@ -21,473 +21,242 @@ require_once __DIR__ . '/../Test.Records/index.php';
 require_once __DIR__ . '/../Test.StateMonad/index.php';
 require_once __DIR__ . '/../Test.TCO/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // App_discard
-$App_discard = ($Control_Bind_discard)($Control_Bind_discardUnit, $Effect_bindEffect);
+$App_discard = ($GLOBALS['Control_Bind_discard'])($GLOBALS['Control_Bind_discardUnit'], $GLOBALS['Effect_bindEffect']);
 
 // App_pure
-$App_pure = ($Control_Applicative_pure)($Effect_applicativeEffect);
+$App_pure = ($GLOBALS['Control_Applicative_pure'])($GLOBALS['Effect_applicativeEffect']);
 
 // App_main
-$App_main = ($App_discard)($Test_AstTree_describe, (function() use (&$App_discard, &$Test_AstTree_act, &$Test_Fib_describe, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_AstTree_act, &$Test_Fib_describe, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+$App_main = ($GLOBALS['App_discard'])($GLOBALS['Test_AstTree_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_AstTree_act, (function() use (&$App_discard, &$Test_Fib_describe, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Fib_describe, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_AstTree_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Fib_describe, (function() use (&$App_discard, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Fib_act, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Fib_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Fib_act, (function() use (&$App_discard, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_ListOps_describe, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Fib_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_ListOps_describe, (function() use (&$App_discard, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_ListOps_act, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_ListOps_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_ListOps_act, (function() use (&$App_discard, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_TCO_describe, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_ListOps_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_TCO_describe, (function() use (&$App_discard, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_TCO_act, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_TCO_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_TCO_act, (function() use (&$App_discard, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Records_describe, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_TCO_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Records_describe, (function() use (&$App_discard, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Records_act, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Records_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Records_act, (function() use (&$App_discard, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Ackermann_describe, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Records_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Ackermann_describe, (function() use (&$App_discard, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Ackermann_act, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Ackermann_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Ackermann_act, (function() use (&$App_discard, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Church_describe, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Ackermann_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Church_describe, (function() use (&$App_discard, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Church_act, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Church_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Church_act, (function() use (&$App_discard, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Primes_describe, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Church_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Primes_describe, (function() use (&$App_discard, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Primes_act, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Primes_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Primes_act, (function() use (&$App_discard, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_RBTree_describe, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Primes_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_RBTree_describe, (function() use (&$App_discard, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_RBTree_act, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_RBTree_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_RBTree_act, (function() use (&$App_discard, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Polymorphism_describe, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_RBTree_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Polymorphism_describe, (function() use (&$App_discard, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_Polymorphism_act, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Polymorphism_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_Polymorphism_act, (function() use (&$App_discard, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_StateMonad_describe, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_Polymorphism_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_StateMonad_describe, (function() use (&$App_discard, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_StateMonad_act, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_StateMonad_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_StateMonad_act, (function() use (&$App_discard, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_LazyEvaluation_describe, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_StateMonad_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_LazyEvaluation_describe, (function() use (&$App_discard, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_LazyEvaluation_act, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_LazyEvaluation_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_LazyEvaluation_act, (function() use (&$App_discard, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_FileOps_describe, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_LazyEvaluation_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_FileOps_describe, (function() use (&$App_discard, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$Test_FileOps_act, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_FileOps_describe'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)($Test_FileOps_act, (function() use (&$App_discard, &$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_discard, &$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])($GLOBALS['Test_FileOps_act'], (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_discard)(($App_pure)($Data_Unit_unit), (function() use (&$App_pure, &$Data_Unit_unit) {
-  $__fn = function($__dollar____unused) use (&$App_pure, &$Data_Unit_unit, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_discard'])(($GLOBALS['App_pure'])($GLOBALS['Data_Unit_unit']), (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($App_pure)($Data_Unit_unit);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['App_pure'])($GLOBALS['Data_Unit_unit']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());

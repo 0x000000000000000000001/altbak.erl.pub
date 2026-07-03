@@ -26,49 +26,52 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Control_Monad_Gen_lessThanOrEq
-$Control_Monad_Gen_lessThanOrEq = ($Data_Ord_lessThanOrEq)($Data_Ord_ordInt);
+$Control_Monad_Gen_lessThanOrEq = ($GLOBALS['Data_Ord_lessThanOrEq'])($GLOBALS['Data_Ord_ordInt']);
 
 // Control_Monad_Gen_sub
-$Control_Monad_Gen_sub = ($Data_Ring_sub)($Data_Ring_ringInt);
+$Control_Monad_Gen_sub = ($GLOBALS['Data_Ring_sub'])($GLOBALS['Data_Ring_ringInt']);
 
 // Control_Monad_Gen_compose
-$Control_Monad_Gen_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Control_Monad_Gen_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Control_Monad_Gen_un
-$Control_Monad_Gen_un = ($Data_Newtype_un)($Prim_undefined);
+$Control_Monad_Gen_un = ($GLOBALS['Data_Newtype_un'])($GLOBALS['Prim_undefined']);
 
 // Control_Monad_Gen_greaterThanOrEq
-$Control_Monad_Gen_greaterThanOrEq = ($Data_Ord_greaterThanOrEq)($Data_Ord_ordNumber);
+$Control_Monad_Gen_greaterThanOrEq = ($GLOBALS['Data_Ord_greaterThanOrEq'])($GLOBALS['Data_Ord_ordNumber']);
 
 // Control_Monad_Gen_sub1
-$Control_Monad_Gen_sub1 = ($Data_Ring_sub)($Data_Ring_ringNumber);
+$Control_Monad_Gen_sub1 = ($GLOBALS['Data_Ring_sub'])($GLOBALS['Data_Ring_ringNumber']);
 
 // Control_Monad_Gen_alaF
-$Control_Monad_Gen_alaF = ($Data_Newtype_alaF)($Prim_undefined, $Prim_undefined, $Prim_undefined, $Prim_undefined);
+$Control_Monad_Gen_alaF = ($GLOBALS['Data_Newtype_alaF'])($GLOBALS['Prim_undefined'], $GLOBALS['Prim_undefined'], $GLOBALS['Prim_undefined'], $GLOBALS['Prim_undefined']);
 
 // Control_Monad_Gen_monoidAdditive
-$Control_Monad_Gen_monoidAdditive = ($Data_Monoid_Additive_monoidAdditive)($Data_Semiring_semiringNumber);
+$Control_Monad_Gen_monoidAdditive = ($GLOBALS['Data_Monoid_Additive_monoidAdditive'])($GLOBALS['Data_Semiring_semiringNumber']);
 
 // Control_Monad_Gen_Cons
 $Control_Monad_Gen_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
@@ -80,98 +83,58 @@ $Control_Monad_Gen_Nil = (object)["tag" => "Nil", "values" => []];
 $Control_Monad_Gen_FreqSemigroup = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_unfoldable
-$Control_Monad_Gen_unfoldable = (function() use (&$Control_Monad_Rec_Class_tailRecM, &$Prim_undefined, &$Control_Applicative_pure, &$Control_Bind_bind, &$Data_Functor_map, &$Control_Monad_Gen_Class_sized, &$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, &$Control_Monad_Gen_compose, &$Control_Monad_Gen_Nil) {
-  $__fn = function($dictMonadRec) use (&$Control_Monad_Rec_Class_tailRecM, &$Prim_undefined, &$Control_Applicative_pure, &$Control_Bind_bind, &$Data_Functor_map, &$Control_Monad_Gen_Class_sized, &$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, &$Control_Monad_Gen_compose, &$Control_Monad_Gen_Nil, &$__fn) {
+$Control_Monad_Gen_unfoldable = (function() {
+  $__fn = function($dictMonadRec) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$tailRecM = ($Control_Monad_Rec_Class_tailRecM)($dictMonadRec);
-    $__res = (function() use (&$Prim_undefined, &$Control_Applicative_pure, &$Control_Bind_bind, &$Data_Functor_map, &$Control_Monad_Gen_Class_sized, &$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil) {
-  $__fn = function($dictMonadGen) use (&$Prim_undefined, &$Control_Applicative_pure, &$Control_Bind_bind, &$Data_Functor_map, &$Control_Monad_Gen_Class_sized, &$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$tailRecM = ($GLOBALS['Control_Monad_Rec_Class_tailRecM'])($dictMonadRec);
+    $__res = (function() use ($tailRecM) {
+  $__fn = function($dictMonadGen) use ($tailRecM, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$Monad0 = (($dictMonadGen)->Monad0)($Prim_undefined);
-$pure = ($Control_Applicative_pure)((($Monad0)->Applicative0)($Prim_undefined));
-$Bind1 = (($Monad0)->Bind1)($Prim_undefined);
-$bind = ($Control_Bind_bind)($Bind1);
-$map = ($Data_Functor_map)((((($Bind1)->Apply0)($Prim_undefined))->Functor0)($Prim_undefined));
-$sized = ($Control_Monad_Gen_Class_sized)($dictMonadGen);
-    $__res = (function() use (&$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, $map, $sized, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil) {
-  $__fn = function($dictUnfoldable) use (&$Data_Unfoldable_unfoldr, &$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, $map, $sized, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$Monad0 = (($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']);
+$pure = ($GLOBALS['Control_Applicative_pure'])((($Monad0)->Applicative0)($GLOBALS['Prim_undefined']));
+$Bind1 = (($Monad0)->Bind1)($GLOBALS['Prim_undefined']);
+$bind = ($GLOBALS['Control_Bind_bind'])($Bind1);
+$map = ($GLOBALS['Data_Functor_map'])((((($Bind1)->Apply0)($GLOBALS['Prim_undefined']))->Functor0)($GLOBALS['Prim_undefined']));
+$sized = ($GLOBALS['Control_Monad_Gen_Class_sized'])($dictMonadGen);
+    $__res = (function() use ($map, $sized, $tailRecM) {
+  $__fn = function($dictUnfoldable) use ($map, $sized, $tailRecM, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$unfoldr = ($Data_Unfoldable_unfoldr)($dictUnfoldable);
-    $__res = (function() use (&$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, $map, $unfoldr, $sized, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil) {
-  $__fn = function($gen) use (&$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, $map, $unfoldr, $sized, &$Control_Monad_Gen_compose, $tailRecM, &$Control_Monad_Gen_Nil, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$unfoldr = ($GLOBALS['Data_Unfoldable_unfoldr'])($dictUnfoldable);
+    $__res = (function() use ($map, $unfoldr, $sized, $tailRecM) {
+  $__fn = function($gen) use ($map, $unfoldr, $sized, $tailRecM, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$unfold = (function() use (&$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple) {
-  $__body = function($v) use (&$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$unfold = (function() {
+  $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Nil")) {
-return $Data_Maybe_Nothing;
+return $GLOBALS['Data_Maybe_Nothing'];
 } else {
-;
-};
-    if ((($__case_0)->tag === "Cons")) {
+if ((($__case_0)->tag === "Cons")) {
 $x = ($__case_0)->values[0];
 $xs = ($__case_0)->values[1];
-return ($Data_Maybe_Just)(($Data_Tuple_Tuple)($x, $xs));
+return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Tuple_Tuple'])($x, $xs));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($v) use (&$Data_Maybe_Nothing, &$Data_Maybe_Just, &$Data_Tuple_Tuple, $__body, &$__fn) {
+  $__fn = function($v) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -183,70 +146,44 @@ $acc = ($__case_0)->values[0];
 $n = ($__case_0)->values[1];
 return "/* Unsupported: Guards not supported */";
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($v) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    $__res = ($map)(($unfoldr)($unfold), ($sized)(($Control_Monad_Gen_compose)(($tailRecM)($loopGen), ($Data_Tuple_Tuple)($Control_Monad_Gen_Nil))));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+    $__res = ($map)(($unfoldr)($unfold), ($sized)(($GLOBALS['Control_Monad_Gen_compose'])(($tailRecM)($loopGen), ($GLOBALS['Data_Tuple_Tuple'])($GLOBALS['Control_Monad_Gen_Nil']))));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_semigroupFreqSemigroup
-$Control_Monad_Gen_semigroupFreqSemigroup = ($Data_Semigroup_Semigroup__dollar__Dict)((object)["append" => (function() use (&$Control_Monad_Gen_FreqSemigroup) {
-  $__body = function($v, $v1) use (&$Control_Monad_Gen_FreqSemigroup) {
+$Control_Monad_Gen_semigroupFreqSemigroup = ($GLOBALS['Data_Semigroup_Semigroup__dollar__Dict'])((object)["append" => (function() {
+  $__body = function($v, $v1) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $f = $__case_0;
 $g = $__case_1;
-return ($Control_Monad_Gen_FreqSemigroup)((function() use ($f, $g) {
+return ($GLOBALS['Control_Monad_Gen_FreqSemigroup'])((function() use ($f, $g) {
   $__body = function($pos) use ($f, $g) {
     $v2 = ($f)($pos);
     $__case_0 = $v2;
@@ -254,117 +191,70 @@ return ($Control_Monad_Gen_FreqSemigroup)((function() use ($f, $g) {
 $pos__prime__ = (($__case_0)->values[0])->values[0];
 return ($g)($pos__prime__);
 } else {
-;
-};
-    if (true) {
+if (true) {
 $result = $__case_0;
 return $result;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($pos) use ($f, $g, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($pos);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($pos);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($pos);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Control_Monad_Gen_FreqSemigroup, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Control_Monad_Gen_getFreqVal
-$Control_Monad_Gen_getFreqVal = (function() use (&$Control_Monad_Gen_compose, &$Data_Tuple_snd) {
-  $__body = function($v) use (&$Control_Monad_Gen_compose, &$Data_Tuple_snd) {
+$Control_Monad_Gen_getFreqVal = (function() {
+  $__body = function($v) {
     $__case_0 = $v;
     if (true) {
 $f = $__case_0;
-return ($Control_Monad_Gen_compose)($Data_Tuple_snd, $f);
+return ($GLOBALS['Control_Monad_Gen_compose'])($GLOBALS['Data_Tuple_snd'], $f);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Control_Monad_Gen_compose, &$Data_Tuple_snd, $__body, &$__fn) {
+  $__fn = function($v) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_fromIndex
-$Control_Monad_Gen_fromIndex = (function() use (&$Data_Semigroup_Foldable_foldMap1, &$Data_Semigroup_Last_semigroupLast, &$Data_Foldable_foldr, &$Prim_undefined, &$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, &$Control_Monad_Gen_Cons, &$Control_Monad_Gen_Nil) {
-  $__fn = function($dictFoldable1) use (&$Data_Semigroup_Foldable_foldMap1, &$Data_Semigroup_Last_semigroupLast, &$Data_Foldable_foldr, &$Prim_undefined, &$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, &$Control_Monad_Gen_Cons, &$Control_Monad_Gen_Nil, &$__fn) {
+$Control_Monad_Gen_fromIndex = (function() {
+  $__fn = function($dictFoldable1) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$foldMap1 = ($Data_Semigroup_Foldable_foldMap1)($dictFoldable1, $Data_Semigroup_Last_semigroupLast);
-$foldr = ($Data_Foldable_foldr)((($dictFoldable1)->Foldable0)($Prim_undefined));
-    $__res = (function() use (&$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, $foldMap1, $foldr, &$Control_Monad_Gen_Cons, &$Control_Monad_Gen_Nil) {
-  $__fn = function($i, $xs = null) use (&$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, $foldMap1, $foldr, &$Control_Monad_Gen_Cons, &$Control_Monad_Gen_Nil, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$foldMap1 = ($GLOBALS['Data_Semigroup_Foldable_foldMap1'])($dictFoldable1, $GLOBALS['Data_Semigroup_Last_semigroupLast']);
+$foldr = ($GLOBALS['Data_Foldable_foldr'])((($dictFoldable1)->Foldable0)($GLOBALS['Prim_undefined']));
+    $__res = (function() use ($foldMap1, $foldr) {
+  $__fn = function($i, $xs = null) use ($foldMap1, $foldr, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$go = (function() use (&$go, &$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, $foldMap1, $xs) {
-  $__fn = function($v, $v1 = null) use (&$go, &$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, $foldMap1, $xs, &$__fn) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+$go = (function() use (&$go, $foldMap1, $xs) {
+  $__fn = function($v, $v1 = null) use (&$go, $foldMap1, $xs, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = (function($v, $v1) use (&$go, &$Control_Monad_Gen_sub, &$Control_Monad_Gen_un, &$Data_Semigroup_Last_Last, $foldMap1, $xs) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -372,593 +262,343 @@ if (((($__case_1)->tag === "Cons") && ((($__case_1)->values[1])->tag === "Nil"))
 $a = ($__case_1)->values[0];
 return $a;
 } else {
-;
-};
 if ((($__case_1)->tag === "Cons")) {
 $j = $__case_0;
 $a = ($__case_1)->values[0];
 return "/* Unsupported: Guards not supported */";
 } else {
-;
-};
 if ((($__case_1)->tag === "Cons")) {
 $j = $__case_0;
 $as = ($__case_1)->values[1];
-$__tco_tmp_0 = ($Control_Monad_Gen_sub)($j, 1);
+$__tco_tmp_0 = ($GLOBALS['Control_Monad_Gen_sub'])($j, 1);
 $__tco_tmp_1 = $as;
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue;
 } else {
-;
-};
 if ((($__case_1)->tag === "Nil")) {
-return ($Control_Monad_Gen_un)($Data_Semigroup_Last_Last, ($foldMap1)($Data_Semigroup_Last_Last, $xs));
+return ($GLOBALS['Control_Monad_Gen_un'])($GLOBALS['Data_Semigroup_Last_Last'], ($foldMap1)($GLOBALS['Data_Semigroup_Last_Last'], $xs));
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
-}
-})($v, $v1);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+};
+};
+};
+};
+};
+    $__res = null;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    $__res = ($go)($i, ($foldr)($Control_Monad_Gen_Cons, $Control_Monad_Gen_Nil, $xs));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+    $__res = ($go)($i, ($foldr)($GLOBALS['Control_Monad_Gen_Cons'], $GLOBALS['Control_Monad_Gen_Nil'], $xs));
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_oneOf
-$Control_Monad_Gen_oneOf = (function() use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseInt, &$Data_Foldable_length, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, &$Control_Monad_Gen_sub) {
-  $__fn = function($dictMonadGen) use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseInt, &$Data_Foldable_length, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, &$Control_Monad_Gen_sub, &$__fn) {
+$Control_Monad_Gen_oneOf = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$bind = ($Control_Bind_bind)((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined));
-$chooseInt = ($Control_Monad_Gen_Class_chooseInt)($dictMonadGen);
-    $__res = (function() use (&$Data_Foldable_length, &$Prim_undefined, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, $bind, $chooseInt, &$Control_Monad_Gen_sub) {
-  $__fn = function($dictFoldable1) use (&$Data_Foldable_length, &$Prim_undefined, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, $bind, $chooseInt, &$Control_Monad_Gen_sub, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$bind = ($GLOBALS['Control_Bind_bind'])((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']));
+$chooseInt = ($GLOBALS['Control_Monad_Gen_Class_chooseInt'])($dictMonadGen);
+    $__res = (function() use ($bind, $chooseInt) {
+  $__fn = function($dictFoldable1) use ($bind, $chooseInt, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$length = ($Data_Foldable_length)((($dictFoldable1)->Foldable0)($Prim_undefined), $Data_Semiring_semiringInt);
-$fromIndex1 = ($Control_Monad_Gen_fromIndex)($dictFoldable1);
-    $__res = (function() use ($bind, $chooseInt, &$Control_Monad_Gen_sub, $length, $fromIndex1) {
-  $__fn = function($xs) use ($bind, $chooseInt, &$Control_Monad_Gen_sub, $length, $fromIndex1, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$length = ($GLOBALS['Data_Foldable_length'])((($dictFoldable1)->Foldable0)($GLOBALS['Prim_undefined']), $GLOBALS['Data_Semiring_semiringInt']);
+$fromIndex1 = ($GLOBALS['Control_Monad_Gen_fromIndex'])($dictFoldable1);
+    $__res = (function() use ($bind, $chooseInt, $length, $fromIndex1) {
+  $__fn = function($xs) use ($bind, $chooseInt, $length, $fromIndex1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($bind)(($chooseInt)(0, ($Control_Monad_Gen_sub)(($length)($xs), 1)), (function() use ($fromIndex1, $xs) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($bind)(($chooseInt)(0, ($GLOBALS['Control_Monad_Gen_sub'])(($length)($xs), 1)), (function() use ($fromIndex1, $xs) {
   $__fn = function($n) use ($fromIndex1, $xs, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($fromIndex1)($n, $xs);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_freqSemigroup
-$Control_Monad_Gen_freqSemigroup = (function() use (&$Control_Monad_Gen_FreqSemigroup, &$Control_Monad_Gen_greaterThanOrEq, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, &$Data_Maybe_Nothing) {
-  $__body = function($v) use (&$Control_Monad_Gen_FreqSemigroup, &$Control_Monad_Gen_greaterThanOrEq, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, &$Data_Maybe_Nothing) {
+$Control_Monad_Gen_freqSemigroup = (function() {
+  $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
 $weight = ($__case_0)->values[0];
 $x = ($__case_0)->values[1];
-return ($Control_Monad_Gen_FreqSemigroup)((function() use (&$Control_Monad_Gen_greaterThanOrEq, $weight, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, $x, &$Data_Maybe_Nothing) {
-  $__body = function($pos) use (&$Control_Monad_Gen_greaterThanOrEq, $weight, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, $x, &$Data_Maybe_Nothing) {
-    $__case_0 = ($Control_Monad_Gen_greaterThanOrEq)($pos, $weight);
+return ($GLOBALS['Control_Monad_Gen_FreqSemigroup'])((function() use ($weight, $x) {
+  $__body = function($pos) use ($weight, $x) {
+    $__case_0 = ($GLOBALS['Control_Monad_Gen_greaterThanOrEq'])($pos, $weight);
     if (($__case_0 === true)) {
-return ($Data_Tuple_Tuple)(($Data_Maybe_Just)(($Control_Monad_Gen_sub1)($pos, $weight)), $x);
+return ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Control_Monad_Gen_sub1'])($pos, $weight)), $x);
 } else {
-;
-};
-    if (true) {
-return ($Data_Tuple_Tuple)($Data_Maybe_Nothing, $x);
+if (true) {
+return ($GLOBALS['Data_Tuple_Tuple'])($GLOBALS['Data_Maybe_Nothing'], $x);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($pos) use (&$Control_Monad_Gen_greaterThanOrEq, $weight, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, $x, &$Data_Maybe_Nothing, $__body, &$__fn) {
+  $__fn = function($pos) use ($weight, $x, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($pos);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($pos);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($pos);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Control_Monad_Gen_FreqSemigroup, &$Control_Monad_Gen_greaterThanOrEq, &$Data_Tuple_Tuple, &$Data_Maybe_Just, &$Control_Monad_Gen_sub1, &$Data_Maybe_Nothing, $__body, &$__fn) {
+  $__fn = function($v) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_frequency
-$Control_Monad_Gen_frequency = (function() use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseFloat, &$Data_Foldable_foldMap, &$Control_Monad_Gen_monoidAdditive, &$Data_Semigroup_Foldable_foldMap1, &$Control_Monad_Gen_semigroupFreqSemigroup, &$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, &$Data_Tuple_fst, &$Control_Monad_Gen_getFreqVal, &$Control_Monad_Gen_freqSemigroup) {
-  $__fn = function($dictMonadGen) use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseFloat, &$Data_Foldable_foldMap, &$Control_Monad_Gen_monoidAdditive, &$Data_Semigroup_Foldable_foldMap1, &$Control_Monad_Gen_semigroupFreqSemigroup, &$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, &$Data_Tuple_fst, &$Control_Monad_Gen_getFreqVal, &$Control_Monad_Gen_freqSemigroup, &$__fn) {
+$Control_Monad_Gen_frequency = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$bind = ($Control_Bind_bind)((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined));
-$chooseFloat = ($Control_Monad_Gen_Class_chooseFloat)($dictMonadGen);
-    $__res = (function() use (&$Data_Foldable_foldMap, &$Prim_undefined, &$Control_Monad_Gen_monoidAdditive, &$Data_Semigroup_Foldable_foldMap1, &$Control_Monad_Gen_semigroupFreqSemigroup, &$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, &$Data_Tuple_fst, $bind, $chooseFloat, &$Control_Monad_Gen_getFreqVal, &$Control_Monad_Gen_freqSemigroup) {
-  $__fn = function($dictFoldable1) use (&$Data_Foldable_foldMap, &$Prim_undefined, &$Control_Monad_Gen_monoidAdditive, &$Data_Semigroup_Foldable_foldMap1, &$Control_Monad_Gen_semigroupFreqSemigroup, &$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, &$Data_Tuple_fst, $bind, $chooseFloat, &$Control_Monad_Gen_getFreqVal, &$Control_Monad_Gen_freqSemigroup, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$bind = ($GLOBALS['Control_Bind_bind'])((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']));
+$chooseFloat = ($GLOBALS['Control_Monad_Gen_Class_chooseFloat'])($dictMonadGen);
+    $__res = (function() use ($bind, $chooseFloat) {
+  $__fn = function($dictFoldable1) use ($bind, $chooseFloat, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$foldMap = ($Data_Foldable_foldMap)((($dictFoldable1)->Foldable0)($Prim_undefined), $Control_Monad_Gen_monoidAdditive);
-$foldMap1 = ($Data_Semigroup_Foldable_foldMap1)($dictFoldable1, $Control_Monad_Gen_semigroupFreqSemigroup);
-    $__res = (function() use (&$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, $foldMap, &$Data_Tuple_fst, $bind, $chooseFloat, &$Control_Monad_Gen_getFreqVal, $foldMap1, &$Control_Monad_Gen_freqSemigroup) {
-  $__fn = function($xs) use (&$Control_Monad_Gen_alaF, &$Data_Monoid_Additive_Additive, $foldMap, &$Data_Tuple_fst, $bind, $chooseFloat, &$Control_Monad_Gen_getFreqVal, $foldMap1, &$Control_Monad_Gen_freqSemigroup, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$foldMap = ($GLOBALS['Data_Foldable_foldMap'])((($dictFoldable1)->Foldable0)($GLOBALS['Prim_undefined']), $GLOBALS['Control_Monad_Gen_monoidAdditive']);
+$foldMap1 = ($GLOBALS['Data_Semigroup_Foldable_foldMap1'])($dictFoldable1, $GLOBALS['Control_Monad_Gen_semigroupFreqSemigroup']);
+    $__res = (function() use ($foldMap, $bind, $chooseFloat, $foldMap1) {
+  $__fn = function($xs) use ($foldMap, $bind, $chooseFloat, $foldMap1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$total = ($Control_Monad_Gen_alaF)($Data_Monoid_Additive_Additive, $foldMap, $Data_Tuple_fst, $xs);
-    $__res = ($bind)(($chooseFloat)(0.0, $total), ($Control_Monad_Gen_getFreqVal)(($foldMap1)($Control_Monad_Gen_freqSemigroup, $xs)));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$total = ($GLOBALS['Control_Monad_Gen_alaF'])($GLOBALS['Data_Monoid_Additive_Additive'], $foldMap, $GLOBALS['Data_Tuple_fst'], $xs);
+    $__res = ($bind)(($chooseFloat)(0.0, $total), ($GLOBALS['Control_Monad_Gen_getFreqVal'])(($foldMap1)($GLOBALS['Control_Monad_Gen_freqSemigroup'], $xs)));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_filtered
-$Control_Monad_Gen_filtered = (function() use (&$Control_Monad_Rec_Class_tailRecM, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done) {
-  $__fn = function($dictMonadRec) use (&$Control_Monad_Rec_Class_tailRecM, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, &$__fn) {
+$Control_Monad_Gen_filtered = (function() {
+  $__fn = function($dictMonadRec) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$tailRecM = ($Control_Monad_Rec_Class_tailRecM)($dictMonadRec);
-    $__res = (function() use (&$Data_Functor_mapFlipped, &$Prim_undefined, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, $tailRecM) {
-  $__fn = function($dictMonadGen) use (&$Data_Functor_mapFlipped, &$Prim_undefined, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, $tailRecM, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$tailRecM = ($GLOBALS['Control_Monad_Rec_Class_tailRecM'])($dictMonadRec);
+    $__res = (function() use ($tailRecM) {
+  $__fn = function($dictMonadGen) use ($tailRecM, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$mapFlipped = ($Data_Functor_mapFlipped)((((((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined))->Apply0)($Prim_undefined))->Functor0)($Prim_undefined));
-    $__res = (function() use ($mapFlipped, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, $tailRecM) {
-  $__fn = function($gen) use ($mapFlipped, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, $tailRecM, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$mapFlipped = ($GLOBALS['Data_Functor_mapFlipped'])((((((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']))->Apply0)($GLOBALS['Prim_undefined']))->Functor0)($GLOBALS['Prim_undefined']));
+    $__res = (function() use ($mapFlipped, $tailRecM) {
+  $__fn = function($gen) use ($mapFlipped, $tailRecM, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$go = (function() use ($mapFlipped, $gen, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done) {
-  $__fn = function($v) use ($mapFlipped, $gen, &$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$go = (function() use ($mapFlipped, $gen) {
+  $__fn = function($v) use ($mapFlipped, $gen, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($mapFlipped)($gen, (function() use (&$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done) {
-  $__body = function($a) use (&$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($mapFlipped)($gen, (function() {
+  $__body = function($a) {
     $__case_0 = $a;
     if ((($__case_0)->tag === "Nothing")) {
-return ($Control_Monad_Rec_Class_Loop)($Data_Unit_unit);
+return ($GLOBALS['Control_Monad_Rec_Class_Loop'])($GLOBALS['Data_Unit_unit']);
 } else {
-;
-};
-    if ((($__case_0)->tag === "Just")) {
+if ((($__case_0)->tag === "Just")) {
 $a__prime__ = ($__case_0)->values[0];
-return ($Control_Monad_Rec_Class_Done)($a__prime__);
+return ($GLOBALS['Control_Monad_Rec_Class_Done'])($a__prime__);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($a) use (&$Control_Monad_Rec_Class_Loop, &$Data_Unit_unit, &$Control_Monad_Rec_Class_Done, $__body, &$__fn) {
+  $__fn = function($a) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($a);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($a);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($a);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    $__res = ($tailRecM)($go, $Data_Unit_unit);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+    $__res = ($tailRecM)($go, $GLOBALS['Data_Unit_unit']);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_suchThat
-$Control_Monad_Gen_suchThat = (function() use (&$Control_Monad_Gen_filtered, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Data_Maybe_Just, &$Data_Maybe_Nothing) {
-  $__fn = function($dictMonadRec) use (&$Control_Monad_Gen_filtered, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Data_Maybe_Just, &$Data_Maybe_Nothing, &$__fn) {
+$Control_Monad_Gen_suchThat = (function() {
+  $__fn = function($dictMonadRec) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$filtered1 = ($Control_Monad_Gen_filtered)($dictMonadRec);
-    $__res = (function() use ($filtered1, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Data_Maybe_Just, &$Data_Maybe_Nothing) {
-  $__fn = function($dictMonadGen) use ($filtered1, &$Data_Functor_mapFlipped, &$Prim_undefined, &$Data_Maybe_Just, &$Data_Maybe_Nothing, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$filtered1 = ($GLOBALS['Control_Monad_Gen_filtered'])($dictMonadRec);
+    $__res = (function() use ($filtered1) {
+  $__fn = function($dictMonadGen) use ($filtered1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
 $filtered2 = ($filtered1)($dictMonadGen);
-$mapFlipped = ($Data_Functor_mapFlipped)((((((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined))->Apply0)($Prim_undefined))->Functor0)($Prim_undefined));
-    $__res = (function() use ($filtered2, $mapFlipped, &$Data_Maybe_Just, &$Data_Maybe_Nothing) {
-  $__fn = function($gen, $pred = null) use ($filtered2, $mapFlipped, &$Data_Maybe_Just, &$Data_Maybe_Nothing, &$__fn) {
+$mapFlipped = ($GLOBALS['Data_Functor_mapFlipped'])((((((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']))->Apply0)($GLOBALS['Prim_undefined']))->Functor0)($GLOBALS['Prim_undefined']));
+    $__res = (function() use ($filtered2, $mapFlipped) {
+  $__fn = function($gen, $pred = null) use ($filtered2, $mapFlipped, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($filtered2)(($mapFlipped)($gen, (function() use ($pred, &$Data_Maybe_Just, &$Data_Maybe_Nothing) {
-  $__body = function($a) use ($pred, &$Data_Maybe_Just, &$Data_Maybe_Nothing) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = ($filtered2)(($mapFlipped)($gen, (function() use ($pred) {
+  $__body = function($a) use ($pred) {
     $__case_0 = ($pred)($a);
     if (($__case_0 === true)) {
-return ($Data_Maybe_Just)($a);
+return ($GLOBALS['Data_Maybe_Just'])($a);
 } else {
-;
-};
-    if (true) {
-return $Data_Maybe_Nothing;
+if (true) {
+return $GLOBALS['Data_Maybe_Nothing'];
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($a) use ($pred, &$Data_Maybe_Just, &$Data_Maybe_Nothing, $__body, &$__fn) {
+  $__fn = function($a) use ($pred, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($a);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($a);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($a);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_elements
-$Control_Monad_Gen_elements = (function() use (&$Prim_undefined, &$Control_Bind_bind, &$Control_Monad_Gen_Class_chooseInt, &$Control_Applicative_pure, &$Data_Foldable_length, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, &$Control_Monad_Gen_sub) {
-  $__fn = function($dictMonadGen) use (&$Prim_undefined, &$Control_Bind_bind, &$Control_Monad_Gen_Class_chooseInt, &$Control_Applicative_pure, &$Data_Foldable_length, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, &$Control_Monad_Gen_sub, &$__fn) {
+$Control_Monad_Gen_elements = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$Monad0 = (($dictMonadGen)->Monad0)($Prim_undefined);
-$bind = ($Control_Bind_bind)((($Monad0)->Bind1)($Prim_undefined));
-$chooseInt = ($Control_Monad_Gen_Class_chooseInt)($dictMonadGen);
-$pure = ($Control_Applicative_pure)((($Monad0)->Applicative0)($Prim_undefined));
-    $__res = (function() use (&$Data_Foldable_length, &$Prim_undefined, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, $bind, $chooseInt, &$Control_Monad_Gen_sub, $pure) {
-  $__fn = function($dictFoldable1) use (&$Data_Foldable_length, &$Prim_undefined, &$Data_Semiring_semiringInt, &$Control_Monad_Gen_fromIndex, $bind, $chooseInt, &$Control_Monad_Gen_sub, $pure, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$Monad0 = (($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']);
+$bind = ($GLOBALS['Control_Bind_bind'])((($Monad0)->Bind1)($GLOBALS['Prim_undefined']));
+$chooseInt = ($GLOBALS['Control_Monad_Gen_Class_chooseInt'])($dictMonadGen);
+$pure = ($GLOBALS['Control_Applicative_pure'])((($Monad0)->Applicative0)($GLOBALS['Prim_undefined']));
+    $__res = (function() use ($bind, $chooseInt, $pure) {
+  $__fn = function($dictFoldable1) use ($bind, $chooseInt, $pure, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$length = ($Data_Foldable_length)((($dictFoldable1)->Foldable0)($Prim_undefined), $Data_Semiring_semiringInt);
-$fromIndex1 = ($Control_Monad_Gen_fromIndex)($dictFoldable1);
-    $__res = (function() use ($bind, $chooseInt, &$Control_Monad_Gen_sub, $length, $pure, $fromIndex1) {
-  $__fn = function($xs) use ($bind, $chooseInt, &$Control_Monad_Gen_sub, $length, $pure, $fromIndex1, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$length = ($GLOBALS['Data_Foldable_length'])((($dictFoldable1)->Foldable0)($GLOBALS['Prim_undefined']), $GLOBALS['Data_Semiring_semiringInt']);
+$fromIndex1 = ($GLOBALS['Control_Monad_Gen_fromIndex'])($dictFoldable1);
+    $__res = (function() use ($bind, $chooseInt, $length, $pure, $fromIndex1) {
+  $__fn = function($xs) use ($bind, $chooseInt, $length, $pure, $fromIndex1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($bind)(($chooseInt)(0, ($Control_Monad_Gen_sub)(($length)($xs), 1)), (function() use ($pure, $fromIndex1, $xs) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($bind)(($chooseInt)(0, ($GLOBALS['Control_Monad_Gen_sub'])(($length)($xs), 1)), (function() use ($pure, $fromIndex1, $xs) {
   $__fn = function($n) use ($pure, $fromIndex1, $xs, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($pure)(($fromIndex1)($n, $xs));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_choose
-$Control_Monad_Gen_choose = (function() use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseBool) {
-  $__fn = function($dictMonadGen) use (&$Control_Bind_bind, &$Prim_undefined, &$Control_Monad_Gen_Class_chooseBool, &$__fn) {
+$Control_Monad_Gen_choose = (function() {
+  $__fn = function($dictMonadGen) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$bind = ($Control_Bind_bind)((((($dictMonadGen)->Monad0)($Prim_undefined))->Bind1)($Prim_undefined));
-$chooseBool = ($Control_Monad_Gen_Class_chooseBool)($dictMonadGen);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$bind = ($GLOBALS['Control_Bind_bind'])((((($dictMonadGen)->Monad0)($GLOBALS['Prim_undefined']))->Bind1)($GLOBALS['Prim_undefined']));
+$chooseBool = ($GLOBALS['Control_Monad_Gen_Class_chooseBool'])($dictMonadGen);
     $__res = (function() use ($bind, $chooseBool) {
   $__fn = function($genA, $genB = null) use ($bind, $chooseBool, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = ($bind)($chooseBool, (function() use ($genA, $genB) {
   $__body = function($v) use ($genA, $genB) {
     $__case_0 = $v;
     if (($__case_0 === true)) {
 return $genA;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return $genB;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($v) use ($genA, $genB, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

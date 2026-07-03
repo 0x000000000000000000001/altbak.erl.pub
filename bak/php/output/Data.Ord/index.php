@@ -13,6 +13,18 @@ require_once __DIR__ . '/../Data.Void/index.php';
 require_once __DIR__ . '/../Record.Unsafe/index.php';
 require_once __DIR__ . '/../Type.Proxy/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 if (!function_exists('phpurs_uncurry2')) {
 function phpurs_uncurry2($fn) {
@@ -70,30 +82,21 @@ $Data_Ord_ordCharImpl = $Data_Ord_ordIntImpl;
 $Data_Ord_ordBooleanImpl = $Data_Ord_ordIntImpl;
 
 // Data_Ord_eqRec
-$Data_Ord_eqRec = ($Data_Eq_eqRec)($Prim_undefined);
+$Data_Ord_eqRec = ($GLOBALS['Data_Eq_eqRec'])($GLOBALS['Prim_undefined']);
 
 // Data_Ord_negate
-$Data_Ord_negate = ($Data_Ring_negate)($Data_Ring_ringInt);
+$Data_Ord_negate = ($GLOBALS['Data_Ring_negate'])($GLOBALS['Data_Ring_ringInt']);
 
 // Data_Ord_notEq
-$Data_Ord_notEq = ($Data_Eq_notEq)($Data_Ordering_eqOrdering);
+$Data_Ord_notEq = ($GLOBALS['Data_Eq_notEq'])($GLOBALS['Data_Ordering_eqOrdering']);
 
 // Data_Ord_OrdRecord$Dict
 $Data_Ord_OrdRecord__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -102,18 +105,9 @@ $Data_Ord_OrdRecord__dollar__Dict = (function() {
 $Data_Ord_Ord__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -122,343 +116,192 @@ $Data_Ord_Ord__dollar__Dict = (function() {
 $Data_Ord_Ord1__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_ordVoid
-$Data_Ord_ordVoid = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => (function() use (&$Data_Ordering_EQ) {
-  $__fn = function($v, $v1 = null) use (&$Data_Ordering_EQ, &$__fn) {
+$Data_Ord_ordVoid = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_EQ;
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $GLOBALS['Data_Ordering_EQ'];
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => (function() use (&$Data_Eq_eqVoid) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqVoid, &$__fn) {
+})(), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqVoid;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqVoid'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordUnit
-$Data_Ord_ordUnit = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => (function() use (&$Data_Ordering_EQ) {
-  $__fn = function($v, $v1 = null) use (&$Data_Ordering_EQ, &$__fn) {
+$Data_Ord_ordUnit = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_EQ;
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $GLOBALS['Data_Ordering_EQ'];
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => (function() use (&$Data_Eq_eqUnit) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqUnit, &$__fn) {
+})(), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqUnit;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqUnit'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordString
-$Data_Ord_ordString = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_ordStringImpl)($Data_Ordering_LT, $Data_Ordering_EQ, $Data_Ordering_GT), "Eq0" => (function() use (&$Data_Eq_eqString) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqString, &$__fn) {
+$Data_Ord_ordString = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_ordStringImpl'])($GLOBALS['Data_Ordering_LT'], $GLOBALS['Data_Ordering_EQ'], $GLOBALS['Data_Ordering_GT']), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqString;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqString'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordRecordNil
-$Data_Ord_ordRecordNil = ($Data_Ord_OrdRecord__dollar__Dict)((object)["compareRecord" => (function() use (&$Data_Ordering_EQ) {
-  $__fn = function($v, $v1 = null, $v2 = null) use (&$Data_Ordering_EQ, &$__fn) {
+$Data_Ord_ordRecordNil = ($GLOBALS['Data_Ord_OrdRecord__dollar__Dict'])((object)["compareRecord" => (function() {
+  $__fn = function($v, $v1 = null, $v2 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_EQ;
-    if ($__num > 3) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__res;
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $GLOBALS['Data_Ordering_EQ'];
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})(), "EqRecord0" => (function() use (&$Data_Eq_eqRowNil) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqRowNil, &$__fn) {
+})(), "EqRecord0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqRowNil;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqRowNil'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordProxy
-$Data_Ord_ordProxy = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => (function() use (&$Data_Ordering_EQ) {
-  $__fn = function($v, $v1 = null) use (&$Data_Ordering_EQ, &$__fn) {
+$Data_Ord_ordProxy = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_EQ;
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $GLOBALS['Data_Ordering_EQ'];
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => (function() use (&$Data_Eq_eqProxy) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqProxy, &$__fn) {
+})(), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqProxy;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqProxy'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordOrdering
-$Data_Ord_ordOrdering = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => (function() use (&$Data_Ordering_EQ, &$Data_Ordering_LT, &$Data_Ordering_GT) {
-  $__body = function($v, $v1) use (&$Data_Ordering_EQ, &$Data_Ordering_LT, &$Data_Ordering_GT) {
+$Data_Ord_ordOrdering = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => (function() {
+  $__body = function($v, $v1) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "LT") && (($__case_1)->tag === "LT"))) {
-return $Data_Ordering_EQ;
+return $GLOBALS['Data_Ordering_EQ'];
 } else {
-;
-};
-    if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "EQ"))) {
-return $Data_Ordering_EQ;
+if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "EQ"))) {
+return $GLOBALS['Data_Ordering_EQ'];
 } else {
-;
-};
-    if (((($__case_0)->tag === "GT") && (($__case_1)->tag === "GT"))) {
-return $Data_Ordering_EQ;
+if (((($__case_0)->tag === "GT") && (($__case_1)->tag === "GT"))) {
+return $GLOBALS['Data_Ordering_EQ'];
 } else {
-;
-};
-    if ((($__case_0)->tag === "LT")) {
-return $Data_Ordering_LT;
+if ((($__case_0)->tag === "LT")) {
+return $GLOBALS['Data_Ordering_LT'];
 } else {
-;
-};
-    if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "LT"))) {
-return $Data_Ordering_GT;
+if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "LT"))) {
+return $GLOBALS['Data_Ordering_GT'];
 } else {
-;
-};
-    if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "GT"))) {
-return $Data_Ordering_LT;
+if (((($__case_0)->tag === "EQ") && (($__case_1)->tag === "GT"))) {
+return $GLOBALS['Data_Ordering_LT'];
 } else {
-;
-};
-    if ((($__case_0)->tag === "GT")) {
-return $Data_Ordering_GT;
+if ((($__case_0)->tag === "GT")) {
+return $GLOBALS['Data_Ordering_GT'];
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
+};
+};
+};
+};
+};
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Ordering_EQ, &$Data_Ordering_LT, &$Data_Ordering_GT, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => (function() use (&$Data_Ordering_eqOrdering) {
-  $__fn = function($__dollar____unused) use (&$Data_Ordering_eqOrdering, &$__fn) {
+})(), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_eqOrdering;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Ordering_eqOrdering'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordNumber
-$Data_Ord_ordNumber = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_ordNumberImpl)($Data_Ordering_LT, $Data_Ordering_EQ, $Data_Ordering_GT), "Eq0" => (function() use (&$Data_Eq_eqNumber) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqNumber, &$__fn) {
+$Data_Ord_ordNumber = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_ordNumberImpl'])($GLOBALS['Data_Ordering_LT'], $GLOBALS['Data_Ordering_EQ'], $GLOBALS['Data_Ordering_GT']), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqNumber;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqNumber'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordInt
-$Data_Ord_ordInt = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_ordIntImpl)($Data_Ordering_LT, $Data_Ordering_EQ, $Data_Ordering_GT), "Eq0" => (function() use (&$Data_Eq_eqInt) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqInt, &$__fn) {
+$Data_Ord_ordInt = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_ordIntImpl'])($GLOBALS['Data_Ordering_LT'], $GLOBALS['Data_Ordering_EQ'], $GLOBALS['Data_Ordering_GT']), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqInt;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqInt'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordChar
-$Data_Ord_ordChar = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_ordCharImpl)($Data_Ordering_LT, $Data_Ordering_EQ, $Data_Ordering_GT), "Eq0" => (function() use (&$Data_Eq_eqChar) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqChar, &$__fn) {
+$Data_Ord_ordChar = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_ordCharImpl'])($GLOBALS['Data_Ordering_LT'], $GLOBALS['Data_Ordering_EQ'], $GLOBALS['Data_Ordering_GT']), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqChar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqChar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordBoolean
-$Data_Ord_ordBoolean = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_ordBooleanImpl)($Data_Ordering_LT, $Data_Ordering_EQ, $Data_Ordering_GT), "Eq0" => (function() use (&$Data_Eq_eqBoolean) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eqBoolean, &$__fn) {
+$Data_Ord_ordBoolean = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_ordBooleanImpl'])($GLOBALS['Data_Ordering_LT'], $GLOBALS['Data_Ordering_EQ'], $GLOBALS['Data_Ordering_GT']), "Eq0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eqBoolean;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eqBoolean'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
@@ -471,62 +314,34 @@ $Data_Ord_compareRecord = (function() {
 $v = $__case_0;
 return ($v)->compareRecord;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_ordRecord
-$Data_Ord_ordRecord = (function() use (&$Data_Ord_eqRec, &$Prim_undefined, &$Data_Ord_Ord__dollar__Dict, &$Data_Ord_compareRecord, &$Type_Proxy_Proxy) {
-  $__fn = function($__dollar____unused, $dictOrdRecord = null) use (&$Data_Ord_eqRec, &$Prim_undefined, &$Data_Ord_Ord__dollar__Dict, &$Data_Ord_compareRecord, &$Type_Proxy_Proxy, &$__fn) {
+$Data_Ord_ordRecord = (function() {
+  $__fn = function($__dollar____unused, $dictOrdRecord = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$eqRec1 = ($Data_Ord_eqRec)((($dictOrdRecord)->EqRecord0)($Prim_undefined));
-    $__res = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => ($Data_Ord_compareRecord)($dictOrdRecord, $Type_Proxy_Proxy), "Eq0" => (function() use ($eqRec1) {
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+$eqRec1 = ($GLOBALS['Data_Ord_eqRec'])((($dictOrdRecord)->EqRecord0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => ($GLOBALS['Data_Ord_compareRecord'])($dictOrdRecord, $GLOBALS['Type_Proxy_Proxy']), "Eq0" => (function() use ($eqRec1) {
   $__fn = function($__dollar____unused) use ($eqRec1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $eqRec1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
@@ -539,24 +354,14 @@ $Data_Ord_compare1 = (function() {
 $v = $__case_0;
 return ($v)->compare1;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -569,80 +374,47 @@ $Data_Ord_compare = (function() {
 $v = $__case_0;
 return ($v)->compare;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_compare2
-$Data_Ord_compare2 = ($Data_Ord_compare)($Data_Ord_ordInt);
+$Data_Ord_compare2 = ($GLOBALS['Data_Ord_compare'])($GLOBALS['Data_Ord_ordInt']);
 
 // Data_Ord_comparing
-$Data_Ord_comparing = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_comparing = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__fn = function($f, $x = null, $y = null) use ($compare3, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
     $__res = ($compare3)(($f)($x), ($f)($y));
-    if ($__num > 3) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__res;
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_greaterThan
-$Data_Ord_greaterThan = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_greaterThan = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($a1, $a2) use ($compare3) {
     $v = ($compare3)($a1, $a2);
@@ -650,52 +422,32 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "GT")) {
 return true;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return false;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($a1, $a2 = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($a1, $a2);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($a1, $a2);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($a1, $a2);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_greaterThanOrEq
-$Data_Ord_greaterThanOrEq = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_greaterThanOrEq = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($a1, $a2) use ($compare3) {
     $v = ($compare3)($a1, $a2);
@@ -703,52 +455,32 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "LT")) {
 return false;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return true;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($a1, $a2 = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($a1, $a2);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($a1, $a2);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($a1, $a2);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_lessThan
-$Data_Ord_lessThan = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_lessThan = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($a1, $a2) use ($compare3) {
     $v = ($compare3)($a1, $a2);
@@ -756,137 +488,86 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "LT")) {
 return true;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return false;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($a1, $a2 = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($a1, $a2);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($a1, $a2);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($a1, $a2);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_signum
-$Data_Ord_signum = (function() use (&$Data_Ord_lessThan, &$Data_Ord_greaterThan, &$Prim_undefined, &$Data_Semiring_zero, &$Data_Ring_negate, &$Data_Semiring_one) {
-  $__fn = function($dictOrd) use (&$Data_Ord_lessThan, &$Data_Ord_greaterThan, &$Prim_undefined, &$Data_Semiring_zero, &$Data_Ring_negate, &$Data_Semiring_one, &$__fn) {
+$Data_Ord_signum = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$lessThan1 = ($Data_Ord_lessThan)($dictOrd);
-$greaterThan1 = ($Data_Ord_greaterThan)($dictOrd);
-    $__res = (function() use (&$Prim_undefined, &$Data_Semiring_zero, &$Data_Ring_negate, &$Data_Semiring_one, $lessThan1, $greaterThan1) {
-  $__fn = function($dictRing) use (&$Prim_undefined, &$Data_Semiring_zero, &$Data_Ring_negate, &$Data_Semiring_one, $lessThan1, $greaterThan1, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$lessThan1 = ($GLOBALS['Data_Ord_lessThan'])($dictOrd);
+$greaterThan1 = ($GLOBALS['Data_Ord_greaterThan'])($dictOrd);
+    $__res = (function() use ($lessThan1, $greaterThan1) {
+  $__fn = function($dictRing) use ($lessThan1, $greaterThan1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$Semiring0 = (($dictRing)->Semiring0)($Prim_undefined);
-$zero = ($Data_Semiring_zero)($Semiring0);
-$negate1 = ($Data_Ring_negate)($dictRing);
-$one = ($Data_Semiring_one)($Semiring0);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$Semiring0 = (($dictRing)->Semiring0)($GLOBALS['Prim_undefined']);
+$zero = ($GLOBALS['Data_Semiring_zero'])($Semiring0);
+$negate1 = ($GLOBALS['Data_Ring_negate'])($dictRing);
+$one = ($GLOBALS['Data_Semiring_one'])($Semiring0);
     $__res = (function() use ($lessThan1, $zero, $negate1, $one, $greaterThan1) {
   $__body = function($x) use ($lessThan1, $zero, $negate1, $one, $greaterThan1) {
     $__case_0 = ($lessThan1)($x, $zero);
     if (($__case_0 === true)) {
 return ($negate1)($one);
 } else {
-;
-};
-    if (true) {
+if (true) {
 $__case_0 = ($greaterThan1)($x, $zero);
 if (($__case_0 === true)) {
 return $one;
 } else {
-;
-};
 if (true) {
 return $x;
 } else {
-;
-};
 throw new \Exception("Pattern match failure");
-} else {
-;
 };
-    throw new \Exception("Pattern match failure");
+};
+} else {
+throw new \Exception("Pattern match failure");
+};
+};
   };
   $__fn = function($x) use ($lessThan1, $zero, $negate1, $one, $greaterThan1, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($x);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($x);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($x);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_lessThanOrEq
-$Data_Ord_lessThanOrEq = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_lessThanOrEq = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($a1, $a2) use ($compare3) {
     $v = ($compare3)($a1, $a2);
@@ -894,52 +575,32 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "GT")) {
 return false;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return true;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($a1, $a2 = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($a1, $a2);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($a1, $a2);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($a1, $a2);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_max
-$Data_Ord_max = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_max = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($x, $y) use ($compare3) {
     $v = ($compare3)($x, $y);
@@ -947,57 +608,36 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "LT")) {
 return $y;
 } else {
-;
-};
-    if ((($__case_0)->tag === "EQ")) {
+if ((($__case_0)->tag === "EQ")) {
 return $x;
 } else {
-;
-};
-    if ((($__case_0)->tag === "GT")) {
+if ((($__case_0)->tag === "GT")) {
 return $x;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
+};
   };
   $__fn = function($x, $y = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($x, $y);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($x, $y);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($x, $y);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_min
-$Data_Ord_min = (function() use (&$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$__fn) {
+$Data_Ord_min = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $__res = (function() use ($compare3) {
   $__body = function($x, $y) use ($compare3) {
     $v = ($compare3)($x, $y);
@@ -1005,341 +645,196 @@ $compare3 = ($Data_Ord_compare)($dictOrd);
     if ((($__case_0)->tag === "LT")) {
 return $x;
 } else {
-;
-};
-    if ((($__case_0)->tag === "EQ")) {
+if ((($__case_0)->tag === "EQ")) {
 return $x;
 } else {
-;
-};
-    if ((($__case_0)->tag === "GT")) {
+if ((($__case_0)->tag === "GT")) {
 return $y;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
+};
   };
   $__fn = function($x, $y = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($x, $y);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($x, $y);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($x, $y);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_ordArray
-$Data_Ord_ordArray = (function() use (&$Data_Ord_compare, &$Data_Eq_eqArray, &$Prim_undefined, &$Data_Ord_Ord__dollar__Dict, &$Data_Ord_negate, &$Data_Ord_compare2, &$Data_Ord_ordArrayImpl) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$Data_Eq_eqArray, &$Prim_undefined, &$Data_Ord_Ord__dollar__Dict, &$Data_Ord_negate, &$Data_Ord_compare2, &$Data_Ord_ordArrayImpl, &$__fn) {
+$Data_Ord_ordArray = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
-$eqArray = ($Data_Eq_eqArray)((($dictOrd)->Eq0)($Prim_undefined));
-    $__res = ($Data_Ord_Ord__dollar__Dict)((object)["compare" => (function() use ($compare3, &$Data_Ord_negate, &$Data_Ord_compare2, &$Data_Ord_ordArrayImpl) {
-$toDelta = (function() use ($compare3, &$Data_Ord_negate) {
-  $__body = function($x, $y) use ($compare3, &$Data_Ord_negate) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
+$eqArray = ($GLOBALS['Data_Eq_eqArray'])((($dictOrd)->Eq0)($GLOBALS['Prim_undefined']));
+$toDelta = (function() use ($compare3) {
+  $__body = function($x, $y) use ($compare3) {
     $v = ($compare3)($x, $y);
     $__case_0 = $v;
     if ((($__case_0)->tag === "EQ")) {
 return 0;
 } else {
-;
-};
-    if ((($__case_0)->tag === "LT")) {
+if ((($__case_0)->tag === "LT")) {
 return 1;
 } else {
-;
-};
-    if ((($__case_0)->tag === "GT")) {
-return ($Data_Ord_negate)(1);
+if ((($__case_0)->tag === "GT")) {
+return ($GLOBALS['Data_Ord_negate'])(1);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
+};
   };
-  $__fn = function($x, $y = null) use ($compare3, &$Data_Ord_negate, $__body, &$__fn) {
+  $__fn = function($x, $y = null) use ($compare3, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($x, $y);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($x, $y);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($x, $y);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-return (function() use (&$Data_Ord_compare2, &$Data_Ord_ordArrayImpl, $toDelta) {
-  $__fn = function($xs, $ys = null) use (&$Data_Ord_compare2, &$Data_Ord_ordArrayImpl, $toDelta, &$__fn) {
+    $__res = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare" => (function() use ($toDelta) {
+  $__fn = function($xs, $ys = null) use ($toDelta, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Ord_compare2)(0, ($Data_Ord_ordArrayImpl)($toDelta, $xs, $ys));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = ($GLOBALS['Data_Ord_compare2'])(0, ($GLOBALS['Data_Ord_ordArrayImpl'])($toDelta, $xs, $ys));
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})();
 })(), "Eq0" => (function() use ($eqArray) {
   $__fn = function($__dollar____unused) use ($eqArray, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $eqArray;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_ord1Array
-$Data_Ord_ord1Array = ($Data_Ord_Ord1__dollar__Dict)((object)["compare1" => (function() use (&$Data_Ord_compare, &$Data_Ord_ordArray) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, &$Data_Ord_ordArray, &$__fn) {
+$Data_Ord_ord1Array = ($GLOBALS['Data_Ord_Ord1__dollar__Dict'])((object)["compare1" => (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Ord_compare)(($Data_Ord_ordArray)($dictOrd));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Ord_compare'])(($GLOBALS['Data_Ord_ordArray'])($dictOrd));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Eq10" => (function() use (&$Data_Eq_eq1Array) {
-  $__fn = function($__dollar____unused) use (&$Data_Eq_eq1Array, &$__fn) {
+})(), "Eq10" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Eq_eq1Array;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Eq_eq1Array'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Ord_ordRecordCons
-$Data_Ord_ordRecordCons = (function() use (&$Data_Ord_compareRecord, &$Data_Eq_eqRowCons, &$Prim_undefined, &$Data_Symbol_reflectSymbol, &$Data_Ord_compare, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ) {
-  $__fn = function($dictOrdRecord) use (&$Data_Ord_compareRecord, &$Data_Eq_eqRowCons, &$Prim_undefined, &$Data_Symbol_reflectSymbol, &$Data_Ord_compare, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ, &$__fn) {
+$Data_Ord_ordRecordCons = (function() {
+  $__fn = function($dictOrdRecord) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compareRecord1 = ($Data_Ord_compareRecord)($dictOrdRecord);
-$eqRowCons = ($Data_Eq_eqRowCons)((($dictOrdRecord)->EqRecord0)($Prim_undefined), $Prim_undefined);
-    $__res = (function() use (&$Data_Symbol_reflectSymbol, $eqRowCons, &$Data_Ord_compare, &$Prim_undefined, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1) {
-  $__fn = function($__dollar____unused, $dictIsSymbol = null) use (&$Data_Symbol_reflectSymbol, $eqRowCons, &$Data_Ord_compare, &$Prim_undefined, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compareRecord1 = ($GLOBALS['Data_Ord_compareRecord'])($dictOrdRecord);
+$eqRowCons = ($GLOBALS['Data_Eq_eqRowCons'])((($dictOrdRecord)->EqRecord0)($GLOBALS['Prim_undefined']), $GLOBALS['Prim_undefined']);
+    $__res = (function() use ($eqRowCons, $compareRecord1) {
+  $__fn = function($__dollar____unused, $dictIsSymbol = null) use ($eqRowCons, $compareRecord1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$reflectSymbol = ($Data_Symbol_reflectSymbol)($dictIsSymbol);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+$reflectSymbol = ($GLOBALS['Data_Symbol_reflectSymbol'])($dictIsSymbol);
 $eqRowCons1 = ($eqRowCons)($dictIsSymbol);
-    $__res = (function() use (&$Data_Ord_compare, $eqRowCons1, &$Prim_undefined, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, $reflectSymbol, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1) {
-  $__fn = function($dictOrd) use (&$Data_Ord_compare, $eqRowCons1, &$Prim_undefined, &$Data_Ord_OrdRecord__dollar__Dict, &$Record_Unsafe_unsafeGet, $reflectSymbol, &$Type_Proxy_Proxy, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1, &$__fn) {
+    $__res = (function() use ($eqRowCons1, $reflectSymbol, $compareRecord1) {
+  $__fn = function($dictOrd) use ($eqRowCons1, $reflectSymbol, $compareRecord1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compare3 = ($Data_Ord_compare)($dictOrd);
-$eqRowCons2 = ($eqRowCons1)((($dictOrd)->Eq0)($Prim_undefined));
-    $__res = ($Data_Ord_OrdRecord__dollar__Dict)((object)["compareRecord" => (function() use (&$Record_Unsafe_unsafeGet, $reflectSymbol, &$Type_Proxy_Proxy, $compare3, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1) {
-  $__body = function($v, $ra, $rb) use (&$Record_Unsafe_unsafeGet, $reflectSymbol, &$Type_Proxy_Proxy, $compare3, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1) {
-    $unsafeGet__prime__ = $Record_Unsafe_unsafeGet;
-    $key = ($reflectSymbol)($Type_Proxy_Proxy);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compare3 = ($GLOBALS['Data_Ord_compare'])($dictOrd);
+$eqRowCons2 = ($eqRowCons1)((($dictOrd)->Eq0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Data_Ord_OrdRecord__dollar__Dict'])((object)["compareRecord" => (function() use ($reflectSymbol, $compare3, $compareRecord1) {
+  $__body = function($v, $ra, $rb) use ($reflectSymbol, $compare3, $compareRecord1) {
+    $unsafeGet__prime__ = $GLOBALS['Record_Unsafe_unsafeGet'];
+    $key = ($reflectSymbol)($GLOBALS['Type_Proxy_Proxy']);
     $left = ($compare3)(($unsafeGet__prime__)($key, $ra), ($unsafeGet__prime__)($key, $rb));
-    $__case_0 = ($Data_Ord_notEq)($left, $Data_Ordering_EQ);
+    $__case_0 = ($GLOBALS['Data_Ord_notEq'])($left, $GLOBALS['Data_Ordering_EQ']);
     if (($__case_0 === true)) {
 return $left;
 } else {
-;
-};
-    if (true) {
-return ($compareRecord1)($Type_Proxy_Proxy, $ra, $rb);
+if (true) {
+return ($compareRecord1)($GLOBALS['Type_Proxy_Proxy'], $ra, $rb);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
-  $__fn = function($v, $ra = null, $rb = null) use (&$Record_Unsafe_unsafeGet, $reflectSymbol, &$Type_Proxy_Proxy, $compare3, &$Data_Ord_notEq, &$Data_Ordering_EQ, $compareRecord1, $__body, &$__fn) {
+  $__fn = function($v, $ra = null, $rb = null) use ($reflectSymbol, $compare3, $compareRecord1, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 3) {
-      $__res = $__body($v, $ra, $rb);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__body($v, $ra, $rb);
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $__body($v, $ra, $rb);
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })(), "EqRecord0" => (function() use ($eqRowCons2) {
   $__fn = function($__dollar____unused) use ($eqRowCons2, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $eqRowCons2;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_clamp
-$Data_Ord_clamp = (function() use (&$Data_Ord_min, &$Data_Ord_max) {
-  $__fn = function($dictOrd) use (&$Data_Ord_min, &$Data_Ord_max, &$__fn) {
+$Data_Ord_clamp = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$min1 = ($Data_Ord_min)($dictOrd);
-$max1 = ($Data_Ord_max)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$min1 = ($GLOBALS['Data_Ord_min'])($dictOrd);
+$max1 = ($GLOBALS['Data_Ord_max'])($dictOrd);
     $__res = (function() use ($min1, $max1) {
   $__fn = function($low, $hi = null, $x = null) use ($min1, $max1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
     $__res = ($min1)($hi, ($max1)($low, $x));
-    if ($__num > 3) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__res;
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_between
-$Data_Ord_between = (function() use (&$Data_Ord_lessThan, &$Data_Ord_greaterThan) {
-  $__fn = function($dictOrd) use (&$Data_Ord_lessThan, &$Data_Ord_greaterThan, &$__fn) {
+$Data_Ord_between = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$lessThan1 = ($Data_Ord_lessThan)($dictOrd);
-$greaterThan1 = ($Data_Ord_greaterThan)($dictOrd);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$lessThan1 = ($GLOBALS['Data_Ord_lessThan'])($dictOrd);
+$greaterThan1 = ($GLOBALS['Data_Ord_greaterThan'])($dictOrd);
     $__res = (function() {
   $__body = function($low, $hi, $x) {
     $__case_0 = $low;
@@ -1351,103 +846,60 @@ $hi1 = $__case_1;
 $x1 = $__case_2;
 return "/* Unsupported: Guards not supported */";
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($low, $hi = null, $x = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 3) {
-      $__res = $__body($low, $hi, $x);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__body($low, $hi, $x);
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $__body($low, $hi, $x);
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Ord_abs
-$Data_Ord_abs = (function() use (&$Data_Ord_greaterThanOrEq, &$Data_Semiring_zero, &$Prim_undefined, &$Data_Ring_negate) {
-  $__fn = function($dictOrd) use (&$Data_Ord_greaterThanOrEq, &$Data_Semiring_zero, &$Prim_undefined, &$Data_Ring_negate, &$__fn) {
+$Data_Ord_abs = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$greaterThanOrEq1 = ($Data_Ord_greaterThanOrEq)($dictOrd);
-    $__res = (function() use (&$Data_Semiring_zero, &$Prim_undefined, &$Data_Ring_negate, $greaterThanOrEq1) {
-  $__fn = function($dictRing) use (&$Data_Semiring_zero, &$Prim_undefined, &$Data_Ring_negate, $greaterThanOrEq1, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$greaterThanOrEq1 = ($GLOBALS['Data_Ord_greaterThanOrEq'])($dictOrd);
+    $__res = (function() use ($greaterThanOrEq1) {
+  $__fn = function($dictRing) use ($greaterThanOrEq1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$zero = ($Data_Semiring_zero)((($dictRing)->Semiring0)($Prim_undefined));
-$negate1 = ($Data_Ring_negate)($dictRing);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$zero = ($GLOBALS['Data_Semiring_zero'])((($dictRing)->Semiring0)($GLOBALS['Prim_undefined']));
+$negate1 = ($GLOBALS['Data_Ring_negate'])($dictRing);
     $__res = (function() use ($greaterThanOrEq1, $zero, $negate1) {
   $__body = function($x) use ($greaterThanOrEq1, $zero, $negate1) {
     $__case_0 = ($greaterThanOrEq1)($x, $zero);
     if (($__case_0 === true)) {
 return $x;
 } else {
-;
-};
-    if (true) {
+if (true) {
 return ($negate1)($x);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
+};
   };
   $__fn = function($x) use ($greaterThanOrEq1, $zero, $negate1, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($x);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($x);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($x);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

@@ -24,101 +24,80 @@ require_once __DIR__ . '/../Data.Profunctor.Strong/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Functor_Costar_composeFlipped
-$Data_Functor_Costar_composeFlipped = ($Control_Semigroupoid_composeFlipped)($Control_Semigroupoid_semigroupoidFn);
+$Data_Functor_Costar_composeFlipped = ($GLOBALS['Control_Semigroupoid_composeFlipped'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Data_Functor_Costar_lcmap
-$Data_Functor_Costar_lcmap = ($Data_Profunctor_lcmap)($Data_Profunctor_profunctorFn);
+$Data_Functor_Costar_lcmap = ($GLOBALS['Data_Profunctor_lcmap'])($GLOBALS['Data_Profunctor_profunctorFn']);
 
 // Data_Functor_Costar_compose
-$Data_Functor_Costar_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Data_Functor_Costar_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Data_Functor_Costar_Costar
 $Data_Functor_Costar_Costar = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_semigroupoidCostar
-$Data_Functor_Costar_semigroupoidCostar = (function() use (&$Control_Extend_composeCoKleisliFlipped, &$Control_Semigroupoid_Semigroupoid__dollar__Dict, &$Data_Functor_Costar_Costar) {
-  $__fn = function($dictExtend) use (&$Control_Extend_composeCoKleisliFlipped, &$Control_Semigroupoid_Semigroupoid__dollar__Dict, &$Data_Functor_Costar_Costar, &$__fn) {
+$Data_Functor_Costar_semigroupoidCostar = (function() {
+  $__fn = function($dictExtend) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$composeCoKleisliFlipped = ($Control_Extend_composeCoKleisliFlipped)($dictExtend);
-    $__res = ($Control_Semigroupoid_Semigroupoid__dollar__Dict)((object)["compose" => (function() use (&$Data_Functor_Costar_Costar, $composeCoKleisliFlipped) {
-  $__body = function($v, $v1) use (&$Data_Functor_Costar_Costar, $composeCoKleisliFlipped) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$composeCoKleisliFlipped = ($GLOBALS['Control_Extend_composeCoKleisliFlipped'])($dictExtend);
+    $__res = ($GLOBALS['Control_Semigroupoid_Semigroupoid__dollar__Dict'])((object)["compose" => (function() use ($composeCoKleisliFlipped) {
+  $__body = function($v, $v1) use ($composeCoKleisliFlipped) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $f = $__case_0;
 $g = $__case_1;
-return ($Data_Functor_Costar_Costar)(($composeCoKleisliFlipped)($f, $g));
+return ($GLOBALS['Data_Functor_Costar_Costar'])(($composeCoKleisliFlipped)($f, $g));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Functor_Costar_Costar, $composeCoKleisliFlipped, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($composeCoKleisliFlipped, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_profunctorCostar
-$Data_Functor_Costar_profunctorCostar = (function() use (&$Data_Functor_map, &$Data_Profunctor_Profunctor__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped) {
-  $__fn = function($dictFunctor) use (&$Data_Functor_map, &$Data_Profunctor_Profunctor__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, &$__fn) {
+$Data_Functor_Costar_profunctorCostar = (function() {
+  $__fn = function($dictFunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$map = ($Data_Functor_map)($dictFunctor);
-    $__res = ($Data_Profunctor_Profunctor__dollar__Dict)((object)["dimap" => (function() use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $map) {
-  $__body = function($f, $g, $v) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $map) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$map = ($GLOBALS['Data_Functor_map'])($dictFunctor);
+    $__res = ($GLOBALS['Data_Profunctor_Profunctor__dollar__Dict'])((object)["dimap" => (function() use ($map) {
+  $__body = function($f, $g, $v) use ($map) {
     $__case_0 = $f;
     $__case_1 = $g;
     $__case_2 = $v;
@@ -126,283 +105,169 @@ $map = ($Data_Functor_map)($dictFunctor);
 $f1 = $__case_0;
 $g1 = $__case_1;
 $h = $__case_2;
-return ($Data_Functor_Costar_Costar)(($Data_Functor_Costar_composeFlipped)(($map)($f1), ($Data_Functor_Costar_composeFlipped)($h, $g1)));
+return ($GLOBALS['Data_Functor_Costar_Costar'])(($GLOBALS['Data_Functor_Costar_composeFlipped'])(($map)($f1), ($GLOBALS['Data_Functor_Costar_composeFlipped'])($h, $g1)));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $g = null, $v = null) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $map, $__body, &$__fn) {
+  $__fn = function($f, $g = null, $v = null) use ($map, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 3) {
-      $__res = $__body($f, $g, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__body($f, $g, $v);
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $__body($f, $g, $v);
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_strongCostar
-$Data_Functor_Costar_strongCostar = (function() use (&$Prim_undefined, &$Data_Functor_map, &$Control_Comonad_extract, &$Data_Functor_Costar_profunctorCostar, &$Data_Profunctor_Strong_Strong__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, &$Data_Tuple_fst, &$Data_Tuple_snd) {
-  $__fn = function($dictComonad) use (&$Prim_undefined, &$Data_Functor_map, &$Control_Comonad_extract, &$Data_Functor_Costar_profunctorCostar, &$Data_Profunctor_Strong_Strong__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, &$Data_Tuple_fst, &$Data_Tuple_snd, &$__fn) {
+$Data_Functor_Costar_strongCostar = (function() {
+  $__fn = function($dictComonad) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$Functor0 = (((($dictComonad)->Extend0)($Prim_undefined))->Functor0)($Prim_undefined);
-$map = ($Data_Functor_map)($Functor0);
-$extract = ($Control_Comonad_extract)($dictComonad);
-$profunctorCostar1 = ($Data_Functor_Costar_profunctorCostar)($Functor0);
-    $__res = ($Data_Profunctor_Strong_Strong__dollar__Dict)((object)["first" => (function() use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, $map, &$Data_Tuple_fst, &$Data_Tuple_snd, $extract) {
-  $__body = function($v) use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, $map, &$Data_Tuple_fst, &$Data_Tuple_snd, $extract) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$Functor0 = (((($dictComonad)->Extend0)($GLOBALS['Prim_undefined']))->Functor0)($GLOBALS['Prim_undefined']);
+$map = ($GLOBALS['Data_Functor_map'])($Functor0);
+$extract = ($GLOBALS['Control_Comonad_extract'])($dictComonad);
+$profunctorCostar1 = ($GLOBALS['Data_Functor_Costar_profunctorCostar'])($Functor0);
+    $__res = ($GLOBALS['Data_Profunctor_Strong_Strong__dollar__Dict'])((object)["first" => (function() use ($map, $extract) {
+  $__body = function($v) use ($map, $extract) {
     $__case_0 = $v;
     if (true) {
 $f = $__case_0;
-return ($Data_Functor_Costar_Costar)((function() use (&$Data_Tuple_Tuple, $f, $map, &$Data_Tuple_fst, &$Data_Tuple_snd, $extract) {
-  $__fn = function($x) use (&$Data_Tuple_Tuple, $f, $map, &$Data_Tuple_fst, &$Data_Tuple_snd, $extract, &$__fn) {
+return ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($f, $map, $extract) {
+  $__fn = function($x) use ($f, $map, $extract, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Tuple_Tuple)(($f)(($map)($Data_Tuple_fst, $x)), ($Data_Tuple_snd)(($extract)($x)));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Tuple_Tuple'])(($f)(($map)($GLOBALS['Data_Tuple_fst'], $x)), ($GLOBALS['Data_Tuple_snd'])(($extract)($x)));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, $map, &$Data_Tuple_fst, &$Data_Tuple_snd, $extract, $__body, &$__fn) {
+  $__fn = function($v) use ($map, $extract, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "second" => (function() use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, &$Data_Tuple_fst, $extract, $map, &$Data_Tuple_snd) {
-  $__body = function($v) use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, &$Data_Tuple_fst, $extract, $map, &$Data_Tuple_snd) {
+})(), "second" => (function() use ($extract, $map) {
+  $__body = function($v) use ($extract, $map) {
     $__case_0 = $v;
     if (true) {
 $f = $__case_0;
-return ($Data_Functor_Costar_Costar)((function() use (&$Data_Tuple_Tuple, &$Data_Tuple_fst, $extract, $f, $map, &$Data_Tuple_snd) {
-  $__fn = function($x) use (&$Data_Tuple_Tuple, &$Data_Tuple_fst, $extract, $f, $map, &$Data_Tuple_snd, &$__fn) {
+return ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($extract, $f, $map) {
+  $__fn = function($x) use ($extract, $f, $map, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Tuple_Tuple)(($Data_Tuple_fst)(($extract)($x)), ($f)(($map)($Data_Tuple_snd, $x)));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Tuple_fst'])(($extract)($x)), ($f)(($map)($GLOBALS['Data_Tuple_snd'], $x)));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Data_Functor_Costar_Costar, &$Data_Tuple_Tuple, &$Data_Tuple_fst, $extract, $map, &$Data_Tuple_snd, $__body, &$__fn) {
+  $__fn = function($v) use ($extract, $map, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })(), "Profunctor0" => (function() use ($profunctorCostar1) {
   $__fn = function($__dollar____unused) use ($profunctorCostar1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $profunctorCostar1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_newtypeCostar
-$Data_Functor_Costar_newtypeCostar = ($Data_Newtype_Newtype__dollar__Dict)((object)["Coercible0" => (function() use (&$Prim_undefined) {
-  $__fn = function($__dollar____unused) use (&$Prim_undefined, &$__fn) {
+$Data_Functor_Costar_newtypeCostar = ($GLOBALS['Data_Newtype_Newtype__dollar__Dict'])((object)["Coercible0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Prim_undefined;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Prim_undefined'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_hoistCostar
-$Data_Functor_Costar_hoistCostar = (function() use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_lcmap) {
-  $__body = function($f, $v) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_lcmap) {
+$Data_Functor_Costar_hoistCostar = (function() {
+  $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
     if (true) {
 $f1 = $__case_0;
 $g = $__case_1;
-return ($Data_Functor_Costar_Costar)(($Data_Functor_Costar_lcmap)($f1, $g));
+return ($GLOBALS['Data_Functor_Costar_Costar'])(($GLOBALS['Data_Functor_Costar_lcmap'])($f1, $g));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $v = null) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_lcmap, $__body, &$__fn) {
+  $__fn = function($f, $v = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $v);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $v);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_functorCostar
-$Data_Functor_Costar_functorCostar = ($Data_Functor_Functor__dollar__Dict)((object)["map" => (function() use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_compose) {
-  $__body = function($f, $v) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_compose) {
+$Data_Functor_Costar_functorCostar = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((object)["map" => (function() {
+  $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
     if (true) {
 $f1 = $__case_0;
 $g = $__case_1;
-return ($Data_Functor_Costar_Costar)(($Data_Functor_Costar_compose)($f1, $g));
+return ($GLOBALS['Data_Functor_Costar_Costar'])(($GLOBALS['Data_Functor_Costar_compose'])($f1, $g));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $v = null) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_compose, $__body, &$__fn) {
+  $__fn = function($f, $v = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $v);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $v);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_invariantCostar
-$Data_Functor_Costar_invariantCostar = ($Data_Functor_Invariant_Invariant__dollar__Dict)((object)["imap" => ($Data_Functor_Invariant_imapF)($Data_Functor_Costar_functorCostar)]);
+$Data_Functor_Costar_invariantCostar = ($GLOBALS['Data_Functor_Invariant_Invariant__dollar__Dict'])((object)["imap" => ($GLOBALS['Data_Functor_Invariant_imapF'])($GLOBALS['Data_Functor_Costar_functorCostar'])]);
 
 // Data_Functor_Costar_distributiveCostar
-$Data_Functor_Costar_distributiveCostar = ($Data_Distributive_Distributive__dollar__Dict)((object)["distribute" => (function() use (&$Data_Functor_map, &$Data_Functor_Costar_Costar) {
-  $__fn = function($dictFunctor) use (&$Data_Functor_map, &$Data_Functor_Costar_Costar, &$__fn) {
+$Data_Functor_Costar_distributiveCostar = ($GLOBALS['Data_Distributive_Distributive__dollar__Dict'])((object)["distribute" => (function() {
+  $__fn = function($dictFunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$map = ($Data_Functor_map)($dictFunctor);
-    $__res = (function() use (&$Data_Functor_Costar_Costar, $map) {
-  $__fn = function($f) use (&$Data_Functor_Costar_Costar, $map, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$map = ($GLOBALS['Data_Functor_map'])($dictFunctor);
+    $__res = (function() use ($map) {
+  $__fn = function($f) use ($map, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Functor_Costar_Costar)((function() use ($map, $f) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($map, $f) {
   $__fn = function($a) use ($map, $f, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($map)((function() use ($a) {
   $__body = function($v) use ($a) {
     $__case_0 = $v;
@@ -410,255 +275,137 @@ $map = ($Data_Functor_map)($dictFunctor);
 $g = $__case_0;
 return ($g)($a);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($v) use ($a, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })(), $f);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "collect" => (function() use (&$Data_Functor_map, &$Data_Functor_Costar_compose, &$Data_Distributive_distribute, &$Data_Functor_Costar_distributiveCostar) {
-  $__fn = function($dictFunctor) use (&$Data_Functor_map, &$Data_Functor_Costar_compose, &$Data_Distributive_distribute, &$Data_Functor_Costar_distributiveCostar, &$__fn) {
+})(), "collect" => (function() {
+  $__fn = function($dictFunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$map = ($Data_Functor_map)($dictFunctor);
-    $__res = (function() use (&$Data_Functor_Costar_compose, &$Data_Distributive_distribute, &$Data_Functor_Costar_distributiveCostar, $dictFunctor, $map) {
-  $__fn = function($f) use (&$Data_Functor_Costar_compose, &$Data_Distributive_distribute, &$Data_Functor_Costar_distributiveCostar, $dictFunctor, $map, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$map = ($GLOBALS['Data_Functor_map'])($dictFunctor);
+    $__res = (function() use ($dictFunctor, $map) {
+  $__fn = function($f) use ($dictFunctor, $map, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Functor_Costar_compose)(($Data_Distributive_distribute)($Data_Functor_Costar_distributiveCostar, $dictFunctor), ($map)($f));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Functor_Costar_compose'])(($GLOBALS['Data_Distributive_distribute'])($GLOBALS['Data_Functor_Costar_distributiveCostar'], $dictFunctor), ($map)($f));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => (function() use (&$Data_Functor_Costar_functorCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_functorCostar, &$__fn) {
+})(), "Functor0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_functorCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_functorCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_closedCostar
-$Data_Functor_Costar_closedCostar = (function() use (&$Data_Functor_map, &$Data_Functor_Costar_profunctorCostar, &$Data_Profunctor_Closed_Closed__dollar__Dict, &$Data_Functor_Costar_Costar) {
-  $__fn = function($dictFunctor) use (&$Data_Functor_map, &$Data_Functor_Costar_profunctorCostar, &$Data_Profunctor_Closed_Closed__dollar__Dict, &$Data_Functor_Costar_Costar, &$__fn) {
+$Data_Functor_Costar_closedCostar = (function() {
+  $__fn = function($dictFunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$map = ($Data_Functor_map)($dictFunctor);
-$profunctorCostar1 = ($Data_Functor_Costar_profunctorCostar)($dictFunctor);
-    $__res = ($Data_Profunctor_Closed_Closed__dollar__Dict)((object)["closed" => (function() use (&$Data_Functor_Costar_Costar, $map) {
-  $__body = function($v) use (&$Data_Functor_Costar_Costar, $map) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$map = ($GLOBALS['Data_Functor_map'])($dictFunctor);
+$profunctorCostar1 = ($GLOBALS['Data_Functor_Costar_profunctorCostar'])($dictFunctor);
+    $__res = ($GLOBALS['Data_Profunctor_Closed_Closed__dollar__Dict'])((object)["closed" => (function() use ($map) {
+  $__body = function($v) use ($map) {
     $__case_0 = $v;
     if (true) {
 $f = $__case_0;
-return ($Data_Functor_Costar_Costar)((function() use ($f, $map) {
+return ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($f, $map) {
   $__fn = function($g, $x = null) use ($f, $map, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
     $__res = ($f)(($map)((function() use ($x) {
   $__fn = function($v1) use ($x, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($v1)($x);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })(), $g));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Data_Functor_Costar_Costar, $map, $__body, &$__fn) {
+  $__fn = function($v) use ($map, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })(), "Profunctor0" => (function() use ($profunctorCostar1) {
   $__fn = function($__dollar____unused) use ($profunctorCostar1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $profunctorCostar1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_categoryCostar
-$Data_Functor_Costar_categoryCostar = (function() use (&$Data_Functor_Costar_semigroupoidCostar, &$Prim_undefined, &$Control_Category_Category__dollar__Dict, &$Data_Functor_Costar_Costar, &$Control_Comonad_extract) {
-  $__fn = function($dictComonad) use (&$Data_Functor_Costar_semigroupoidCostar, &$Prim_undefined, &$Control_Category_Category__dollar__Dict, &$Data_Functor_Costar_Costar, &$Control_Comonad_extract, &$__fn) {
+$Data_Functor_Costar_categoryCostar = (function() {
+  $__fn = function($dictComonad) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$semigroupoidCostar1 = ($Data_Functor_Costar_semigroupoidCostar)((($dictComonad)->Extend0)($Prim_undefined));
-    $__res = ($Control_Category_Category__dollar__Dict)((object)["identity" => ($Data_Functor_Costar_Costar)(($Control_Comonad_extract)($dictComonad)), "Semigroupoid0" => (function() use ($semigroupoidCostar1) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$semigroupoidCostar1 = ($GLOBALS['Data_Functor_Costar_semigroupoidCostar'])((($dictComonad)->Extend0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Control_Category_Category__dollar__Dict'])((object)["identity" => ($GLOBALS['Data_Functor_Costar_Costar'])(($GLOBALS['Control_Comonad_extract'])($dictComonad)), "Semigroupoid0" => (function() use ($semigroupoidCostar1) {
   $__fn = function($__dollar____unused) use ($semigroupoidCostar1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $semigroupoidCostar1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_bifunctorCostar
-$Data_Functor_Costar_bifunctorCostar = (function() use (&$Data_Functor_Contravariant_cmap, &$Data_Bifunctor_Bifunctor__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped) {
-  $__fn = function($dictContravariant) use (&$Data_Functor_Contravariant_cmap, &$Data_Bifunctor_Bifunctor__dollar__Dict, &$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, &$__fn) {
+$Data_Functor_Costar_bifunctorCostar = (function() {
+  $__fn = function($dictContravariant) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$cmap = ($Data_Functor_Contravariant_cmap)($dictContravariant);
-    $__res = ($Data_Bifunctor_Bifunctor__dollar__Dict)((object)["bimap" => (function() use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $cmap) {
-  $__body = function($f, $g, $v) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $cmap) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$cmap = ($GLOBALS['Data_Functor_Contravariant_cmap'])($dictContravariant);
+    $__res = ($GLOBALS['Data_Bifunctor_Bifunctor__dollar__Dict'])((object)["bimap" => (function() use ($cmap) {
+  $__body = function($f, $g, $v) use ($cmap) {
     $__case_0 = $f;
     $__case_1 = $g;
     $__case_2 = $v;
@@ -666,113 +413,71 @@ $cmap = ($Data_Functor_Contravariant_cmap)($dictContravariant);
 $f1 = $__case_0;
 $g1 = $__case_1;
 $h = $__case_2;
-return ($Data_Functor_Costar_Costar)(($Data_Functor_Costar_composeFlipped)(($cmap)($f1), ($Data_Functor_Costar_composeFlipped)($h, $g1)));
+return ($GLOBALS['Data_Functor_Costar_Costar'])(($GLOBALS['Data_Functor_Costar_composeFlipped'])(($cmap)($f1), ($GLOBALS['Data_Functor_Costar_composeFlipped'])($h, $g1)));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $g = null, $v = null) use (&$Data_Functor_Costar_Costar, &$Data_Functor_Costar_composeFlipped, $cmap, $__body, &$__fn) {
+  $__fn = function($f, $g = null, $v = null) use ($cmap, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 3) {
-      $__res = $__body($f, $g, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__body($f, $g, $v);
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $__body($f, $g, $v);
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Costar_applyCostar
-$Data_Functor_Costar_applyCostar = ($Control_Apply_Apply__dollar__Dict)((object)["apply" => (function() use (&$Data_Functor_Costar_Costar) {
-  $__body = function($v, $v1) use (&$Data_Functor_Costar_Costar) {
+$Data_Functor_Costar_applyCostar = ($GLOBALS['Control_Apply_Apply__dollar__Dict'])((object)["apply" => (function() {
+  $__body = function($v, $v1) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $f = $__case_0;
 $g = $__case_1;
-return ($Data_Functor_Costar_Costar)((function() use ($f, $g) {
+return ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($f, $g) {
   $__fn = function($a) use ($f, $g, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = ($f)($a, ($g)($a));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Functor_Costar_Costar, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => (function() use (&$Data_Functor_Costar_functorCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_functorCostar, &$__fn) {
+})(), "Functor0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_functorCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_functorCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_bindCostar
-$Data_Functor_Costar_bindCostar = ($Control_Bind_Bind__dollar__Dict)((object)["bind" => (function() use (&$Data_Functor_Costar_Costar) {
-  $__body = function($v, $f) use (&$Data_Functor_Costar_Costar) {
+$Data_Functor_Costar_bindCostar = ($GLOBALS['Control_Bind_Bind__dollar__Dict'])((object)["bind" => (function() {
+  $__body = function($v, $f) {
     $__case_0 = $v;
     $__case_1 = $f;
     if (true) {
 $m = $__case_0;
 $f1 = $__case_1;
-return ($Data_Functor_Costar_Costar)((function() use ($f1, $m) {
+return ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($f1, $m) {
   $__body = function($x) use ($f1, $m) {
     $v1 = ($f1)(($m)($x));
     $__case_0 = $v1;
@@ -780,154 +485,80 @@ return ($Data_Functor_Costar_Costar)((function() use ($f1, $m) {
 $g = $__case_0;
 return ($g)($x);
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($x) use ($f1, $m, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($x);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($x);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($x);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $f = null) use (&$Data_Functor_Costar_Costar, $__body, &$__fn) {
+  $__fn = function($v, $f = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $f);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $f);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $f);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => (function() use (&$Data_Functor_Costar_applyCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_applyCostar, &$__fn) {
+})(), "Apply0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_applyCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_applyCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_applicativeCostar
-$Data_Functor_Costar_applicativeCostar = ($Control_Applicative_Applicative__dollar__Dict)((object)["pure" => (function() use (&$Data_Functor_Costar_Costar) {
-  $__fn = function($a) use (&$Data_Functor_Costar_Costar, &$__fn) {
+$Data_Functor_Costar_applicativeCostar = ($GLOBALS['Control_Applicative_Applicative__dollar__Dict'])((object)["pure" => (function() {
+  $__fn = function($a) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Functor_Costar_Costar)((function() use ($a) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Functor_Costar_Costar'])((function() use ($a) {
   $__fn = function($v) use ($a, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $a;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => (function() use (&$Data_Functor_Costar_applyCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_applyCostar, &$__fn) {
+})(), "Apply0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_applyCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_applyCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Costar_monadCostar
-$Data_Functor_Costar_monadCostar = ($Control_Monad_Monad__dollar__Dict)((object)["Applicative0" => (function() use (&$Data_Functor_Costar_applicativeCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_applicativeCostar, &$__fn) {
+$Data_Functor_Costar_monadCostar = ($GLOBALS['Control_Monad_Monad__dollar__Dict'])((object)["Applicative0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_applicativeCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_applicativeCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
-})(), "Bind1" => (function() use (&$Data_Functor_Costar_bindCostar) {
-  $__fn = function($__dollar____unused) use (&$Data_Functor_Costar_bindCostar, &$__fn) {
+})(), "Bind1" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Functor_Costar_bindCostar;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Functor_Costar_bindCostar'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);

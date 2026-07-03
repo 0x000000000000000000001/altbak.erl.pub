@@ -19,126 +19,91 @@ require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Functor_Flip_append
-$Data_Functor_Flip_append = ($Data_Semigroup_append)($Data_Semigroup_semigroupString);
+$Data_Functor_Flip_append = ($GLOBALS['Data_Semigroup_append'])($GLOBALS['Data_Semigroup_semigroupString']);
 
 // Data_Functor_Flip_Flip
 $Data_Functor_Flip_Flip = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_showFlip
-$Data_Functor_Flip_showFlip = (function() use (&$Data_Show_show, &$Data_Show_Show__dollar__Dict, &$Data_Functor_Flip_append) {
-  $__fn = function($dictShow) use (&$Data_Show_show, &$Data_Show_Show__dollar__Dict, &$Data_Functor_Flip_append, &$__fn) {
+$Data_Functor_Flip_showFlip = (function() {
+  $__fn = function($dictShow) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$show = ($Data_Show_show)($dictShow);
-    $__res = ($Data_Show_Show__dollar__Dict)((object)["show" => (function() use (&$Data_Functor_Flip_append, $show) {
-  $__body = function($v) use (&$Data_Functor_Flip_append, $show) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$show = ($GLOBALS['Data_Show_show'])($dictShow);
+    $__res = ($GLOBALS['Data_Show_Show__dollar__Dict'])((object)["show" => (function() use ($show) {
+  $__body = function($v) use ($show) {
     $__case_0 = $v;
     if (true) {
 $x = $__case_0;
-return ($Data_Functor_Flip_append)("(Flip ", ($Data_Functor_Flip_append)(($show)($x), ")"));
+return ($GLOBALS['Data_Functor_Flip_append'])("(Flip ", ($GLOBALS['Data_Functor_Flip_append'])(($show)($x), ")"));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v) use (&$Data_Functor_Flip_append, $show, $__body, &$__fn) {
+  $__fn = function($v) use ($show, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($v);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($v);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_semigroupoidFlip
-$Data_Functor_Flip_semigroupoidFlip = (function() use (&$Control_Semigroupoid_compose, &$Control_Semigroupoid_Semigroupoid__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictSemigroupoid) use (&$Control_Semigroupoid_compose, &$Control_Semigroupoid_Semigroupoid__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_semigroupoidFlip = (function() {
+  $__fn = function($dictSemigroupoid) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$compose = ($Control_Semigroupoid_compose)($dictSemigroupoid);
-    $__res = ($Control_Semigroupoid_Semigroupoid__dollar__Dict)((object)["compose" => (function() use (&$Data_Functor_Flip_Flip, $compose) {
-  $__body = function($v, $v1) use (&$Data_Functor_Flip_Flip, $compose) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$compose = ($GLOBALS['Control_Semigroupoid_compose'])($dictSemigroupoid);
+    $__res = ($GLOBALS['Control_Semigroupoid_Semigroupoid__dollar__Dict'])((object)["compose" => (function() use ($compose) {
+  $__body = function($v, $v1) use ($compose) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $a = $__case_0;
 $b = $__case_1;
-return ($Data_Functor_Flip_Flip)(($compose)($b, $a));
+return ($GLOBALS['Data_Functor_Flip_Flip'])(($compose)($b, $a));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Functor_Flip_Flip, $compose, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($compose, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -147,88 +112,51 @@ return ($Data_Functor_Flip_Flip)(($compose)($b, $a));
 $Data_Functor_Flip_ordFlip = (function() {
   $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $dictOrd;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_newtypeFlip
-$Data_Functor_Flip_newtypeFlip = ($Data_Newtype_Newtype__dollar__Dict)((object)["Coercible0" => (function() use (&$Prim_undefined) {
-  $__fn = function($__dollar____unused) use (&$Prim_undefined, &$__fn) {
+$Data_Functor_Flip_newtypeFlip = ($GLOBALS['Data_Newtype_Newtype__dollar__Dict'])((object)["Coercible0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Prim_undefined;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Prim_undefined'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Functor_Flip_functorFlip
-$Data_Functor_Flip_functorFlip = (function() use (&$Data_Bifunctor_lmap, &$Data_Functor_Functor__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictBifunctor) use (&$Data_Bifunctor_lmap, &$Data_Functor_Functor__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_functorFlip = (function() {
+  $__fn = function($dictBifunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$lmap = ($Data_Bifunctor_lmap)($dictBifunctor);
-    $__res = ($Data_Functor_Functor__dollar__Dict)((object)["map" => (function() use (&$Data_Functor_Flip_Flip, $lmap) {
-  $__body = function($f, $v) use (&$Data_Functor_Flip_Flip, $lmap) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$lmap = ($GLOBALS['Data_Bifunctor_lmap'])($dictBifunctor);
+    $__res = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((object)["map" => (function() use ($lmap) {
+  $__body = function($f, $v) use ($lmap) {
     $__case_0 = $f;
     $__case_1 = $v;
     if (true) {
 $f1 = $__case_0;
 $a = $__case_1;
-return ($Data_Functor_Flip_Flip)(($lmap)($f1, $a));
+return ($GLOBALS['Data_Functor_Flip_Flip'])(($lmap)($f1, $a));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $v = null) use (&$Data_Functor_Flip_Flip, $lmap, $__body, &$__fn) {
+  $__fn = function($f, $v = null) use ($lmap, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $v);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $v);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -237,123 +165,72 @@ return ($Data_Functor_Flip_Flip)(($lmap)($f1, $a));
 $Data_Functor_Flip_eqFlip = (function() {
   $__fn = function($dictEq) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $dictEq;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_contravariantFlip
-$Data_Functor_Flip_contravariantFlip = (function() use (&$Data_Profunctor_lcmap, &$Data_Functor_Contravariant_Contravariant__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictProfunctor) use (&$Data_Profunctor_lcmap, &$Data_Functor_Contravariant_Contravariant__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_contravariantFlip = (function() {
+  $__fn = function($dictProfunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$lcmap = ($Data_Profunctor_lcmap)($dictProfunctor);
-    $__res = ($Data_Functor_Contravariant_Contravariant__dollar__Dict)((object)["cmap" => (function() use (&$Data_Functor_Flip_Flip, $lcmap) {
-  $__body = function($f, $v) use (&$Data_Functor_Flip_Flip, $lcmap) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$lcmap = ($GLOBALS['Data_Profunctor_lcmap'])($dictProfunctor);
+    $__res = ($GLOBALS['Data_Functor_Contravariant_Contravariant__dollar__Dict'])((object)["cmap" => (function() use ($lcmap) {
+  $__body = function($f, $v) use ($lcmap) {
     $__case_0 = $f;
     $__case_1 = $v;
     if (true) {
 $f1 = $__case_0;
 $a = $__case_1;
-return ($Data_Functor_Flip_Flip)(($lcmap)($f1, $a));
+return ($GLOBALS['Data_Functor_Flip_Flip'])(($lcmap)($f1, $a));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $v = null) use (&$Data_Functor_Flip_Flip, $lcmap, $__body, &$__fn) {
+  $__fn = function($f, $v = null) use ($lcmap, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $v);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $v);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_categoryFlip
-$Data_Functor_Flip_categoryFlip = (function() use (&$Data_Functor_Flip_semigroupoidFlip, &$Prim_undefined, &$Control_Category_Category__dollar__Dict, &$Data_Functor_Flip_Flip, &$Control_Category_identity) {
-  $__fn = function($dictCategory) use (&$Data_Functor_Flip_semigroupoidFlip, &$Prim_undefined, &$Control_Category_Category__dollar__Dict, &$Data_Functor_Flip_Flip, &$Control_Category_identity, &$__fn) {
+$Data_Functor_Flip_categoryFlip = (function() {
+  $__fn = function($dictCategory) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$semigroupoidFlip1 = ($Data_Functor_Flip_semigroupoidFlip)((($dictCategory)->Semigroupoid0)($Prim_undefined));
-    $__res = ($Control_Category_Category__dollar__Dict)((object)["identity" => ($Data_Functor_Flip_Flip)(($Control_Category_identity)($dictCategory)), "Semigroupoid0" => (function() use ($semigroupoidFlip1) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$semigroupoidFlip1 = ($GLOBALS['Data_Functor_Flip_semigroupoidFlip'])((($dictCategory)->Semigroupoid0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Control_Category_Category__dollar__Dict'])((object)["identity" => ($GLOBALS['Data_Functor_Flip_Flip'])(($GLOBALS['Control_Category_identity'])($dictCategory)), "Semigroupoid0" => (function() use ($semigroupoidFlip1) {
   $__fn = function($__dollar____unused) use ($semigroupoidFlip1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $semigroupoidFlip1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_bifunctorFlip
-$Data_Functor_Flip_bifunctorFlip = (function() use (&$Data_Bifunctor_bimap, &$Data_Bifunctor_Bifunctor__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictBifunctor) use (&$Data_Bifunctor_bimap, &$Data_Bifunctor_Bifunctor__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_bifunctorFlip = (function() {
+  $__fn = function($dictBifunctor) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$bimap = ($Data_Bifunctor_bimap)($dictBifunctor);
-    $__res = ($Data_Bifunctor_Bifunctor__dollar__Dict)((object)["bimap" => (function() use (&$Data_Functor_Flip_Flip, $bimap) {
-  $__body = function($f, $g, $v) use (&$Data_Functor_Flip_Flip, $bimap) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$bimap = ($GLOBALS['Data_Bifunctor_bimap'])($dictBifunctor);
+    $__res = ($GLOBALS['Data_Bifunctor_Bifunctor__dollar__Dict'])((object)["bimap" => (function() use ($bimap) {
+  $__body = function($f, $g, $v) use ($bimap) {
     $__case_0 = $f;
     $__case_1 = $g;
     $__case_2 = $v;
@@ -361,158 +238,89 @@ $bimap = ($Data_Bifunctor_bimap)($dictBifunctor);
 $f1 = $__case_0;
 $g1 = $__case_1;
 $a = $__case_2;
-return ($Data_Functor_Flip_Flip)(($bimap)($g1, $f1, $a));
+return ($GLOBALS['Data_Functor_Flip_Flip'])(($bimap)($g1, $f1, $a));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $g = null, $v = null) use (&$Data_Functor_Flip_Flip, $bimap, $__body, &$__fn) {
+  $__fn = function($f, $g = null, $v = null) use ($bimap, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 3) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 3) {
-      $__res = $__body($f, $g, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 3));
-    }
-    return $__body($f, $g, $v);
+  if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    $__res = $__body($f, $g, $v);
+  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_biapplyFlip
-$Data_Functor_Flip_biapplyFlip = (function() use (&$Control_Biapply_biapply, &$Data_Functor_Flip_bifunctorFlip, &$Prim_undefined, &$Control_Biapply_Biapply__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictBiapply) use (&$Control_Biapply_biapply, &$Data_Functor_Flip_bifunctorFlip, &$Prim_undefined, &$Control_Biapply_Biapply__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_biapplyFlip = (function() {
+  $__fn = function($dictBiapply) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$biapply = ($Control_Biapply_biapply)($dictBiapply);
-$bifunctorFlip1 = ($Data_Functor_Flip_bifunctorFlip)((($dictBiapply)->Bifunctor0)($Prim_undefined));
-    $__res = ($Control_Biapply_Biapply__dollar__Dict)((object)["biapply" => (function() use (&$Data_Functor_Flip_Flip, $biapply) {
-  $__body = function($v, $v1) use (&$Data_Functor_Flip_Flip, $biapply) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$biapply = ($GLOBALS['Control_Biapply_biapply'])($dictBiapply);
+$bifunctorFlip1 = ($GLOBALS['Data_Functor_Flip_bifunctorFlip'])((($dictBiapply)->Bifunctor0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Control_Biapply_Biapply__dollar__Dict'])((object)["biapply" => (function() use ($biapply) {
+  $__body = function($v, $v1) use ($biapply) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $fg = $__case_0;
 $xy = $__case_1;
-return ($Data_Functor_Flip_Flip)(($biapply)($fg, $xy));
+return ($GLOBALS['Data_Functor_Flip_Flip'])(($biapply)($fg, $xy));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Functor_Flip_Flip, $biapply, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($biapply, $__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })(), "Bifunctor0" => (function() use ($bifunctorFlip1) {
   $__fn = function($__dollar____unused) use ($bifunctorFlip1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $bifunctorFlip1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Functor_Flip_biapplicativeFlip
-$Data_Functor_Flip_biapplicativeFlip = (function() use (&$Control_Biapplicative_bipure, &$Data_Functor_Flip_biapplyFlip, &$Prim_undefined, &$Control_Biapplicative_Biapplicative__dollar__Dict, &$Data_Functor_Flip_Flip) {
-  $__fn = function($dictBiapplicative) use (&$Control_Biapplicative_bipure, &$Data_Functor_Flip_biapplyFlip, &$Prim_undefined, &$Control_Biapplicative_Biapplicative__dollar__Dict, &$Data_Functor_Flip_Flip, &$__fn) {
+$Data_Functor_Flip_biapplicativeFlip = (function() {
+  $__fn = function($dictBiapplicative) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-$bipure = ($Control_Biapplicative_bipure)($dictBiapplicative);
-$biapplyFlip1 = ($Data_Functor_Flip_biapplyFlip)((($dictBiapplicative)->Biapply0)($Prim_undefined));
-    $__res = ($Control_Biapplicative_Biapplicative__dollar__Dict)((object)["bipure" => (function() use (&$Data_Functor_Flip_Flip, $bipure) {
-  $__fn = function($a, $b = null) use (&$Data_Functor_Flip_Flip, $bipure, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+$bipure = ($GLOBALS['Control_Biapplicative_bipure'])($dictBiapplicative);
+$biapplyFlip1 = ($GLOBALS['Data_Functor_Flip_biapplyFlip'])((($dictBiapplicative)->Biapply0)($GLOBALS['Prim_undefined']));
+    $__res = ($GLOBALS['Control_Biapplicative_Biapplicative__dollar__Dict'])((object)["bipure" => (function() use ($bipure) {
+  $__fn = function($a, $b = null) use ($bipure, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Functor_Flip_Flip)(($bipure)($b, $a));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = ($GLOBALS['Data_Functor_Flip_Flip'])(($bipure)($b, $a));
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })(), "Biapply0" => (function() use ($biapplyFlip1) {
   $__fn = function($__dollar____unused) use ($biapplyFlip1, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $biapplyFlip1;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

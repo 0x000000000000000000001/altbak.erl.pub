@@ -12,169 +12,116 @@ require_once __DIR__ . '/../Data.Ordering/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Comparison_append
-$Data_Comparison_append = ($Data_Semigroup_append)(($Data_Semigroup_semigroupFn)(($Data_Semigroup_semigroupFn)($Data_Ordering_semigroupOrdering)));
+$Data_Comparison_append = ($GLOBALS['Data_Semigroup_append'])(($GLOBALS['Data_Semigroup_semigroupFn'])(($GLOBALS['Data_Semigroup_semigroupFn'])($GLOBALS['Data_Ordering_semigroupOrdering'])));
 
 // Data_Comparison_Comparison
 $Data_Comparison_Comparison = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Comparison_semigroupComparison
-$Data_Comparison_semigroupComparison = ($Data_Semigroup_Semigroup__dollar__Dict)((object)["append" => (function() use (&$Data_Comparison_Comparison, &$Data_Comparison_append) {
-  $__body = function($v, $v1) use (&$Data_Comparison_Comparison, &$Data_Comparison_append) {
+$Data_Comparison_semigroupComparison = ($GLOBALS['Data_Semigroup_Semigroup__dollar__Dict'])((object)["append" => (function() {
+  $__body = function($v, $v1) {
     $__case_0 = $v;
     $__case_1 = $v1;
     if (true) {
 $p = $__case_0;
 $q = $__case_1;
-return ($Data_Comparison_Comparison)(($Data_Comparison_append)($p, $q));
+return ($GLOBALS['Data_Comparison_Comparison'])(($GLOBALS['Data_Comparison_append'])($p, $q));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($v, $v1 = null) use (&$Data_Comparison_Comparison, &$Data_Comparison_append, $__body, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($v, $v1);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($v, $v1);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($v, $v1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Comparison_newtypeComparison
-$Data_Comparison_newtypeComparison = ($Data_Newtype_Newtype__dollar__Dict)((object)["Coercible0" => (function() use (&$Prim_undefined) {
-  $__fn = function($__dollar____unused) use (&$Prim_undefined, &$__fn) {
+$Data_Comparison_newtypeComparison = ($GLOBALS['Data_Newtype_Newtype__dollar__Dict'])((object)["Coercible0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Prim_undefined;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Prim_undefined'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Comparison_monoidComparison
-$Data_Comparison_monoidComparison = ($Data_Monoid_Monoid__dollar__Dict)((object)["mempty" => ($Data_Comparison_Comparison)((function() use (&$Data_Ordering_EQ) {
-  $__fn = function($v, $v1 = null) use (&$Data_Ordering_EQ, &$__fn) {
+$Data_Comparison_monoidComparison = ($GLOBALS['Data_Monoid_Monoid__dollar__Dict'])((object)["mempty" => ($GLOBALS['Data_Comparison_Comparison'])((function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Ordering_EQ;
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $GLOBALS['Data_Ordering_EQ'];
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})()), "Semigroup0" => (function() use (&$Data_Comparison_semigroupComparison) {
-  $__fn = function($__dollar____unused) use (&$Data_Comparison_semigroupComparison, &$__fn) {
+})()), "Semigroup0" => (function() {
+  $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = $Data_Comparison_semigroupComparison;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $GLOBALS['Data_Comparison_semigroupComparison'];
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })()]);
 
 // Data_Comparison_defaultComparison
-$Data_Comparison_defaultComparison = (function() use (&$Data_Comparison_Comparison, &$Data_Ord_compare) {
-  $__fn = function($dictOrd) use (&$Data_Comparison_Comparison, &$Data_Ord_compare, &$__fn) {
+$Data_Comparison_defaultComparison = (function() {
+  $__fn = function($dictOrd) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Comparison_Comparison)(($Data_Ord_compare)($dictOrd));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Comparison_Comparison'])(($GLOBALS['Data_Ord_compare'])($dictOrd));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Comparison_contravariantComparison
-$Data_Comparison_contravariantComparison = ($Data_Functor_Contravariant_Contravariant__dollar__Dict)((object)["cmap" => (function() use (&$Data_Comparison_Comparison, &$Data_Function_on) {
-  $__body = function($f, $v) use (&$Data_Comparison_Comparison, &$Data_Function_on) {
+$Data_Comparison_contravariantComparison = ($GLOBALS['Data_Functor_Contravariant_Contravariant__dollar__Dict'])((object)["cmap" => (function() {
+  $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
     if (true) {
 $f1 = $__case_0;
 $g = $__case_1;
-return ($Data_Comparison_Comparison)(($Data_Function_on)($g, $f1));
+return ($GLOBALS['Data_Comparison_Comparison'])(($GLOBALS['Data_Function_on'])($g, $f1));
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
-  $__fn = function($f, $v = null) use (&$Data_Comparison_Comparison, &$Data_Function_on, $__body, &$__fn) {
+  $__fn = function($f, $v = null) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 2) {
-      $__res = $__body($f, $v);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__body($f, $v);
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = $__body($f, $v);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()]);

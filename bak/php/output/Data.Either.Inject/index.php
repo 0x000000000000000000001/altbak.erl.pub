@@ -10,28 +10,31 @@ require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Data_Either_Inject_compose
-$Data_Either_Inject_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Data_Either_Inject_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Data_Either_Inject_Inject$Dict
 $Data_Either_Inject_Inject__dollar__Dict = (function() {
   $__fn = function($x) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
     $__res = $x;
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
@@ -44,33 +47,23 @@ $Data_Either_Inject_prj = (function() {
 $v = $__case_0;
 return ($v)->prj;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Either_Inject_injectReflexive
-$Data_Either_Inject_injectReflexive = ($Data_Either_Inject_Inject__dollar__Dict)((object)["inj" => ($Control_Category_identity)($Control_Category_categoryFn), "prj" => $Data_Maybe_Just]);
+$Data_Either_Inject_injectReflexive = ($GLOBALS['Data_Either_Inject_Inject__dollar__Dict'])((object)["inj" => ($GLOBALS['Control_Category_identity'])($GLOBALS['Control_Category_categoryFn']), "prj" => $GLOBALS['Data_Maybe_Just']]);
 
 // Data_Either_Inject_injectLeft
-$Data_Either_Inject_injectLeft = ($Data_Either_Inject_Inject__dollar__Dict)((object)["inj" => $Data_Either_Left, "prj" => ($Data_Either_either)($Data_Maybe_Just, ($Data_Function_const)($Data_Maybe_Nothing))]);
+$Data_Either_Inject_injectLeft = ($GLOBALS['Data_Either_Inject_Inject__dollar__Dict'])((object)["inj" => $GLOBALS['Data_Either_Left'], "prj" => ($GLOBALS['Data_Either_either'])($GLOBALS['Data_Maybe_Just'], ($GLOBALS['Data_Function_const'])($GLOBALS['Data_Maybe_Nothing']))]);
 
 // Data_Either_Inject_inj
 $Data_Either_Inject_inj = (function() {
@@ -80,44 +73,25 @@ $Data_Either_Inject_inj = (function() {
 $v = $__case_0;
 return ($v)->inj;
 } else {
-;
+throw new \Exception("Pattern match failure");
 };
-    throw new \Exception("Pattern match failure");
   };
   $__fn = function($dict) use ($__body, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    if ($__num > 1) {
-      $__res = $__body($dict);
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__body($dict);
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = $__body($dict);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Either_Inject_injectRight
-$Data_Either_Inject_injectRight = (function() use (&$Data_Either_Inject_Inject__dollar__Dict, &$Data_Either_Inject_compose, &$Data_Either_Right, &$Data_Either_Inject_inj, &$Data_Either_either, &$Data_Function_const, &$Data_Maybe_Nothing, &$Data_Either_Inject_prj) {
-  $__fn = function($dictInject) use (&$Data_Either_Inject_Inject__dollar__Dict, &$Data_Either_Inject_compose, &$Data_Either_Right, &$Data_Either_Inject_inj, &$Data_Either_either, &$Data_Function_const, &$Data_Maybe_Nothing, &$Data_Either_Inject_prj, &$__fn) {
+$Data_Either_Inject_injectRight = (function() {
+  $__fn = function($dictInject) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Either_Inject_Inject__dollar__Dict)((object)["inj" => ($Data_Either_Inject_compose)($Data_Either_Right, ($Data_Either_Inject_inj)($dictInject)), "prj" => ($Data_Either_either)(($Data_Function_const)($Data_Maybe_Nothing), ($Data_Either_Inject_prj)($dictInject))]);
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Either_Inject_Inject__dollar__Dict'])((object)["inj" => ($GLOBALS['Data_Either_Inject_compose'])($GLOBALS['Data_Either_Right'], ($GLOBALS['Data_Either_Inject_inj'])($dictInject)), "prj" => ($GLOBALS['Data_Either_either'])(($GLOBALS['Data_Function_const'])($GLOBALS['Data_Maybe_Nothing']), ($GLOBALS['Data_Either_Inject_prj'])($dictInject))]);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();

@@ -12,6 +12,18 @@ require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Exception/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 if (!function_exists('phpurs_uncurry2')) {
 function phpurs_uncurry2($fn) {
@@ -71,40 +83,31 @@ $Effect_Exception_catchException = phpurs_uncurry2(function($c) { return functio
 $Effect_Exception_showErrorImpl = function($e) { return (string)$e; };
 
 // Effect_Exception_compose
-$Effect_Exception_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Effect_Exception_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Effect_Exception_pure
-$Effect_Exception_pure = ($Control_Applicative_pure)($Effect_applicativeEffect);
+$Effect_Exception_pure = ($GLOBALS['Control_Applicative_pure'])($GLOBALS['Effect_applicativeEffect']);
 
 // Effect_Exception_map
-$Effect_Exception_map = ($Data_Functor_map)($Effect_functorEffect);
+$Effect_Exception_map = ($GLOBALS['Data_Functor_map'])($GLOBALS['Effect_functorEffect']);
 
 // Effect_Exception_try
-$Effect_Exception_try = (function() use (&$Effect_Exception_catchException, &$Effect_Exception_compose, &$Effect_Exception_pure, &$Data_Either_Left, &$Effect_Exception_map, &$Data_Either_Right) {
-  $__fn = function($action) use (&$Effect_Exception_catchException, &$Effect_Exception_compose, &$Effect_Exception_pure, &$Data_Either_Left, &$Effect_Exception_map, &$Data_Either_Right, &$__fn) {
+$Effect_Exception_try = (function() {
+  $__fn = function($action) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Effect_Exception_catchException)(($Effect_Exception_compose)($Effect_Exception_pure, $Data_Either_Left), ($Effect_Exception_map)($Data_Either_Right, $action));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Effect_Exception_catchException'])(($GLOBALS['Effect_Exception_compose'])($GLOBALS['Effect_Exception_pure'], $GLOBALS['Data_Either_Left']), ($GLOBALS['Effect_Exception_map'])($GLOBALS['Data_Either_Right'], $action));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Effect_Exception_throw
-$Effect_Exception_throw = ($Effect_Exception_compose)($Effect_Exception_throwException, $Effect_Exception_error);
+$Effect_Exception_throw = ($GLOBALS['Effect_Exception_compose'])($GLOBALS['Effect_Exception_throwException'], $GLOBALS['Effect_Exception_error']);
 
 // Effect_Exception_stack
-$Effect_Exception_stack = ($Effect_Exception_stackImpl)($Data_Maybe_Just, $Data_Maybe_Nothing);
+$Effect_Exception_stack = ($GLOBALS['Effect_Exception_stackImpl'])($GLOBALS['Data_Maybe_Just'], $GLOBALS['Data_Maybe_Nothing']);
 
 // Effect_Exception_showError
-$Effect_Exception_showError = ($Data_Show_Show__dollar__Dict)((object)["show" => $Effect_Exception_showErrorImpl]);
+$Effect_Exception_showError = ($GLOBALS['Data_Show_Show__dollar__Dict'])((object)["show" => $GLOBALS['Effect_Exception_showErrorImpl']]);
 

@@ -9,108 +9,75 @@ require_once __DIR__ . '/../Data.Identity/index.php';
 require_once __DIR__ . '/../Data.Newtype/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+  function phpurs_curry_fallback($fn, $args, $expected) {
+    return function(...$more) use ($fn, $args, $expected) {
+      $merged = array_merge($args, $more);
+      if (count($merged) >= $expected) {
+        $res = $fn(...$merged);
+        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      }
+      return phpurs_curry_fallback($fn, $merged, $expected);
+    };
+  }
+}
 $Prim_undefined = function() { throw new \Exception("undefined"); };
 
 
 // Control_Monad_Cont_compose
-$Control_Monad_Cont_compose = ($Control_Semigroupoid_compose)($Control_Semigroupoid_semigroupoidFn);
+$Control_Monad_Cont_compose = ($GLOBALS['Control_Semigroupoid_compose'])($GLOBALS['Control_Semigroupoid_semigroupoidFn']);
 
 // Control_Monad_Cont_unwrap
-$Control_Monad_Cont_unwrap = ($Data_Newtype_unwrap)($Prim_undefined);
+$Control_Monad_Cont_unwrap = ($GLOBALS['Data_Newtype_unwrap'])($GLOBALS['Prim_undefined']);
 
 // Control_Monad_Cont_withCont
-$Control_Monad_Cont_withCont = (function() use (&$Control_Monad_Cont_Trans_withContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity, &$Control_Monad_Cont_unwrap) {
-  $__fn = function($f) use (&$Control_Monad_Cont_Trans_withContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity, &$Control_Monad_Cont_unwrap, &$__fn) {
+$Control_Monad_Cont_withCont = (function() {
+  $__fn = function($f) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Control_Monad_Cont_Trans_withContT)(($Control_Monad_Cont_compose)(($Control_Monad_Cont_compose)($Data_Identity_Identity), ($Control_Monad_Cont_compose)($f, ($Control_Monad_Cont_compose)($Control_Monad_Cont_unwrap))));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Control_Monad_Cont_Trans_withContT'])(($GLOBALS['Control_Monad_Cont_compose'])(($GLOBALS['Control_Monad_Cont_compose'])($GLOBALS['Data_Identity_Identity']), ($GLOBALS['Control_Monad_Cont_compose'])($f, ($GLOBALS['Control_Monad_Cont_compose'])($GLOBALS['Control_Monad_Cont_unwrap']))));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Cont_runCont
-$Control_Monad_Cont_runCont = (function() use (&$Control_Monad_Cont_unwrap, &$Control_Monad_Cont_Trans_runContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity) {
-  $__fn = function($cc, $k = null) use (&$Control_Monad_Cont_unwrap, &$Control_Monad_Cont_Trans_runContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity, &$__fn) {
+$Control_Monad_Cont_runCont = (function() {
+  $__fn = function($cc, $k = null) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 2) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Control_Monad_Cont_unwrap)(($Control_Monad_Cont_Trans_runContT)($cc, ($Control_Monad_Cont_compose)($Data_Identity_Identity, $k)));
-    if ($__num > 2) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 2));
-    }
-    return $__res;
+  if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    $__res = ($GLOBALS['Control_Monad_Cont_unwrap'])(($GLOBALS['Control_Monad_Cont_Trans_runContT'])($cc, ($GLOBALS['Control_Monad_Cont_compose'])($GLOBALS['Data_Identity_Identity'], $k)));
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Cont_mapCont
-$Control_Monad_Cont_mapCont = (function() use (&$Control_Monad_Cont_Trans_mapContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity, &$Control_Monad_Cont_unwrap) {
-  $__fn = function($f) use (&$Control_Monad_Cont_Trans_mapContT, &$Control_Monad_Cont_compose, &$Data_Identity_Identity, &$Control_Monad_Cont_unwrap, &$__fn) {
+$Control_Monad_Cont_mapCont = (function() {
+  $__fn = function($f) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Control_Monad_Cont_Trans_mapContT)(($Control_Monad_Cont_compose)($Data_Identity_Identity, ($Control_Monad_Cont_compose)($f, $Control_Monad_Cont_unwrap)));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Control_Monad_Cont_Trans_mapContT'])(($GLOBALS['Control_Monad_Cont_compose'])($GLOBALS['Data_Identity_Identity'], ($GLOBALS['Control_Monad_Cont_compose'])($f, $GLOBALS['Control_Monad_Cont_unwrap'])));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Cont_cont
-$Control_Monad_Cont_cont = (function() use (&$Control_Monad_Cont_Trans_ContT, &$Data_Identity_Identity, &$Control_Monad_Cont_compose, &$Control_Monad_Cont_unwrap) {
-  $__fn = function($f) use (&$Control_Monad_Cont_Trans_ContT, &$Data_Identity_Identity, &$Control_Monad_Cont_compose, &$Control_Monad_Cont_unwrap, &$__fn) {
+$Control_Monad_Cont_cont = (function() {
+  $__fn = function($f) use (&$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Control_Monad_Cont_Trans_ContT)((function() use (&$Data_Identity_Identity, $f, &$Control_Monad_Cont_compose, &$Control_Monad_Cont_unwrap) {
-  $__fn = function($c) use (&$Data_Identity_Identity, $f, &$Control_Monad_Cont_compose, &$Control_Monad_Cont_unwrap, &$__fn) {
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Control_Monad_Cont_Trans_ContT'])((function() use ($f) {
+  $__fn = function($c) use ($f, &$__fn) {
   $__num = func_num_args();
-  if ($__num < 1) {
-    $__args = func_get_args();
-    return function(...$__more) use ($__args, &$__fn) {
-      return $__fn(...array_merge($__args, $__more));
-    };
-  }
-    $__res = ($Data_Identity_Identity)(($f)(($Control_Monad_Cont_compose)($Control_Monad_Cont_unwrap, $c)));
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
+    $__res = ($GLOBALS['Data_Identity_Identity'])(($f)(($GLOBALS['Control_Monad_Cont_compose'])($GLOBALS['Control_Monad_Cont_unwrap'], $c)));
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })());
-    if ($__num > 1) {
-      $__args = func_get_args();
-      return $__res(...array_slice($__args, 1));
-    }
-    return $__res;
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
 })();
