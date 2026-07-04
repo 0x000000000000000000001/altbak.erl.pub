@@ -24,14 +24,14 @@ BENCHMARK RESULTS
 ========================================================================================
 Node.js (V8)  | Arista ES (V8) | Chez Scheme (Native) | Erlang (BEAM) | PHP (experimental WIP)
 ------------------------------ | -------------------- | ------------- | ---------------
-real 0m0.569s | real 0m0.555s  | real 0m0.099s        | real 0m0.835s | real 0m5.313s
-user 0m0.203s | user 0m0.153s  | user 0m0.081s        | user 0m0.830s | user 0m4.793s
-sys  0m0.376s | sys  0m0.398s  | sys  0m0.016s        | sys  1m0.062s | sys  0m0.505s
+real 0m0.569s | real 0m0.555s  | real 0m0.099s        | real 0m0.835s | real 0m6.049s
+user 0m0.203s | user 0m0.153s  | user 0m0.081s        | user 0m0.830s | user 0m5.380s
+sys  0m0.376s | sys  0m0.398s  | sys  0m0.016s        | sys  0m0.062s | sys  0m0.609s
 ```
 
 > [!WARNING]
 > **About the PHP results**
-> Please note that the `phpurs` backend is a brand new, completely experimental, and "homemade" compiler built entirely from scratch for this repository. Its execution time is not yet representative of PHP's actual performance limit, as the compiler is still immature and actively undergoing optimization. Still a WIP!
+> Please note that the `phpurs` backend is a brand new, completely experimental, and "homemade" compiler built entirely from scratch for this repository. It recently received major optimizations (Type Class resolution, Native TCO, Lazy Loading initialization) which drastically reduced its execution time to ~6 seconds. However, due to PHP's heavy closures and lack of a functional VM, it remains inherently slower than highly optimized engines like V8 or BEAM.
 
 
 > [!NOTE]
