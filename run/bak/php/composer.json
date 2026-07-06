@@ -1,6 +1,11 @@
 {
     "require": {
-        "revolt/event-loop": "^1.0"
+        "phpurs/ffi-dependencies": "@dev"
     },
-    "require-dev": {}
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../../output"
+        }
+    ]
 }
