@@ -1,11 +1,10 @@
 <?php
 
-$Test_FileOps_writeFileSync = function($path, $content = null) {
+$writeFileSync = function($path, $content = null) use (&$writeFileSync) {
     if (func_num_args() < 2) {
         $__args = func_get_args();
-        return function(...$more) use ($__args) {
-            global $Test_FileOps_writeFileSync;
-            return $Test_FileOps_writeFileSync(...array_merge($__args, $more));
+        return function(...$more) use ($__args, &$writeFileSync) {
+            return $writeFileSync(...array_merge($__args, $more));
         };
     }
     return function() use ($path, $content) {
@@ -13,18 +12,17 @@ $Test_FileOps_writeFileSync = function($path, $content = null) {
     };
 };
 
-$Test_FileOps_readFileSync = function($path) {
+$readFileSync = function($path) {
     return function() use ($path) {
         return file_get_contents($path);
     };
 };
 
-$Test_FileOps_loopE = function($n, $action = null) {
+$loopE = function($n, $action = null) use (&$loopE) {
     if (func_num_args() < 2) {
         $__args = func_get_args();
-        return function(...$more) use ($__args) {
-            global $Test_FileOps_loopE;
-            return $Test_FileOps_loopE(...array_merge($__args, $more));
+        return function(...$more) use ($__args, &$loopE) {
+            return $loopE(...array_merge($__args, $more));
         };
     }
     return function() use ($n, $action) {
@@ -33,3 +31,9 @@ $Test_FileOps_loopE = function($n, $action = null) {
         }
     };
 };
+
+$exports['writeFileSync'] = $writeFileSync;
+$exports['readFileSync'] = $readFileSync;
+$exports['loopE'] = $loopE;
+
+return $exports;
