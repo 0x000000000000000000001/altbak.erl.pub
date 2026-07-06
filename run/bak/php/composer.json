@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpurs/ffi-dependencies": "@dev"
+        "phpurs/lib-deps": "@dev"
     },
     "repositories": [
         {
