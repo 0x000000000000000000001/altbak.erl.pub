@@ -32,20 +32,20 @@ modify f = bindState get \s -> put (f s)
 
 -- Builds a chained sequence of State modifications.
 -- Resolving this dives deep into the Call Stack (depth = n).
--- We cap n at 6000 to avoid 'Maximum call stack size exceeded' in V8.
+-- We cap n at 60 to avoid 'Maximum call stack size exceeded' in V8.
 chainModifications :: Int -> State Int Unit
 chainModifications 0 = pureState unit
 chainModifications n = bindState (modify (\x -> x + 1)) \_ -> chainModifications (n - 1)
 
--- We run the 6000-depth State monad 2000 times to accumulate work.
--- Total: 12 million closures allocated and deeply evaluated.
+-- We run the 60-depth State monad 20 times to accumulate work.
+-- Total: 1200 closures allocated and deeply evaluated.
 runManyTimes :: Int -> Int -> Int
 runManyTimes 0 acc = acc
 runManyTimes n acc = runManyTimes (n - 1) (acc + (runState (chainModifications 60) 0).state)
 
 describe :: Effect Unit
-describe = log "State Monad (12M Binds, 6k Stack Depth):"
+describe = log "State Monad (1.2k Binds, 60 Stack Depth):"
 
--- The result should be 2000 * 6000 = 12000000
+-- The result should be 20 * 60 = 1200
 act :: Effect Unit
 act = logShow $ runManyTimes 20 0
