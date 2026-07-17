@@ -2,14 +2,18 @@
 
 namespace Data\String\CodePoints;
 
+// ALL IMPORTS: Control.Semigroupoid, Data.Array, Data.Boolean, Data.Bounded, Data.Enum, Data.Eq, Data.EuclideanRing, Data.Functor, Data.HeytingAlgebra, Data.Int, Data.Maybe, Data.Ord, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.String.CodePoints, Data.String.CodeUnits, Data.String.Common, Data.String.Pattern, Data.String.Unsafe, Data.Tuple, Data.Unfoldable, Prelude, Prim
+// TO REQUIRE: Control.Semigroupoid, Data.Array, Data.Boolean, Data.Bounded, Data.Enum, Data.Eq, Data.EuclideanRing, Data.Functor, Data.HeytingAlgebra, Data.Int, Data.Maybe, Data.Ord, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.String.CodePoints, Data.String.CodeUnits, Data.String.Common, Data.String.Pattern, Data.String.Unsafe, Data.Tuple, Data.Unfoldable, Prelude
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Array/index.php';
+require_once __DIR__ . '/../Data.Boolean/index.php';
 require_once __DIR__ . '/../Data.Bounded/index.php';
 require_once __DIR__ . '/../Data.Enum/index.php';
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.EuclideanRing/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
 require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
+require_once __DIR__ . '/../Data.Int/index.php';
 require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
@@ -21,26 +25,29 @@ require_once __DIR__ . '/../Data.String.CodeUnits/index.php';
 require_once __DIR__ . '/../Data.String.Common/index.php';
 require_once __DIR__ . '/../Data.String.Pattern/index.php';
 require_once __DIR__ . '/../Data.String.Unsafe/index.php';
+require_once __DIR__ . '/../Data.Tuple/index.php';
+require_once __DIR__ . '/../Data.Unfoldable/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -48,12 +55,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -61,13 +68,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -75,55 +82,481 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_String_CodePoints_add': $v = ($GLOBALS['Data_Semiring_intAdd'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intAdd')); break;
-      case 'Data_String_CodePoints_mul': $v = ($GLOBALS['Data_Semiring_intMul'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intMul')); break;
-      case 'Data_String_CodePoints_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
-      case 'Data_String_CodePoints_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_String_CodePoints_conj': $v = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj')); break;
-      case 'Data_String_CodePoints_lessThanOrEq': $v = \Data\Ord\Data_Ord_lessThanOrEq(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Data_String_CodePoints_fromEnum': $v = ($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')); break;
-      case 'Data_String_CodePoints_compose': $v = ($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_composeImpl')); break;
-      case 'Data_String_CodePoints_div': $v = ($GLOBALS['Data_EuclideanRing_intDiv'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intDiv')); break;
-      case 'Data_String_CodePoints_mod': $v = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod')); break;
-      case 'Data_String_CodePoints_fromCharCode': $v = (($GLOBALS['Data_String_CodePoints_compose'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_compose')))(($GLOBALS['Data_String_CodeUnits_singleton'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_singleton')), \Data\Enum\Data_Enum_toEnumWithDefaults(($GLOBALS['Data_Enum_boundedEnumChar'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_boundedEnumChar')), ($GLOBALS['Data_Bounded_bottomChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_bottomChar')), ($GLOBALS['Data_Bounded_topChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_topChar')))); break;
-      case 'Data_String_CodePoints_singleton': $v = (($GLOBALS['Data_String_CodePoints__singleton'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints__singleton')))("\\Data\\String\\CodePoints\\Data_String_CodePoints_singletonFallback"); break;
-      case 'Data_String_CodePoints_take': $v = (($GLOBALS['Data_String_CodePoints__take'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints__take')))("\\Data\\String\\CodePoints\\Data_String_CodePoints_takeFallback"); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+\PhpursThunks::$thunks['Data_String_CodePoints_CodePoint'] = function() { $v = function($x) {
+  $__num = \func_num_args();
+  $__res = $x;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_unsurrogate'] = function() { $v = (function() {
+  $__fn = function($lead, $trail = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  $__res = ((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))(((($GLOBALS['Data_Semiring_intMul'] ?? \PhpursThunks::eval('Data_Semiring_intMul')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($lead))(55296)))(1024)))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($trail))(56320))))(65536);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_showCodePoint'] = function() { $v = (object)["show" => function($v) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(CodePoint 0x"))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_String_Common_toUpper'] ?? \PhpursThunks::eval('Data_String_Common_toUpper')))(((($GLOBALS['Data_Int_toStringAs'] ?? \PhpursThunks::eval('Data_Int_toStringAs')))(16))($v))))(")"));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_isTrail'] = function() { $v = function($cu) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)(56320))($cu)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)(56320))($cu))->tag === "GT")))))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($cu))(57343)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($cu))(57343))->tag === "GT"))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_isLead'] = function() { $v = function($cu) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)(55296))($cu)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)(55296))($cu))->tag === "GT")))))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($cu))(56319)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($cu))(56319))->tag === "GT"))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_uncons'] = function() { $v = function($s) {
+  $__num = \func_num_args();
+  $v_0 = (($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($s);
+  switch ($v_0) {
+case 0:
+$__t4 = new Phpurs_Data0("Nothing");
+break;
+case 1:
+$__t4 = new Phpurs_Data1("Just", (object)["head" => (($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode')))(((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(0))($s)), "tail" => ""]);
+break;
+default:
+$cu1_1 = (($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode')))(((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(1))($s));
+$cu0_2 = (($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode')))(((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(0))($s));
+if (((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))((($GLOBALS['Data_String_CodePoints_isLead'] ?? \PhpursThunks::eval('Data_String_CodePoints_isLead')))($cu0_2)))((($GLOBALS['Data_String_CodePoints_isTrail'] ?? \PhpursThunks::eval('Data_String_CodePoints_isTrail')))($cu1_1))) {
+$__t3 = new Phpurs_Data1("Just", (object)["head" => ((($GLOBALS['Data_String_CodePoints_unsurrogate'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsurrogate')))($cu0_2))($cu1_1), "tail" => ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))(2))($s)]);
+} else {
+$__t3 = new Phpurs_Data1("Just", (object)["head" => $cu0_2, "tail" => ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))(1))($s)]);
+};
+$__t4 = $__t3;
+break;
+};
+  $__res = $__t4;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_unconsButWithTuple'] = function() { $v = function($s) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($GLOBALS['Data_String_CodePoints_uncons'] ?? \PhpursThunks::eval('Data_String_CodePoints_uncons')))($s);
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", (($__local_var_0)->value0)->head, (($__local_var_0)->value0)->tail));
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_toCodePointArrayFallback'] = function() { $v = function($s) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Data_Unfoldable_unfoldableArray'] ?? \PhpursThunks::eval('Data_Unfoldable_unfoldableArray')))->unfoldr)(($GLOBALS['Data_String_CodePoints_unconsButWithTuple'] ?? \PhpursThunks::eval('Data_String_CodePoints_unconsButWithTuple'))))($s);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_unsafeCodePointAt0Fallback'] = function() { $v = function($s) {
+  $__num = \func_num_args();
+  $cu0_0 = (($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode')))(((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(0))($s));
+  if (((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))((($GLOBALS['Data_String_CodePoints_isLead'] ?? \PhpursThunks::eval('Data_String_CodePoints_isLead')))($cu0_0)))((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($s)))(1)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($s)))(1))->tag === "GT")))) {
+$cu1_2 = (($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode')))(((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(1))($s));
+if ((($GLOBALS['Data_String_CodePoints_isTrail'] ?? \PhpursThunks::eval('Data_String_CodePoints_isTrail')))($cu1_2)) {
+$__t3 = ((($GLOBALS['Data_String_CodePoints_unsurrogate'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsurrogate')))($cu0_0))($cu1_2);
+} else {
+$__t3 = $cu0_0;
+};
+$__t1 = $__t3;
+} else {
+$__t1 = $cu0_0;
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_unsafeCodePointAt0'] = function() { $v = (($GLOBALS['Data_String_CodePoints__unsafeCodePointAt0'] ?? \PhpursThunks::eval('Data_String_CodePoints__unsafeCodePointAt0')))(($GLOBALS['Data_String_CodePoints_unsafeCodePointAt0Fallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsafeCodePointAt0Fallback'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_toCodePointArray'] = function() { $v = ((($GLOBALS['Data_String_CodePoints__toCodePointArray'] ?? \PhpursThunks::eval('Data_String_CodePoints__toCodePointArray')))(($GLOBALS['Data_String_CodePoints_toCodePointArrayFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_toCodePointArrayFallback'))))(($GLOBALS['Data_String_CodePoints_unsafeCodePointAt0'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsafeCodePointAt0'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_length'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Array_length'] ?? \PhpursThunks::eval('Data_Array_length'))))(($GLOBALS['Data_String_CodePoints_toCodePointArray'] ?? \PhpursThunks::eval('Data_String_CodePoints_toCodePointArray'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_lastIndexOf'] = function() { $v = (function() {
+  $__fn = function($p, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__local_var_0 = ((($GLOBALS['Data_String_CodeUnits_lastIndexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_lastIndexOf')))($p))($s);
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", (($GLOBALS['Data_String_CodePoints_length'] ?? \PhpursThunks::eval('Data_String_CodePoints_length')))(((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(($__local_var_0)->value0))($s)));
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_indexOf'] = function() { $v = (function() {
+  $__fn = function($p, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__local_var_0 = ((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))($p))($s);
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", (($GLOBALS['Data_String_CodePoints_length'] ?? \PhpursThunks::eval('Data_String_CodePoints_length')))(((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(($__local_var_0)->value0))($s)));
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_fromCharCode'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_CodeUnits_singleton'] ?? \PhpursThunks::eval('Data_String_CodeUnits_singleton'))))((((($GLOBALS['Data_Enum_toEnumWithDefaults'] ?? \PhpursThunks::eval('Data_Enum_toEnumWithDefaults')))(($GLOBALS['Data_Enum_boundedEnumChar'] ?? \PhpursThunks::eval('Data_Enum_boundedEnumChar'))))(($GLOBALS['Data_Bounded_bottomChar'] ?? \PhpursThunks::eval('Data_Bounded_bottomChar'))))(($GLOBALS['Data_Bounded_topChar'] ?? \PhpursThunks::eval('Data_Bounded_topChar')))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_singletonFallback'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if (( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(65535)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(65535))->tag === "GT")))) {
+$__t0 = (($GLOBALS['Data_String_CodePoints_fromCharCode'] ?? \PhpursThunks::eval('Data_String_CodePoints_fromCharCode')))($v);
+} else {
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_String_CodePoints_fromCharCode'] ?? \PhpursThunks::eval('Data_String_CodePoints_fromCharCode')))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))(((($GLOBALS['Data_EuclideanRing_intDiv'] ?? \PhpursThunks::eval('Data_EuclideanRing_intDiv')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(65536)))(1024)))(55296))))((($GLOBALS['Data_String_CodePoints_fromCharCode'] ?? \PhpursThunks::eval('Data_String_CodePoints_fromCharCode')))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))(((($GLOBALS['Data_EuclideanRing_intMod'] ?? \PhpursThunks::eval('Data_EuclideanRing_intMod')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(65536)))(1024)))(56320)));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_fromCodePointArray'] = function() { $v = (($GLOBALS['Data_String_CodePoints__fromCodePointArray'] ?? \PhpursThunks::eval('Data_String_CodePoints__fromCodePointArray')))(($GLOBALS['Data_String_CodePoints_singletonFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_singletonFallback'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_singleton'] = function() { $v = (($GLOBALS['Data_String_CodePoints__singleton'] ?? \PhpursThunks::eval('Data_String_CodePoints__singleton')))(($GLOBALS['Data_String_CodePoints_singletonFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_singletonFallback'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_takeFallback'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(1)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(1))->tag === "LT"))) {
+$__t2 = "";
+} else {
+$v2_0 = (($GLOBALS['Data_String_CodePoints_uncons'] ?? \PhpursThunks::eval('Data_String_CodePoints_uncons')))($v1);
+if ((is_object($v2_0) && (($v2_0)->tag === "Just"))) {
+$__t1 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_String_CodePoints_singleton'] ?? \PhpursThunks::eval('Data_String_CodePoints_singleton')))((($v2_0)->value0)->head)))(((($GLOBALS['Data_String_CodePoints_takeFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_takeFallback')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1)))((($v2_0)->value0)->tail));
+} else {
+$__t1 = $v1;
+};
+$__t2 = $__t1;
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_take'] = function() { $v = (($GLOBALS['Data_String_CodePoints__take'] ?? \PhpursThunks::eval('Data_String_CodePoints__take')))(($GLOBALS['Data_String_CodePoints_takeFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_takeFallback'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_lastIndexOf__prime__'] = function() { $v = (function() {
+  $__fn = function($p, $i = null, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__local_var_0 = (((($GLOBALS['Data_String_CodeUnits_lastIndexOf__prime__'] ?? \PhpursThunks::eval('Data_String_CodeUnits_lastIndexOf__prime__')))($p))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))(((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))($i))($s))))($s);
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", (($GLOBALS['Data_String_CodePoints_length'] ?? \PhpursThunks::eval('Data_String_CodePoints_length')))(((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(($__local_var_0)->value0))($s)));
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_splitAt'] = function() { $v = (function() {
+  $__fn = function($i, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $before_0 = ((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))($i))($s);
+  $__res = (object)["before" => $before_0, "after" => ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($before_0)))($s)];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_eqCodePoint'] = function() { $v = (object)["eq" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_Eq_eqIntImpl'] ?? \PhpursThunks::eval('Data_Eq_eqIntImpl')))($x))($y);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_ordCodePoint'] = function() { $v = (object)["compare" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($x))($y);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_CodePoints_eqCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_eqCodePoint'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_drop'] = function() { $v = (function() {
+  $__fn = function($n, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))(((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))($n))($s))))($s);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_indexOf__prime__'] = function() { $v = (function() {
+  $__fn = function($p, $i = null, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $s__prime___0 = ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))(((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))($i))($s))))($s);
+  $__local_var_1 = ((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))($p))($s__prime___0);
+  if ((is_object($__local_var_1) && (($__local_var_1)->tag === "Just"))) {
+$__t2 = new Phpurs_Data1("Just", ((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($i))((($GLOBALS['Data_String_CodePoints_length'] ?? \PhpursThunks::eval('Data_String_CodePoints_length')))(((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(($__local_var_1)->value0))($s__prime___0))));
+} else {
+$__t2 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_countTail'] = function() { $v = (function() {
+  $__fn = function($p, $s = null, $accum = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $v_0 = (($GLOBALS['Data_String_CodePoints_uncons'] ?? \PhpursThunks::eval('Data_String_CodePoints_uncons')))($s);
+  if (((is_object($v_0) && (($v_0)->tag === "Just")) && ($p)((($v_0)->value0)->head))) {
+$__t1 = (((($GLOBALS['Data_String_CodePoints_countTail'] ?? \PhpursThunks::eval('Data_String_CodePoints_countTail')))($p))((($v_0)->value0)->tail))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($accum))(1));
+} else {
+$__t1 = $accum;
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_countFallback'] = function() { $v = (function() {
+  $__fn = function($p, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Data_String_CodePoints_countTail'] ?? \PhpursThunks::eval('Data_String_CodePoints_countTail')))($p))($s))(0);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_countPrefix'] = function() { $v = ((($GLOBALS['Data_String_CodePoints__countPrefix'] ?? \PhpursThunks::eval('Data_String_CodePoints__countPrefix')))(($GLOBALS['Data_String_CodePoints_countFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_countFallback'))))(($GLOBALS['Data_String_CodePoints_unsafeCodePointAt0'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsafeCodePointAt0'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_dropWhile'] = function() { $v = (function() {
+  $__fn = function($p, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))(((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))(((($GLOBALS['Data_String_CodePoints_countPrefix'] ?? \PhpursThunks::eval('Data_String_CodePoints_countPrefix')))($p))($s)))($s))))($s);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_takeWhile'] = function() { $v = (function() {
+  $__fn = function($p, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))(((($GLOBALS['Data_String_CodePoints_countPrefix'] ?? \PhpursThunks::eval('Data_String_CodePoints_countPrefix')))($p))($s)))($s);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_codePointFromChar'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_CodePoints_CodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_CodePoint'))))(($GLOBALS['Data_Enum_toCharCode'] ?? \PhpursThunks::eval('Data_Enum_toCharCode'))); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_codePointAtFallback'] = function() { $v = (function() {
+  $__fn = function($n, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $v_0 = (($GLOBALS['Data_String_CodePoints_uncons'] ?? \PhpursThunks::eval('Data_String_CodePoints_uncons')))($s);
+  if ((is_object($v_0) && (($v_0)->tag === "Just"))) {
+if (((($GLOBALS['Data_Eq_eqIntImpl'] ?? \PhpursThunks::eval('Data_Eq_eqIntImpl')))($n))(0)) {
+$__t2 = new Phpurs_Data1("Just", (($v_0)->value0)->head);
+} else {
+$__t2 = ((($GLOBALS['Data_String_CodePoints_codePointAtFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_codePointAtFallback')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($n))(1)))((($v_0)->value0)->tail);
+};
+$__t1 = $__t2;
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_codePointAt'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(0)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($v))(0))->tag === "LT"))) {
+$__t0 = new Phpurs_Data0("Nothing");
+} else {
+switch ($v) {
+case 0:
+switch ($v1) {
+case "":
+$__t1 = new Phpurs_Data0("Nothing");
+break;
+default:
+$__t1 = new Phpurs_Data1("Just", (($GLOBALS['Data_String_CodePoints_unsafeCodePointAt0'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsafeCodePointAt0')))($v1));
+break;
+};
+$__t0 = $__t1;
+break;
+default:
+$__t0 = ((((((($GLOBALS['Data_String_CodePoints__codePointAt'] ?? \PhpursThunks::eval('Data_String_CodePoints__codePointAt')))(($GLOBALS['Data_String_CodePoints_codePointAtFallback'] ?? \PhpursThunks::eval('Data_String_CodePoints_codePointAtFallback'))))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing")))(($GLOBALS['Data_String_CodePoints_unsafeCodePointAt0'] ?? \PhpursThunks::eval('Data_String_CodePoints_unsafeCodePointAt0'))))($v))($v1);
+break;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_boundedCodePoint'] = function() { $v = (object)["bottom" => 0, "top" => 1114111, "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_CodePoints_ordCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_ordCodePoint'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_boundedEnumCodePoint'] = function() { $v = (object)["cardinality" => ((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))(1114111))(1), "fromEnum" => function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "toEnum" => function($n) {
+  $__num = \func_num_args();
+  if (((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($n))(0)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($n))(0))->tag === "LT")))))(( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($n))(1114111)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($n))(1114111))->tag === "GT"))))) {
+$__t0 = new Phpurs_Data1("Just", $n);
+} else {
+$__t0 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bounded0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_CodePoints_boundedCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_boundedCodePoint'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Enum1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_CodePoints_enumCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_enumCodePoint'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_String_CodePoints_enumCodePoint'] = function() { $v = (object)["succ" => ((($GLOBALS['Data_Enum_defaultSucc'] ?? \PhpursThunks::eval('Data_Enum_defaultSucc')))((($GLOBALS['Data_String_CodePoints_boundedEnumCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_boundedEnumCodePoint')))->toEnum))((($GLOBALS['Data_String_CodePoints_boundedEnumCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_boundedEnumCodePoint')))->fromEnum), "pred" => ((($GLOBALS['Data_Enum_defaultPred'] ?? \PhpursThunks::eval('Data_Enum_defaultPred')))((($GLOBALS['Data_String_CodePoints_boundedEnumCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_boundedEnumCodePoint')))->toEnum))((($GLOBALS['Data_String_CodePoints_boundedEnumCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_boundedEnumCodePoint')))->fromEnum), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_CodePoints_ordCodePoint'] ?? \PhpursThunks::eval('Data_String_CodePoints_ordCodePoint'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Data_String_CodePoints = \call_user_func(function() {
+  $exports = [];
 if (!\function_exists('Data_String_CodePoints_utf8_ord')) {
     function Data_String_CodePoints_utf8_ord($char) {
         if ($char === '') return 0;
@@ -256,14 +689,15 @@ $exports['_singleton'] = $_singleton;
 $exports['_take'] = $_take;
 $exports['_toCodePointArray'] = $_toCodePointArray;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Data_String_CodePoints__singleton'] = $ffi_Data_String_CodePoints['_singleton'] ?? null;
-$GLOBALS['Data_String_CodePoints__fromCodePointArray'] = $ffi_Data_String_CodePoints['_fromCodePointArray'] ?? null;
-$GLOBALS['Data_String_CodePoints__toCodePointArray'] = $ffi_Data_String_CodePoints['_toCodePointArray'] ?? null;
-$GLOBALS['Data_String_CodePoints__codePointAt'] = $ffi_Data_String_CodePoints['_codePointAt'] ?? null;
-$GLOBALS['Data_String_CodePoints__countPrefix'] = $ffi_Data_String_CodePoints['_countPrefix'] ?? null;
-$GLOBALS['Data_String_CodePoints__take'] = $ffi_Data_String_CodePoints['_take'] ?? null;
-$GLOBALS['Data_String_CodePoints__unsafeCodePointAt0'] = $ffi_Data_String_CodePoints['_unsafeCodePointAt0'] ?? null;
+\PhpursThunks::$thunks['Data_String_CodePoints__codePointAt'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_codePointAt']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__countPrefix'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_countPrefix']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__fromCodePointArray'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_fromCodePointArray']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__singleton'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_singleton']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__take'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_take']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__toCodePointArray'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_toCodePointArray']; };
+\PhpursThunks::$thunks['Data_String_CodePoints__unsafeCodePointAt0'] = function() use (&$ffi_Data_String_CodePoints) { return $ffi_Data_String_CodePoints['_unsafeCodePointAt0']; };
 
 
 
@@ -276,201 +710,30 @@ $GLOBALS['Data_String_CodePoints__unsafeCodePointAt0'] = $ffi_Data_String_CodePo
 
 
 
-// Data_String_CodePoints_CodePoint
-function Data_String_CodePoints_CodePoint($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_CodePoint';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_CodePoint'] = __NAMESPACE__ . '\\Data_String_CodePoints_CodePoint';
-
-// Data_String_CodePoints_unsurrogate
-function Data_String_CodePoints_unsurrogate($lead, $trail = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_unsurrogate';
-  if ($__num < 2) {
-    if ($__num === 1) return function($trail) use ($lead, $__fn) { return $__fn($lead, $trail); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_CodePoints_add = ($GLOBALS['Data_String_CodePoints_add'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_add'));
-  $__global_Data_String_CodePoints_mul = ($GLOBALS['Data_String_CodePoints_mul'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_mul'));
-  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
-  $__res = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_mul)(($__global_Data_String_CodePoints_sub)($lead, 55296), 1024), ($__global_Data_String_CodePoints_sub)($trail, 56320)), 65536);
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_unsurrogate'] = __NAMESPACE__ . '\\Data_String_CodePoints_unsurrogate';
-
-// Data_String_CodePoints_isTrail
-function Data_String_CodePoints_isTrail($cu) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_isTrail';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
-  $__global_Data_String_CodePoints_lessThanOrEq = ($GLOBALS['Data_String_CodePoints_lessThanOrEq'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_lessThanOrEq'));
-  $__res = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_lessThanOrEq)(56320, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 57343));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_isTrail'] = __NAMESPACE__ . '\\Data_String_CodePoints_isTrail';
-
-// Data_String_CodePoints_isLead
-function Data_String_CodePoints_isLead($cu) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_isLead';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
-  $__global_Data_String_CodePoints_lessThanOrEq = ($GLOBALS['Data_String_CodePoints_lessThanOrEq'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_lessThanOrEq'));
-  $__res = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_lessThanOrEq)(55296, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 56319));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_isLead'] = __NAMESPACE__ . '\\Data_String_CodePoints_isLead';
-
-// Data_String_CodePoints_uncons
-function Data_String_CodePoints_uncons($s) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_uncons';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_CodeUnits_length = ($GLOBALS['Data_String_CodeUnits_length'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_length'));
-  $__global_Data_String_CodePoints_fromEnum = ($GLOBALS['Data_String_CodePoints_fromEnum'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_fromEnum'));
-  $__global_Data_String_Unsafe_charAt = ($GLOBALS['Data_String_Unsafe_charAt'] ?? \Data\String\Unsafe\phpurs_eval_thunk('Data_String_Unsafe_charAt'));
-  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
-  $__global_Data_String_CodePoints_isLead = ($GLOBALS['Data_String_CodePoints_isLead'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_isLead'));
-  $__global_Data_String_CodePoints_isTrail = ($GLOBALS['Data_String_CodePoints_isTrail'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_isTrail'));
-  $__global_Data_String_CodePoints_unsurrogate = ($GLOBALS['Data_String_CodePoints_unsurrogate'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_unsurrogate'));
-  $__global_Data_String_CodeUnits_drop = ($GLOBALS['Data_String_CodeUnits_drop'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_drop'));
-  $v = ($__global_Data_String_CodeUnits_length)($s);
-  $__case_0 = $v;
-  switch ($__case_0) {
-case 0:
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
-break;
-case 1:
-$__res = new Phpurs_Data1("Just", (object)["head" => ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(0, $s)), "tail" => ""]);
-goto __end;;
-break;
-default:
-$cu1 = ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(1, $s));
-$cu0 = ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(0, $s));
-$__case_0 = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_isLead)($cu0), ($__global_Data_String_CodePoints_isTrail)($cu1));
-switch ($__case_0) {
-case true:
-$__res = new Phpurs_Data1("Just", (object)["head" => ($__global_Data_String_CodePoints_unsurrogate)($cu0, $cu1), "tail" => ($__global_Data_String_CodeUnits_drop)(2, $s)]);
-goto __end;;
-break;
-default:
-$__res = new Phpurs_Data1("Just", (object)["head" => $cu0, "tail" => ($__global_Data_String_CodeUnits_drop)(1, $s)]);
-goto __end;;
-break;
-};
-break;
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_uncons'] = __NAMESPACE__ . '\\Data_String_CodePoints_uncons';
 
 
-// Data_String_CodePoints_singletonFallback
-function Data_String_CodePoints_singletonFallback($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_singletonFallback';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_CodePoints_add = ($GLOBALS['Data_String_CodePoints_add'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_add'));
-  $__global_Data_String_CodePoints_div = ($GLOBALS['Data_String_CodePoints_div'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_div'));
-  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
-  $__global_Data_String_CodePoints_mod = ($GLOBALS['Data_String_CodePoints_mod'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_mod'));
-  $__global_Data_String_CodePoints_append = ($GLOBALS['Data_String_CodePoints_append'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_append'));
-  $__global_Data_String_CodePoints_fromCharCode = ($GLOBALS['Data_String_CodePoints_fromCharCode'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_fromCharCode'));
-  $__case_0 = $v;
-  if (true) {
-$cp = $__case_0;
-$__res = "/* Unsupported: Guards not supported */";
-goto __end;;
-} else {
-if (true) {
-$cp = $__case_0;
-$lead = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_div)(($__global_Data_String_CodePoints_sub)($cp, 65536), 1024), 55296);
-$trail = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_mod)(($__global_Data_String_CodePoints_sub)($cp, 65536), 1024), 56320);
-$__res = ($__global_Data_String_CodePoints_append)(($__global_Data_String_CodePoints_fromCharCode)($lead), ($__global_Data_String_CodePoints_fromCharCode)($trail));
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_singletonFallback'] = __NAMESPACE__ . '\\Data_String_CodePoints_singletonFallback';
 
 
-// Data_String_CodePoints_takeFallback
-function Data_String_CodePoints_takeFallback($v, $v1 = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_CodePoints_takeFallback';
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_CodePoints_uncons = ($GLOBALS['Data_String_CodePoints_uncons'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_uncons'));
-  $__global_Data_String_CodePoints_append = ($GLOBALS['Data_String_CodePoints_append'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_append'));
-  $__global_Data_String_CodePoints_singleton = ($GLOBALS['Data_String_CodePoints_singleton'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_singleton'));
-  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-if (true) {
-$n = $__case_0;
-$__res = "/* Unsupported: Guards not supported */";
-goto __end;;
-} else {
-if (true) {
-$n = $__case_0;
-$s = $__case_1;
-$v2 = ($__global_Data_String_CodePoints_uncons)($s);
-$__case_0 = $v2;
-if (((($__case_0)->tag === "Just") && is_object(($__case_0)->v0))) {
-$head = (($__case_0)->v0)->head;
-$tail = (($__case_0)->v0)->tail;
-$__res = ($__global_Data_String_CodePoints_append)(($__global_Data_String_CodePoints_singleton)($head), \Data\String\CodePoints\Data_String_CodePoints_takeFallback(($__global_Data_String_CodePoints_sub)($n, 1), $tail));
-goto __end;;
-} else {
-if (true) {
-$__res = $s;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_CodePoints_takeFallback'] = __NAMESPACE__ . '\\Data_String_CodePoints_takeFallback';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

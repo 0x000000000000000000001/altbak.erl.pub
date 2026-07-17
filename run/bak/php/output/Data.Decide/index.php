@@ -2,6 +2,8 @@
 
 namespace Data\Decide;
 
+// ALL IMPORTS: Control.Category, Control.Semigroupoid, Data.Comparison, Data.Decide, Data.Divide, Data.Either, Data.Equivalence, Data.Op, Data.Ordering, Data.Predicate, Prelude, Prim
+// TO REQUIRE: Control.Category, Control.Semigroupoid, Data.Comparison, Data.Decide, Data.Divide, Data.Either, Data.Equivalence, Data.Op, Data.Ordering, Data.Predicate, Prelude
 require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Comparison/index.php';
@@ -16,23 +18,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -40,12 +42,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -53,13 +55,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -67,374 +69,233 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Decide_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Data_Decide_identity': $v = (($GLOBALS['Control_Category_categoryFn'] ?? \Control\Category\phpurs_eval_thunk('Control_Category_categoryFn')))->identity; break;
-      case 'Data_Decide_choosePredicate': $v = (object)["choose" => (function() use (&$__fn) {
+\PhpursThunks::$thunks['Data_Decide_choosePredicate'] = function() { $v = (object)["choose" => (function() {
   $__fn = function($f, $v = null, $v1 = null) use (&$__fn) {
-  $__num = func_num_args();
+  $__num = \func_num_args();
   if ($__num < 3) {
-    if ($__num === 2) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-    if ($__num === 1) return function($v, $v1 = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $v, $v1);
-      if ($__num2 === 1) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Decide_compose = ($GLOBALS['Data_Decide_compose'] ?? \Data\Decide\phpurs_eval_thunk('Data_Decide_compose'));
-  $__global_Data_Either_either = ($GLOBALS['Data_Either_either'] ?? \Data\Either\phpurs_eval_thunk('Data_Either_either'));
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__case_2 = $v1;
-  if (true) {
-$f1 = $__case_0;
-$g = $__case_1;
-$h = $__case_2;
-$__res = ($__global_Data_Decide_compose)(($__global_Data_Either_either)($g, $h), $f1);
-goto __end;;
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(function($v2) use (&$v, &$v1) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = ($v)(($v2)->value0);
 } else {
-throw new \Exception("Pattern match failure");
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = ($v1)(($v2)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
 };
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "Divide0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Divide_dividePredicate = ($GLOBALS['Data_Divide_dividePredicate'] ?? \Data\Divide\phpurs_eval_thunk('Data_Divide_dividePredicate'));
-  $__res = $__global_Data_Divide_dividePredicate;
+};
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Decide_chooseEquivalence': $v = (object)["choose" => (function() use (&$__fn) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($f);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "Divide0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Divide_dividePredicate'] ?? \PhpursThunks::eval('Data_Divide_dividePredicate'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Decide_chooseOp'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $divideOp_0 = (($GLOBALS['Data_Divide_divideOp'] ?? \PhpursThunks::eval('Data_Divide_divideOp')))($dictSemigroup);
+  $__res = (object)["choose" => (function() {
   $__fn = function($f, $v = null, $v1 = null) use (&$__fn) {
-  $__num = func_num_args();
+  $__num = \func_num_args();
   if ($__num < 3) {
-    if ($__num === 2) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-    if ($__num === 1) return function($v, $v1 = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $v, $v1);
-      if ($__num2 === 1) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__case_2 = $v1;
-  if (true) {
-$f1 = $__case_0;
-$g = $__case_1;
-$h = $__case_2;
-$__res = (function() use ($f1, $g, $h, &$__fn) {
-  $__fn = function($a, $b = null) use ($f1, $g, $h, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $v2 = ($f1)($a);
-  $__case_0 = $v2;
-  switch (($__case_0)->tag) {
-case "Left":
-$c = ($__case_0)->v0;
-$v3 = ($f1)($b);
-$__case_0 = $v3;
-switch (($__case_0)->tag) {
-case "Left":
-$d = ($__case_0)->v0;
-$__res = ($g)($c, $d);
-goto __end;;
-break;
-case "Right":
-$__res = false;
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-break;
-case "Right":
-$c = ($__case_0)->v0;
-$v3 = ($f1)($b);
-$__case_0 = $v3;
-switch (($__case_0)->tag) {
-case "Left":
-$__res = false;
-goto __end;;
-break;
-case "Right":
-$d = ($__case_0)->v0;
-$__res = ($h)($c, $d);
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-goto __end;;
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(function($v2) use (&$v, &$v1) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t1 = ($v)(($v2)->value0);
 } else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "Divide0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Divide_divideEquivalence = ($GLOBALS['Data_Divide_divideEquivalence'] ?? \Data\Divide\phpurs_eval_thunk('Data_Divide_divideEquivalence'));
-  $__res = $__global_Data_Divide_divideEquivalence;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Decide_chooseComparison': $v = (object)["choose" => (function() use (&$__fn) {
-  $__fn = function($f, $v = null, $v1 = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-    if ($__num === 1) return function($v, $v1 = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $v, $v1);
-      if ($__num2 === 1) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__case_2 = $v1;
-  if (true) {
-$f1 = $__case_0;
-$g = $__case_1;
-$h = $__case_2;
-$__res = (function() use ($f1, $g, $h, &$__fn) {
-  $__fn = function($a, $b = null) use ($f1, $g, $h, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $v2 = ($f1)($a);
-  $__case_0 = $v2;
-  switch (($__case_0)->tag) {
-case "Left":
-$c = ($__case_0)->v0;
-$v3 = ($f1)($b);
-$__case_0 = $v3;
-switch (($__case_0)->tag) {
-case "Left":
-$d = ($__case_0)->v0;
-$__res = ($g)($c, $d);
-goto __end;;
-break;
-case "Right":
-$__res = ($GLOBALS['__phpurs_data0_LT'] ??= new Phpurs_Data0("LT"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-break;
-case "Right":
-$c = ($__case_0)->v0;
-$v3 = ($f1)($b);
-$__case_0 = $v3;
-switch (($__case_0)->tag) {
-case "Left":
-$__res = ($GLOBALS['__phpurs_data0_GT'] ??= new Phpurs_Data0("GT"));
-goto __end;;
-break;
-case "Right":
-$d = ($__case_0)->v0;
-$__res = ($h)($c, $d);
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-goto __end;;
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t1 = ($v1)(($v2)->value0);
 } else {
-throw new \Exception("Pattern match failure");
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
+};
+  $__res = $__t1;
+  goto __end;;
   __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($f);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})(), "Divide0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Divide_divideComparison = ($GLOBALS['Data_Divide_divideComparison'] ?? \Data\Divide\phpurs_eval_thunk('Data_Divide_divideComparison'));
-  $__res = $__global_Data_Divide_divideComparison;
+})(), "Divide0" => function($dollar__unused_0) use (&$divideOp_0) {
+  $__num = \func_num_args();
+  $__res = $divideOp_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-// Data_Decide_Decide$Dict
-function Data_Decide_Decide__dollar__Dict($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Decide_Decide__dollar__Dict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Decide_Decide__dollar__Dict'] = __NAMESPACE__ . '\\Data_Decide_Decide__dollar__Dict';
-
-
-// Data_Decide_chooseOp
-function Data_Decide_chooseOp($dictSemigroup) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Decide_chooseOp';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Divide_divideOp = ($GLOBALS['Data_Divide_divideOp'] ?? \Data\Divide\phpurs_eval_thunk('Data_Divide_divideOp'));
-  $__global_Data_Decide_compose = ($GLOBALS['Data_Decide_compose'] ?? \Data\Decide\phpurs_eval_thunk('Data_Decide_compose'));
-  $__global_Data_Either_either = ($GLOBALS['Data_Either_either'] ?? \Data\Either\phpurs_eval_thunk('Data_Either_either'));
-  $divideOp = ($__global_Data_Divide_divideOp)($dictSemigroup);
-  $__res = (object)["choose" => (function() use ($__global_Data_Decide_compose, $__global_Data_Either_either, &$__fn) {
-  $__fn = function($f, $v = null, $v1 = null) use ($__global_Data_Decide_compose, $__global_Data_Either_either, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-    if ($__num === 1) return function($v, $v1 = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $v, $v1);
-      if ($__num2 === 1) return function($v1) use ($f, $v, &$__fn) { return $__fn($f, $v, $v1); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__case_2 = $v1;
-  if (true) {
-$f1 = $__case_0;
-$g = $__case_1;
-$h = $__case_2;
-$__res = ($__global_Data_Decide_compose)(($__global_Data_Either_either)($g, $h), $f1);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "Divide0" => function($__dollar____unused) use ($divideOp) {
-  $__num = func_num_args();
-  $__res = $divideOp;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Decide_chooseOp'] = __NAMESPACE__ . '\\Data_Decide_chooseOp';
-
-
-
-// Data_Decide_choose
-function Data_Decide_choose($dict) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Decide_choose';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Decide_chooseEquivalence'] = function() { $v = (object)["choose" => (function() {
+  $__fn = function($f, $v = null, $v1 = null, $a = null, $b = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 5) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__case_0 = $dict;
-  if (true) {
-$v = $__case_0;
-$__res = ($v)->choose;
-goto __end;;
+  $v2_0 = ($f)($a);
+  if ((is_object($v2_0) && (($v2_0)->tag === "Left"))) {
+$v3_2 = ($f)($b);
+if ((is_object($v3_2) && (($v3_2)->tag === "Left"))) {
+$__t3 = (($v)(($v2_0)->value0))(($v3_2)->value0);
 } else {
-throw new \Exception("Pattern match failure");
+if ((is_object($v3_2) && (($v3_2)->tag === "Right"))) {
+$__t3 = false;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t3 = null;
 };
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Decide_choose'] = __NAMESPACE__ . '\\Data_Decide_choose';
-
-// Data_Decide_chosen
-function Data_Decide_chosen($dictDecide) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Decide_chosen';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Decide_identity = ($GLOBALS['Data_Decide_identity'] ?? \Data\Decide\phpurs_eval_thunk('Data_Decide_identity'));
-  $__res = (($dictDecide)->choose)($__global_Data_Decide_identity);
+};
+$__t1 = $__t3;
+} else {
+if ((is_object($v2_0) && (($v2_0)->tag === "Right"))) {
+$v3_4 = ($f)($b);
+if ((is_object($v3_4) && (($v3_4)->tag === "Left"))) {
+$__t5 = false;
+} else {
+if ((is_object($v3_4) && (($v3_4)->tag === "Right"))) {
+$__t5 = (($v1)(($v2_0)->value0))(($v3_4)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t5 = null;
+};
+};
+$__t1 = $__t5;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Decide_chosen'] = __NAMESPACE__ . '\\Data_Decide_chosen';
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(), "Divide0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Divide_divideEquivalence'] ?? \PhpursThunks::eval('Data_Divide_divideEquivalence'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Decide_chooseComparison'] = function() { $v = (object)["choose" => (function() {
+  $__fn = function($f, $v = null, $v1 = null, $a = null, $b = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 5) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 5);
+  }
+  $v2_0 = ($f)($a);
+  if ((is_object($v2_0) && (($v2_0)->tag === "Left"))) {
+$v3_2 = ($f)($b);
+if ((is_object($v3_2) && (($v3_2)->tag === "Left"))) {
+$__t3 = (($v)(($v2_0)->value0))(($v3_2)->value0);
+} else {
+if ((is_object($v3_2) && (($v3_2)->tag === "Right"))) {
+$__t3 = new Phpurs_Data0("LT");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t3 = null;
+};
+};
+$__t1 = $__t3;
+} else {
+if ((is_object($v2_0) && (($v2_0)->tag === "Right"))) {
+$v3_4 = ($f)($b);
+if ((is_object($v3_4) && (($v3_4)->tag === "Left"))) {
+$__t5 = new Phpurs_Data0("GT");
+} else {
+if ((is_object($v3_4) && (($v3_4)->tag === "Right"))) {
+$__t5 = (($v1)(($v2_0)->value0))(($v3_4)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t5 = null;
+};
+};
+$__t1 = $__t5;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(), "Divide0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Divide_divideComparison'] ?? \PhpursThunks::eval('Data_Divide_divideComparison'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Decide_choose'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->choose;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Decide_chosen'] = function() { $v = function($dictDecide) {
+  $__num = \func_num_args();
+  $__res = (($dictDecide)->choose)((($GLOBALS['Control_Category_categoryFn'] ?? \PhpursThunks::eval('Control_Category_categoryFn')))->identity);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
 

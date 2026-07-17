@@ -2,14 +2,42 @@
 
 namespace Data\Identity;
 
+// ALL IMPORTS: Control.Alt, Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.Functor, Data.Functor.Invariant, Data.HeytingAlgebra, Data.Identity, Data.Monoid, Data.Newtype, Data.Ord, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Prelude, Prim
+// TO REQUIRE: Control.Alt, Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.Functor, Data.Functor.Invariant, Data.HeytingAlgebra, Data.Identity, Data.Monoid, Data.Newtype, Data.Ord, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Prelude
+require_once __DIR__ . '/../Control.Alt/index.php';
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Comonad/index.php';
+require_once __DIR__ . '/../Control.Extend/index.php';
+require_once __DIR__ . '/../Control.Lazy/index.php';
+require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.CommutativeRing/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.EuclideanRing/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
+require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
+require_once __DIR__ . '/../Data.Identity/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Newtype/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Ring/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Semiring/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,50 +109,83 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Identity_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Identity_newtypeIdentity': $v = (object)["Coercible0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Data_Identity_Identity'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
+  $__res = $x;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_functorIdentity': $v = (object)["map" => (function() {
-  $__fn = function($f, $m = null) use (&$__fn) {
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_showIdentity'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $m;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($v);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = (object)["show" => function($v) use (&$dictShow) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Identity "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)($v)))(")"));
+  goto __end;;
   __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Identity_invariantIdentity': $v = (object)["imap" => \Data\Functor\Invariant\majData_majFunctor_majInvariant_imapmajF(($GLOBALS['Data_Identity_functorIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_functorIdentity')))]; break;
-      case 'Data_Identity_extendIdentity': $v = (object)["extend" => (function() {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_semiringIdentity'] = function() { $v = function($dictSemiring) {
+  $__num = \func_num_args();
+  $__res = $dictSemiring;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_semigroupIdentity'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = $dictSemigroup;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_ringIdentity'] = function() { $v = function($dictRing) {
+  $__num = \func_num_args();
+  $__res = $dictRing;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_ordIdentity'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $__res = $dictOrd;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_newtypeIdentity'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_monoidIdentity'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $__res = $dictMonoid;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_lazyIdentity'] = function() { $v = function($dictLazy) {
+  $__num = \func_num_args();
+  $__res = $dictLazy;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_heytingAlgebraIdentity'] = function() { $v = function($dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = $dictHeytingAlgebra;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_functorIdentity'] = function() { $v = (object)["map" => (function() {
   $__fn = function($f, $m = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
@@ -136,162 +197,166 @@ throw new \Exception("Pattern match failure");
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) {
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_invariantIdentity'] = function() { $v = (object)["imap" => (function() {
+  $__fn = function($f, $v = null, $m = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__global_Data_Identity_functorIdentity = ($GLOBALS['Data_Identity_functorIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_functorIdentity'));
-  $__res = $__global_Data_Identity_functorIdentity;
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ($f)($m);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_extendIdentity'] = function() { $v = (object)["extend" => (function() {
+  $__fn = function($f, $m = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($f)($m);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Identity_functorIdentity'] ?? \PhpursThunks::eval('Data_Identity_functorIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_eq1Identity': $v = (object)["eq1" => function($dictEq) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_euclideanRingIdentity'] = function() { $v = function($dictEuclideanRing) {
+  $__num = \func_num_args();
+  $__res = $dictEuclideanRing;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_eqIdentity'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = $dictEq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_eq1Identity'] = function() { $v = (object)["eq1" => function($dictEq) {
   $__num = \func_num_args();
   $__res = ($dictEq)->eq;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_ord1Identity': $v = (object)["compare1" => function($dictOrd) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_ord1Identity'] = function() { $v = (object)["compare1" => function($dictOrd) {
   $__num = \func_num_args();
   $__res = ($dictOrd)->compare;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Eq10" => function($dollar__unused) {
+}, "Eq10" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_eq1Identity = ($GLOBALS['Data_Identity_eq1Identity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_eq1Identity'));
-  $__res = $__global_Data_Identity_eq1Identity;
+  $__res = ($GLOBALS['Data_Identity_eq1Identity'] ?? \PhpursThunks::eval('Data_Identity_eq1Identity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_comonadIdentity': $v = (object)["extract" => function($v) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_comonadIdentity'] = function() { $v = (object)["extract" => function($v) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $x;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Extend0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Identity_extendIdentity = ($GLOBALS['Data_Identity_extendIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_extendIdentity'));
-  $__res = $__global_Data_Identity_extendIdentity;
+  $__res = $v;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_applyIdentity': $v = (object)["apply" => (function() {
+}, "Extend0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Identity_extendIdentity'] ?? \PhpursThunks::eval('Data_Identity_extendIdentity'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_commutativeRingIdentity'] = function() { $v = function($dictCommutativeRing) {
+  $__num = \func_num_args();
+  $__res = $dictCommutativeRing;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_boundedIdentity'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
+  $__res = $dictBounded;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_booleanAlgebraIdentity'] = function() { $v = function($dictBooleanAlgebra) {
+  $__num = \func_num_args();
+  $__res = $dictBooleanAlgebra;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Identity_applyIdentity'] = function() { $v = (object)["apply" => (function() {
   $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$f = $__case_0;
-$x = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ($v)($v1);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) {
+})(), "Functor0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_functorIdentity = ($GLOBALS['Data_Identity_functorIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_functorIdentity'));
-  $__res = $__global_Data_Identity_functorIdentity;
+  $__res = ($GLOBALS['Data_Identity_functorIdentity'] ?? \PhpursThunks::eval('Data_Identity_functorIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_bindIdentity': $v = (object)["bind" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_bindIdentity'] = function() { $v = (object)["bind" => (function() {
   $__fn = function($v, $f = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $f;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$m = $__case_0;
-$f1 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f1)($m);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ($f)($v);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => function($dollar__unused) {
+})(), "Apply0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_applyIdentity = ($GLOBALS['Data_Identity_applyIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_applyIdentity'));
-  $__res = $__global_Data_Identity_applyIdentity;
+  $__res = ($GLOBALS['Data_Identity_applyIdentity'] ?? \PhpursThunks::eval('Data_Identity_applyIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_applicativeIdentity': $v = (object)["pure" => "\\Data\\Identity\\majData_majIdentity_majIdentity", "Apply0" => function($dollar__unused) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_applicativeIdentity'] = function() { $v = (object)["pure" => ($GLOBALS['Data_Identity_Identity'] ?? \PhpursThunks::eval('Data_Identity_Identity')), "Apply0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_applyIdentity = ($GLOBALS['Data_Identity_applyIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_applyIdentity'));
-  $__res = $__global_Data_Identity_applyIdentity;
+  $__res = ($GLOBALS['Data_Identity_applyIdentity'] ?? \PhpursThunks::eval('Data_Identity_applyIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_monadIdentity': $v = (object)["Applicative0" => function($dollar__unused) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_monadIdentity'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_applicativeIdentity = ($GLOBALS['Data_Identity_applicativeIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_applicativeIdentity'));
-  $__res = $__global_Data_Identity_applicativeIdentity;
+  $__res = ($GLOBALS['Data_Identity_applicativeIdentity'] ?? \PhpursThunks::eval('Data_Identity_applicativeIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Bind1" => function($dollar__unused) {
+}, "Bind1" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_bindIdentity = ($GLOBALS['Data_Identity_bindIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_bindIdentity'));
-  $__res = $__global_Data_Identity_bindIdentity;
+  $__res = ($GLOBALS['Data_Identity_bindIdentity'] ?? \PhpursThunks::eval('Data_Identity_bindIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Identity_altIdentity': $v = (object)["alt" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Identity_altIdentity'] = function() { $v = (object)["alt" => (function() {
   $__fn = function($x, $v = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
@@ -303,275 +368,36 @@ throw new \Exception("Pattern match failure");
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) {
+})(), "Functor0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Identity_functorIdentity = ($GLOBALS['Data_Identity_functorIdentity'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_functorIdentity'));
-  $__res = $__global_Data_Identity_functorIdentity;
+  $__res = ($GLOBALS['Data_Identity_functorIdentity'] ?? \PhpursThunks::eval('Data_Identity_functorIdentity'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
+}]; return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
 
-require_once __DIR__ . '/../Control.Alt/index.php';
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Comonad/index.php';
-require_once __DIR__ . '/../Control.Extend/index.php';
-require_once __DIR__ . '/../Control.Lazy/index.php';
-require_once __DIR__ . '/../Control.Monad/index.php';
-require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.CommutativeRing/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.EuclideanRing/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
-require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
-require_once __DIR__ . '/../Data.Identity/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Newtype/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Ring/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Semiring/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-// Data_Identity_Identity
-function majData_majIdentity_majIdentity($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_majIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_Identity'] = __NAMESPACE__ . '\\majData_majIdentity_majIdentity';
-
-// Data_Identity_showIdentity
-function majData_majIdentity_showmajIdentity($dictShow) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_showmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Identity_append = ($GLOBALS['Data_Identity_append'] ?? \Data\Identity\phpurs_eval_thunk('Data_Identity_append'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Identity_append, $show) {
-  $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Identity_append)("(Identity "))((($__global_Data_Identity_append)(($show)($x)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_showIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_showmajIdentity';
-
-// Data_Identity_semiringIdentity
-function majData_majIdentity_semiringmajIdentity($dictSemiring) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_semiringmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictSemiring;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_semiringIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_semiringmajIdentity';
-
-// Data_Identity_semigroupIdentity
-function majData_majIdentity_semigroupmajIdentity($dictSemigroup) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_semigroupmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictSemigroup;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_semigroupIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_semigroupmajIdentity';
-
-// Data_Identity_ringIdentity
-function majData_majIdentity_ringmajIdentity($dictRing) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_ringmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictRing;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_ringIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_ringmajIdentity';
-
-// Data_Identity_ordIdentity
-function majData_majIdentity_ordmajIdentity($dictOrd) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_ordmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictOrd;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_ordIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_ordmajIdentity';
-
-
-// Data_Identity_monoidIdentity
-function majData_majIdentity_monoidmajIdentity($dictMonoid) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_monoidmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictMonoid;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_monoidIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_monoidmajIdentity';
-
-// Data_Identity_lazyIdentity
-function majData_majIdentity_lazymajIdentity($dictLazy) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_lazymajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictLazy;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_lazyIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_lazymajIdentity';
-
-// Data_Identity_heytingAlgebraIdentity
-function majData_majIdentity_heytingmajAlgebramajIdentity($dictHeytingAlgebra) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_heytingmajAlgebramajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictHeytingAlgebra;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_heytingAlgebraIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_heytingmajAlgebramajIdentity';
 
 
 
 
-// Data_Identity_euclideanRingIdentity
-function majData_majIdentity_euclideanmajRingmajIdentity($dictEuclideanRing) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_euclideanmajRingmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictEuclideanRing;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_euclideanRingIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_euclideanmajRingmajIdentity';
-
-// Data_Identity_eqIdentity
-function majData_majIdentity_eqmajIdentity($dictEq) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_eqmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictEq;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_eqIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_eqmajIdentity';
 
 
 
 
-// Data_Identity_commutativeRingIdentity
-function majData_majIdentity_commutativemajRingmajIdentity($dictCommutativeRing) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_commutativemajRingmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictCommutativeRing;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_commutativeRingIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_commutativemajRingmajIdentity';
 
-// Data_Identity_boundedIdentity
-function majData_majIdentity_boundedmajIdentity($dictBounded) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_boundedmajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictBounded;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_boundedIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_boundedmajIdentity';
 
-// Data_Identity_booleanAlgebraIdentity
-function majData_majIdentity_booleanmajAlgebramajIdentity($dictBooleanAlgebra) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majIdentity_booleanmajAlgebramajIdentity';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictBooleanAlgebra;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Identity_booleanAlgebraIdentity'] = __NAMESPACE__ . '\\majData_majIdentity_booleanmajAlgebramajIdentity';
+
+
+
+
+
+
+
+
+
+
 
 
 

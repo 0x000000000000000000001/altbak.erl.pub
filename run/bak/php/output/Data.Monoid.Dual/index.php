@@ -2,14 +2,30 @@
 
 namespace Data\Monoid\Dual;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Bounded, Data.Eq, Data.Functor, Data.Monoid, Data.Monoid.Dual, Data.Ord, Data.Semigroup, Data.Show, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Bounded, Data.Eq, Data.Functor, Data.Monoid, Data.Monoid.Dual, Data.Ord, Data.Semigroup, Data.Show, Prelude
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Monoid.Dual/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,266 +97,36 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Monoid_Dual_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Monoid_Dual_functorDual': $v = (object)["map" => (function() {
-  $__fn = function($f, $m = null) use (&$__fn) {
+\PhpursThunks::$thunks['Data_Monoid_Dual_Dual'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $m;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($v);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Monoid_Dual_eq1Dual': $v = (object)["eq1" => function($dictEq) {
-  $__num = \func_num_args();
-  $__res = ($dictEq)->eq;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Dual_ord1Dual': $v = (object)["compare1" => function($dictOrd) {
-  $__num = \func_num_args();
-  $__res = ($dictOrd)->compare;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Eq10" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_eq1Dual = ($GLOBALS['Data_Monoid_Dual_eq1Dual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_eq1Dual'));
-  $__res = $__global_Data_Monoid_Dual_eq1Dual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Dual_applyDual': $v = (object)["apply" => (function() {
-  $__fn = function($v, $v1 = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$f = $__case_0;
-$x = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_functorDual = ($GLOBALS['Data_Monoid_Dual_functorDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_functorDual'));
-  $__res = $__global_Data_Monoid_Dual_functorDual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Dual_bindDual': $v = (object)["bind" => (function() {
-  $__fn = function($v, $f = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $f;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-$f1 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f1)($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Apply0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_applyDual = ($GLOBALS['Data_Monoid_Dual_applyDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_applyDual'));
-  $__res = $__global_Data_Monoid_Dual_applyDual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Dual_applicativeDual': $v = (object)["pure" => "\\Data\\Monoid\\Dual\\majData_majMonoid_majDual_majDual", "Apply0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_applyDual = ($GLOBALS['Data_Monoid_Dual_applyDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_applyDual'));
-  $__res = $__global_Data_Monoid_Dual_applyDual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Dual_monadDual': $v = (object)["Applicative0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_applicativeDual = ($GLOBALS['Data_Monoid_Dual_applicativeDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_applicativeDual'));
-  $__res = $__global_Data_Monoid_Dual_applicativeDual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Bind1" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Dual_bindDual = ($GLOBALS['Data_Monoid_Dual_bindDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_bindDual'));
-  $__res = $__global_Data_Monoid_Dual_bindDual;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Monad/index.php';
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Monoid.Dual/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-// Data_Monoid_Dual_Dual
-function majData_majMonoid_majDual_majDual($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_majDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_Dual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_majDual';
-
-// Data_Monoid_Dual_showDual
-function majData_majMonoid_majDual_showmajDual($dictShow) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_showDual'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_showmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Monoid_Dual_append = ($GLOBALS['Data_Monoid_Dual_append'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_append'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Monoid_Dual_append, $show) {
+  $__res = (object)["show" => function($v) use (&$dictShow) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Monoid_Dual_append)("(Dual "))((($__global_Data_Monoid_Dual_append)(($show)($a)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Dual "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)($v)))(")"));
+  goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_showDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_showmajDual';
-
-// Data_Monoid_Dual_semigroupDual
-function majData_majMonoid_majDual_semigroupmajDual($dictSemigroup) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_semigroupDual'] = function() { $v = function($dictSemigroup) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_semigroupmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $append1 = ($dictSemigroup)->append;
-  $__res = (object)["append" => (function() use ($append1) {
-  $__fn = function($v, $v1 = null) use ($append1, &$__fn) {
+  $__res = (object)["append" => (function() use (&$dictSemigroup) {
+  $__fn = function($v, $v1 = null) use (&$dictSemigroup, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-$y = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($append1)($y))($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($dictSemigroup)->append)($v1))($v);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
@@ -348,77 +134,159 @@ throw new \Exception("Pattern match failure");
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_semigroupDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_semigroupmajDual';
-
-// Data_Monoid_Dual_ordDual
-function majData_majMonoid_majDual_ordmajDual($dictOrd) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_ordDual'] = function() { $v = function($dictOrd) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_ordmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $dictOrd;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_ordDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_ordmajDual';
-
-// Data_Monoid_Dual_monoidDual
-function majData_majMonoid_majDual_monoidmajDual($dictMonoid) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_monoidDual'] = function() { $v = function($dictMonoid) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_monoidmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  $__local_var_0 = (($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $semigroupDual1_1 = (object)["append" => (function() use (&$__local_var_0) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Monoid_Dual_semigroupDual = ($GLOBALS['Data_Monoid_Dual_semigroupDual'] ?? \Data\Monoid\Dual\phpurs_eval_thunk('Data_Monoid_Dual_semigroupDual'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $semigroupDual1 = ($__global_Data_Monoid_Dual_semigroupDual)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["mempty" => ($dictMonoid)->mempty, "Semigroup0" => function($dollar__unused) use ($semigroupDual1) {
+  $__res = ((($__local_var_0)->append)($v1))($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["mempty" => ($dictMonoid)->mempty, "Semigroup0" => function($dollar__unused_0) use (&$semigroupDual1_1) {
   $__num = \func_num_args();
-  $__res = $semigroupDual1;
+  $__res = $semigroupDual1_1;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_monoidDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_monoidmajDual';
-
-
-// Data_Monoid_Dual_eqDual
-function majData_majMonoid_majDual_eqmajDual($dictEq) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_functorDual'] = function() { $v = (object)["map" => (function() {
+  $__fn = function($f, $m = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_eqmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
+  $__res = ($f)($m);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_eqDual'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
   $__res = $dictEq;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_eqDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_eqmajDual';
-
-
-
-// Data_Monoid_Dual_boundedDual
-function majData_majMonoid_majDual_boundedmajDual($dictBounded) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_eq1Dual'] = function() { $v = (object)["eq1" => function($dictEq) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majDual_boundedmajDual';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
+  $__res = ($dictEq)->eq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_ord1Dual'] = function() { $v = (object)["compare1" => function($dictOrd) {
+  $__num = \func_num_args();
+  $__res = ($dictOrd)->compare;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Eq10" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_eq1Dual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_eq1Dual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_boundedDual'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
   $__res = $dictBounded;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Dual_boundedDual'] = __NAMESPACE__ . '\\majData_majMonoid_majDual_boundedmajDual';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_applyDual'] = function() { $v = (object)["apply" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($v)($v1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_functorDual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_functorDual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_bindDual'] = function() { $v = (object)["bind" => (function() {
+  $__fn = function($v, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($f)($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_applyDual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_applyDual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_applicativeDual'] = function() { $v = (object)["pure" => ($GLOBALS['Data_Monoid_Dual_Dual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_Dual')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_applyDual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_applyDual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Dual_monadDual'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_applicativeDual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_applicativeDual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Dual_bindDual'] ?? \PhpursThunks::eval('Data_Monoid_Dual_bindDual'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
 
 
 

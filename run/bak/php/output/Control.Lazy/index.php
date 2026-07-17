@@ -2,14 +2,19 @@
 
 namespace Control\Lazy;
 
+// ALL IMPORTS: Control.Lazy, Data.Unit, Prim
+// TO REQUIRE: Control.Lazy, Data.Unit
+require_once __DIR__ . '/../Control.Lazy/index.php';
+require_once __DIR__ . '/../Data.Unit/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,99 +86,41 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Control_Lazy_lazyUnit': $v = (object)["defer" => function($v) {
+\PhpursThunks::$thunks['Control_Lazy_lazyUnit'] = function() { $v = (object)["defer" => function($v) {
   $__num = \func_num_args();
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = $__global_Data_Unit_unit;
+  $__res = ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Lazy_lazyFn': $v = (object)["defer" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Lazy_lazyFn'] = function() { $v = (object)["defer" => (function() {
   $__fn = function($f, $x = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = (($f)($__global_Data_Unit_unit))($x);
+  $__res = (($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))))($x);
   goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})()]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Lazy/index.php';
-require_once __DIR__ . '/../Data.Unit/index.php';
-
-// Control_Lazy_Lazy$Dict
-function majControl_majLazy_majLazydollarmajDict($x) {
+})()]; return $v; };
+\PhpursThunks::$thunks['Control_Lazy_defer'] = function() { $v = function($dict) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majLazy_majLazydollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
+  $__res = ($dict)->defer;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Lazy_LazydollarDict'] = __NAMESPACE__ . '\\majControl_majLazy_majLazydollarmajDict';
-
-
-
-// Control_Lazy_defer
-function majControl_majLazy_defer($dict) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Lazy_fix'] = function() { $v = (function() {
+  $__fn = function($dictLazy, $f = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majLazy_defer';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->defer;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Lazy_defer'] = __NAMESPACE__ . '\\majControl_majLazy_defer';
-
-// Control_Lazy_fix
-function majControl_majLazy_fix($dictLazy, $f = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majLazy_fix';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $defer1 = ($dictLazy)->defer;
-  $go = ($defer1)(function($v) use ($f, &$go) {
+  $go = null;
+  $go = (($dictLazy)->defer)(function($v) use (&$f, &$go) {
   $__num = \func_num_args();
   $__res = ($f)($go);
   goto __end;;
@@ -183,7 +130,14 @@ function majControl_majLazy_fix($dictLazy, $f = null) {
   $__res = $go;
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Lazy_fix'] = __NAMESPACE__ . '\\majControl_majLazy_fix';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
 

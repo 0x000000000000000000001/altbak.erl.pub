@@ -6,7 +6,7 @@ mkdir -p run/bak/es/output-purs run/bak/js/spago
 rm -rf output .spago spago.yaml spago.lock
 ln -s run/bak/es/output-purs output
 ln -s run/bak/js/spago .spago
-ln -s run/bak/js/spago.yaml spago.yaml
+ln -s run/bak/js/spago.js.yaml spago.yaml
 touch run/bak/es/spago.lock && ln -s run/bak/es/spago.lock spago.lock
 
 ENTRY_POINT="App"

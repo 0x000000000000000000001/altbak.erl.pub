@@ -2,14 +2,24 @@
 
 namespace Control\Monad\ST\Class;
 
+// ALL IMPORTS: Control.Category, Control.Monad.ST, Control.Monad.ST.Class, Control.Monad.ST.Global, Control.Monad.ST.Internal, Effect, Prelude, Prim
+// TO REQUIRE: Control.Category, Control.Monad.ST, Control.Monad.ST.Class, Control.Monad.ST.Global, Control.Monad.ST.Internal, Effect, Prelude
+require_once __DIR__ . '/../Control.Category/index.php';
+require_once __DIR__ . '/../Control.Monad.ST/index.php';
+require_once __DIR__ . '/../Control.Monad.ST.Class/index.php';
+require_once __DIR__ . '/../Control.Monad.ST.Global/index.php';
+require_once __DIR__ . '/../Control.Monad.ST.Internal/index.php';
+require_once __DIR__ . '/../Effect/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,86 +91,30 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Control_Monad_ST_Class_monadSTST': $v = (object)["liftST" => (($GLOBALS['Control_Category_categoryFn'] ?? \Control\Category\phpurs_eval_thunk('Control_Category_categoryFn')))->identity, "Monad0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Control_Monad_ST_Class_monadSTST'] = function() { $v = (object)["liftST" => (($GLOBALS['Control_Category_categoryFn'] ?? \PhpursThunks::eval('Control_Category_categoryFn')))->identity, "Monad0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Control_Monad_ST_Internal_monadST = ($GLOBALS['Control_Monad_ST_Internal_monadST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_monadST'));
-  $__res = $__global_Control_Monad_ST_Internal_monadST;
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_monadST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_monadST'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_ST_Class_monadSTEffect': $v = (object)["liftST" => ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \Unsafe\Coerce\phpurs_eval_thunk('Unsafe_Coerce_unsafeCoerce')), "Monad0" => function($dollar__unused) {
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Class_monadSTEffect'] = function() { $v = (object)["liftST" => ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')), "Monad0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Effect_monadEffect = ($GLOBALS['Effect_monadEffect'] ?? \Effect\phpurs_eval_thunk('Effect_monadEffect'));
-  $__res = $__global_Effect_monadEffect;
+  $__res = ($GLOBALS['Effect_monadEffect'] ?? \PhpursThunks::eval('Effect_monadEffect'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Class_liftST'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->liftST;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
 
-require_once __DIR__ . '/../Control.Category/index.php';
-require_once __DIR__ . '/../Control.Monad.ST/index.php';
-require_once __DIR__ . '/../Control.Monad.ST.Class/index.php';
-require_once __DIR__ . '/../Control.Monad.ST.Global/index.php';
-require_once __DIR__ . '/../Control.Monad.ST.Internal/index.php';
-require_once __DIR__ . '/../Effect/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-// Control_Monad_ST_Class_MonadST$Dict
-function majControl_majMonad_majSmajT_majClass_majMonadmajSmajTdollarmajDict($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majSmajT_majClass_majMonadmajSmajTdollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_ST_Class_MonadSTdollarDict'] = __NAMESPACE__ . '\\majControl_majMonad_majSmajT_majClass_majMonadmajSmajTdollarmajDict';
 
 
-
-// Control_Monad_ST_Class_liftST
-function majControl_majMonad_majSmajT_majClass_liftmajSmajT($dict) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majSmajT_majClass_liftmajSmajT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->liftST;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_ST_Class_liftST'] = __NAMESPACE__ . '\\majControl_majMonad_majSmajT_majClass_liftmajSmajT';
 

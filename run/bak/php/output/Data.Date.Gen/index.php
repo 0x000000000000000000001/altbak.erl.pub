@@ -2,6 +2,8 @@
 
 namespace Data\Date\Gen;
 
+// ALL IMPORTS: Control.Applicative, Control.Bind, Control.Monad.Gen, Control.Monad.Gen.Class, Control.Semigroupoid, Data.Bounded, Data.Date, Data.Date.Component, Data.Date.Component.Gen, Data.Function, Data.Functor, Data.Int, Data.Maybe, Data.Time.Duration, Partial.Unsafe, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Bind, Control.Monad.Gen, Control.Monad.Gen.Class, Control.Semigroupoid, Data.Bounded, Data.Date, Data.Date.Component, Data.Date.Component.Gen, Data.Function, Data.Functor, Data.Int, Data.Maybe, Data.Time.Duration, Partial.Unsafe, Prelude
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Control.Monad.Gen/index.php';
@@ -21,23 +23,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -45,12 +47,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -58,13 +60,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -72,118 +74,83 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Date_Gen_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Data_Date_Gen_fromJust': $v = \Data\Maybe\Data_Maybe_fromJust(($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'))); break;
-      case 'Data_Date_Gen_bind': $v = (($GLOBALS['Data_Maybe_bindMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_bindMaybe')))->bind; break;
-      case 'Data_Date_Gen_bottom': $v = ($GLOBALS['Data_Date_Component_January'] ?? \Data\Date\Component\phpurs_eval_thunk('Data_Date_Component_January')); break;
-      case 'Data_Date_Gen_bottom1': $v = (($GLOBALS['Data_Date_Component_boundedDay'] ?? \Data\Date\Component\phpurs_eval_thunk('Data_Date_Component_boundedDay')))->bottom; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-// Data_Date_Gen_genDate
-function Data_Date_Gen_genDate($dictMonadGen) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Date_Gen_genDate';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Date_Component_Gen_genYear = ($GLOBALS['Data_Date_Component_Gen_genYear'] ?? \Data\Date\Component\Gen\phpurs_eval_thunk('Data_Date_Component_Gen_genYear'));
-  $__global_Data_Date_isLeapYear = ($GLOBALS['Data_Date_isLeapYear'] ?? \Data\Date\phpurs_eval_thunk('Data_Date_isLeapYear'));
-  $__global_Data_Date_Gen_compose = ($GLOBALS['Data_Date_Gen_compose'] ?? \Data\Date\Gen\phpurs_eval_thunk('Data_Date_Gen_compose'));
-  $__global_Data_Time_Duration_Days = ($GLOBALS['Data_Time_Duration_Days'] ?? \Data\Time\Duration\phpurs_eval_thunk('Data_Time_Duration_Days'));
-  $__global_Data_Int_toNumber = ($GLOBALS['Data_Int_toNumber'] ?? \Data\Int\phpurs_eval_thunk('Data_Int_toNumber'));
-  $__global_Partial_Unsafe__unsafePartial = ($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \Partial\Unsafe\phpurs_eval_thunk('Partial_Unsafe__unsafePartial'));
-  $__global_Data_Date_Gen_fromJust = ($GLOBALS['Data_Date_Gen_fromJust'] ?? \Data\Date\Gen\phpurs_eval_thunk('Data_Date_Gen_fromJust'));
-  $__global_Data_Date_Gen_bind = ($GLOBALS['Data_Date_Gen_bind'] ?? \Data\Date\Gen\phpurs_eval_thunk('Data_Date_Gen_bind'));
-  $__global_Data_Date_exactDate = ($GLOBALS['Data_Date_exactDate'] ?? \Data\Date\phpurs_eval_thunk('Data_Date_exactDate'));
-  $__global_Data_Date_Component_January = ($GLOBALS['Data_Date_Component_January'] ?? \Data\Date\Component\phpurs_eval_thunk('Data_Date_Component_January'));
-  $__global_Data_Date_Gen_bottom1 = ($GLOBALS['Data_Date_Gen_bottom1'] ?? \Data\Date\Gen\phpurs_eval_thunk('Data_Date_Gen_bottom1'));
-  $__global_Data_Date_adjust = ($GLOBALS['Data_Date_adjust'] ?? \Data\Date\phpurs_eval_thunk('Data_Date_adjust'));
-  $Monad0 = (($dictMonadGen)->Monad0)($__global_Prim_undefined);
-  $Bind1 = (($Monad0)->Bind1)($__global_Prim_undefined);
-  $bind1 = ($Bind1)->bind;
-  $map = ((((($Bind1)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $chooseInt = ($dictMonadGen)->chooseInt;
-  $pure = ((($Monad0)->Applicative0)($__global_Prim_undefined))->pure;
-  $__res = ($bind1)(($__global_Data_Date_Component_Gen_genYear)($dictMonadGen), function($year) use ($__global_Data_Date_isLeapYear, $bind1, $map, $__global_Data_Date_Gen_compose, $__global_Data_Time_Duration_Days, $__global_Data_Int_toNumber, $chooseInt, $pure, $__global_Partial_Unsafe__unsafePartial, $__global_Data_Date_Gen_fromJust, $__global_Data_Date_Gen_bind, $__global_Data_Date_exactDate, $__global_Data_Date_Component_January, $__global_Data_Date_Gen_bottom1, $__global_Data_Date_adjust) {
-  $__num = func_num_args();
-  $__case_0 = ($__global_Data_Date_isLeapYear)($year);
-  $__case_res_0 = null;
-  switch ($__case_0) {
-case true:
-$__case_res_0 = 365;
-break;
-default:
-$__case_res_0 = 364;
-break;
+\PhpursThunks::$thunks['Data_Date_Gen_genDate'] = function() { $v = function($dictMonadGen) {
+  $__num = \func_num_args();
+  $Monad0_0 = (($dictMonadGen)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $Bind1_1 = (($Monad0_0)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = ((($Bind1_1)->bind)((($GLOBALS['Data_Date_Component_Gen_genYear'] ?? \PhpursThunks::eval('Data_Date_Component_Gen_genYear')))($dictMonadGen)))(function($year) use (&$Bind1_1, &$Monad0_0, &$dictMonadGen) {
+  $__num = \func_num_args();
+  if ((($GLOBALS['Data_Date_isLeapYear'] ?? \PhpursThunks::eval('Data_Date_isLeapYear')))($year)) {
+$__t2 = 365;
+} else {
+$__t2 = 364;
 };
-  $maxDays = $__case_res_0;
-  $__res = ($bind1)(($map)(($__global_Data_Date_Gen_compose)($__global_Data_Time_Duration_Days, $__global_Data_Int_toNumber), ($chooseInt)(0, $maxDays)), function($days) use ($pure, $__global_Partial_Unsafe__unsafePartial, $__global_Data_Date_Gen_fromJust, $__global_Data_Date_Gen_bind, $__global_Data_Date_exactDate, $year, $__global_Data_Date_Component_January, $__global_Data_Date_Gen_bottom1, $__global_Data_Date_adjust) {
-  $__num = func_num_args();
-  $__res = ($pure)(($__global_Partial_Unsafe__unsafePartial)(function($__dollar____unused) use ($__global_Data_Date_Gen_fromJust, $__global_Data_Date_Gen_bind, $__global_Data_Date_exactDate, $year, $__global_Data_Date_Component_January, $__global_Data_Date_Gen_bottom1, $__global_Data_Date_adjust, $days) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Date_Gen_fromJust)(($__global_Data_Date_Gen_bind)(($__global_Data_Date_exactDate)($year, $__global_Data_Date_Component_January, $__global_Data_Date_Gen_bottom1), function($janFirst) use ($__global_Data_Date_adjust, $days) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Date_adjust)($days, $janFirst);
+  $__res = ((($Bind1_1)->bind)(((((((($Bind1_1)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Time_Duration_Days'] ?? \PhpursThunks::eval('Data_Time_Duration_Days'))))(($GLOBALS['Data_Int_toNumber'] ?? \PhpursThunks::eval('Data_Int_toNumber')))))(((($dictMonadGen)->chooseInt)(0))($__t2))))(function($days) use (&$Monad0_0, &$year) {
+  $__num = \func_num_args();
+  $__res = (((($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)((($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \PhpursThunks::eval('Partial_Unsafe__unsafePartial')))(function($dollar__unused_0) use (&$days, &$year) {
+  $__num = \func_num_args();
+  $__local_var_3 = (((($GLOBALS['Data_Date_exactDate'] ?? \PhpursThunks::eval('Data_Date_exactDate')))($year))(new Phpurs_Data0("January")))(1);
+  if ((is_object($__local_var_3) && (($__local_var_3)->tag === "Just"))) {
+$__t4 = ((($GLOBALS['Data_Date_adjust'] ?? \PhpursThunks::eval('Data_Date_adjust')))($days))(($__local_var_3)->value0);
+} else {
+if ((is_object($__local_var_3) && (($__local_var_3)->tag === "Nothing"))) {
+$__t4 = new Phpurs_Data0("Nothing");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t4 = null;
+};
+};
+  $__local_var_5 = $__t4;
+  if ((is_object($__local_var_5) && (($__local_var_5)->tag === "Just"))) {
+$__t6 = ($__local_var_5)->value0;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t6 = null;
+};
+  $__res = $__t6;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Date_Gen_genDate'] = __NAMESPACE__ . '\\Data_Date_Gen_genDate';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
 

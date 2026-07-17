@@ -2,6 +2,9 @@
 
 namespace Data\EuclideanRing;
 
+// ALL IMPORTS: Data.BooleanAlgebra, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.HeytingAlgebra, Data.Ring, Data.Semiring, Prim
+// TO REQUIRE: Data.BooleanAlgebra, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.HeytingAlgebra, Data.Ring, Data.Semiring
+require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
 require_once __DIR__ . '/../Data.CommutativeRing/index.php';
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.EuclideanRing/index.php';
@@ -11,23 +14,23 @@ require_once __DIR__ . '/../Data.Semiring/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -35,12 +38,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -48,13 +51,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -62,50 +65,152 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_EuclideanRing_euclideanRingInt': $v = (object)["degree" => ($GLOBALS['Data_EuclideanRing_intDegree'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intDegree')), "div" => ($GLOBALS['Data_EuclideanRing_intDiv'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intDiv')), "mod" => ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod')), "CommutativeRing0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_CommutativeRing_commutativeRingInt = ($GLOBALS['Data_CommutativeRing_commutativeRingInt'] ?? \Data\CommutativeRing\phpurs_eval_thunk('Data_CommutativeRing_commutativeRingInt'));
-  $__res = $__global_Data_CommutativeRing_commutativeRingInt;
+\PhpursThunks::$thunks['Data_EuclideanRing_mod'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->mod;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_gcd'] = function() { $v = (function() {
+  $__fn = function($dictEq, $dictEuclideanRing = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  $zero_0 = ((((((($dictEuclideanRing)->CommutativeRing0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->zero;
+  $__res = (function() use (&$dictEq, &$dictEuclideanRing, &$zero_0) {
+  $__fn = function($a, $b = null) use (&$dictEq, &$dictEuclideanRing, &$zero_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if (((($dictEq)->eq)($b))($zero_0)) {
+$__t1 = $a;
+} else {
+$__t1 = ((((($GLOBALS['Data_EuclideanRing_gcd'] ?? \PhpursThunks::eval('Data_EuclideanRing_gcd')))($dictEq))($dictEuclideanRing))($b))(((($dictEuclideanRing)->mod)($a))($b));
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_euclideanRingNumber'] = function() { $v = (object)["degree" => function($v) {
+  $__num = \func_num_args();
+  $__res = 1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "div" => ($GLOBALS['Data_EuclideanRing_numDiv'] ?? \PhpursThunks::eval('Data_EuclideanRing_numDiv')), "mod" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = 0.0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "CommutativeRing0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_CommutativeRing_commutativeRingNumber'] ?? \PhpursThunks::eval('Data_CommutativeRing_commutativeRingNumber'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_euclideanRingInt'] = function() { $v = (object)["degree" => ($GLOBALS['Data_EuclideanRing_intDegree'] ?? \PhpursThunks::eval('Data_EuclideanRing_intDegree')), "div" => ($GLOBALS['Data_EuclideanRing_intDiv'] ?? \PhpursThunks::eval('Data_EuclideanRing_intDiv')), "mod" => ($GLOBALS['Data_EuclideanRing_intMod'] ?? \PhpursThunks::eval('Data_EuclideanRing_intMod')), "CommutativeRing0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_CommutativeRing_commutativeRingInt'] ?? \PhpursThunks::eval('Data_CommutativeRing_commutativeRingInt'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_div'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->div;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_lcm'] = function() { $v = (function() {
+  $__fn = function($dictEq, $dictEuclideanRing = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $Semiring0_0 = (((((($dictEuclideanRing)->CommutativeRing0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $zero_1 = ($Semiring0_0)->zero;
+  $gcd2_2 = ((($GLOBALS['Data_EuclideanRing_gcd'] ?? \PhpursThunks::eval('Data_EuclideanRing_gcd')))($dictEq))($dictEuclideanRing);
+  $__res = (function() use (&$Semiring0_0, &$dictEq, &$dictEuclideanRing, &$gcd2_2, &$zero_1) {
+  $__fn = function($a, $b = null) use (&$Semiring0_0, &$dictEq, &$dictEuclideanRing, &$gcd2_2, &$zero_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if (((($GLOBALS['Data_HeytingAlgebra_boolDisj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolDisj')))(((($dictEq)->eq)($a))($zero_1)))(((($dictEq)->eq)($b))($zero_1))) {
+$__t3 = $zero_1;
+} else {
+$__t3 = ((($dictEuclideanRing)->div)(((($Semiring0_0)->mul)($a))($b)))((($gcd2_2)($a))($b));
+};
+  $__res = $__t3;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_EuclideanRing_degree'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->degree;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Data_EuclideanRing = \call_user_func(function() {
+  $exports = [];
 $intDegree = function($x) use (&$intDegree) { return abs($x); };
 $intDiv = function($x, $y = null) use (&$intDiv) {
     if (\func_num_args() < 2) {
@@ -143,65 +248,18 @@ $exports['intDiv'] = $intDiv;
 $exports['intMod'] = $intMod;
 $exports['numDiv'] = $numDiv;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Data_EuclideanRing_intDegree'] = $ffi_Data_EuclideanRing['intDegree'] ?? null;
-$GLOBALS['Data_EuclideanRing_intDiv'] = $ffi_Data_EuclideanRing['intDiv'] ?? null;
-$GLOBALS['Data_EuclideanRing_intMod'] = $ffi_Data_EuclideanRing['intMod'] ?? null;
-$GLOBALS['Data_EuclideanRing_numDiv'] = $ffi_Data_EuclideanRing['numDiv'] ?? null;
+\PhpursThunks::$thunks['Data_EuclideanRing_intDegree'] = function() use (&$ffi_Data_EuclideanRing) { return $ffi_Data_EuclideanRing['intDegree']; };
+\PhpursThunks::$thunks['Data_EuclideanRing_intDiv'] = function() use (&$ffi_Data_EuclideanRing) { return $ffi_Data_EuclideanRing['intDiv']; };
+\PhpursThunks::$thunks['Data_EuclideanRing_intMod'] = function() use (&$ffi_Data_EuclideanRing) { return $ffi_Data_EuclideanRing['intMod']; };
+\PhpursThunks::$thunks['Data_EuclideanRing_numDiv'] = function() use (&$ffi_Data_EuclideanRing) { return $ffi_Data_EuclideanRing['numDiv']; };
 
 
-// Data_EuclideanRing_EuclideanRing$Dict
-function Data_EuclideanRing_EuclideanRing__dollar__Dict($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_EuclideanRing_EuclideanRing__dollar__Dict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_EuclideanRing_EuclideanRing__dollar__Dict'] = __NAMESPACE__ . '\\Data_EuclideanRing_EuclideanRing__dollar__Dict';
-
-// Data_EuclideanRing_mod
-function Data_EuclideanRing_mod($dict) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_EuclideanRing_mod';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  if (true) {
-$v = $__case_0;
-$__res = ($v)->mod;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_EuclideanRing_mod'] = __NAMESPACE__ . '\\Data_EuclideanRing_mod';
 
 
-// Data_EuclideanRing_div
-function Data_EuclideanRing_div($dict) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_EuclideanRing_div';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  if (true) {
-$v = $__case_0;
-$__res = ($v)->div;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_EuclideanRing_div'] = __NAMESPACE__ . '\\Data_EuclideanRing_div';
+
+
+
+
 

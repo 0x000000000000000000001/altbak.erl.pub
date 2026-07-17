@@ -2,6 +2,8 @@
 
 namespace Test\StringOps;
 
+// ALL IMPORTS: Data.Array, Data.Either, Data.Function, Data.Maybe, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.String, Data.String.CodePoints, Data.String.Common, Data.String.Pattern, Data.String.Regex, Data.String.Regex.Flags, Effect, Effect.Console, Partial.Unsafe, Prelude, Prim, Test.StringOps
+// TO REQUIRE: Data.Array, Data.Either, Data.Function, Data.Maybe, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.String, Data.String.CodePoints, Data.String.Common, Data.String.Pattern, Data.String.Regex, Data.String.Regex.Flags, Effect, Effect.Console, Partial.Unsafe, Prelude, Test.StringOps
 require_once __DIR__ . '/../Data.Array/index.php';
 require_once __DIR__ . '/../Data.Either/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
@@ -10,6 +12,7 @@ require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Data.String/index.php';
 require_once __DIR__ . '/../Data.String.CodePoints/index.php';
 require_once __DIR__ . '/../Data.String.Common/index.php';
 require_once __DIR__ . '/../Data.String.Pattern/index.php';
@@ -18,27 +21,28 @@ require_once __DIR__ . '/../Data.String.Regex.Flags/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.StringOps/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -46,12 +50,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -59,13 +63,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -73,149 +77,82 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Test_StringOps_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Test_StringOps_show': $v = ($GLOBALS['Data_Show_showIntImpl'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showIntImpl')); break;
-      case 'Test_StringOps_add': $v = ($GLOBALS['Data_Semiring_intAdd'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intAdd')); break;
-      case 'Test_StringOps_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
-      case 'Test_StringOps_regexPattern': $v = (($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \Partial\Unsafe\phpurs_eval_thunk('Partial_Unsafe__unsafePartial')))(function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_String_Regex_regex = ($GLOBALS['Data_String_Regex_regex'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_regex'));
-  $__global_Data_String_Regex_Flags_noFlags = ($GLOBALS['Data_String_Regex_Flags_noFlags'] ?? \Data\String\Regex\Flags\phpurs_eval_thunk('Data_String_Regex_Flags_noFlags'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = (function($__dollar____unused) use ($__global_Data_String_Regex_regex, $__global_Data_String_Regex_Flags_noFlags) {
-  $__num = func_num_args();
-  $v = ($__global_Data_String_Regex_regex)("(hello|world)[0-9]+", $__global_Data_String_Regex_Flags_noFlags);
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Right":
-$r = ($__case_0)->v0;
-$__res = $r;
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+\PhpursThunks::$thunks['Test_StringOps_regexPattern'] = function() { $v = (($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \PhpursThunks::eval('Partial_Unsafe__unsafePartial')))(function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__local_var_0 = ((((($GLOBALS['Data_String_Regex_regexImpl'] ?? \PhpursThunks::eval('Data_String_Regex_regexImpl')))(($GLOBALS['Data_Either_Left'] ?? \PhpursThunks::eval('Data_Either_Left'))))(($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right'))))("(hello|world)[0-9]+"))((($GLOBALS['Data_String_Regex_renderFlags'] ?? \PhpursThunks::eval('Data_String_Regex_renderFlags')))(($GLOBALS['Data_String_Regex_Flags_noFlags'] ?? \PhpursThunks::eval('Data_String_Regex_Flags_noFlags'))));
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Right"))) {
+$__t1 = ($__local_var_0)->value0;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-})($__global_Prim_undefined);
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}); break;
-      case 'Test_StringOps_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("String Operations (1k Regex/Split):"); break;
-      case 'Test_StringOps_act': $v = \Effect\Console\Effect_Console_logShow(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), \Test\StringOps\Test_StringOps_runStringOps(1000)); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-// Test_StringOps_runStringOps
-function Test_StringOps_runStringOps($n) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StringOps_runStringOps';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Test_StringOps_append = ($GLOBALS['Test_StringOps_append'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_append'));
-  $__global_Test_StringOps_show = ($GLOBALS['Test_StringOps_show'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_show'));
-  $__global_Test_StringOps_add = ($GLOBALS['Test_StringOps_add'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_add'));
-  $__global_Data_String_Regex_replace = ($GLOBALS['Data_String_Regex_replace'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_replace'));
-  $__global_Test_StringOps_regexPattern = ($GLOBALS['Test_StringOps_regexPattern'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_regexPattern'));
-  $__global_Data_String_Common_split = ($GLOBALS['Data_String_Common_split'] ?? \Data\String\Common\phpurs_eval_thunk('Data_String_Common_split'));
-  $__global_Test_StringOps_sub = ($GLOBALS['Test_StringOps_sub'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_sub'));
-  $__global_Data_String_CodePoints_take = ($GLOBALS['Data_String_CodePoints_take'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_take'));
-  $__global_Data_Array_length = ($GLOBALS['Data_Array_length'] ?? \Data\Array\phpurs_eval_thunk('Data_Array_length'));
-  $loop = (function() use ($__global_Test_StringOps_append, $__global_Test_StringOps_show, $__global_Test_StringOps_add, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Test_StringOps_sub, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
-  $__fn = function($v, $v1 = null, $v2 = null) use ($__global_Test_StringOps_append, $__global_Test_StringOps_show, $__global_Test_StringOps_add, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Test_StringOps_sub, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}); return $v; };
+\PhpursThunks::$thunks['Test_StringOps_runStringOps'] = function() { $v = function($n) {
+  $__num = \func_num_args();
+  $loop = null;
+  $loop = (function() use (&$loop) {
+  $__fn = function($v, $v1 = null, $v2 = null) use (&$loop, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 3) {
-    if ($__num === 2) return function($v2) use ($v, $v1, &$__fn) { return $__fn($v, $v1, $v2); };
-    if ($__num === 1) return function($v1, $v2 = null) use ($v, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($v, $v1, $v2);
-      if ($__num2 === 1) return function($v2) use ($v, $v1, &$__fn) { return $__fn($v, $v1, $v2); };
-      return phpurs_curry_fallback($__fn, [$v], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-$__case_2 = $v2;
-switch ($__case_0) {
+  switch ($v) {
 case 0:
-$acc = $__case_2;
-$__res = $acc;
-goto __end;;
+$__t1 = $v2;
 break;
 default:
-$i = $__case_0;
-$s = $__case_1;
-$acc = $__case_2;
-$concatted = ($__global_Test_StringOps_append)($s, ($__global_Test_StringOps_append)(($__global_Test_StringOps_show)($i), ($__global_Test_StringOps_append)("world", ($__global_Test_StringOps_show)(($__global_Test_StringOps_add)($i, 1)))));
-$replaced = ($__global_Data_String_Regex_replace)($__global_Test_StringOps_regexPattern, "matched", $concatted);
-$splitted = ($__global_Data_String_Common_split)("e", $replaced);
-$__tco_tmp_0 = ($__global_Test_StringOps_sub)($i, 1);
-$__tco_tmp_1 = ($__global_Data_String_CodePoints_take)(10, $concatted);
-$__tco_tmp_2 = ($__global_Test_StringOps_add)($acc, ($__global_Data_Array_length)($splitted));
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-$v2 = $__tco_tmp_2;
-continue 2;
+$concatted_0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($v1))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_Show_showIntImpl'] ?? \PhpursThunks::eval('Data_Show_showIntImpl')))($v)))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("world"))((($GLOBALS['Data_Show_showIntImpl'] ?? \PhpursThunks::eval('Data_Show_showIntImpl')))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($v))(1)))));
+$__t1 = ((($loop)(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1)))(((($GLOBALS['Data_String_CodePoints_take'] ?? \PhpursThunks::eval('Data_String_CodePoints_take')))(10))($concatted_0)))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($v2))((($GLOBALS['Data_Array_length'] ?? \PhpursThunks::eval('Data_Array_length')))(((($GLOBALS['Data_String_Common_split'] ?? \PhpursThunks::eval('Data_String_Common_split')))("e"))((((($GLOBALS['Data_String_Regex_replace'] ?? \PhpursThunks::eval('Data_String_Regex_replace')))(($GLOBALS['Test_StringOps_regexPattern'] ?? \PhpursThunks::eval('Test_StringOps_regexPattern'))))("matched"))($concatted_0)))));
 break;
 };
-};
-  $__res = null;
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
 })();
-  $__res = ($loop)($n, "hello", 0);
+  $__res = ((($loop)($n))("hello"))(0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_StringOps_runStringOps'] = __NAMESPACE__ . '\\Test_StringOps_runStringOps';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_StringOps_describe'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))("String Operations (1k Regex/Split):"); return $v; };
+\PhpursThunks::$thunks['Test_StringOps_act'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))((($GLOBALS['Data_Show_showIntImpl'] ?? \PhpursThunks::eval('Data_Show_showIntImpl')))((($GLOBALS['Test_StringOps_runStringOps'] ?? \PhpursThunks::eval('Test_StringOps_runStringOps')))(1000))); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
 
 
 

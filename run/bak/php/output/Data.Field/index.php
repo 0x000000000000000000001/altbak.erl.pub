@@ -2,14 +2,23 @@
 
 namespace Data\Field;
 
+// ALL IMPORTS: Data.CommutativeRing, Data.DivisionRing, Data.EuclideanRing, Data.Field, Data.Ring, Data.Semiring, Prim
+// TO REQUIRE: Data.CommutativeRing, Data.DivisionRing, Data.EuclideanRing, Data.Field, Data.Ring, Data.Semiring
+require_once __DIR__ . '/../Data.CommutativeRing/index.php';
+require_once __DIR__ . '/../Data.DivisionRing/index.php';
+require_once __DIR__ . '/../Data.EuclideanRing/index.php';
+require_once __DIR__ . '/../Data.Field/index.php';
+require_once __DIR__ . '/../Data.Ring/index.php';
+require_once __DIR__ . '/../Data.Semiring/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,56 +90,19 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Data.CommutativeRing/index.php';
-require_once __DIR__ . '/../Data.DivisionRing/index.php';
-require_once __DIR__ . '/../Data.EuclideanRing/index.php';
-require_once __DIR__ . '/../Data.Field/index.php';
-require_once __DIR__ . '/../Data.Ring/index.php';
-require_once __DIR__ . '/../Data.Semiring/index.php';
-
-// Data_Field_Field$Dict
-function majData_majField_majFielddollarmajDict($x) {
+\PhpursThunks::$thunks['Data_Field_field'] = function() { $v = (function() {
+  $__fn = function($dictEuclideanRing, $dictDivisionRing = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majField_majFielddollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Field_FielddollarDict'] = __NAMESPACE__ . '\\majData_majField_majFielddollarmajDict';
-
-// Data_Field_field
-function majData_majField_field($dictEuclideanRing, $dictDivisionRing = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majField_field';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = (object)["EuclideanRing0" => function($dollar__unused) use ($dictEuclideanRing) {
+  $__res = (object)["EuclideanRing0" => function($dollar__unused_0) use (&$dictEuclideanRing) {
   $__num = \func_num_args();
   $__res = $dictEuclideanRing;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "DivisionRing1" => function($dollar__unused) use ($dictDivisionRing) {
+}, "DivisionRing1" => function($dollar__unused_0) use (&$dictDivisionRing) {
   $__num = \func_num_args();
   $__res = $dictDivisionRing;
   goto __end;;
@@ -139,7 +111,11 @@ function majData_majField_field($dictEuclideanRing, $dictDivisionRing = null) {
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Field_field'] = __NAMESPACE__ . '\\majData_majField_field';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
 

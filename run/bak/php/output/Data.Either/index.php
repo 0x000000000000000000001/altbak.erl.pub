@@ -2,9 +2,13 @@
 
 namespace Data\Either;
 
+// ALL IMPORTS: Control.Alt, Control.Applicative, Control.Apply, Control.Bind, Control.Extend, Control.Monad, Control.Semigroupoid, Data.Bounded, Data.Either, Data.Eq, Data.Function, Data.Functor, Data.Functor.Invariant, Data.Generic.Rep, Data.Maybe, Data.Ord, Data.Ordering, Data.Semigroup, Data.Show, Data.Unit, Prelude, Prim
+// TO REQUIRE: Control.Alt, Control.Applicative, Control.Apply, Control.Bind, Control.Extend, Control.Monad, Control.Semigroupoid, Data.Bounded, Data.Either, Data.Eq, Data.Function, Data.Functor, Data.Functor.Invariant, Data.Generic.Rep, Data.Maybe, Data.Ord, Data.Ordering, Data.Semigroup, Data.Show, Data.Unit, Prelude
+require_once __DIR__ . '/../Control.Alt/index.php';
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Extend/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Bounded/index.php';
@@ -12,32 +16,35 @@ require_once __DIR__ . '/../Data.Either/index.php';
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
+require_once __DIR__ . '/../Data.Generic.Rep/index.php';
 require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
 require_once __DIR__ . '/../Data.Ordering/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -45,12 +52,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -58,13 +65,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -72,69 +79,765 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-// Data_Either_Left
-function Data_Either_Left($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Either_Left';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+\PhpursThunks::$thunks['Data_Either_Left'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
   $__res = new Phpurs_Data1("Left", $value0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Either_Left'] = __NAMESPACE__ . '\\Data_Either_Left';
-
-// Data_Either_Right
-function Data_Either_Right($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Either_Right';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_Right'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
   $__res = new Phpurs_Data1("Right", $value0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Either_Right'] = __NAMESPACE__ . '\\Data_Either_Right';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_showEither'] = function() { $v = (function() {
+  $__fn = function($dictShow, $dictShow1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["show" => function($v) use (&$dictShow, &$dictShow1) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Left"))) {
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Left "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)(($v)->value0)))(")"));
+} else {
+if ((is_object($v) && (($v)->tag === "Right"))) {
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Right "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow1)->show)(($v)->value0)))(")"));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_note__prime__'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Maybe_maybe__prime__'] ?? \PhpursThunks::eval('Data_Maybe_maybe__prime__')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Either_Left'] ?? \PhpursThunks::eval('Data_Either_Left'))))($f)))(($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right')));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_note'] = function() { $v = (function() {
+  $__fn = function($a, $v2 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v2) && (($v2)->tag === "Nothing"))) {
+$__t0 = new Phpurs_Data1("Left", $a);
+} else {
+if ((is_object($v2) && (($v2)->tag === "Just"))) {
+$__t0 = new Phpurs_Data1("Right", ($v2)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_genericEither'] = function() { $v = (object)["to" => function($x) {
+  $__num = \func_num_args();
+  if ((is_object($x) && (($x)->tag === "Inl"))) {
+$__t0 = new Phpurs_Data1("Left", ($x)->value0);
+} else {
+if ((is_object($x) && (($x)->tag === "Inr"))) {
+$__t0 = new Phpurs_Data1("Right", ($x)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "from" => function($x) {
+  $__num = \func_num_args();
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t1 = new Phpurs_Data1("Inl", ($x)->value0);
+} else {
+if ((is_object($x) && (($x)->tag === "Right"))) {
+$__t1 = new Phpurs_Data1("Inr", ($x)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_functorEither'] = function() { $v = (object)["map" => (function() {
+  $__fn = function($f, $m = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($m) && (($m)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Left", ($m)->value0);
+} else {
+if ((is_object($m) && (($m)->tag === "Right"))) {
+$__t0 = new Phpurs_Data1("Right", ($f)(($m)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Either_invariantEither'] = function() { $v = (object)["imap" => (function() {
+  $__fn = function($f, $v = null, $m = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  if ((is_object($m) && (($m)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Left", ($m)->value0);
+} else {
+if ((is_object($m) && (($m)->tag === "Right"))) {
+$__t0 = new Phpurs_Data1("Right", ($f)(($m)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Either_fromRight__prime__'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Right"))) {
+$__t0 = ($v1)->value0;
+} else {
+$__t0 = ($v)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_fromRight'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Right"))) {
+$__t0 = ($v1)->value0;
+} else {
+$__t0 = $v;
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_fromLeft__prime__'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Left"))) {
+$__t0 = ($v1)->value0;
+} else {
+$__t0 = ($v)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_fromLeft'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Left"))) {
+$__t0 = ($v1)->value0;
+} else {
+$__t0 = $v;
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_extendEither'] = function() { $v = (object)["extend" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Left", ($v1)->value0);
+} else {
+$__t0 = new Phpurs_Data1("Right", ($v)($v1));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_functorEither'] ?? \PhpursThunks::eval('Data_Either_functorEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_eqEither'] = function() { $v = (function() {
+  $__fn = function($dictEq, $dictEq1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["eq" => (function() use (&$dictEq, &$dictEq1) {
+  $__fn = function($x, $y = null) use (&$dictEq, &$dictEq1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t0 = ((is_object($y) && (($y)->tag === "Left")) && ((($dictEq)->eq)(($x)->value0))(($y)->value0));
+} else {
+$__t0 = ((is_object($x) && (($x)->tag === "Right")) && ((is_object($y) && (($y)->tag === "Right")) && ((($dictEq1)->eq)(($x)->value0))(($y)->value0)));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_ordEither'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = function($dictOrd1) use (&$__local_var_0, &$dictOrd) {
+  $__num = \func_num_args();
+  $__local_var_1 = (($dictOrd1)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $eqEither2_3 = (object)["eq" => (function() use (&$__local_var_0, &$__local_var_1) {
+  $__fn = function($x, $y = null) use (&$__local_var_0, &$__local_var_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t2 = ((is_object($y) && (($y)->tag === "Left")) && ((($__local_var_0)->eq)(($x)->value0))(($y)->value0));
+} else {
+$__t2 = ((is_object($x) && (($x)->tag === "Right")) && ((is_object($y) && (($y)->tag === "Right")) && ((($__local_var_1)->eq)(($x)->value0))(($y)->value0)));
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["compare" => (function() use (&$dictOrd, &$dictOrd1) {
+  $__fn = function($x, $y = null) use (&$dictOrd, &$dictOrd1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+if ((is_object($y) && (($y)->tag === "Left"))) {
+$__t5 = ((($dictOrd)->compare)(($x)->value0))(($y)->value0);
+} else {
+$__t5 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t5;
+} else {
+if ((is_object($y) && (($y)->tag === "Left"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if (((is_object($x) && (($x)->tag === "Right")) && (is_object($y) && (($y)->tag === "Right")))) {
+$__t4 = ((($dictOrd1)->compare)(($x)->value0))(($y)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t4 = null;
+};
+};
+};
+  $__res = $__t4;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) use (&$eqEither2_3) {
+  $__num = \func_num_args();
+  $__res = $eqEither2_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_eq1Either'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = (object)["eq1" => (function() use (&$dictEq) {
+  $__fn = function($dictEq1, $x = null, $y = null) use (&$dictEq, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t0 = ((is_object($y) && (($y)->tag === "Left")) && ((($dictEq)->eq)(($x)->value0))(($y)->value0));
+} else {
+$__t0 = ((is_object($x) && (($x)->tag === "Right")) && ((is_object($y) && (($y)->tag === "Right")) && ((($dictEq1)->eq)(($x)->value0))(($y)->value0)));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_ord1Either'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $ordEither1_0 = (($GLOBALS['Data_Either_ordEither'] ?? \PhpursThunks::eval('Data_Either_ordEither')))($dictOrd);
+  $__local_var_1 = (($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $eq1Either1_3 = (object)["eq1" => (function() use (&$__local_var_1) {
+  $__fn = function($dictEq1, $x = null, $y = null) use (&$__local_var_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t2 = ((is_object($y) && (($y)->tag === "Left")) && ((($__local_var_1)->eq)(($x)->value0))(($y)->value0));
+} else {
+$__t2 = ((is_object($x) && (($x)->tag === "Right")) && ((is_object($y) && (($y)->tag === "Right")) && ((($dictEq1)->eq)(($x)->value0))(($y)->value0)));
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["compare1" => function($dictOrd1) use (&$ordEither1_0) {
+  $__num = \func_num_args();
+  $__res = (($ordEither1_0)($dictOrd1))->compare;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Eq10" => function($dollar__unused_0) use (&$eq1Either1_3) {
+  $__num = \func_num_args();
+  $__res = $eq1Either1_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_either'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null, $v2 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = ($v)(($v2)->value0);
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = ($v1)(($v2)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Either_hush'] = function() { $v = function($v2) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = new Phpurs_Data0("Nothing");
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = new Phpurs_Data1("Just", ($v2)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_isLeft'] = function() { $v = function($v2) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = true;
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = false;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_isRight'] = function() { $v = function($v2) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = false;
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = true;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_choose'] = function() { $v = function($dictAlt) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictAlt)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_0, &$dictAlt) {
+  $__fn = function($a, $b = null) use (&$__local_var_0, &$dictAlt, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictAlt)->alt)(((($__local_var_0)->map)(($GLOBALS['Data_Either_Left'] ?? \PhpursThunks::eval('Data_Either_Left'))))($a)))(((($__local_var_0)->map)(($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right'))))($b));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_boundedEither'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
+  $bottom_0 = ($dictBounded)->bottom;
+  $ordEither1_1 = (($GLOBALS['Data_Either_ordEither'] ?? \PhpursThunks::eval('Data_Either_ordEither')))((($dictBounded)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictBounded1) use (&$bottom_0, &$ordEither1_1) {
+  $__num = \func_num_args();
+  $ordEither2_2 = ($ordEither1_1)((($dictBounded1)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["top" => new Phpurs_Data1("Right", ($dictBounded1)->top), "bottom" => new Phpurs_Data1("Left", $bottom_0), "Ord0" => function($dollar__unused_0) use (&$ordEither2_2) {
+  $__num = \func_num_args();
+  $__res = $ordEither2_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_blush'] = function() { $v = function($v2) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Just", ($v2)->value0);
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__t0 = new Phpurs_Data0("Nothing");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_applyEither'] = function() { $v = (object)["apply" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Left", ($v)->value0);
+} else {
+if ((is_object($v) && (($v)->tag === "Right"))) {
+if ((is_object($v1) && (($v1)->tag === "Left"))) {
+$__t1 = new Phpurs_Data1("Left", ($v1)->value0);
+} else {
+if ((is_object($v1) && (($v1)->tag === "Right"))) {
+$__t1 = new Phpurs_Data1("Right", (($v)->value0)(($v1)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+$__t0 = $__t1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_functorEither'] ?? \PhpursThunks::eval('Data_Either_functorEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_bindEither'] = function() { $v = (object)["bind" => function($v2) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Left"))) {
+$__local_var_1 = ($v2)->value0;
+$__t0 = function($v) use (&$__local_var_1) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data1("Left", $__local_var_1);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+} else {
+if ((is_object($v2) && (($v2)->tag === "Right"))) {
+$__local_var_2 = ($v2)->value0;
+$__t0 = function($f) use (&$__local_var_2) {
+  $__num = \func_num_args();
+  $__res = ($f)($__local_var_2);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_applyEither'] ?? \PhpursThunks::eval('Data_Either_applyEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_semigroupEither'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => (function() use (&$dictSemigroup) {
+  $__fn = function($x, $y = null) use (&$dictSemigroup, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "Left"))) {
+$__t0 = new Phpurs_Data1("Left", ($x)->value0);
+} else {
+if ((is_object($x) && (($x)->tag === "Right"))) {
+if ((is_object($y) && (($y)->tag === "Left"))) {
+$__t1 = new Phpurs_Data1("Left", ($y)->value0);
+} else {
+if ((is_object($y) && (($y)->tag === "Right"))) {
+$__t1 = new Phpurs_Data1("Right", ((($dictSemigroup)->append)(($x)->value0))(($y)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+$__t0 = $__t1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Either_applicativeEither'] = function() { $v = (object)["pure" => ($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_applyEither'] ?? \PhpursThunks::eval('Data_Either_applyEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_monadEither'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_applicativeEither'] ?? \PhpursThunks::eval('Data_Either_applicativeEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_bindEither'] ?? \PhpursThunks::eval('Data_Either_bindEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Either_altEither'] = function() { $v = (object)["alt" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Left"))) {
+$__t0 = $v1;
+} else {
+$__t0 = $v;
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Either_functorEither'] ?? \PhpursThunks::eval('Data_Either_functorEither'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

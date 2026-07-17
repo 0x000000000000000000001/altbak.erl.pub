@@ -2,6 +2,8 @@
 
 namespace Data\Interval\Duration\Iso;
 
+// ALL IMPORTS: Control.Applicative, Control.Plus, Control.Semigroupoid, Data.Either, Data.Eq, Data.Foldable, Data.Function, Data.HeytingAlgebra, Data.Interval.Duration, Data.Interval.Duration.Iso, Data.List, Data.List.NonEmpty, Data.List.Types, Data.Map, Data.Map.Internal, Data.Maybe, Data.Monoid, Data.Monoid.Additive, Data.Newtype, Data.Number, Data.Ord, Data.Ordering, Data.Semigroup, Data.Semiring, Data.Show, Data.Tuple, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Plus, Control.Semigroupoid, Data.Either, Data.Eq, Data.Foldable, Data.Function, Data.HeytingAlgebra, Data.Interval.Duration, Data.Interval.Duration.Iso, Data.List, Data.List.NonEmpty, Data.List.Types, Data.Map, Data.Map.Internal, Data.Maybe, Data.Monoid, Data.Monoid.Additive, Data.Newtype, Data.Number, Data.Ord, Data.Ordering, Data.Semigroup, Data.Semiring, Data.Show, Data.Tuple, Prelude
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Plus/index.php';
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
@@ -32,23 +34,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -56,12 +58,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -69,13 +71,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -83,656 +85,917 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Interval_Duration_Iso_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Interval_Duration_Iso_show': $v = (($GLOBALS['Data_Interval_Duration_showDuration'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_showDuration')))->show; break;
-      case 'Data_Interval_Duration_Iso_show1': $v = (($GLOBALS['Data_Interval_Duration_showDurationComponent'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_showDurationComponent')))->show; break;
-      case 'Data_Interval_Duration_Iso_eq': $v = (($GLOBALS['Data_Interval_Duration_eqDuration'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_eqDuration')))->eq; break;
-      case 'Data_Interval_Duration_Iso_compare': $v = (($GLOBALS['Data_Interval_Duration_ordDuration'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_ordDuration')))->compare; break;
-      case 'Data_Interval_Duration_Iso_eq1': $v = (($GLOBALS['Data_Interval_Duration_eqDurationComponent'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_eqDurationComponent')))->eq; break;
-      case 'Data_Interval_Duration_Iso_compare1': $v = (($GLOBALS['Data_Interval_Duration_ordDurationComponent'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_ordDurationComponent')))->compare; break;
-      case 'Data_Interval_Duration_Iso_conj': $v = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj')); break;
-      case 'Data_Interval_Duration_Iso_lookup': $v = \Data\Map\Internal\Data_Map_Internal_lookup(($GLOBALS['Data_Interval_Duration_ordDurationComponent'] ?? \Data\Interval\Duration\phpurs_eval_thunk('Data_Interval_Duration_ordDurationComponent'))); break;
-      case 'Data_Interval_Duration_Iso_greaterThan': $v = \Data\Ord\Data_Ord_greaterThan(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Data_Interval_Duration_Iso_pure': $v = (($GLOBALS['Data_List_Types_applicativeList'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_applicativeList')))->pure; break;
-      case 'Data_Interval_Duration_Iso_empty': $v = ($GLOBALS['Data_List_Types_Nil'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_Nil')); break;
-      case 'Data_Interval_Duration_Iso_foldMap': $v = (($GLOBALS['Data_List_Types_foldableList'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_foldableList')))->foldMap; break;
-      case 'Data_Interval_Duration_Iso_foldMap1': $v = (($GLOBALS['Data_Interval_Duration_Iso_foldMap'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_foldMap')))(($GLOBALS['Data_List_Types_monoidList'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_monoidList'))); break;
-      case 'Data_Interval_Duration_Iso_greaterThanOrEq': $v = \Data\Ord\Data_Ord_greaterThanOrEq(($GLOBALS['Data_Ord_ordNumber'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordNumber'))); break;
-      case 'Data_Interval_Duration_Iso_notEq': $v = \Data\Eq\Data_Eq_notEq(($GLOBALS['Data_Eq_eqNumber'] ?? \Data\Eq\phpurs_eval_thunk('Data_Eq_eqNumber'))); break;
-      case 'Data_Interval_Duration_Iso_greaterThan1': $v = \Data\Ord\Data_Ord_greaterThan(($GLOBALS['Data_Ord_ordNumber'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordNumber'))); break;
-      case 'Data_Interval_Duration_Iso_unwrap': $v = \Data\Newtype\Data_Newtype_unwrap(($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'))); break;
-      case 'Data_Interval_Duration_Iso_foldMap2': $v = (($GLOBALS['Data_Interval_Duration_Iso_foldMap'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_foldMap')))(\Data\Monoid\Additive\Data_Monoid_Additive_monoidAdditive(($GLOBALS['Data_Semiring_semiringNumber'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_semiringNumber')))); break;
-      case 'Data_Interval_Duration_Iso_composeFlipped': $v = \Control\Semigroupoid\Control_Semigroupoid_composeFlipped(($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn'))); break;
-      case 'Data_Interval_Duration_Iso_not': $v = (\Data\HeytingAlgebra\Data_HeytingAlgebra_heytingAlgebraFunction(($GLOBALS['Data_HeytingAlgebra_heytingAlgebraBoolean'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraBoolean'))))->not; break;
-      case 'Data_Interval_Duration_Iso_fold': $v = \Data\Foldable\Data_Foldable_fold(($GLOBALS['Data_Foldable_foldableArray'] ?? \Data\Foldable\phpurs_eval_thunk('Data_Foldable_foldableArray')), \Data\Monoid\Data_Monoid_monoidFn(($GLOBALS['Data_List_Types_monoidList'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_monoidList')))); break;
-      case 'Data_Interval_Duration_Iso_toUnfoldable': $v = \Data\Map\Internal\Data_Map_Internal_toUnfoldable(($GLOBALS['Data_List_Types_unfoldableList'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_unfoldableList'))); break;
-      case 'Data_Interval_Duration_Iso_IsEmpty': $v = ($GLOBALS['__phpurs_data0_IsEmpty'] ??= new Phpurs_Data0("IsEmpty")); break;
-      case 'Data_Interval_Duration_Iso_InvalidWeekComponentUsage': $v = ($GLOBALS['__phpurs_data0_InvalidWeekComponentUsage'] ??= new Phpurs_Data0("InvalidWeekComponentUsage")); break;
-      case 'Data_Interval_Duration_Iso_showIsoDuration': $v = (object)["show" => function($v) {
-  $__num = func_num_args();
-  $__global_Data_Interval_Duration_Iso_show = ($GLOBALS['Data_Interval_Duration_Iso_show'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_show'));
-  $__case_0 = $v;
-  if (true) {
-$d = $__case_0;
-$__res = ("(IsoDuration " . (($__global_Data_Interval_Duration_Iso_show)($d) . ")"));
-goto __end;;
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_lookup'] = function() { $v = function($k) {
+  $__num = \func_num_args();
+  $go = null;
+  $go = function($v) use (&$go, &$k) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Leaf"))) {
+$__t0 = new Phpurs_Data0("Nothing");
 } else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Interval_Duration_Iso_showError': $v = (object)["show" => function($v) {
-  $__num = func_num_args();
-  $__global_Data_Interval_Duration_Iso_show1 = ($GLOBALS['Data_Interval_Duration_Iso_show1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_show1'));
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "IsEmpty":
-$__res = "(IsEmpty)";
-goto __end;;
-break;
-case "InvalidWeekComponentUsage":
-$__res = "(InvalidWeekComponentUsage)";
-goto __end;;
-break;
-case "ContainsNegativeValue":
-$c = ($__case_0)->v0;
-$__res = ("(ContainsNegativeValue " . (($__global_Data_Interval_Duration_Iso_show1)($c) . ")"));
-goto __end;;
-break;
-case "InvalidFractionalUse":
-$c = ($__case_0)->v0;
-$__res = ("(InvalidFractionalUse " . (($__global_Data_Interval_Duration_Iso_show1)($c) . ")"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Interval_Duration_Iso_eqIsoDuration': $v = (object)["eq" => (function() use (&$__fn) {
-  $__fn = function($x, $y = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Interval_Duration_Iso_eq = ($GLOBALS['Data_Interval_Duration_Iso_eq'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_eq'));
-  $__case_0 = $x;
-  $__case_1 = $y;
-  if (true) {
-$l = $__case_0;
-$r = $__case_1;
-$__res = ($__global_Data_Interval_Duration_Iso_eq)($l, $r);
-goto __end;;
+if ((is_object($v) && (($v)->tag === "Node"))) {
+if ((is_object($k) && (($k)->tag === "Second"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Second"))) {
+$__t2 = new Phpurs_Data1("Just", ($v)->value3);
 } else {
-throw new \Exception("Pattern match failure");
+$__t2 = ($go)(($v)->value4);
 };
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Interval_Duration_Iso_ordIsoDuration': $v = (object)["compare" => (function() use (&$__fn) {
-  $__fn = function($x, $y = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Interval_Duration_Iso_compare = ($GLOBALS['Data_Interval_Duration_Iso_compare'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_compare'));
-  $__case_0 = $x;
-  $__case_1 = $y;
-  if (true) {
-$l = $__case_0;
-$r = $__case_1;
-$__res = ($__global_Data_Interval_Duration_Iso_compare)($l, $r);
-goto __end;;
+$__t1 = $__t2;
 } else {
-throw new \Exception("Pattern match failure");
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Second"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if ((is_object($k) && (($k)->tag === "Minute"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Minute"))) {
+$__t3 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+$__t3 = ($go)(($v)->value4);
 };
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Eq0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Interval_Duration_Iso_eqIsoDuration = ($GLOBALS['Data_Interval_Duration_Iso_eqIsoDuration'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_eqIsoDuration'));
-  $__res = $__global_Data_Interval_Duration_Iso_eqIsoDuration;
+$__t1 = $__t3;
+} else {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Minute"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if ((is_object($k) && (($k)->tag === "Hour"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Hour"))) {
+$__t4 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+$__t4 = ($go)(($v)->value4);
+};
+$__t1 = $__t4;
+} else {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Hour"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if ((is_object($k) && (($k)->tag === "Day"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Day"))) {
+$__t5 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+$__t5 = ($go)(($v)->value4);
+};
+$__t1 = $__t5;
+} else {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Day"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if ((is_object($k) && (($k)->tag === "Week"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Week"))) {
+$__t6 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+$__t6 = ($go)(($v)->value4);
+};
+$__t1 = $__t6;
+} else {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Week"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if ((is_object($k) && (($k)->tag === "Month"))) {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Month"))) {
+$__t7 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+$__t7 = ($go)(($v)->value4);
+};
+$__t1 = $__t7;
+} else {
+if ((is_object(($v)->value2) && ((($v)->value2)->tag === "Month"))) {
+$__t1 = ($go)(($v)->value5);
+} else {
+if (((is_object($k) && (($k)->tag === "Year")) && (is_object(($v)->value2) && ((($v)->value2)->tag === "Year")))) {
+$__t1 = new Phpurs_Data1("Just", ($v)->value3);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+$__t0 = $__t1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Interval_Duration_Iso_eqError': $v = (object)["eq" => (function() use (&$__fn) {
-  $__fn = function($x, $y = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Interval_Duration_Iso_eq1 = ($GLOBALS['Data_Interval_Duration_Iso_eq1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_eq1'));
-  $__case_0 = $x;
-  $__case_1 = $y;
-  if (((($__case_0)->tag === "IsEmpty") && (($__case_1)->tag === "IsEmpty"))) {
-$__res = true;
-goto __end;;
-} else {
-if (((($__case_0)->tag === "InvalidWeekComponentUsage") && (($__case_1)->tag === "InvalidWeekComponentUsage"))) {
-$__res = true;
-goto __end;;
-} else {
-if (((($__case_0)->tag === "ContainsNegativeValue") && (($__case_1)->tag === "ContainsNegativeValue"))) {
-$l = ($__case_0)->v0;
-$r = ($__case_1)->v0;
-$__res = ($__global_Data_Interval_Duration_Iso_eq1)($l, $r);
-goto __end;;
-} else {
-if (((($__case_0)->tag === "InvalidFractionalUse") && (($__case_1)->tag === "InvalidFractionalUse"))) {
-$l = ($__case_0)->v0;
-$r = ($__case_1)->v0;
-$__res = ($__global_Data_Interval_Duration_Iso_eq1)($l, $r);
-goto __end;;
-} else {
-if (true) {
-$__res = false;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 };
-};
-};
-};
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Interval_Duration_Iso_ordError': $v = (object)["compare" => (function() use (&$__fn) {
-  $__fn = function($x, $y = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Interval_Duration_Iso_compare1 = ($GLOBALS['Data_Interval_Duration_Iso_compare1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_compare1'));
-  $__case_0 = $x;
-  $__case_1 = $y;
-  if (((($__case_0)->tag === "IsEmpty") && (($__case_1)->tag === "IsEmpty"))) {
-$__res = ($GLOBALS['__phpurs_data0_EQ'] ??= new Phpurs_Data0("EQ"));
-goto __end;;
-} else {
-if ((($__case_0)->tag === "IsEmpty")) {
-$__res = ($GLOBALS['__phpurs_data0_LT'] ??= new Phpurs_Data0("LT"));
-goto __end;;
-} else {
-if ((($__case_1)->tag === "IsEmpty")) {
-$__res = ($GLOBALS['__phpurs_data0_GT'] ??= new Phpurs_Data0("GT"));
-goto __end;;
-} else {
-if (((($__case_0)->tag === "InvalidWeekComponentUsage") && (($__case_1)->tag === "InvalidWeekComponentUsage"))) {
-$__res = ($GLOBALS['__phpurs_data0_EQ'] ??= new Phpurs_Data0("EQ"));
-goto __end;;
-} else {
-if ((($__case_0)->tag === "InvalidWeekComponentUsage")) {
-$__res = ($GLOBALS['__phpurs_data0_LT'] ??= new Phpurs_Data0("LT"));
-goto __end;;
-} else {
-if ((($__case_1)->tag === "InvalidWeekComponentUsage")) {
-$__res = ($GLOBALS['__phpurs_data0_GT'] ??= new Phpurs_Data0("GT"));
-goto __end;;
-} else {
-if (((($__case_0)->tag === "ContainsNegativeValue") && (($__case_1)->tag === "ContainsNegativeValue"))) {
-$l = ($__case_0)->v0;
-$r = ($__case_1)->v0;
-$__res = ($__global_Data_Interval_Duration_Iso_compare1)($l, $r);
-goto __end;;
-} else {
-if ((($__case_0)->tag === "ContainsNegativeValue")) {
-$__res = ($GLOBALS['__phpurs_data0_LT'] ??= new Phpurs_Data0("LT"));
-goto __end;;
-} else {
-if ((($__case_1)->tag === "ContainsNegativeValue")) {
-$__res = ($GLOBALS['__phpurs_data0_GT'] ??= new Phpurs_Data0("GT"));
-goto __end;;
-} else {
-if (((($__case_0)->tag === "InvalidFractionalUse") && (($__case_1)->tag === "InvalidFractionalUse"))) {
-$l = ($__case_0)->v0;
-$r = ($__case_1)->v0;
-$__res = ($__global_Data_Interval_Duration_Iso_compare1)($l, $r);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-};
-};
-};
-};
-};
-};
-};
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Eq0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Interval_Duration_Iso_eqError = ($GLOBALS['Data_Interval_Duration_Iso_eqError'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_eqError'));
-  $__res = $__global_Data_Interval_Duration_Iso_eqError;
+  $__res = $go;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_foldMap1'] = function() { $v = ((($GLOBALS['Data_List_Types_foldableList'] ?? \PhpursThunks::eval('Data_List_Types_foldableList')))->foldMap)(($GLOBALS['Data_List_Types_monoidList'] ?? \PhpursThunks::eval('Data_List_Types_monoidList'))); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_foldMap2'] = function() { $v = (function() use (&$__fn) {
+$semigroupAdditive1_0 = (object)["append" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Data_Interval_Duration_Iso_IsoDuration
-function Data_Interval_Duration_Iso_IsoDuration($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_IsoDuration';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = $x;
+  $__res = ((($GLOBALS['Data_Semiring_numAdd'] ?? \PhpursThunks::eval('Data_Semiring_numAdd')))($v))($v1);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_IsoDuration'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_IsoDuration';
-
-
-
-// Data_Interval_Duration_Iso_ContainsNegativeValue
-function Data_Interval_Duration_Iso_ContainsNegativeValue($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_ContainsNegativeValue';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+return ((($GLOBALS['Data_List_Types_foldableList'] ?? \PhpursThunks::eval('Data_List_Types_foldableList')))->foldMap)((object)["mempty" => 0.0, "Semigroup0" => function($dollar__unused_0) use (&$semigroupAdditive1_0) {
+  $__num = \func_num_args();
+  $__res = $semigroupAdditive1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]);
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_fold'] = function() { $v = (((($GLOBALS['Data_Foldable_foldMapDefaultR'] ?? \PhpursThunks::eval('Data_Foldable_foldMapDefaultR')))(($GLOBALS['Data_Foldable_foldableArray'] ?? \PhpursThunks::eval('Data_Foldable_foldableArray'))))((($GLOBALS['Data_Monoid_monoidFn'] ?? \PhpursThunks::eval('Data_Monoid_monoidFn')))(($GLOBALS['Data_List_Types_monoidList'] ?? \PhpursThunks::eval('Data_List_Types_monoidList')))))((($GLOBALS['Control_Category_categoryFn'] ?? \PhpursThunks::eval('Control_Category_categoryFn')))->identity); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_toUnfoldable'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(function($b) {
+  $__num = \func_num_args();
+  $go = null;
+  $go = (function() use (&$go) {
+  $__fn = function($source, $memo = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
+  $v_0 = (($GLOBALS['Data_Map_Internal_stepUnfoldr'] ?? \PhpursThunks::eval('Data_Map_Internal_stepUnfoldr')))($source);
+  if ((is_object($v_0) && (($v_0)->tag === "Nothing"))) {
+$go = null;
+$go = (function() use (&$go) {
+  $__fn = function($b, $v = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t2 = $b;
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__t2 = (($go)(new Phpurs_Data2("Cons", ($v)->value0, $b)))(($v)->value1);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+$__t1 = (($go)(new Phpurs_Data0("Nil")))($memo);
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "Just"))) {
+$__t1 = (($go)((($v_0)->value0)->value1))(new Phpurs_Data2("Cons", (($v_0)->value0)->value0, $memo));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  $__res = (($go)($b))(new Phpurs_Data0("Nil"));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($GLOBALS['Data_Map_Internal_toMapIter'] ?? \PhpursThunks::eval('Data_Map_Internal_toMapIter'))); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_IsEmpty'] = function() { $v = ($GLOBALS['__phpurs_data0_IsEmpty'] ??= new Phpurs_Data0("IsEmpty")); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_InvalidWeekComponentUsage'] = function() { $v = ($GLOBALS['__phpurs_data0_InvalidWeekComponentUsage'] ??= new Phpurs_Data0("InvalidWeekComponentUsage")); return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_ContainsNegativeValue'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
   $__res = new Phpurs_Data1("ContainsNegativeValue", $value0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_ContainsNegativeValue'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_ContainsNegativeValue';
-
-// Data_Interval_Duration_Iso_InvalidFractionalUse
-function Data_Interval_Duration_Iso_InvalidFractionalUse($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_InvalidFractionalUse';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_InvalidFractionalUse'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
   $__res = new Phpurs_Data1("InvalidFractionalUse", $value0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_InvalidFractionalUse'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_InvalidFractionalUse';
-
-// Data_Interval_Duration_Iso_unIsoDuration
-function Data_Interval_Duration_Iso_unIsoDuration($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_unIsoDuration';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  if (true) {
-$a = $__case_0;
-$__res = $a;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_unIsoDuration'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_unIsoDuration';
-
-
-
-// Data_Interval_Duration_Iso_prettyError
-function Data_Interval_Duration_Iso_prettyError($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_prettyError';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Interval_Duration_Iso_show1 = ($GLOBALS['Data_Interval_Duration_Iso_show1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_show1'));
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "IsEmpty":
-$__res = "Duration is empty (has no components)";
-goto __end;;
-break;
-case "InvalidWeekComponentUsage":
-$__res = "Week component of Duration is used with other components";
-goto __end;;
-break;
-case "ContainsNegativeValue":
-$c = ($__case_0)->v0;
-$__res = ("Component `" . (($__global_Data_Interval_Duration_Iso_show1)($c) . "` contains negative value"));
-goto __end;;
-break;
-case "InvalidFractionalUse":
-$c = ($__case_0)->v0;
-$__res = ("Invalid usage of Fractional value at component `" . (($__global_Data_Interval_Duration_Iso_show1)($c) . "`"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_prettyError'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_prettyError';
-
-
-
-
-
-// Data_Interval_Duration_Iso_checkWeekUsage
-function Data_Interval_Duration_Iso_checkWeekUsage($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_checkWeekUsage';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_HeytingAlgebra_boolConj = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj'));
-  $__global_Data_Maybe_isJust = ($GLOBALS['Data_Maybe_isJust'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_isJust'));
-  $__global_Data_Interval_Duration_Iso_lookup = ($GLOBALS['Data_Interval_Duration_Iso_lookup'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_lookup'));
-  $__global_Data_Interval_Duration_Iso_greaterThan = ($GLOBALS['Data_Interval_Duration_Iso_greaterThan'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_greaterThan'));
-  $__global_Data_Map_Internal_size = ($GLOBALS['Data_Map_Internal_size'] ?? \Data\Map\Internal\phpurs_eval_thunk('Data_Map_Internal_size'));
-  $__global_Data_Interval_Duration_Iso_pure = ($GLOBALS['Data_Interval_Duration_Iso_pure'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_pure'));
-  $__global_Data_List_Types_Nil = ($GLOBALS['Data_List_Types_Nil'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_Nil'));
-  $__case_0 = $v;
-  if (is_object($__case_0)) {
-$asMap = ($__case_0)->asMap;
-$__case_0 = ($__global_Data_HeytingAlgebra_boolConj)(($__global_Data_Maybe_isJust)(($__global_Data_Interval_Duration_Iso_lookup)(($GLOBALS['__phpurs_data0_Week'] ??= new Phpurs_Data0("Week")), $asMap)), ($__global_Data_Interval_Duration_Iso_greaterThan)(($__global_Data_Map_Internal_size)($asMap), 1));
-switch ($__case_0) {
-case true:
-$__res = ($__global_Data_Interval_Duration_Iso_pure)(($GLOBALS['__phpurs_data0_InvalidWeekComponentUsage'] ??= new Phpurs_Data0("InvalidWeekComponentUsage")));
-goto __end;;
-break;
-default:
-$__res = $__global_Data_List_Types_Nil;
-goto __end;;
-break;
-};
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_checkWeekUsage'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_checkWeekUsage';
-
-// Data_Interval_Duration_Iso_checkNegativeValues
-function Data_Interval_Duration_Iso_checkNegativeValues($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_checkNegativeValues';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Function_flip = ($GLOBALS['Data_Function_flip'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_flip'));
-  $__global_Data_Interval_Duration_Iso_foldMap1 = ($GLOBALS['Data_Interval_Duration_Iso_foldMap1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_foldMap1'));
-  $__global_Data_Interval_Duration_Iso_greaterThanOrEq = ($GLOBALS['Data_Interval_Duration_Iso_greaterThanOrEq'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_greaterThanOrEq'));
-  $__global_Data_List_Types_Nil = ($GLOBALS['Data_List_Types_Nil'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_Nil'));
-  $__global_Data_Interval_Duration_Iso_pure = ($GLOBALS['Data_Interval_Duration_Iso_pure'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_pure'));
-  $__case_0 = $v;
-  if (is_object($__case_0)) {
-$asList = ($__case_0)->asList;
-$__res = ($__global_Data_Function_flip)($__global_Data_Interval_Duration_Iso_foldMap1, $asList, function($v1) use ($__global_Data_Interval_Duration_Iso_greaterThanOrEq, $__global_Data_List_Types_Nil, $__global_Data_Interval_Duration_Iso_pure) {
-  $__num = func_num_args();
-  $__case_0 = $v1;
-  switch (($__case_0)->tag) {
-case "Tuple":
-$c = ($__case_0)->v0;
-$num = ($__case_0)->v1;
-$__case_0 = ($__global_Data_Interval_Duration_Iso_greaterThanOrEq)($num, 0.0);
-switch ($__case_0) {
-case true:
-$__res = $__global_Data_List_Types_Nil;
-goto __end;;
-break;
-default:
-$__res = ($__global_Data_Interval_Duration_Iso_pure)(new Phpurs_Data1("ContainsNegativeValue", $c));
-goto __end;;
-break;
-};
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_checkNegativeValues'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_checkNegativeValues';
-
-// Data_Interval_Duration_Iso_checkFractionalUse
-function Data_Interval_Duration_Iso_checkFractionalUse($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_checkFractionalUse';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Interval_Duration_Iso_notEq = ($GLOBALS['Data_Interval_Duration_Iso_notEq'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_notEq'));
-  $__global_Data_Number_floor = ($GLOBALS['Data_Number_floor'] ?? \Data\Number\phpurs_eval_thunk('Data_Number_floor'));
-  $__global_Data_Interval_Duration_Iso_greaterThan1 = ($GLOBALS['Data_Interval_Duration_Iso_greaterThan1'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_greaterThan1'));
-  $__global_Data_Interval_Duration_Iso_unwrap = ($GLOBALS['Data_Interval_Duration_Iso_unwrap'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_unwrap'));
-  $__global_Data_Interval_Duration_Iso_foldMap2 = ($GLOBALS['Data_Interval_Duration_Iso_foldMap2'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_foldMap2'));
-  $__global_Data_Interval_Duration_Iso_composeFlipped = ($GLOBALS['Data_Interval_Duration_Iso_composeFlipped'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_composeFlipped'));
-  $__global_Data_Tuple_snd = ($GLOBALS['Data_Tuple_snd'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_snd'));
-  $__global_Data_Number_abs = ($GLOBALS['Data_Number_abs'] ?? \Data\Number\phpurs_eval_thunk('Data_Number_abs'));
-  $__global_Data_Monoid_Additive_Additive = ($GLOBALS['Data_Monoid_Additive_Additive'] ?? \Data\Monoid\Additive\phpurs_eval_thunk('Data_Monoid_Additive_Additive'));
-  $__global_Data_List_span = ($GLOBALS['Data_List_span'] ?? \Data\List\phpurs_eval_thunk('Data_List_span'));
-  $__global_Data_Interval_Duration_Iso_not = ($GLOBALS['Data_Interval_Duration_Iso_not'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_not'));
-  $__global_Data_List_Types_Nil = ($GLOBALS['Data_List_Types_Nil'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_Nil'));
-  $__case_0 = $v;
-  if (is_object($__case_0)) {
-$asList = ($__case_0)->asList;
-$isFractional = function($a) use ($__global_Data_Interval_Duration_Iso_notEq, $__global_Data_Number_floor) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Interval_Duration_Iso_notEq)(($__global_Data_Number_floor)($a), $a);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_unIsoDuration'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$checkRest = function($rest) use ($__global_Data_Interval_Duration_Iso_greaterThan1, $__global_Data_Interval_Duration_Iso_unwrap, $__global_Data_Interval_Duration_Iso_foldMap2, $__global_Data_Interval_Duration_Iso_composeFlipped, $__global_Data_Tuple_snd, $__global_Data_Number_abs, $__global_Data_Monoid_Additive_Additive) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Interval_Duration_Iso_greaterThan1)(($__global_Data_Interval_Duration_Iso_unwrap)(($__global_Data_Interval_Duration_Iso_foldMap2)(($__global_Data_Interval_Duration_Iso_composeFlipped)($__global_Data_Tuple_snd, ($__global_Data_Interval_Duration_Iso_composeFlipped)($__global_Data_Number_abs, $__global_Data_Monoid_Additive_Additive)), $rest)), 0.0);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_showIsoDuration'] = function() { $v = (object)["show" => function($v) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(IsoDuration "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Duration "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_Interval_Duration_show'] ?? \PhpursThunks::eval('Data_Interval_Duration_show')))($v)))(")"))))(")"));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_showError'] = function() { $v = (object)["show" => function($v) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "IsEmpty"))) {
+$__t0 = "(IsEmpty)";
+} else {
+if ((is_object($v) && (($v)->tag === "InvalidWeekComponentUsage"))) {
+$__t0 = "(InvalidWeekComponentUsage)";
+} else {
+if ((is_object($v) && (($v)->tag === "ContainsNegativeValue"))) {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Minute"))) {
+$__t1 = "Minute";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Second"))) {
+$__t1 = "Second";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Hour"))) {
+$__t1 = "Hour";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Day"))) {
+$__t1 = "Day";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Week"))) {
+$__t1 = "Week";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Month"))) {
+$__t1 = "Month";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Year"))) {
+$__t1 = "Year";
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
-$v1 = (function($v2) {
-  $__num = func_num_args();
-  $__res = ($v2)->rest;
+};
+};
+};
+};
+};
+};
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(ContainsNegativeValue "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t1))(")"));
+} else {
+if ((is_object($v) && (($v)->tag === "InvalidFractionalUse"))) {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Minute"))) {
+$__t2 = "Minute";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Second"))) {
+$__t2 = "Second";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Hour"))) {
+$__t2 = "Hour";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Day"))) {
+$__t2 = "Day";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Week"))) {
+$__t2 = "Week";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Month"))) {
+$__t2 = "Month";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Year"))) {
+$__t2 = "Year";
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+};
+};
+};
+};
+};
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(InvalidFractionalUse "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t2))(")"));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+};
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-})(($__global_Data_List_span)(($__global_Data_Interval_Duration_Iso_composeFlipped)($__global_Data_Tuple_snd, ($__global_Data_Interval_Duration_Iso_not)($isFractional)), $asList));
-$__case_0 = $v1;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$c = (($__case_0)->v0)->v0;
-$rest = ($__case_0)->v1;
-$__res = "/* Unsupported: Guards not supported */";
-goto __end;;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_prettyError'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "IsEmpty"))) {
+$__t0 = "Duration is empty (has no components)";
 } else {
-if (true) {
-$__res = $__global_Data_List_Types_Nil;
-goto __end;;
+if ((is_object($v) && (($v)->tag === "InvalidWeekComponentUsage"))) {
+$__t0 = "Week component of Duration is used with other components";
 } else {
-throw new \Exception("Pattern match failure");
+if ((is_object($v) && (($v)->tag === "ContainsNegativeValue"))) {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Minute"))) {
+$__t1 = "Minute";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Second"))) {
+$__t1 = "Second";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Hour"))) {
+$__t1 = "Hour";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Day"))) {
+$__t1 = "Day";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Week"))) {
+$__t1 = "Week";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Month"))) {
+$__t1 = "Month";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Year"))) {
+$__t1 = "Year";
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
 };
-} else {
-throw new \Exception("Pattern match failure");
 };
+};
+};
+};
+};
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("Component `"))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t1))("` contains negative value"));
+} else {
+if ((is_object($v) && (($v)->tag === "InvalidFractionalUse"))) {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Minute"))) {
+$__t2 = "Minute";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Second"))) {
+$__t2 = "Second";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Hour"))) {
+$__t2 = "Hour";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Day"))) {
+$__t2 = "Day";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Week"))) {
+$__t2 = "Week";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Month"))) {
+$__t2 = "Month";
+} else {
+if ((is_object(($v)->value0) && ((($v)->value0)->tag === "Year"))) {
+$__t2 = "Year";
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+};
+};
+};
+};
+};
+$__t0 = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("Invalid usage of Fractional value at component `"))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t2))("`"));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+};
+  $__res = $__t0;
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_checkFractionalUse'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_checkFractionalUse';
-
-// Data_Interval_Duration_Iso_checkEmptiness
-function Data_Interval_Duration_Iso_checkEmptiness($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_checkEmptiness';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_eqIsoDuration'] = function() { $v = (object)["eq" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_List_null = ($GLOBALS['Data_List_null'] ?? \Data\List\phpurs_eval_thunk('Data_List_null'));
-  $__global_Data_Interval_Duration_Iso_pure = ($GLOBALS['Data_Interval_Duration_Iso_pure'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_pure'));
-  $__global_Data_List_Types_Nil = ($GLOBALS['Data_List_Types_Nil'] ?? \Data\List\Types\phpurs_eval_thunk('Data_List_Types_Nil'));
-  $__case_0 = $v;
-  if (is_object($__case_0)) {
-$asList = ($__case_0)->asList;
-$__case_0 = ($__global_Data_List_null)($asList);
-switch ($__case_0) {
-case true:
-$__res = ($__global_Data_Interval_Duration_Iso_pure)(($GLOBALS['__phpurs_data0_IsEmpty'] ??= new Phpurs_Data0("IsEmpty")));
-goto __end;;
-break;
-default:
-$__res = $__global_Data_List_Types_Nil;
-goto __end;;
-break;
-};
-} else {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Interval_Duration_eq'] ?? \PhpursThunks::eval('Data_Interval_Duration_eq')))($x))($y);
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_checkEmptiness'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_checkEmptiness';
-
-// Data_Interval_Duration_Iso_checkValidIsoDuration
-function Data_Interval_Duration_Iso_checkValidIsoDuration($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_checkValidIsoDuration';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_ordIsoDuration'] = function() { $v = (object)["compare" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Interval_Duration_Iso_fold = ($GLOBALS['Data_Interval_Duration_Iso_fold'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_fold'));
-  $__global_Data_Interval_Duration_Iso_checkWeekUsage = ($GLOBALS['Data_Interval_Duration_Iso_checkWeekUsage'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_checkWeekUsage'));
-  $__global_Data_Interval_Duration_Iso_checkEmptiness = ($GLOBALS['Data_Interval_Duration_Iso_checkEmptiness'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_checkEmptiness'));
-  $__global_Data_Interval_Duration_Iso_checkFractionalUse = ($GLOBALS['Data_Interval_Duration_Iso_checkFractionalUse'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_checkFractionalUse'));
-  $__global_Data_Interval_Duration_Iso_checkNegativeValues = ($GLOBALS['Data_Interval_Duration_Iso_checkNegativeValues'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_checkNegativeValues'));
-  $__global_Data_List_reverse = ($GLOBALS['Data_List_reverse'] ?? \Data\List\phpurs_eval_thunk('Data_List_reverse'));
-  $__global_Data_Interval_Duration_Iso_toUnfoldable = ($GLOBALS['Data_Interval_Duration_Iso_toUnfoldable'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_toUnfoldable'));
-  $__case_0 = $v;
-  if (true) {
-$asMap = $__case_0;
-$check = ($__global_Data_Interval_Duration_Iso_fold)([$__global_Data_Interval_Duration_Iso_checkWeekUsage, $__global_Data_Interval_Duration_Iso_checkEmptiness, $__global_Data_Interval_Duration_Iso_checkFractionalUse, $__global_Data_Interval_Duration_Iso_checkNegativeValues]);
-$asList = ($__global_Data_List_reverse)(($__global_Data_Interval_Duration_Iso_toUnfoldable)($asMap));
-$__res = ($check)((object)["asList" => $asList, "asMap" => $asMap]);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Interval_Duration_compare'] ?? \PhpursThunks::eval('Data_Interval_Duration_compare')))($x))($y);
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_checkValidIsoDuration'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_checkValidIsoDuration';
-
-// Data_Interval_Duration_Iso_mkIsoDuration
-function Data_Interval_Duration_Iso_mkIsoDuration($d) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Interval_Duration_Iso_mkIsoDuration';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Interval_Duration_Iso_eqIsoDuration'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_eqIsoDuration'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_eqError'] = function() { $v = (object)["eq" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_List_NonEmpty_fromList = ($GLOBALS['Data_List_NonEmpty_fromList'] ?? \Data\List\NonEmpty\phpurs_eval_thunk('Data_List_NonEmpty_fromList'));
-  $__global_Data_Interval_Duration_Iso_checkValidIsoDuration = ($GLOBALS['Data_Interval_Duration_Iso_checkValidIsoDuration'] ?? \Data\Interval\Duration\Iso\phpurs_eval_thunk('Data_Interval_Duration_Iso_checkValidIsoDuration'));
-  $v = ($__global_Data_List_NonEmpty_fromList)(($__global_Data_Interval_Duration_Iso_checkValidIsoDuration)($d));
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Just":
-$errs = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Left", $errs);
-goto __end;;
-break;
-case "Nothing":
-$__res = new Phpurs_Data1("Right", $d);
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  if ((is_object($x) && (($x)->tag === "IsEmpty"))) {
+$__t1 = (is_object($y) && (($y)->tag === "IsEmpty"));
+} else {
+if ((is_object($x) && (($x)->tag === "InvalidWeekComponentUsage"))) {
+$__t1 = (is_object($y) && (($y)->tag === "InvalidWeekComponentUsage"));
+} else {
+if ((is_object($x) && (($x)->tag === "ContainsNegativeValue"))) {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Second"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Second"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Minute"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Hour"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Day"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Day"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Week"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Week"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Month"))) {
+$__t2 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Month"));
+} else {
+$__t2 = ((is_object(($x)->value0) && ((($x)->value0)->tag === "Year")) && (is_object(($y)->value0) && ((($y)->value0)->tag === "Year")));
 };
+};
+};
+};
+};
+};
+$__t1 = ((is_object($y) && (($y)->tag === "ContainsNegativeValue")) && $__t2);
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Second"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Second"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Minute"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Hour"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Day"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Day"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Week"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Week"));
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Month"))) {
+$__t0 = (is_object(($y)->value0) && ((($y)->value0)->tag === "Month"));
+} else {
+$__t0 = ((is_object(($x)->value0) && ((($x)->value0)->tag === "Year")) && (is_object(($y)->value0) && ((($y)->value0)->tag === "Year")));
+};
+};
+};
+};
+};
+};
+$__t1 = ((is_object($x) && (($x)->tag === "InvalidFractionalUse")) && ((is_object($y) && (($y)->tag === "InvalidFractionalUse")) && $__t0));
+};
+};
+};
+  $__res = $__t1;
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Interval_Duration_Iso_mkIsoDuration'] = __NAMESPACE__ . '\\Data_Interval_Duration_Iso_mkIsoDuration';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_ordError'] = function() { $v = (object)["compare" => (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "IsEmpty"))) {
+if ((is_object($y) && (($y)->tag === "IsEmpty"))) {
+$__t1 = new Phpurs_Data0("EQ");
+} else {
+$__t1 = new Phpurs_Data0("LT");
+};
+$__t0 = $__t1;
+} else {
+if ((is_object($y) && (($y)->tag === "IsEmpty"))) {
+$__t0 = new Phpurs_Data0("GT");
+} else {
+if ((is_object($x) && (($x)->tag === "InvalidWeekComponentUsage"))) {
+if ((is_object($y) && (($y)->tag === "InvalidWeekComponentUsage"))) {
+$__t2 = new Phpurs_Data0("EQ");
+} else {
+$__t2 = new Phpurs_Data0("LT");
+};
+$__t0 = $__t2;
+} else {
+if ((is_object($y) && (($y)->tag === "InvalidWeekComponentUsage"))) {
+$__t0 = new Phpurs_Data0("GT");
+} else {
+if ((is_object($x) && (($x)->tag === "ContainsNegativeValue"))) {
+if ((is_object($y) && (($y)->tag === "ContainsNegativeValue"))) {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Second"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Second"))) {
+$__t5 = new Phpurs_Data0("EQ");
+} else {
+$__t5 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t5;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Second"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Minute"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"))) {
+$__t6 = new Phpurs_Data0("EQ");
+} else {
+$__t6 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t6;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Hour"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"))) {
+$__t7 = new Phpurs_Data0("EQ");
+} else {
+$__t7 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t7;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Day"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Day"))) {
+$__t8 = new Phpurs_Data0("EQ");
+} else {
+$__t8 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t8;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Day"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Week"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Week"))) {
+$__t9 = new Phpurs_Data0("EQ");
+} else {
+$__t9 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t9;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Week"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Month"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Month"))) {
+$__t10 = new Phpurs_Data0("EQ");
+} else {
+$__t10 = new Phpurs_Data0("LT");
+};
+$__t4 = $__t10;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Month"))) {
+$__t4 = new Phpurs_Data0("GT");
+} else {
+if (((is_object(($x)->value0) && ((($x)->value0)->tag === "Year")) && (is_object(($y)->value0) && ((($y)->value0)->tag === "Year")))) {
+$__t4 = new Phpurs_Data0("EQ");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t4 = null;
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+$__t3 = $__t4;
+} else {
+$__t3 = new Phpurs_Data0("LT");
+};
+$__t0 = $__t3;
+} else {
+if ((is_object($y) && (($y)->tag === "ContainsNegativeValue"))) {
+$__t0 = new Phpurs_Data0("GT");
+} else {
+if (((is_object($x) && (($x)->tag === "InvalidFractionalUse")) && (is_object($y) && (($y)->tag === "InvalidFractionalUse")))) {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Second"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Second"))) {
+$__t12 = new Phpurs_Data0("EQ");
+} else {
+$__t12 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t12;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Second"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Minute"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"))) {
+$__t13 = new Phpurs_Data0("EQ");
+} else {
+$__t13 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t13;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Minute"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Hour"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"))) {
+$__t14 = new Phpurs_Data0("EQ");
+} else {
+$__t14 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t14;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Hour"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Day"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Day"))) {
+$__t15 = new Phpurs_Data0("EQ");
+} else {
+$__t15 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t15;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Day"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Week"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Week"))) {
+$__t16 = new Phpurs_Data0("EQ");
+} else {
+$__t16 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t16;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Week"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if ((is_object(($x)->value0) && ((($x)->value0)->tag === "Month"))) {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Month"))) {
+$__t17 = new Phpurs_Data0("EQ");
+} else {
+$__t17 = new Phpurs_Data0("LT");
+};
+$__t11 = $__t17;
+} else {
+if ((is_object(($y)->value0) && ((($y)->value0)->tag === "Month"))) {
+$__t11 = new Phpurs_Data0("GT");
+} else {
+if (((is_object(($x)->value0) && ((($x)->value0)->tag === "Year")) && (is_object(($y)->value0) && ((($y)->value0)->tag === "Year")))) {
+$__t11 = new Phpurs_Data0("EQ");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t11 = null;
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+$__t0 = $__t11;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+};
+};
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Interval_Duration_Iso_eqError'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_eqError'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_checkWeekUsage'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((function() use ($v, &$__fn) {
+$__local_var_1 = ((($GLOBALS['Data_Interval_Duration_Iso_lookup'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_lookup')))(new Phpurs_Data0("Week")))(($v)->asMap);
+if ((is_object($__local_var_1) && (($__local_var_1)->tag === "Nothing"))) {
+$__t2 = false;
+} else {
+if ((is_object($__local_var_1) && (($__local_var_1)->tag === "Just"))) {
+$__t2 = true;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+if ((is_object(($v)->asMap) && ((($v)->asMap)->tag === "Leaf"))) {
+$__t3 = 0;
+} else {
+if ((is_object(($v)->asMap) && ((($v)->asMap)->tag === "Node"))) {
+$__t3 = (($v)->asMap)->value1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t3 = null;
+};
+};
+return ((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))($__t2))((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($__t3))(1)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($__t3))(1))->tag === "GT")));
+})()) {
+$__t0 = new Phpurs_Data2("Cons", new Phpurs_Data0("InvalidWeekComponentUsage"), new Phpurs_Data0("Nil"));
+} else {
+$__t0 = new Phpurs_Data0("Nil");
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_checkNegativeValues'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Interval_Duration_Iso_foldMap1'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_foldMap1')))(function($v1) {
+  $__num = \func_num_args();
+  if (( ! (is_object((((($GLOBALS['Data_Ord_ordNumber'] ?? \PhpursThunks::eval('Data_Ord_ordNumber')))->compare)(($v1)->value1))(0.0)) && (((((($GLOBALS['Data_Ord_ordNumber'] ?? \PhpursThunks::eval('Data_Ord_ordNumber')))->compare)(($v1)->value1))(0.0))->tag === "LT")))) {
+$__t0 = new Phpurs_Data0("Nil");
+} else {
+$__t0 = new Phpurs_Data2("Cons", new Phpurs_Data1("ContainsNegativeValue", ($v1)->value0), new Phpurs_Data0("Nil"));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($v)->asList);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_checkFractionalUse'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__local_var_0 = ((($GLOBALS['Data_List_span'] ?? \PhpursThunks::eval('Data_List_span')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(function($a) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_HeytingAlgebra_boolNot'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolNot')))(((($GLOBALS['Data_Eq_eqBooleanImpl'] ?? \PhpursThunks::eval('Data_Eq_eqBooleanImpl')))(((($GLOBALS['Data_Eq_eqNumberImpl'] ?? \PhpursThunks::eval('Data_Eq_eqNumberImpl')))((($GLOBALS['Data_Number_floor'] ?? \PhpursThunks::eval('Data_Number_floor')))($a)))($a)))(false));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($GLOBALS['Data_Tuple_snd'] ?? \PhpursThunks::eval('Data_Tuple_snd')))))(($v)->asList);
+  if (((is_object(($__local_var_0)->rest) && ((($__local_var_0)->rest)->tag === "Cons")) && (is_object((((($GLOBALS['Data_Ord_ordNumber'] ?? \PhpursThunks::eval('Data_Ord_ordNumber')))->compare)((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))(((($GLOBALS['Data_Interval_Duration_Iso_foldMap2'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_foldMap2')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Monoid_Additive_Additive'] ?? \PhpursThunks::eval('Data_Monoid_Additive_Additive'))))(($GLOBALS['Data_Number_abs'] ?? \PhpursThunks::eval('Data_Number_abs')))))(($GLOBALS['Data_Tuple_snd'] ?? \PhpursThunks::eval('Data_Tuple_snd')))))((($__local_var_0)->rest)->value1))))(0.0)) && (((((($GLOBALS['Data_Ord_ordNumber'] ?? \PhpursThunks::eval('Data_Ord_ordNumber')))->compare)((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))(((($GLOBALS['Data_Interval_Duration_Iso_foldMap2'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_foldMap2')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Monoid_Additive_Additive'] ?? \PhpursThunks::eval('Data_Monoid_Additive_Additive'))))(($GLOBALS['Data_Number_abs'] ?? \PhpursThunks::eval('Data_Number_abs')))))(($GLOBALS['Data_Tuple_snd'] ?? \PhpursThunks::eval('Data_Tuple_snd')))))((($__local_var_0)->rest)->value1))))(0.0))->tag === "GT")))) {
+$__t1 = new Phpurs_Data2("Cons", new Phpurs_Data1("InvalidFractionalUse", ((($__local_var_0)->rest)->value0)->value0), new Phpurs_Data0("Nil"));
+} else {
+$__t1 = new Phpurs_Data0("Nil");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_checkEmptiness'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((is_object(($v)->asList) && ((($v)->asList)->tag === "Nil"))) {
+$__t0 = new Phpurs_Data2("Cons", new Phpurs_Data0("IsEmpty"), new Phpurs_Data0("Nil"));
+} else {
+$__t0 = new Phpurs_Data0("Nil");
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_checkValidIsoDuration'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $go = null;
+  $go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v1) && (($v1)->tag === "Nil"))) {
+$__t0 = $v;
+} else {
+if ((is_object($v1) && (($v1)->tag === "Cons"))) {
+$__t0 = (($go)(new Phpurs_Data2("Cons", ($v1)->value0, $v)))(($v1)->value1);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  $__res = ((($GLOBALS['Data_Interval_Duration_Iso_fold'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_fold')))([($GLOBALS['Data_Interval_Duration_Iso_checkWeekUsage'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_checkWeekUsage')), ($GLOBALS['Data_Interval_Duration_Iso_checkEmptiness'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_checkEmptiness')), ($GLOBALS['Data_Interval_Duration_Iso_checkFractionalUse'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_checkFractionalUse')), ($GLOBALS['Data_Interval_Duration_Iso_checkNegativeValues'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_checkNegativeValues'))]))((object)["asList" => (($go)(new Phpurs_Data0("Nil")))((($GLOBALS['Data_Interval_Duration_Iso_toUnfoldable'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_toUnfoldable')))($v)), "asMap" => $v]);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Interval_Duration_Iso_mkIsoDuration'] = function() { $v = function($d) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($GLOBALS['Data_Interval_Duration_Iso_checkValidIsoDuration'] ?? \PhpursThunks::eval('Data_Interval_Duration_Iso_checkValidIsoDuration')))($d);
+  if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Nil"))) {
+$__t1 = new Phpurs_Data1("Right", $d);
+} else {
+if ((is_object($__local_var_0) && (($__local_var_0)->tag === "Cons"))) {
+$__t1 = new Phpurs_Data1("Left", new Phpurs_Data2("NonEmpty", ($__local_var_0)->value0, ($__local_var_0)->value1));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -2,14 +2,21 @@
 
 namespace Data\DivisionRing;
 
+// ALL IMPORTS: Data.DivisionRing, Data.EuclideanRing, Data.Ring, Data.Semiring, Prim
+// TO REQUIRE: Data.DivisionRing, Data.EuclideanRing, Data.Ring, Data.Semiring
+require_once __DIR__ . '/../Data.DivisionRing/index.php';
+require_once __DIR__ . '/../Data.EuclideanRing/index.php';
+require_once __DIR__ . '/../Data.Ring/index.php';
+require_once __DIR__ . '/../Data.Semiring/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,117 +88,56 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_DivisionRing_div': $v = ($GLOBALS['Data_EuclideanRing_numDiv'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_numDiv')); break;
-      case 'Data_DivisionRing_divisionringNumber': $v = (object)["recip" => function($x) {
+\PhpursThunks::$thunks['Data_DivisionRing_recip'] = function() { $v = function($dict) {
   $__num = \func_num_args();
-  $__global_Data_DivisionRing_div = ($GLOBALS['Data_DivisionRing_div'] ?? \Data\DivisionRing\phpurs_eval_thunk('Data_DivisionRing_div'));
-  $__res = (($__global_Data_DivisionRing_div)(1.0))($x);
+  $__res = ($dict)->recip;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Ring0" => function($dollar__unused) {
+}; return $v; };
+\PhpursThunks::$thunks['Data_DivisionRing_rightDiv'] = function() { $v = (function() {
+  $__fn = function($dictDivisionRing, $a = null, $b = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__global_Data_Ring_ringNumber = ($GLOBALS['Data_Ring_ringNumber'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_ringNumber'));
-  $__res = $__global_Data_Ring_ringNumber;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-}
+  $__res = ((((((($dictDivisionRing)->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->mul)($a))((($dictDivisionRing)->recip)($b));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_DivisionRing_leftDiv'] = function() { $v = (function() {
+  $__fn = function($dictDivisionRing, $a = null, $b = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((((((($dictDivisionRing)->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->mul)((($dictDivisionRing)->recip)($b)))($a);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_DivisionRing_divisionringNumber'] = function() { $v = (object)["recip" => function($x) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_EuclideanRing_numDiv'] ?? \PhpursThunks::eval('Data_EuclideanRing_numDiv')))(1.0))($x);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Ring0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ring_ringNumber'] ?? \PhpursThunks::eval('Data_Ring_ringNumber'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
 
-require_once __DIR__ . '/../Data.DivisionRing/index.php';
-require_once __DIR__ . '/../Data.EuclideanRing/index.php';
-require_once __DIR__ . '/../Data.Ring/index.php';
-require_once __DIR__ . '/../Data.Semiring/index.php';
 
 
-// Data_DivisionRing_DivisionRing$Dict
-function majData_majDivisionmajRing_majDivisionmajRingdollarmajDict($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majDivisionmajRing_majDivisionmajRingdollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_DivisionRing_DivisionRingdollarDict'] = __NAMESPACE__ . '\\majData_majDivisionmajRing_majDivisionmajRingdollarmajDict';
-
-// Data_DivisionRing_recip
-function majData_majDivisionmajRing_recip($dict) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majDivisionmajRing_recip';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->recip;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_DivisionRing_recip'] = __NAMESPACE__ . '\\majData_majDivisionmajRing_recip';
-
-// Data_DivisionRing_rightDiv
-function majData_majDivisionmajRing_rightmajDiv($dictDivisionRing, $a = null, $b = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majDivisionmajRing_rightmajDiv';
-  if ($__num < 3) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $mul = ((((($dictDivisionRing)->Ring0)($__global_Prim_undefined))->Semiring0)($__global_Prim_undefined))->mul;
-  $recip1 = ($dictDivisionRing)->recip;
-  $__res = (($mul)($a))(($recip1)($b));
-  goto __end;;
-  __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_DivisionRing_rightDiv'] = __NAMESPACE__ . '\\majData_majDivisionmajRing_rightmajDiv';
-
-// Data_DivisionRing_leftDiv
-function majData_majDivisionmajRing_leftmajDiv($dictDivisionRing, $a = null, $b = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majDivisionmajRing_leftmajDiv';
-  if ($__num < 3) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $mul = ((((($dictDivisionRing)->Ring0)($__global_Prim_undefined))->Semiring0)($__global_Prim_undefined))->mul;
-  $recip1 = ($dictDivisionRing)->recip;
-  $__res = (($mul)(($recip1)($b)))($a);
-  goto __end;;
-  __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_DivisionRing_leftDiv'] = __NAMESPACE__ . '\\majData_majDivisionmajRing_leftmajDiv';
 
 

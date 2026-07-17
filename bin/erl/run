@@ -6,7 +6,7 @@ mkdir -p run/bak/erl/output run/bak/erl/spago
 rm -rf output .spago spago.yaml spago.lock
 ln -s run/bak/erl/output output
 ln -s run/bak/erl/spago .spago
-ln -s run/bak/erl/spago.yaml spago.yaml
+ln -s run/bak/erl/spago.erl.yaml spago.yaml
 touch run/bak/erl/spago.lock && ln -s run/bak/erl/spago.lock spago.lock
 export PATH="$PWD/run/bak/js/node_modules/.bin:$PATH"
 spago fetch > /dev/null 2>&1

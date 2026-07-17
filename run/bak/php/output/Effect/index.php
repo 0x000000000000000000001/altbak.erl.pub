@@ -2,33 +2,37 @@
 
 namespace Effect;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Functor, Data.Monoid, Data.Semigroup, Effect, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Functor, Data.Monoid, Data.Semigroup, Effect, Prelude
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Effect/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -36,12 +40,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -49,13 +53,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -63,82 +67,90 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Effect_monadEffect': $v = (object)["Applicative0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Effect_applicativeEffect = ($GLOBALS['Effect_applicativeEffect'] ?? \Effect\phpurs_eval_thunk('Effect_applicativeEffect'));
-  $__res = $__global_Effect_applicativeEffect;
+\PhpursThunks::$thunks['Effect_monadEffect'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Effect_applicativeEffect'] ?? \PhpursThunks::eval('Effect_applicativeEffect'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Bind1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Effect_bindEffect = ($GLOBALS['Effect_bindEffect'] ?? \Effect\phpurs_eval_thunk('Effect_bindEffect'));
-  $__res = $__global_Effect_bindEffect;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Effect_bindEffect'] ?? \PhpursThunks::eval('Effect_bindEffect'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Effect_bindEffect': $v = (object)["bind" => ($GLOBALS['Effect_bindE'] ?? \Effect\phpurs_eval_thunk('Effect_bindE')), "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Effect_applyEffect = ($GLOBALS['Effect_applyEffect'] ?? \Effect\phpurs_eval_thunk('Effect_applyEffect'));
-  $__res = $__global_Effect_applyEffect;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Effect_bindEffect'] = function() { $v = (object)["bind" => ($GLOBALS['Effect_bindE'] ?? \PhpursThunks::eval('Effect_bindE')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Effect_applicativeEffect': $v = (object)["pure" => ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE')), "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Effect_applyEffect = ($GLOBALS['Effect_applyEffect'] ?? \Effect\phpurs_eval_thunk('Effect_applyEffect'));
-  $__res = $__global_Effect_applyEffect;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Effect_applyEffect'] = function() { $v = (object)["apply" => (($GLOBALS['Control_Monad_ap'] ?? \PhpursThunks::eval('Control_Monad_ap')))(($GLOBALS['Effect_monadEffect'] ?? \PhpursThunks::eval('Effect_monadEffect'))), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Effect_functorEffect'] ?? \PhpursThunks::eval('Effect_functorEffect'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Effect_applyEffect': $v = (object)["apply" => \Control\Monad\Control_Monad_ap(($GLOBALS['Effect_monadEffect'] ?? \Effect\phpurs_eval_thunk('Effect_monadEffect'))), "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Effect_functorEffect = ($GLOBALS['Effect_functorEffect'] ?? \Effect\phpurs_eval_thunk('Effect_functorEffect'));
-  $__res = $__global_Effect_functorEffect;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Effect_applicativeEffect'] = function() { $v = (object)["pure" => ($GLOBALS['Effect_pureE'] ?? \PhpursThunks::eval('Effect_pureE')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Effect_functorEffect': $v = (object)["map" => \Control\Applicative\Control_Applicative_liftA1(($GLOBALS['Effect_applicativeEffect'] ?? \Effect\phpurs_eval_thunk('Effect_applicativeEffect')))]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Effect_functorEffect'] = function() { $v = (object)["map" => (($GLOBALS['Control_Applicative_liftA1'] ?? \PhpursThunks::eval('Control_Applicative_liftA1')))(($GLOBALS['Effect_applicativeEffect'] ?? \PhpursThunks::eval('Effect_applicativeEffect')))]; return $v; };
+\PhpursThunks::$thunks['Effect_semigroupEffect'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => ((($GLOBALS['Control_Apply_lift2'] ?? \PhpursThunks::eval('Control_Apply_lift2')))(($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect'))))(($dictSemigroup)->append)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Effect_monoidEffect'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $__res = (object)["mempty" => (($GLOBALS['Effect_pureE'] ?? \PhpursThunks::eval('Effect_pureE')))(($dictMonoid)->mempty), "Semigroup0" => function($dollar__unused_0) use (&$dictMonoid) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => ((($GLOBALS['Control_Apply_lift2'] ?? \PhpursThunks::eval('Control_Apply_lift2')))(($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect'))))(((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->append)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Effect = \call_user_func(function() {
+  $exports = [];
 $pureE = function($x) use (&$pureE) { return function() use(&$x) { return $x; }; };
 $bindE = function($a, $f = null) use (&$bindE) {
     if (\func_num_args() < 2) {
@@ -210,13 +222,16 @@ $exports['forE'] = $forE;
 $exports['foreachE'] = $foreachE;
 
 return $exports;
+  return $exports;
 });
-$GLOBALS['Effect_pureE'] = $ffi_Effect['pureE'] ?? null;
-$GLOBALS['Effect_bindE'] = $ffi_Effect['bindE'] ?? null;
-$GLOBALS['Effect_untilE'] = $ffi_Effect['untilE'] ?? null;
-$GLOBALS['Effect_whileE'] = $ffi_Effect['whileE'] ?? null;
-$GLOBALS['Effect_forE'] = $ffi_Effect['forE'] ?? null;
-$GLOBALS['Effect_foreachE'] = $ffi_Effect['foreachE'] ?? null;
+\PhpursThunks::$thunks['Effect_bindE'] = function() use (&$ffi_Effect) { return $ffi_Effect['bindE']; };
+\PhpursThunks::$thunks['Effect_forE'] = function() use (&$ffi_Effect) { return $ffi_Effect['forE']; };
+\PhpursThunks::$thunks['Effect_foreachE'] = function() use (&$ffi_Effect) { return $ffi_Effect['foreachE']; };
+\PhpursThunks::$thunks['Effect_pureE'] = function() use (&$ffi_Effect) { return $ffi_Effect['pureE']; };
+\PhpursThunks::$thunks['Effect_untilE'] = function() use (&$ffi_Effect) { return $ffi_Effect['untilE']; };
+\PhpursThunks::$thunks['Effect_whileE'] = function() use (&$ffi_Effect) { return $ffi_Effect['whileE']; };
+
+
 
 
 

@@ -2,35 +2,40 @@
 
 namespace Control\Monad\ST\Internal;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Control.Monad.Rec.Class, Control.Monad.ST.Internal, Data.Functor, Data.Monoid, Data.Semigroup, Data.Unit, Partial.Unsafe, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Control.Monad.Rec.Class, Control.Monad.ST.Internal, Data.Functor, Data.Monoid, Data.Semigroup, Data.Unit, Partial.Unsafe, Prelude
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Control.Monad.Rec.Class/index.php';
 require_once __DIR__ . '/../Control.Monad.ST.Internal/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -38,12 +43,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -51,13 +56,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -65,82 +70,190 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Control_Monad_ST_Internal_functorST': $v = (object)["map" => ($GLOBALS['Control_Monad_ST_Internal_map_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_map_'))]; break;
-      case 'Control_Monad_ST_Internal_monadST': $v = (object)["Applicative0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_applicativeST = ($GLOBALS['Control_Monad_ST_Internal_applicativeST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_applicativeST'));
-  $__res = $__global_Control_Monad_ST_Internal_applicativeST;
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_modify__prime__'] = function() { $v = ($GLOBALS['Control_Monad_ST_Internal_modifyImpl'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_modifyImpl')); return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_modify'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_ST_Internal_modifyImpl'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_modifyImpl')))(function($s) use (&$f) {
+  $__num = \func_num_args();
+  $s__prime___0 = ($f)($s);
+  $__res = (object)["state" => $s__prime___0, "value" => $s__prime___0];
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Bind1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_bindST = ($GLOBALS['Control_Monad_ST_Internal_bindST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_bindST'));
-  $__res = $__global_Control_Monad_ST_Internal_bindST;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_ST_Internal_bindST': $v = (object)["bind" => ($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_bind_')), "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_applyST = ($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_applyST'));
-  $__res = $__global_Control_Monad_ST_Internal_applyST;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_functorST'] = function() { $v = (object)["map" => ($GLOBALS['Control_Monad_ST_Internal_map_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_map_'))]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_void'] = function() { $v = (($GLOBALS['Control_Monad_ST_Internal_map_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_map_')))(function($v) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_ST_Internal_applicativeST': $v = (object)["pure" => ($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_pure_')), "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_applyST = ($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_applyST'));
-  $__res = $__global_Control_Monad_ST_Internal_applyST;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}); return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_monadST'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_applicativeST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_applicativeST'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_ST_Internal_applyST': $v = (object)["apply" => \Control\Monad\Control_Monad_ap(($GLOBALS['Control_Monad_ST_Internal_monadST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_monadST'))), "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_functorST = ($GLOBALS['Control_Monad_ST_Internal_functorST'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_functorST'));
-  $__res = $__global_Control_Monad_ST_Internal_functorST;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_bindST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bindST'));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_bindST'] = function() { $v = (object)["bind" => ($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_applyST'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_applyST'] = function() { $v = (object)["apply" => (($GLOBALS['Control_Monad_ap'] ?? \PhpursThunks::eval('Control_Monad_ap')))(($GLOBALS['Control_Monad_ST_Internal_monadST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_monadST'))), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_functorST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_functorST'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_applicativeST'] = function() { $v = (object)["pure" => ($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_pure_')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_applyST'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_semigroupST'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => ((($GLOBALS['Control_Apply_lift2'] ?? \PhpursThunks::eval('Control_Apply_lift2')))(($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_applyST'))))(($dictSemigroup)->append)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_monadRecST'] = function() { $v = (object)["tailRecM" => (function() {
+  $__fn = function($f, $a = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  $fromDone_1 = (($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \PhpursThunks::eval('Partial_Unsafe__unsafePartial')))((function() {
+  $__fn = function($dollar__unused_0, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t0 = ($v)->value0;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})());
+  $__res = ((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')))(((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')))(($f)($a)))(($GLOBALS['Control_Monad_ST_Internal_new'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_new')))))(function($r) use (&$f, &$fromDone_1) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')))(((($GLOBALS['Control_Monad_ST_Internal_while'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_while')))(((($GLOBALS['Control_Monad_ST_Internal_map_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_map_')))(function($v) {
+  $__num = \func_num_args();
+  $__res = (is_object($v) && (($v)->tag === "Loop"));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))((($GLOBALS['Control_Monad_ST_Internal_read'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_read')))($r))))(((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')))((($GLOBALS['Control_Monad_ST_Internal_read'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_read')))($r)))(function($v) use (&$f, &$r) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Loop"))) {
+$__t2 = ((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_bind_')))(($f)(($v)->value0)))(function($e) use (&$r) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_ST_Internal_void'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_void')))(((($GLOBALS['Control_Monad_ST_Internal_write'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_write')))($e))($r));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t2 = (($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_pure_')))(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))))(function($dollar__unused_0) use (&$fromDone_1, &$r) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Monad_ST_Internal_map_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_map_')))($fromDone_1))((($GLOBALS['Control_Monad_ST_Internal_read'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_read')))($r));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Monad0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Control_Monad_ST_Internal_monadST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_monadST'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_monoidST'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $__res = (object)["mempty" => (($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_pure_')))(($dictMonoid)->mempty), "Semigroup0" => function($dollar__unused_0) use (&$dictMonoid) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => ((($GLOBALS['Control_Apply_lift2'] ?? \PhpursThunks::eval('Control_Apply_lift2')))(($GLOBALS['Control_Monad_ST_Internal_applyST'] ?? \PhpursThunks::eval('Control_Monad_ST_Internal_applyST'))))(((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->append)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Control_Monad_ST_Internal = \call_user_func(function() {
+  $exports = [];
 $map_ = function($f, $a = null) use (&$map_) {
     if (\func_num_args() < 2) {
         $__args = \func_get_args();
@@ -228,18 +341,25 @@ $exports['while'] = $while;
 $exports['for'] = $for;
 $exports['foreach'] = $foreach;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Control_Monad_ST_Internal_map_'] = $ffi_Control_Monad_ST_Internal['map_'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_pure_'] = $ffi_Control_Monad_ST_Internal['pure_'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_bind_'] = $ffi_Control_Monad_ST_Internal['bind_'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_run'] = $ffi_Control_Monad_ST_Internal['run'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_while'] = $ffi_Control_Monad_ST_Internal['while'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_for'] = $ffi_Control_Monad_ST_Internal['for'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_foreach'] = $ffi_Control_Monad_ST_Internal['foreach'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_new'] = $ffi_Control_Monad_ST_Internal['new'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_read'] = $ffi_Control_Monad_ST_Internal['read'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_modifyImpl'] = $ffi_Control_Monad_ST_Internal['modifyImpl'] ?? null;
-$GLOBALS['Control_Monad_ST_Internal_write'] = $ffi_Control_Monad_ST_Internal['write'] ?? null;
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_bind_'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['bind_']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_for'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['for']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_foreach'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['foreach']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_map_'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['map_']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_modifyImpl'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['modifyImpl']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_new'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['new']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_pure_'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['pure_']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_read'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['read']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_run'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['run']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_while'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['while']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Internal_write'] = function() use (&$ffi_Control_Monad_ST_Internal) { return $ffi_Control_Monad_ST_Internal['write']; };
+
+
+
+
+
+
 
 
 

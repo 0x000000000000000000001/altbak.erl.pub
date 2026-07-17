@@ -6,7 +6,7 @@ mkdir -p run/bak/php/output run/bak/php/spago
 rm -rf output .spago spago.yaml spago.lock
 ln -s run/bak/php/output output
 ln -s run/bak/php/spago .spago
-ln -s run/bak/php/spago.yaml spago.yaml
+ln -s run/bak/php/spago.php.yaml spago.yaml
 touch run/bak/php/spago.lock && ln -s run/bak/php/spago.lock spago.lock
 
 ENTRY_POINT="App"

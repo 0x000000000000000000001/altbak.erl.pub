@@ -2,6 +2,8 @@
 
 namespace Test\Primes;
 
+// ALL IMPORTS: Data.Eq, Data.EuclideanRing, Data.Function, Data.Ord, Data.Ring, Data.Semiring, Data.Show, Effect, Effect.Console, Prelude, Prim, Test.Primes
+// TO REQUIRE: Data.Eq, Data.EuclideanRing, Data.Function, Data.Ord, Data.Ring, Data.Semiring, Data.Show, Effect, Effect.Console, Prelude, Test.Primes
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.EuclideanRing/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
@@ -11,27 +13,28 @@ require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Primes/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -39,12 +42,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -52,13 +55,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -66,330 +69,288 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Test_Primes_add': $v = ($GLOBALS['Data_Semiring_intAdd'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intAdd')); break;
-      case 'Test_Primes_lessThan': $v = \Data\Ord\Data_Ord_lessThan(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Test_Primes_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
-      case 'Test_Primes_notEq': $v = \Data\Eq\Data_Eq_notEq(($GLOBALS['Data_Eq_eqInt'] ?? \Data\Eq\phpurs_eval_thunk('Data_Eq_eqInt'))); break;
-      case 'Test_Primes_mod': $v = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod')); break;
-      case 'Test_Primes_Nil': $v = ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")); break;
-      case 'Test_Primes_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("Prime Sieve (sum primes up to 500):"); break;
-      case 'Test_Primes_act': $v = \Effect\Console\Effect_Console_logShow(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), \Test\Primes\Test_Primes_sumList(\Test\Primes\Test_Primes_sieve(\Test\Primes\Test_Primes_range(2, 500)))); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-
-// Test_Primes_Cons
-function Test_Primes_Cons($value0, $value1 = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_Cons';
+\PhpursThunks::$thunks['Test_Primes_Nil'] = function() { $v = ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")); return $v; };
+\PhpursThunks::$thunks['Test_Primes_Cons'] = function() { $v = (function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($value1) use ($value0, $__fn) { return $__fn($value0, $value1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
   $__res = new Phpurs_Data2("Cons", $value0, $value1);
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_Primes_Cons'] = __NAMESPACE__ . '\\Test_Primes_Cons';
-
-// Test_Primes_sumList
-function Test_Primes_sumList($lst) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_sumList';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Test_Primes_add = ($GLOBALS['Test_Primes_add'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_add'));
-  $go = (function() use (&$go, $__global_Test_Primes_add, &$__fn) {
-  $__fn = function($v, $v1 = null) use (&$go, $__global_Test_Primes_add, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-switch (($__case_0)->tag) {
-case "Nil":
-$acc = $__case_1;
-$__res = $acc;
-goto __end;;
-break;
-case "Cons":
-$x = ($__case_0)->v0;
-$xs = ($__case_0)->v1;
-$acc = $__case_1;
-$__tco_tmp_0 = $xs;
-$__tco_tmp_1 = ($__global_Test_Primes_add)($acc, $x);
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-continue 2;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})();
-  $__res = ($go)($lst, 0);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_Primes_sumList'] = __NAMESPACE__ . '\\Test_Primes_sumList';
-
-// Test_Primes_reverse
-function Test_Primes_reverse($lst) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_reverse';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $go = (function() use (&$go, &$__fn) {
+})(); return $v; };
+\PhpursThunks::$thunks['Test_Primes_sumList'] = function() { $v = function($lst) {
+  $__num = \func_num_args();
+  $go = null;
+  $go = (function() use (&$go) {
   $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
-  $__num = func_num_args();
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-switch (($__case_0)->tag) {
-case "Nil":
-$acc = $__case_1;
-$__res = $acc;
-goto __end;;
-break;
-case "Cons":
-$x = ($__case_0)->v0;
-$xs = ($__case_0)->v1;
-$acc = $__case_1;
-$__tco_tmp_0 = $xs;
-$__tco_tmp_1 = new Phpurs_Data2("Cons", $x, $acc);
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-continue 2;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t0 = $v1;
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__t0 = (($go)(($v)->value1))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($v1))(($v)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
 };
 };
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-  $__res = ($go)($lst, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
+  $__res = (($go)($lst))(0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_Primes_reverse'] = __NAMESPACE__ . '\\Test_Primes_reverse';
-
-// Test_Primes_range
-function Test_Primes_range($start, $end = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_range';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_Primes_reverse'] = function() { $v = function($lst) {
+  $__num = \func_num_args();
+  $go = null;
+  $go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($end) use ($start, $__fn) { return $__fn($start, $end); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Test_Primes_lessThan = ($GLOBALS['Test_Primes_lessThan'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_lessThan'));
-  $__global_Test_Primes_sub = ($GLOBALS['Test_Primes_sub'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_sub'));
-  $go = (function() use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_sub, &$__fn) {
-  $__fn = function($curr, $acc = null) use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_sub, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($acc) use ($curr, &$__fn) { return $__fn($curr, $acc); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  while (true) {
-$__case_0 = ($__global_Test_Primes_lessThan)($curr, $start);
-switch ($__case_0) {
-case true:
-$__res = $acc;
-goto __end;;
-break;
-default:
-$__tco_tmp_0 = ($__global_Test_Primes_sub)($curr, 1);
-$__tco_tmp_1 = new Phpurs_Data2("Cons", $curr, $acc);
-$curr = $__tco_tmp_0;
-$acc = $__tco_tmp_1;
-continue 2;
-break;
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t0 = $v1;
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__t0 = (($go)(($v)->value1))(new Phpurs_Data2("Cons", ($v)->value0, $v1));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
 };
 };
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-  $__res = ($go)($end, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
+  $__res = (($go)($lst))(new Phpurs_Data0("Nil"));
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_Primes_range'] = __NAMESPACE__ . '\\Test_Primes_range';
-
-// Test_Primes_filter
-function Test_Primes_filter($p, $lst = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_filter';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_Primes_range'] = function() { $v = (function() {
+  $__fn = function($start, $end = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($lst) use ($p, $__fn) { return $__fn($p, $lst); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Test_Primes_reverse = ($GLOBALS['Test_Primes_reverse'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_reverse'));
-  $go = (function() use ($__global_Test_Primes_reverse, $p, &$go, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($__global_Test_Primes_reverse, $p, &$go, &$__fn) {
-  $__num = func_num_args();
+  $go = null;
+  $go = (function() use (&$go, &$start) {
+  $__fn = function($curr, $acc = null) use (&$go, &$start, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-switch (($__case_0)->tag) {
-case "Nil":
-$acc = $__case_1;
-$__res = ($__global_Test_Primes_reverse)($acc);
-goto __end;;
-break;
-case "Cons":
-$x = ($__case_0)->v0;
-$xs = ($__case_0)->v1;
-$acc = $__case_1;
-$__case_0 = ($p)($x);
-switch ($__case_0) {
-case true:
-$__tco_tmp_0 = $xs;
-$__tco_tmp_1 = new Phpurs_Data2("Cons", $x, $acc);
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-continue 3;
-break;
-default:
-$__tco_tmp_0 = $xs;
-$__tco_tmp_1 = $acc;
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-continue 3;
-break;
+  if ((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($curr))($start)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($curr))($start))->tag === "LT"))) {
+$__t0 = $acc;
+} else {
+$__t0 = (($go)(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($curr))(1)))(new Phpurs_Data2("Cons", $curr, $acc));
 };
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-};
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-  $__res = ($go)($lst, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
+  $__res = (($go)($end))(new Phpurs_Data0("Nil"));
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_Primes_filter'] = __NAMESPACE__ . '\\Test_Primes_filter';
-
-// Test_Primes_sieve
-function Test_Primes_sieve($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Primes_sieve';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_Primes_filter'] = function() { $v = (function() {
+  $__fn = function($p, $lst = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Test_Primes_filter = ($GLOBALS['Test_Primes_filter'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_filter'));
-  $__global_Test_Primes_notEq = ($GLOBALS['Test_Primes_notEq'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_notEq'));
-  $__global_Test_Primes_mod = ($GLOBALS['Test_Primes_mod'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_mod'));
-  while (true) {
-$__case_0 = $v;
-switch (($__case_0)->tag) {
-case "Nil":
-$__res = ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil"));
-goto __end;;
-break;
-case "Cons":
-$p = ($__case_0)->v0;
-$xs = ($__case_0)->v1;
-$__res = new Phpurs_Data2("Cons", $p, \Test\Primes\Test_Primes_sieve(($__global_Test_Primes_filter)(function($x) use ($__global_Test_Primes_notEq, $__global_Test_Primes_mod, $p) {
-  $__num = func_num_args();
-  $__res = ($__global_Test_Primes_notEq)(($__global_Test_Primes_mod)($x, $p), 0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $xs)));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  $go = null;
+  $go = (function() use (&$go, &$p) {
+  $__fn = function($v, $v1 = null) use (&$go, &$p, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$go = null;
+$go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t1 = $v1;
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__t1 = (($go)(($v)->value1))(new Phpurs_Data2("Cons", ($v)->value0, $v1));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
 };
-  $__res = null;
+  $__res = $__t1;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_Primes_sieve'] = __NAMESPACE__ . '\\Test_Primes_sieve';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+$__t0 = (($go)($v1))(new Phpurs_Data0("Nil"));
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+if (($p)(($v)->value0)) {
+$__t2 = (($go)(($v)->value1))(new Phpurs_Data2("Cons", ($v)->value0, $v1));
+} else {
+$__t2 = (($go)(($v)->value1))($v1);
+};
+$__t0 = $__t2;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  $__res = (($go)($lst))(new Phpurs_Data0("Nil"));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_Primes_sieve'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t0 = new Phpurs_Data0("Nil");
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__local_var_1 = ($v)->value0;
+$go = null;
+$go = (function() use (&$__local_var_1, &$go) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_1, &$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$go = null;
+$go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($v) && (($v)->tag === "Nil"))) {
+$__t3 = $v1;
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+$__t3 = (($go)(($v)->value1))(new Phpurs_Data2("Cons", ($v)->value0, $v1));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t3 = null;
+};
+};
+  $__res = $__t3;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+$__t2 = (($go)($v1))(new Phpurs_Data0("Nil"));
+} else {
+if ((is_object($v) && (($v)->tag === "Cons"))) {
+if (((($GLOBALS['Data_Eq_eqBooleanImpl'] ?? \PhpursThunks::eval('Data_Eq_eqBooleanImpl')))(((($GLOBALS['Data_Eq_eqIntImpl'] ?? \PhpursThunks::eval('Data_Eq_eqIntImpl')))(((($GLOBALS['Data_EuclideanRing_intMod'] ?? \PhpursThunks::eval('Data_EuclideanRing_intMod')))(($v)->value0))($__local_var_1)))(0)))(false)) {
+$__t4 = (($go)(($v)->value1))(new Phpurs_Data2("Cons", ($v)->value0, $v1));
+} else {
+$__t4 = (($go)(($v)->value1))($v1);
+};
+$__t2 = $__t4;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+$__t0 = new Phpurs_Data2("Cons", $__local_var_1, (($GLOBALS['Test_Primes_sieve'] ?? \PhpursThunks::eval('Test_Primes_sieve')))((($go)(($v)->value1))(new Phpurs_Data0("Nil"))));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_Primes_describe'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))("Prime Sieve (sum primes up to 500):"); return $v; };
+\PhpursThunks::$thunks['Test_Primes_act'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))((($GLOBALS['Data_Show_showIntImpl'] ?? \PhpursThunks::eval('Data_Show_showIntImpl')))((($GLOBALS['Test_Primes_sumList'] ?? \PhpursThunks::eval('Test_Primes_sumList')))((($GLOBALS['Test_Primes_sieve'] ?? \PhpursThunks::eval('Test_Primes_sieve')))(((($GLOBALS['Test_Primes_range'] ?? \PhpursThunks::eval('Test_Primes_range')))(2))(500))))); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
 
 
 

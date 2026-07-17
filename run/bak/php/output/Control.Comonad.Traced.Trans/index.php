@@ -2,6 +2,8 @@
 
 namespace Control\Comonad\Traced\Trans;
 
+// ALL IMPORTS: Control.Comonad, Control.Comonad.Traced.Trans, Control.Comonad.Trans.Class, Control.Extend, Data.Function, Data.Functor, Data.Monoid, Data.Newtype, Data.Semigroup, Prelude, Prim
+// TO REQUIRE: Control.Comonad, Control.Comonad.Traced.Trans, Control.Comonad.Trans.Class, Control.Extend, Data.Function, Data.Functor, Data.Monoid, Data.Newtype, Data.Semigroup, Prelude
 require_once __DIR__ . '/../Control.Comonad/index.php';
 require_once __DIR__ . '/../Control.Comonad.Traced.Trans/index.php';
 require_once __DIR__ . '/../Control.Comonad.Trans.Class/index.php';
@@ -15,23 +17,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -39,12 +41,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -52,13 +54,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -66,297 +68,226 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Control_Comonad_Traced_Trans_newtypeTracedT': $v = (object)["Coercible0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-// Control_Comonad_Traced_Trans_TracedT
-function Control_Comonad_Traced_Trans_TracedT($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_TracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_TracedT'] = function() { $v = function($x) {
+  $__num = \func_num_args();
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_TracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_TracedT';
-
-// Control_Comonad_Traced_Trans_runTracedT
-function Control_Comonad_Traced_Trans_runTracedT($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_runTracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  if (true) {
-$w = $__case_0;
-$__res = $w;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_runTracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_runTracedT';
-
-
-// Control_Comonad_Traced_Trans_functorTracedT
-function Control_Comonad_Traced_Trans_functorTracedT($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_functorTracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $map = ($dictFunctor)->map;
-  $__res = (object)["map" => (function() use ($map, &$__fn) {
-  $__fn = function($f, $v = null) use ($map, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v) use ($f, &$__fn) { return $__fn($f, $v); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  if (true) {
-$f1 = $__case_0;
-$w = $__case_1;
-$__res = ($map)((function() use ($f1, &$__fn) {
-  $__fn = function($g, $t = null) use ($f1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($t) use ($g, &$__fn) { return $__fn($g, $t); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($f1)(($g)($t));
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_runTracedT'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_newtypeTracedT'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_functorTracedT'] = function() { $v = function($dictFunctor) {
+  $__num = \func_num_args();
+  $__res = (object)["map" => (function() use (&$dictFunctor) {
+  $__fn = function($f, $v = null) use (&$dictFunctor, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictFunctor)->map)((function() use (&$f) {
+  $__fn = function($g, $t = null) use (&$f, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($f)(($g)($t));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), $w);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
+})()))($v);
+  goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_functorTracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_functorTracedT';
-
-// Control_Comonad_Traced_Trans_extendTracedT
-function Control_Comonad_Traced_Trans_extendTracedT($dictExtend) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_extendTracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Comonad_Traced_Trans_functorTracedT = ($GLOBALS['Control_Comonad_Traced_Trans_functorTracedT'] ?? \Control\Comonad\Traced\Trans\phpurs_eval_thunk('Control_Comonad_Traced_Trans_functorTracedT'));
-  $extend = ($dictExtend)->extend;
-  $Functor0 = (($dictExtend)->Functor0)($__global_Prim_undefined);
-  $map = ($Functor0)->map;
-  $functorTracedT1 = ($__global_Control_Comonad_Traced_Trans_functorTracedT)($Functor0);
-  $__res = function($dictSemigroup) use ($extend, $map, $functorTracedT1) {
-  $__num = func_num_args();
-  $append = ($dictSemigroup)->append;
-  $__res = (object)["extend" => (function() use ($extend, $map, $append, &$__fn) {
-  $__fn = function($f, $v = null) use ($extend, $map, $append, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_extendTracedT'] = function() { $v = function($dictExtend) {
+  $__num = \func_num_args();
+  $Functor0_0 = (($dictExtend)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $functorTracedT1_1 = (object)["map" => (function() use (&$Functor0_0) {
+  $__fn = function($f, $v = null) use (&$Functor0_0, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($v) use ($f, &$__fn) { return $__fn($f, $v); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  if (true) {
-$f1 = $__case_0;
-$w = $__case_1;
-$__res = ($extend)((function() use ($f1, $map, $append, &$__fn) {
-  $__fn = function($w__prime__, $t = null) use ($f1, $map, $append, &$__fn) {
-  $__num = func_num_args();
+  $__res = ((($Functor0_0)->map)((function() use (&$f) {
+  $__fn = function($g, $t = null) use (&$f, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($t) use ($w__prime__, &$__fn) { return $__fn($w__prime__, $t); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($f1)(($map)((function() use ($append, $t, &$__fn) {
-  $__fn = function($h, $t__prime__ = null) use ($append, $t, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($t__prime__) use ($h, &$__fn) { return $__fn($h, $t__prime__); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($h)(($append)($t, $t__prime__));
+  $__res = ($f)(($g)($t));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), $w__prime__));
+})()))($v);
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), $w);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($__dollar____unused) use ($functorTracedT1) {
-  $__num = func_num_args();
-  $__res = $functorTracedT1;
+})()];
+  $__res = function($dictSemigroup) use (&$Functor0_0, &$dictExtend, &$functorTracedT1_1) {
+  $__num = \func_num_args();
+  $__res = (object)["extend" => (function() use (&$Functor0_0, &$dictExtend, &$dictSemigroup) {
+  $__fn = function($f, $v = null) use (&$Functor0_0, &$dictExtend, &$dictSemigroup, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictExtend)->extend)((function() use (&$Functor0_0, &$dictSemigroup, &$f) {
+  $__fn = function($w__prime__, $t = null) use (&$Functor0_0, &$dictSemigroup, &$f, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($f)(((($Functor0_0)->map)((function() use (&$dictSemigroup, &$t) {
+  $__fn = function($h, $t__prime__ = null) use (&$dictSemigroup, &$t, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($h)(((($dictSemigroup)->append)($t))($t__prime__));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()))($w__prime__));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()))($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) use (&$functorTracedT1_1) {
+  $__num = \func_num_args();
+  $__res = $functorTracedT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 };
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_extendTracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_extendTracedT';
-
-// Control_Comonad_Traced_Trans_comonadTransTracedT
-function Control_Comonad_Traced_Trans_comonadTransTracedT($dictMonoid) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_comonadTransTracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_comonadTransTracedT'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $mempty_0 = ($dictMonoid)->mempty;
+  $__res = (object)["lower" => (function() use (&$mempty_0) {
+  $__fn = function($dictComonad, $v = null) use (&$mempty_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $mempty = ($dictMonoid)->mempty;
-  $__res = (object)["lower" => function($dictComonad) use ($__global_Prim_undefined, $mempty) {
-  $__num = func_num_args();
-  $map = ((((($dictComonad)->Extend0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $__res = function($v) use ($map, $mempty) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if (true) {
-$w = $__case_0;
-$__res = ($map)(function($f) use ($mempty) {
-  $__num = func_num_args();
-  $__res = ($f)($mempty);
+  $__res = ((((((($dictComonad)->Extend0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($f) use (&$mempty_0) {
+  $__num = \func_num_args();
+  $__res = ($f)($mempty_0);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $w);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Comonad_Traced_Trans_comonadTracedT'] = function() { $v = function($dictComonad) {
+  $__num = \func_num_args();
+  $extendTracedT1_0 = (($GLOBALS['Control_Comonad_Traced_Trans_extendTracedT'] ?? \PhpursThunks::eval('Control_Comonad_Traced_Trans_extendTracedT')))((($dictComonad)->Extend0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictMonoid) use (&$dictComonad, &$extendTracedT1_0) {
+  $__num = \func_num_args();
+  $mempty_1 = ($dictMonoid)->mempty;
+  $extendTracedT2_2 = ($extendTracedT1_0)((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["extract" => function($v) use (&$dictComonad, &$mempty_1) {
+  $__num = \func_num_args();
+  $__res = ((($dictComonad)->extract)($v))($mempty_1);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Extend0" => function($dollar__unused_0) use (&$extendTracedT2_2) {
+  $__num = \func_num_args();
+  $__res = $extendTracedT2_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_comonadTransTracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_comonadTransTracedT';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
-// Control_Comonad_Traced_Trans_comonadTracedT
-function Control_Comonad_Traced_Trans_comonadTracedT($dictComonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Comonad_Traced_Trans_comonadTracedT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Comonad_Traced_Trans_extendTracedT = ($GLOBALS['Control_Comonad_Traced_Trans_extendTracedT'] ?? \Control\Comonad\Traced\Trans\phpurs_eval_thunk('Control_Comonad_Traced_Trans_extendTracedT'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $extract = ($dictComonad)->extract;
-  $extendTracedT1 = ($__global_Control_Comonad_Traced_Trans_extendTracedT)((($dictComonad)->Extend0)($__global_Prim_undefined));
-  $__res = function($dictMonoid) use ($extendTracedT1, $__global_Prim_undefined, $extract) {
-  $__num = func_num_args();
-  $mempty = ($dictMonoid)->mempty;
-  $extendTracedT2 = ($extendTracedT1)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["extract" => function($v) use ($extract, $mempty) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if (true) {
-$w = $__case_0;
-$__res = ($extract)($w, $mempty);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Extend0" => function($__dollar____unused) use ($extendTracedT2) {
-  $__num = func_num_args();
-  $__res = $extendTracedT2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Comonad_Traced_Trans_comonadTracedT'] = __NAMESPACE__ . '\\Control_Comonad_Traced_Trans_comonadTracedT';
+
+
+
+
+
+
+
 

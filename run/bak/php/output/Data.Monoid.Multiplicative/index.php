@@ -2,14 +2,31 @@
 
 namespace Data\Monoid\Multiplicative;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Bounded, Data.Eq, Data.Functor, Data.Monoid, Data.Monoid.Multiplicative, Data.Ord, Data.Semigroup, Data.Semiring, Data.Show, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Monad, Data.Bounded, Data.Eq, Data.Functor, Data.Monoid, Data.Monoid.Multiplicative, Data.Ord, Data.Semigroup, Data.Semiring, Data.Show, Prelude
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Monoid.Multiplicative/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Semiring/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,267 +98,36 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Monoid_Multiplicative_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Monoid_Multiplicative_functorMultiplicative': $v = (object)["map" => (function() {
-  $__fn = function($f, $m = null) use (&$__fn) {
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_Multiplicative'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $m;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($v);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Monoid_Multiplicative_eq1Multiplicative': $v = (object)["eq1" => function($dictEq) {
-  $__num = \func_num_args();
-  $__res = ($dictEq)->eq;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Multiplicative_ord1Multiplicative': $v = (object)["compare1" => function($dictOrd) {
-  $__num = \func_num_args();
-  $__res = ($dictOrd)->compare;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Eq10" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_eq1Multiplicative = ($GLOBALS['Data_Monoid_Multiplicative_eq1Multiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_eq1Multiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_eq1Multiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Multiplicative_applyMultiplicative': $v = (object)["apply" => (function() {
-  $__fn = function($v, $v1 = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$f = $__case_0;
-$x = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f)($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_functorMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_functorMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_functorMultiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_functorMultiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Multiplicative_bindMultiplicative': $v = (object)["bind" => (function() {
-  $__fn = function($v, $f = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $f;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-$f1 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($f1)($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Apply0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_applyMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_applyMultiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_applyMultiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Multiplicative_applicativeMultiplicative': $v = (object)["pure" => "\\Data\\Monoid\\Multiplicative\\majData_majMonoid_majMultiplicative_majMultiplicative", "Apply0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_applyMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_applyMultiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_applyMultiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Monoid_Multiplicative_monadMultiplicative': $v = (object)["Applicative0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_applicativeMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_applicativeMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_applicativeMultiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_applicativeMultiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Bind1" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Monoid_Multiplicative_bindMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_bindMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_bindMultiplicative'));
-  $__res = $__global_Data_Monoid_Multiplicative_bindMultiplicative;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Monad/index.php';
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Monoid.Multiplicative/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Semiring/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-// Data_Monoid_Multiplicative_Multiplicative
-function majData_majMonoid_majMultiplicative_majMultiplicative($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_majMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_Multiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_majMultiplicative';
-
-// Data_Monoid_Multiplicative_showMultiplicative
-function majData_majMonoid_majMultiplicative_showmajMultiplicative($dictShow) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_showMultiplicative'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_showmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Monoid_Multiplicative_append = ($GLOBALS['Data_Monoid_Multiplicative_append'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_append'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Monoid_Multiplicative_append, $show) {
+  $__res = (object)["show" => function($v) use (&$dictShow) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Monoid_Multiplicative_append)("(Multiplicative "))((($__global_Data_Monoid_Multiplicative_append)(($show)($a)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Multiplicative "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)($v)))(")"));
+  goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_showMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_showmajMultiplicative';
-
-// Data_Monoid_Multiplicative_semigroupMultiplicative
-function majData_majMonoid_majMultiplicative_semigroupmajMultiplicative($dictSemiring) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_semigroupMultiplicative'] = function() { $v = function($dictSemiring) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_semigroupmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $mul = ($dictSemiring)->mul;
-  $__res = (object)["append" => (function() use ($mul) {
-  $__fn = function($v, $v1 = null) use ($mul, &$__fn) {
+  $__res = (object)["append" => (function() use (&$dictSemiring) {
+  $__fn = function($v, $v1 = null) use (&$dictSemiring, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-$b = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($mul)($a))($b);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($dictSemiring)->mul)($v))($v1);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
@@ -349,76 +135,158 @@ throw new \Exception("Pattern match failure");
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_semigroupMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_semigroupmajMultiplicative';
-
-// Data_Monoid_Multiplicative_ordMultiplicative
-function majData_majMonoid_majMultiplicative_ordmajMultiplicative($dictOrd) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_ordMultiplicative'] = function() { $v = function($dictOrd) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_ordmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $dictOrd;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_ordMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_ordmajMultiplicative';
-
-// Data_Monoid_Multiplicative_monoidMultiplicative
-function majData_majMonoid_majMultiplicative_monoidmajMultiplicative($dictSemiring) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_monoidMultiplicative'] = function() { $v = function($dictSemiring) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_monoidmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  $semigroupMultiplicative1_0 = (object)["append" => (function() use (&$dictSemiring) {
+  $__fn = function($v, $v1 = null) use (&$dictSemiring, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Monoid_Multiplicative_semigroupMultiplicative = ($GLOBALS['Data_Monoid_Multiplicative_semigroupMultiplicative'] ?? \Data\Monoid\Multiplicative\phpurs_eval_thunk('Data_Monoid_Multiplicative_semigroupMultiplicative'));
-  $semigroupMultiplicative1 = ($__global_Data_Monoid_Multiplicative_semigroupMultiplicative)($dictSemiring);
-  $__res = (object)["mempty" => ($dictSemiring)->one, "Semigroup0" => function($dollar__unused) use ($semigroupMultiplicative1) {
+  $__res = ((($dictSemiring)->mul)($v))($v1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["mempty" => ($dictSemiring)->one, "Semigroup0" => function($dollar__unused_0) use (&$semigroupMultiplicative1_0) {
   $__num = \func_num_args();
-  $__res = $semigroupMultiplicative1;
+  $__res = $semigroupMultiplicative1_0;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_monoidMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_monoidmajMultiplicative';
-
-
-// Data_Monoid_Multiplicative_eqMultiplicative
-function majData_majMonoid_majMultiplicative_eqmajMultiplicative($dictEq) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_functorMultiplicative'] = function() { $v = (object)["map" => (function() {
+  $__fn = function($f, $m = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_eqmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
+  $__res = ($f)($m);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_eqMultiplicative'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
   $__res = $dictEq;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_eqMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_eqmajMultiplicative';
-
-
-
-// Data_Monoid_Multiplicative_boundedMultiplicative
-function majData_majMonoid_majMultiplicative_boundedmajMultiplicative($dictBounded) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_eq1Multiplicative'] = function() { $v = (object)["eq1" => function($dictEq) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMonoid_majMultiplicative_boundedmajMultiplicative';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
+  $__res = ($dictEq)->eq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_ord1Multiplicative'] = function() { $v = (object)["compare1" => function($dictOrd) {
+  $__num = \func_num_args();
+  $__res = ($dictOrd)->compare;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Eq10" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_eq1Multiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_eq1Multiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_boundedMultiplicative'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
   $__res = $dictBounded;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Monoid_Multiplicative_boundedMultiplicative'] = __NAMESPACE__ . '\\majData_majMonoid_majMultiplicative_boundedmajMultiplicative';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_applyMultiplicative'] = function() { $v = (object)["apply" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($v)($v1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_functorMultiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_functorMultiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_bindMultiplicative'] = function() { $v = (object)["bind" => (function() {
+  $__fn = function($v, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ($f)($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_applyMultiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_applicativeMultiplicative'] = function() { $v = (object)["pure" => ($GLOBALS['Data_Monoid_Multiplicative_Multiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_Multiplicative')), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_applyMultiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_applyMultiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Monoid_Multiplicative_monadMultiplicative'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_applicativeMultiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_applicativeMultiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Monoid_Multiplicative_bindMultiplicative'] ?? \PhpursThunks::eval('Data_Monoid_Multiplicative_bindMultiplicative'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
 
 
 

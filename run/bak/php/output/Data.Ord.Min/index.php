@@ -2,14 +2,26 @@
 
 namespace Data\Ord\Min;
 
+// ALL IMPORTS: Data.Bounded, Data.Eq, Data.Monoid, Data.Newtype, Data.Ord, Data.Ord.Min, Data.Semigroup, Data.Show, Prelude, Prim
+// TO REQUIRE: Data.Bounded, Data.Eq, Data.Monoid, Data.Newtype, Data.Ord, Data.Ord.Min, Data.Semigroup, Data.Show, Prelude
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Newtype/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Ord.Min/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,125 +93,51 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Ord_Min_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Ord_Min_newtypeMin': $v = (object)["Coercible0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Data_Ord_Min_Min'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Newtype/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Ord.Min/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-// Data_Ord_Min_Min
-function majData_majOrd_majMin_majMin($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_majMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_Min'] = __NAMESPACE__ . '\\majData_majOrd_majMin_majMin';
-
-// Data_Ord_Min_showMin
-function majData_majOrd_majMin_showmajMin($dictShow) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_showMin'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_showmajMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Ord_Min_append = ($GLOBALS['Data_Ord_Min_append'] ?? \Data\Ord\Min\phpurs_eval_thunk('Data_Ord_Min_append'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Ord_Min_append, $show) {
+  $__res = (object)["show" => function($v) use (&$dictShow) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Ord_Min_append)("(Min "))((($__global_Data_Ord_Min_append)(($show)($a)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Min "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)($v)))(")"));
+  goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_showMin'] = __NAMESPACE__ . '\\majData_majOrd_majMin_showmajMin';
-
-// Data_Ord_Min_semigroupMin
-function majData_majOrd_majMin_semigroupmajMin($dictOrd) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_semigroupMin'] = function() { $v = function($dictOrd) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_semigroupmajMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Ord_min = ($GLOBALS['Data_Ord_min'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_min'));
-  $min = ($__global_Data_Ord_min)($dictOrd);
-  $__res = (object)["append" => (function() use ($min) {
-  $__fn = function($v, $v1 = null) use ($min, &$__fn) {
+  $__res = (object)["append" => (function() use (&$dictOrd) {
+  $__fn = function($v, $v1 = null) use (&$dictOrd, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-$y = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($min)($x))($y);
-goto __end;;
-$__match_0 = true;
+  $v_0 = ((($dictOrd)->compare)($v))($v1);
+  if ((is_object($v_0) && (($v_0)->tag === "LT"))) {
+$__t1 = $v_0;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "EQ"))) {
+$__t1 = $v_0;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "GT"))) {
+$__t1 = $v1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
 };
 };
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = $__t1;
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
@@ -207,97 +145,97 @@ throw new \Exception("Pattern match failure");
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_semigroupMin'] = __NAMESPACE__ . '\\majData_majOrd_majMin_semigroupmajMin';
-
-
-// Data_Ord_Min_monoidMin
-function majData_majOrd_majMin_monoidmajMin($dictBounded) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_newtypeMin'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_monoidmajMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Ord_Min_semigroupMin = ($GLOBALS['Data_Ord_Min_semigroupMin'] ?? \Data\Ord\Min\phpurs_eval_thunk('Data_Ord_Min_semigroupMin'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $semigroupMin1 = ($__global_Data_Ord_Min_semigroupMin)((($dictBounded)->Ord0)($__global_Prim_undefined));
-  $__res = (object)["mempty" => ($dictBounded)->top, "Semigroup0" => function($dollar__unused) use ($semigroupMin1) {
-  $__num = \func_num_args();
-  $__res = $semigroupMin1;
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_monoidMin'] = __NAMESPACE__ . '\\majData_majOrd_majMin_monoidmajMin';
-
-// Data_Ord_Min_eqMin
-function majData_majOrd_majMin_eqmajMin($dictEq) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_monoidMin'] = function() { $v = function($dictBounded) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_eqmajMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $dictEq;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_eqMin'] = __NAMESPACE__ . '\\majData_majOrd_majMin_eqmajMin';
-
-// Data_Ord_Min_ordMin
-function majData_majOrd_majMin_ordmajMin($dictOrd) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majOrd_majMin_ordmajMin';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $compare = ($dictOrd)->compare;
-  $eqMin1 = (($dictOrd)->Eq0)($__global_Prim_undefined);
-  $__res = (object)["compare" => (function() use ($compare) {
-  $__fn = function($v, $v1 = null) use ($compare, &$__fn) {
+  $__local_var_0 = (($dictBounded)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $semigroupMin1_3 = (object)["append" => (function() use (&$__local_var_0) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_0, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$x = $__case_0;
-$y = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($compare)($x))($y);
-goto __end;;
-$__match_0 = true;
+  $v_1 = ((($__local_var_0)->compare)($v))($v1);
+  if ((is_object($v_1) && (($v_1)->tag === "LT"))) {
+$__t2 = $v_1;
+} else {
+if ((is_object($v_1) && (($v_1)->tag === "EQ"))) {
+$__t2 = $v_1;
+} else {
+if ((is_object($v_1) && (($v_1)->tag === "GT"))) {
+$__t2 = $v1;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
 };
 };
 };
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = $__t2;
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => function($dollar__unused) use ($eqMin1) {
+})()];
+  $__res = (object)["mempty" => ($dictBounded)->top, "Semigroup0" => function($dollar__unused_0) use (&$semigroupMin1_3) {
   $__num = \func_num_args();
-  $__res = $eqMin1;
+  $__res = $semigroupMin1_3;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Ord_Min_ordMin'] = __NAMESPACE__ . '\\majData_majOrd_majMin_ordmajMin';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_eqMin'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = $dictEq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Ord_Min_ordMin'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (object)["compare" => (function() use (&$dictOrd) {
+  $__fn = function($v, $v1 = null) use (&$dictOrd, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictOrd)->compare)($v))($v1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) use (&$__local_var_0) {
+  $__num = \func_num_args();
+  $__res = $__local_var_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
 

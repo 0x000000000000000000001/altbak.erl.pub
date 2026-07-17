@@ -2,14 +2,22 @@
 
 namespace Effect\Ref;
 
+// ALL IMPORTS: Data.Function, Data.Functor, Effect, Effect.Ref, Prelude, Prim
+// TO REQUIRE: Data.Function, Data.Functor, Effect, Effect.Ref, Prelude
+require_once __DIR__ . '/../Data.Function/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Effect/index.php';
+require_once __DIR__ . '/../Effect.Ref/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,20 +89,48 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Effect_Ref_void': $v = \Data\Functor\majData_majFunctor_void(($GLOBALS['Effect_functorEffect'] ?? \Effect\phpurs_eval_thunk('Effect_functorEffect'))); break;
-      case 'Effect_Ref_new': $v = ($GLOBALS['Effect_Ref__new'] ?? \Effect\Ref\phpurs_eval_thunk('Effect_Ref__new')); break;
-      case 'Effect_Ref_modify__prime__': $v = ($GLOBALS['Effect_Ref_modifyImpl'] ?? \Effect\Ref\phpurs_eval_thunk('Effect_Ref_modifyImpl')); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+\PhpursThunks::$thunks['Effect_Ref_new'] = function() { $v = ($GLOBALS['Effect_Ref__new'] ?? \PhpursThunks::eval('Effect_Ref__new')); return $v; };
+\PhpursThunks::$thunks['Effect_Ref_modify__prime__'] = function() { $v = ($GLOBALS['Effect_Ref_modifyImpl'] ?? \PhpursThunks::eval('Effect_Ref_modifyImpl')); return $v; };
+\PhpursThunks::$thunks['Effect_Ref_modify'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Effect_Ref_modifyImpl'] ?? \PhpursThunks::eval('Effect_Ref_modifyImpl')))(function($s) use (&$f) {
+  $__num = \func_num_args();
+  $s__prime___0 = ($f)($s);
+  $__res = (object)["state" => $s__prime___0, "value" => $s__prime___0];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Effect_Ref_modify_'] = function() { $v = (function() {
+  $__fn = function($f, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
+  $__res = (((($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect')))->apply)((($GLOBALS['Effect_pureE'] ?? \PhpursThunks::eval('Effect_pureE')))(function($v) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})))(((($GLOBALS['Effect_Ref_modifyImpl'] ?? \PhpursThunks::eval('Effect_Ref_modifyImpl')))(function($s) use (&$f) {
+  $__num = \func_num_args();
+  $s__prime___0 = ($f)($s);
+  $__res = (object)["state" => $s__prime___0, "value" => $s__prime___0];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($s));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Effect_Ref = \call_user_func(function() {
   $exports = [];
@@ -128,57 +164,14 @@ $exports['write'] = $write;
 return $exports;
   return $exports;
 });
-$GLOBALS['Effect_Ref__new'] = $ffi_Effect_Ref['_new'] ?? null;
-$GLOBALS['Effect_Ref_newWithSelf'] = $ffi_Effect_Ref['newWithSelf'] ?? null;
-$GLOBALS['Effect_Ref_read'] = $ffi_Effect_Ref['read'] ?? null;
-$GLOBALS['Effect_Ref_modifyImpl'] = $ffi_Effect_Ref['modifyImpl'] ?? null;
-$GLOBALS['Effect_Ref_write'] = $ffi_Effect_Ref['write'] ?? null;
-
-
-require_once __DIR__ . '/../Data.Function/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Effect/index.php';
-require_once __DIR__ . '/../Effect.Ref/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
+\PhpursThunks::$thunks['Effect_Ref__new'] = function() use (&$ffi_Effect_Ref) { return $ffi_Effect_Ref['_new']; };
+\PhpursThunks::$thunks['Effect_Ref_modifyImpl'] = function() use (&$ffi_Effect_Ref) { return $ffi_Effect_Ref['modifyImpl']; };
+\PhpursThunks::$thunks['Effect_Ref_newWithSelf'] = function() use (&$ffi_Effect_Ref) { return $ffi_Effect_Ref['newWithSelf']; };
+\PhpursThunks::$thunks['Effect_Ref_read'] = function() use (&$ffi_Effect_Ref) { return $ffi_Effect_Ref['read']; };
+\PhpursThunks::$thunks['Effect_Ref_write'] = function() use (&$ffi_Effect_Ref) { return $ffi_Effect_Ref['write']; };
 
 
 
 
-// Effect_Ref_modify
-function majEffect_majRef_modify($f) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majEffect_majRef_modify';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Effect_Ref_modifyImpl = ($GLOBALS['Effect_Ref_modifyImpl'] ?? \Effect\Ref\phpurs_eval_thunk('Effect_Ref_modifyImpl'));
-  $__res = ($__global_Effect_Ref_modifyImpl)(function($s) use ($f) {
-  $__num = \func_num_args();
-  $s__prime__ = ($f)($s);
-  $__res = (object)["state" => $s__prime__, "value" => $s__prime__];
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Ref_modify'] = __NAMESPACE__ . '\\majEffect_majRef_modify';
 
-// Effect_Ref_modify_
-function majEffect_majRef_modify_($f, $s = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majEffect_majRef_modify_';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Effect_Ref_void = ($GLOBALS['Effect_Ref_void'] ?? \Effect\Ref\phpurs_eval_thunk('Effect_Ref_void'));
-  $__global_Effect_Ref_modify = ($GLOBALS['Effect_Ref_modify'] ?? \Effect\Ref\phpurs_eval_thunk('Effect_Ref_modify'));
-  $__res = ($__global_Effect_Ref_void)((($__global_Effect_Ref_modify)($f))($s));
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Effect_Ref_modify_'] = __NAMESPACE__ . '\\majEffect_majRef_modify_';
 

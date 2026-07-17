@@ -2,6 +2,8 @@
 
 namespace Test\StateMonad;
 
+// ALL IMPORTS: Data.Function, Data.Ring, Data.Semiring, Data.Show, Data.Unit, Effect, Effect.Console, Prelude, Prim, Test.StateMonad
+// TO REQUIRE: Data.Function, Data.Ring, Data.Semiring, Data.Show, Data.Unit, Effect, Effect.Console, Prelude, Test.StateMonad
 require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
@@ -9,27 +11,28 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.StateMonad/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -37,12 +40,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -50,13 +53,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -64,276 +67,173 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Test_StateMonad_add': $v = ($GLOBALS['Data_Semiring_intAdd'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intAdd')); break;
-      case 'Test_StateMonad_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
-      case 'Test_StateMonad_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("State Monad (1.2k Binds, 60 Stack Depth):"); break;
-      case 'Test_StateMonad_act': $v = \Effect\Console\Effect_Console_logShow(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), \Test\StateMonad\Test_StateMonad_runManyTimes(20, 0)); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-// Test_StateMonad_State
-function Test_StateMonad_State($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_State';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+\PhpursThunks::$thunks['Test_StateMonad_State'] = function() { $v = function($x) {
+  $__num = \func_num_args();
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_StateMonad_State'] = __NAMESPACE__ . '\\Test_StateMonad_State';
-
-// Test_StateMonad_runState
-function Test_StateMonad_runState($v, $s = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_runState';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_runState'] = function() { $v = (function() {
+  $__fn = function($v, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($s) use ($v, $__fn) { return $__fn($v, $s); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $s;
-  if (true) {
-$f = $__case_0;
-$s1 = $__case_1;
-$__res = ($f)($s1);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_StateMonad_runState'] = __NAMESPACE__ . '\\Test_StateMonad_runState';
-
-// Test_StateMonad_put
-function Test_StateMonad_put($s, $v = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_put';
-  if ($__num < 2) {
-    if ($__num === 1) return function($v) use ($s, $__fn) { return $__fn($s, $v); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = (object)["val" => $__global_Data_Unit_unit, "state" => $s];
+  $__res = ($v)($s);
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_StateMonad_put'] = __NAMESPACE__ . '\\Test_StateMonad_put';
-
-// Test_StateMonad_pureState
-function Test_StateMonad_pureState($a, $s = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_pureState';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_put'] = function() { $v = (function() {
+  $__fn = function($s, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($s) use ($a, $__fn) { return $__fn($a, $s); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["val" => ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), "state" => $s];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_pureState'] = function() { $v = (function() {
+  $__fn = function($a, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
   $__res = (object)["val" => $a, "state" => $s];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_StateMonad_pureState'] = __NAMESPACE__ . '\\Test_StateMonad_pureState';
-
-// Test_StateMonad_get
-function Test_StateMonad_get($s) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_get';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_get'] = function() { $v = function($s) {
+  $__num = \func_num_args();
   $__res = (object)["val" => $s, "state" => $s];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_StateMonad_get'] = __NAMESPACE__ . '\\Test_StateMonad_get';
-
-
-// Test_StateMonad_bindState
-function Test_StateMonad_bindState($v, $g = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_bindState';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_describe'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))("State Monad (1.2k Binds, 60 Stack Depth):"); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_bindState'] = function() { $v = (function() {
+  $__fn = function($v, $g = null, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $r1_0 = ($v)($s);
+  $__res = (($g)(($r1_0)->val))(($r1_0)->state);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_modify'] = function() { $v = (function() {
+  $__fn = function($f, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($g) use ($v, $__fn) { return $__fn($v, $g); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $g;
-  if (true) {
-$f = $__case_0;
-$g1 = $__case_1;
-$__res = function($s) use ($f, $g1) {
-  $__num = func_num_args();
-  $r1 = ($f)($s);
-  $v1 = ($g1)(($r1)->val);
-  $__case_0 = $v1;
-  if (true) {
-$g__prime__ = $__case_0;
-$__res = ($g__prime__)(($r1)->state);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_StateMonad_bindState'] = __NAMESPACE__ . '\\Test_StateMonad_bindState';
-
-// Test_StateMonad_modify
-function Test_StateMonad_modify($f) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_modify';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Test_StateMonad_bindState = ($GLOBALS['Test_StateMonad_bindState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_bindState'));
-  $__global_Test_StateMonad_get = ($GLOBALS['Test_StateMonad_get'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_get'));
-  $__global_Test_StateMonad_put = ($GLOBALS['Test_StateMonad_put'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_put'));
-  $__res = ($__global_Test_StateMonad_bindState)($__global_Test_StateMonad_get, function($s) use ($__global_Test_StateMonad_put, $f) {
-  $__num = func_num_args();
-  $__res = ($__global_Test_StateMonad_put)(($f)($s));
+  $__res = (object)["val" => ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), "state" => ($f)($s)];
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_StateMonad_modify'] = __NAMESPACE__ . '\\Test_StateMonad_modify';
-
-// Test_StateMonad_chainModifications
-function Test_StateMonad_chainModifications($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_chainModifications';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Test_StateMonad_pureState = ($GLOBALS['Test_StateMonad_pureState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_pureState'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__global_Test_StateMonad_bindState = ($GLOBALS['Test_StateMonad_bindState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_bindState'));
-  $__global_Test_StateMonad_modify = ($GLOBALS['Test_StateMonad_modify'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_modify'));
-  $__global_Test_StateMonad_add = ($GLOBALS['Test_StateMonad_add'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_add'));
-  $__global_Test_StateMonad_sub = ($GLOBALS['Test_StateMonad_sub'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_sub'));
-  while (true) {
-$__case_0 = $v;
-switch ($__case_0) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_chainModifications'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  switch ($v) {
 case 0:
-$__res = ($__global_Test_StateMonad_pureState)($__global_Data_Unit_unit);
-goto __end;;
+$__t0 = function($s) {
+  $__num = \func_num_args();
+  $__res = (object)["val" => ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), "state" => $s];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
 break;
 default:
-$n = $__case_0;
-$__res = ($__global_Test_StateMonad_bindState)(($__global_Test_StateMonad_modify)(function($x) use ($__global_Test_StateMonad_add) {
-  $__num = func_num_args();
-  $__res = ($__global_Test_StateMonad_add)($x, 1);
+$__t0 = function($s) use (&$v) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Test_StateMonad_chainModifications'] ?? \PhpursThunks::eval('Test_StateMonad_chainModifications')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1)))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($s))(1));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), function($v1) use ($__global_Test_StateMonad_sub, $n) {
-  $__num = func_num_args();
-  $__global_Test_StateMonad_chainModifications = ($GLOBALS['Test_StateMonad_chainModifications'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_chainModifications'));
-  $__res = ($__global_Test_StateMonad_chainModifications)(($__global_Test_StateMonad_sub)($n, 1));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-goto __end;;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
 break;
 };
-};
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Test_StateMonad_chainModifications'] = __NAMESPACE__ . '\\Test_StateMonad_chainModifications';
-
-// Test_StateMonad_runManyTimes
-function Test_StateMonad_runManyTimes($v, $v1 = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_StateMonad_runManyTimes';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_runManyTimes'] = function() { $v = (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Test_StateMonad_sub = ($GLOBALS['Test_StateMonad_sub'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_sub'));
-  $__global_Test_StateMonad_add = ($GLOBALS['Test_StateMonad_add'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_add'));
-  $__global_Test_StateMonad_runState = ($GLOBALS['Test_StateMonad_runState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_runState'));
-  $__global_Test_StateMonad_chainModifications = ($GLOBALS['Test_StateMonad_chainModifications'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_chainModifications'));
-  while (true) {
-$__case_0 = $v;
-$__case_1 = $v1;
-switch ($__case_0) {
+  switch ($v) {
 case 0:
-$acc = $__case_1;
-$__res = $acc;
-goto __end;;
+$__t0 = $v1;
 break;
 default:
-$n = $__case_0;
-$acc = $__case_1;
-$__tco_tmp_0 = ($__global_Test_StateMonad_sub)($n, 1);
-$__tco_tmp_1 = ($__global_Test_StateMonad_add)($acc, (($__global_Test_StateMonad_runState)(($__global_Test_StateMonad_chainModifications)(60), 0))->state);
-$v = $__tco_tmp_0;
-$v1 = $__tco_tmp_1;
-continue 2;
+$__t0 = ((($GLOBALS['Test_StateMonad_runManyTimes'] ?? \PhpursThunks::eval('Test_StateMonad_runManyTimes')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1)))(((($GLOBALS['Data_Semiring_intAdd'] ?? \PhpursThunks::eval('Data_Semiring_intAdd')))($v1))((((($GLOBALS['Test_StateMonad_chainModifications'] ?? \PhpursThunks::eval('Test_StateMonad_chainModifications')))(60))(0))->state));
 break;
 };
-};
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Test_StateMonad_runManyTimes'] = __NAMESPACE__ . '\\Test_StateMonad_runManyTimes';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Test_StateMonad_act'] = function() { $v = (($GLOBALS['Effect_Console_log'] ?? \PhpursThunks::eval('Effect_Console_log')))((($GLOBALS['Data_Show_showIntImpl'] ?? \PhpursThunks::eval('Data_Show_showIntImpl')))(((($GLOBALS['Test_StateMonad_runManyTimes'] ?? \PhpursThunks::eval('Test_StateMonad_runManyTimes')))(20))(0))); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
 
 

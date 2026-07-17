@@ -2,14 +2,21 @@
 
 namespace Control\Monad\State\Class;
 
+// ALL IMPORTS: Control.Monad.State.Class, Data.Tuple, Data.Unit, Prelude, Prim
+// TO REQUIRE: Control.Monad.State.Class, Data.Tuple, Data.Unit, Prelude
+require_once __DIR__ . '/../Control.Monad.State.Class/index.php';
+require_once __DIR__ . '/../Data.Tuple/index.php';
+require_once __DIR__ . '/../Data.Unit/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,144 +88,78 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Monad.State.Class/index.php';
-require_once __DIR__ . '/../Data.Tuple/index.php';
-require_once __DIR__ . '/../Data.Unit/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-// Control_Monad_State_Class_MonadState$Dict
-function majControl_majMonad_majState_majClass_majMonadmajStatedollarmajDict($x) {
+\PhpursThunks::$thunks['Control_Monad_State_Class_state'] = function() { $v = function($dict) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_majMonadmajStatedollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
+  $__res = ($dict)->state;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_MonadStatedollarDict'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_majMonadmajStatedollarmajDict';
-
-// Control_Monad_State_Class_state
-function majControl_majMonad_majState_majClass_state($dict) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_State_Class_put'] = function() { $v = (function() {
+  $__fn = function($dictMonadState, $s = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_state';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->state;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_state'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_state';
-
-// Control_Monad_State_Class_put
-function majControl_majMonad_majState_majClass_put($dictMonadState, $s = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_put';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $state1 = ($dictMonadState)->state;
-  $__res = ($state1)(function($v) use ($__global_Data_Unit_unit, $s) {
+  $__res = (($dictMonadState)->state)(function($v) use (&$s) {
   $__num = \func_num_args();
-  $__res = new Phpurs_Data2("Tuple", $__global_Data_Unit_unit, $s);
+  $__res = new Phpurs_Data2("Tuple", ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), $s);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_put'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_put';
-
-// Control_Monad_State_Class_modify_
-function majControl_majMonad_majState_majClass_modify_($dictMonadState, $f = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_State_Class_modify_'] = function() { $v = (function() {
+  $__fn = function($dictMonadState, $f = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_modify_';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $state1 = ($dictMonadState)->state;
-  $__res = ($state1)(function($s) use ($__global_Data_Unit_unit, $f) {
+  $__res = (($dictMonadState)->state)(function($s) use (&$f) {
   $__num = \func_num_args();
-  $__res = new Phpurs_Data2("Tuple", $__global_Data_Unit_unit, ($f)($s));
+  $__res = new Phpurs_Data2("Tuple", ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), ($f)($s));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_modify_'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_modify_';
-
-// Control_Monad_State_Class_modify
-function majControl_majMonad_majState_majClass_modify($dictMonadState, $f = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_State_Class_modify'] = function() { $v = (function() {
+  $__fn = function($dictMonadState, $f = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_modify';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $state1 = ($dictMonadState)->state;
-  $__res = ($state1)(function($s) use ($f) {
+  $__res = (($dictMonadState)->state)(function($s) use (&$f) {
   $__num = \func_num_args();
-  $s__prime__ = ($f)($s);
-  $__res = new Phpurs_Data2("Tuple", $s__prime__, $s__prime__);
+  $s__prime___0 = ($f)($s);
+  $__res = new Phpurs_Data2("Tuple", $s__prime___0, $s__prime___0);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_modify'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_modify';
-
-// Control_Monad_State_Class_gets
-function majControl_majMonad_majState_majClass_gets($dictMonadState, $f = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_State_Class_gets'] = function() { $v = (function() {
+  $__fn = function($dictMonadState, $f = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_gets';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $state1 = ($dictMonadState)->state;
-  $__res = ($state1)(function($s) use ($f) {
+  $__res = (($dictMonadState)->state)(function($s) use (&$f) {
   $__num = \func_num_args();
   $__res = new Phpurs_Data2("Tuple", ($f)($s), $s);
   goto __end;;
@@ -227,17 +168,12 @@ function majControl_majMonad_majState_majClass_gets($dictMonadState, $f = null) 
 });
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_gets'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_gets';
-
-// Control_Monad_State_Class_get
-function majControl_majMonad_majState_majClass_get($dictMonadState) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_State_Class_get'] = function() { $v = function($dictMonadState) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majControl_majMonad_majState_majClass_get';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = (($dictMonadState)->state)(function($s) {
   $__num = \func_num_args();
   $__res = new Phpurs_Data2("Tuple", $s, $s);
@@ -247,7 +183,14 @@ function majControl_majMonad_majState_majClass_get($dictMonadState) {
 });
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_State_Class_get'] = __NAMESPACE__ . '\\majControl_majMonad_majState_majClass_get';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
 

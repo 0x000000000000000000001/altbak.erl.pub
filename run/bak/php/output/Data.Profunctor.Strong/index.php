@@ -2,14 +2,23 @@
 
 namespace Data\Profunctor\Strong;
 
+// ALL IMPORTS: Control.Semigroupoid, Data.Functor, Data.Profunctor, Data.Profunctor.Strong, Data.Tuple, Prelude, Prim
+// TO REQUIRE: Control.Semigroupoid, Data.Functor, Data.Profunctor, Data.Profunctor.Strong, Data.Tuple, Prelude
+require_once __DIR__ . '/../Control.Semigroupoid/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Profunctor/index.php';
+require_once __DIR__ . '/../Data.Profunctor.Strong/index.php';
+require_once __DIR__ . '/../Data.Tuple/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,183 +90,89 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Profunctor_Strong_strongFn': $v = (object)["first" => (function() {
+\PhpursThunks::$thunks['Data_Profunctor_Strong_strongFn'] = function() { $v = (object)["first" => (function() {
   $__fn = function($a2b, $v = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $a2b;
-  $__case_1 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_1)->tag) {
-case "Tuple":
-$a2b1 = $__case_0;
-$a = ($__case_1)->v0;
-$c = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", ($a2b1)($a), $c);
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = new Phpurs_Data2("Tuple", ($a2b)(($v)->value0), ($v)->value1);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "second" => (($GLOBALS['Data_Tuple_functorTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_functorTuple')))->map, "Profunctor0" => function($dollar__unused) {
+})(), "second" => (($GLOBALS['Data_Tuple_functorTuple'] ?? \PhpursThunks::eval('Data_Tuple_functorTuple')))->map, "Profunctor0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Profunctor_profunctorFn = ($GLOBALS['Data_Profunctor_profunctorFn'] ?? \Data\Profunctor\phpurs_eval_thunk('Data_Profunctor_profunctorFn'));
-  $__res = $__global_Data_Profunctor_profunctorFn;
+  $__res = ($GLOBALS['Data_Profunctor_profunctorFn'] ?? \PhpursThunks::eval('Data_Profunctor_profunctorFn'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Semigroupoid/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Profunctor/index.php';
-require_once __DIR__ . '/../Data.Profunctor.Strong/index.php';
-require_once __DIR__ . '/../Data.Tuple/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-// Data_Profunctor_Strong_Strong$Dict
-function majData_majProfunctor_majStrong_majStrongdollarmajDict($x) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Profunctor_Strong_second'] = function() { $v = function($dict) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majProfunctor_majStrong_majStrongdollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
+  $__res = ($dict)->second;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Profunctor_Strong_StrongdollarDict'] = __NAMESPACE__ . '\\majData_majProfunctor_majStrong_majStrongdollarmajDict';
-
-
-// Data_Profunctor_Strong_second
-function majData_majProfunctor_majStrong_second($dict) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Profunctor_Strong_first'] = function() { $v = function($dict) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majProfunctor_majStrong_second';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->second;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ($dict)->first;
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Profunctor_Strong_second'] = __NAMESPACE__ . '\\majData_majProfunctor_majStrong_second';
-
-// Data_Profunctor_Strong_first
-function majData_majProfunctor_majStrong_first($dict) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Profunctor_Strong_splitStrong'] = function() { $v = (function() {
+  $__fn = function($dictSemigroupoid, $dictStrong = null, $l = null, $r = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majProfunctor_majStrong_first';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$v = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($v)->first;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Profunctor_Strong_first'] = __NAMESPACE__ . '\\majData_majProfunctor_majStrong_first';
-
-// Data_Profunctor_Strong_splitStrong
-function majData_majProfunctor_majStrong_splitmajStrong($dictSemigroupoid, $dictStrong = null, $l = null, $r = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majProfunctor_majStrong_splitmajStrong';
   if ($__num < 4) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 4);
   }
-  $composeFlipped = \Control\Semigroupoid\majControl_majSemigroupoid_composemajFlipped($dictSemigroupoid);
-  $first1 = ($dictStrong)->first;
-  $second1 = ($dictStrong)->second;
-  $__res = (($composeFlipped)(($first1)($l)))(($second1)($r));
+  $__res = ((($dictSemigroupoid)->compose)((($dictStrong)->second)($r)))((($dictStrong)->first)($l));
   goto __end;;
   __end:
-  return 4 < $__num ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
-}
-$GLOBALS['Data_Profunctor_Strong_splitStrong'] = __NAMESPACE__ . '\\majData_majProfunctor_majStrong_splitmajStrong';
-
-// Data_Profunctor_Strong_fanout
-function majData_majProfunctor_majStrong_fanout($dictSemigroupoid, $dictStrong = null, $l = null, $r = null) {
+  return $__num > 4 ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Profunctor_Strong_fanout'] = function() { $v = (function() {
+  $__fn = function($dictSemigroupoid, $dictStrong = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majProfunctor_majStrong_fanout';
-  if ($__num < 4) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 4);
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Profunctor_Strong_splitStrong = ($GLOBALS['Data_Profunctor_Strong_splitStrong'] ?? \Data\Profunctor\Strong\phpurs_eval_thunk('Data_Profunctor_Strong_splitStrong'));
-  $__global_Data_Profunctor_lcmap = ($GLOBALS['Data_Profunctor_lcmap'] ?? \Data\Profunctor\phpurs_eval_thunk('Data_Profunctor_lcmap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $splitStrong1 = ($__global_Data_Profunctor_Strong_splitStrong)($dictSemigroupoid);
-  $lcmap = ($__global_Data_Profunctor_lcmap)((($dictStrong)->Profunctor0)($__global_Prim_undefined));
-  $splitStrong2 = ($splitStrong1)($dictStrong);
-  $__res = (($lcmap)(function($a) {
+  $lcmap_0 = (($GLOBALS['Data_Profunctor_lcmap'] ?? \PhpursThunks::eval('Data_Profunctor_lcmap')))((($dictStrong)->Profunctor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (function() use (&$dictSemigroupoid, &$dictStrong, &$lcmap_0) {
+  $__fn = function($l, $r = null) use (&$dictSemigroupoid, &$dictStrong, &$lcmap_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($lcmap_0)(function($a) {
   $__num = \func_num_args();
   $__res = new Phpurs_Data2("Tuple", $a, $a);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}))((($splitStrong2)($l))($r));
+}))(((($dictSemigroupoid)->compose)((($dictStrong)->second)($r)))((($dictStrong)->first)($l)));
   goto __end;;
   __end:
-  return 4 < $__num ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
-}
-$GLOBALS['Data_Profunctor_Strong_fanout'] = __NAMESPACE__ . '\\majData_majProfunctor_majStrong_fanout';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
 

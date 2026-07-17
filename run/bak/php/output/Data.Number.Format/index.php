@@ -2,6 +2,8 @@
 
 namespace Data\Number\Format;
 
+// ALL IMPORTS: Control.Semigroupoid, Data.Number.Format, Data.Ord, Prelude, Prim
+// TO REQUIRE: Control.Semigroupoid, Data.Number.Format, Data.Ord, Prelude
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Number.Format/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
@@ -9,23 +11,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -33,12 +35,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -46,13 +48,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -60,145 +62,128 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Number_Format_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Data_Number_Format_clamp': $v = \Data\Ord\Data_Ord_clamp(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Data_Number_Format_precision': $v = (($GLOBALS['Data_Number_Format_compose'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_compose')))(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Precision", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, (($GLOBALS['Data_Number_Format_clamp'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_clamp')))(1, 21)); break;
-      case 'Data_Number_Format_fixed': $v = (($GLOBALS['Data_Number_Format_compose'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_compose')))(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Fixed", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, (($GLOBALS['Data_Number_Format_clamp'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_clamp')))(0, 20)); break;
-      case 'Data_Number_Format_exponential': $v = (($GLOBALS['Data_Number_Format_compose'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_compose')))(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Exponential", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, (($GLOBALS['Data_Number_Format_clamp'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_clamp')))(0, 20)); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+\PhpursThunks::$thunks['Data_Number_Format_clamp'] = function() { $v = (function() {
+  $__fn = function($low, $hi = null, $x = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-// Data_Number_Format_Precision
-function Data_Number_Format_Precision($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Number_Format_Precision';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = new Phpurs_Data1("Precision", $value0);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Number_Format_Precision'] = __NAMESPACE__ . '\\Data_Number_Format_Precision';
-
-// Data_Number_Format_Fixed
-function Data_Number_Format_Fixed($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Number_Format_Fixed';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = new Phpurs_Data1("Fixed", $value0);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Number_Format_Fixed'] = __NAMESPACE__ . '\\Data_Number_Format_Fixed';
-
-// Data_Number_Format_Exponential
-function Data_Number_Format_Exponential($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Number_Format_Exponential';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = new Phpurs_Data1("Exponential", $value0);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Number_Format_Exponential'] = __NAMESPACE__ . '\\Data_Number_Format_Exponential';
-
-// Data_Number_Format_toStringWith
-function Data_Number_Format_toStringWith($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Number_Format_toStringWith';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Number_Format_toPrecisionNative = ($GLOBALS['Data_Number_Format_toPrecisionNative'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_toPrecisionNative'));
-  $__global_Data_Number_Format_toFixedNative = ($GLOBALS['Data_Number_Format_toFixedNative'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_toFixedNative'));
-  $__global_Data_Number_Format_toExponentialNative = ($GLOBALS['Data_Number_Format_toExponentialNative'] ?? \Data\Number\Format\phpurs_eval_thunk('Data_Number_Format_toExponentialNative'));
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Precision":
-$p = ($__case_0)->v0;
-$__res = ($__global_Data_Number_Format_toPrecisionNative)($p);
-goto __end;;
-break;
-case "Fixed":
-$p = ($__case_0)->v0;
-$__res = ($__global_Data_Number_Format_toFixedNative)($p);
-goto __end;;
-break;
-case "Exponential":
-$p = ($__case_0)->v0;
-$__res = ($__global_Data_Number_Format_toExponentialNative)($p);
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  $v_0 = (((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($low))($x);
+  if ((is_object($v_0) && (($v_0)->tag === "LT"))) {
+$__t1 = $x;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "EQ"))) {
+$__t1 = $low;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "GT"))) {
+$__t1 = $low;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
+};
+};
+  $__local_var_2 = $__t1;
+  $v_3 = (((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($hi))($__local_var_2);
+  if ((is_object($v_3) && (($v_3)->tag === "LT"))) {
+$__t4 = $hi;
+} else {
+if ((is_object($v_3) && (($v_3)->tag === "EQ"))) {
+$__t4 = $hi;
+} else {
+if ((is_object($v_3) && (($v_3)->tag === "GT"))) {
+$__t4 = $__local_var_2;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t4 = null;
+};
+};
+};
+  $__res = $__t4;
+  goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Number_Format_toStringWith'] = __NAMESPACE__ . '\\Data_Number_Format_toStringWith';
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_Precision'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data1("Precision", $value0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_Fixed'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data1("Fixed", $value0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_Exponential'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data1("Exponential", $value0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_toStringWith'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Precision"))) {
+$__t0 = (($GLOBALS['Data_Number_Format_toPrecisionNative'] ?? \PhpursThunks::eval('Data_Number_Format_toPrecisionNative')))(($v)->value0);
+} else {
+if ((is_object($v) && (($v)->tag === "Fixed"))) {
+$__t0 = (($GLOBALS['Data_Number_Format_toFixedNative'] ?? \PhpursThunks::eval('Data_Number_Format_toFixedNative')))(($v)->value0);
+} else {
+if ((is_object($v) && (($v)->tag === "Exponential"))) {
+$__t0 = (($GLOBALS['Data_Number_Format_toExponentialNative'] ?? \PhpursThunks::eval('Data_Number_Format_toExponentialNative')))(($v)->value0);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_precision'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Number_Format_Precision'] ?? \PhpursThunks::eval('Data_Number_Format_Precision'))))(((($GLOBALS['Data_Number_Format_clamp'] ?? \PhpursThunks::eval('Data_Number_Format_clamp')))(1))(21)); return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_fixed'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Number_Format_Fixed'] ?? \PhpursThunks::eval('Data_Number_Format_Fixed'))))(((($GLOBALS['Data_Number_Format_clamp'] ?? \PhpursThunks::eval('Data_Number_Format_clamp')))(0))(20)); return $v; };
+\PhpursThunks::$thunks['Data_Number_Format_exponential'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Number_Format_Exponential'] ?? \PhpursThunks::eval('Data_Number_Format_Exponential'))))(((($GLOBALS['Data_Number_Format_clamp'] ?? \PhpursThunks::eval('Data_Number_Format_clamp')))(0))(20)); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
 
 
 

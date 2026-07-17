@@ -2,6 +2,8 @@
 
 namespace Data\Lazy;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Control.Semigroupoid, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.Foldable, Data.FoldableWithIndex, Data.Function, Data.Functor, Data.Functor.Invariant, Data.FunctorWithIndex, Data.HeytingAlgebra, Data.Lazy, Data.Monoid, Data.Ord, Data.Ring, Data.Semigroup, Data.Semigroup.Foldable, Data.Semigroup.Traversable, Data.Semiring, Data.Show, Data.Traversable, Data.TraversableWithIndex, Data.Unit, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Control.Semigroupoid, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.EuclideanRing, Data.Foldable, Data.FoldableWithIndex, Data.Function, Data.Functor, Data.Functor.Invariant, Data.FunctorWithIndex, Data.HeytingAlgebra, Data.Lazy, Data.Monoid, Data.Ord, Data.Ring, Data.Semigroup, Data.Semigroup.Foldable, Data.Semigroup.Traversable, Data.Semiring, Data.Show, Data.Traversable, Data.TraversableWithIndex, Data.Unit, Prelude
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
@@ -38,23 +40,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -62,12 +64,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -75,13 +77,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -89,1092 +91,902 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Lazy_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Lazy_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Data_Lazy_lazyLazy': $v = (object)["defer" => function($f) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($__global_Data_Lazy_force, $f, $__global_Data_Unit_unit) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Lazy_force)(($f)($__global_Data_Unit_unit));
+\PhpursThunks::$thunks['Data_Lazy_showLazy'] = function() { $v = function($dictShow) {
+  $__num = \func_num_args();
+  $__res = (object)["show" => function($x) use (&$dictShow) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(defer \\_ -> "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x))))(")"));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_functorLazy': $v = (object)["map" => (function() use (&$__fn) {
-  $__fn = function($f, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($f, &$__fn) { return $__fn($f, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($f, $__global_Data_Lazy_force, $l) {
-  $__num = func_num_args();
-  $__res = ($f)(($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Lazy_map': $v = (($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy')))->map; break;
-      case 'Data_Lazy_functorWithIndexLazy': $v = (object)["mapWithIndex" => function($f) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_map = ($GLOBALS['Data_Lazy_map'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_map'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = ($__global_Data_Lazy_map)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_functorLazy = ($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy'));
-  $__res = $__global_Data_Lazy_functorLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_invariantLazy': $v = (object)["imap" => \Data\Functor\Invariant\Data_Functor_Invariant_imapF(($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy')))]; break;
-      case 'Data_Lazy_foldableLazy': $v = (object)["foldr" => (function() use (&$__fn) {
-  $__fn = function($f, $z = null, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($l) use ($f, $z, &$__fn) { return $__fn($f, $z, $l); };
-    if ($__num === 1) return function($z, $l = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $z, $l);
-      if ($__num2 === 1) return function($l) use ($f, $z, &$__fn) { return $__fn($f, $z, $l); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($f)(($__global_Data_Lazy_force)($l), $z);
-  goto __end;;
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "foldl" => (function() use (&$__fn) {
-  $__fn = function($f, $z = null, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($l) use ($f, $z, &$__fn) { return $__fn($f, $z, $l); };
-    if ($__num === 1) return function($z, $l = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $z, $l);
-      if ($__num2 === 1) return function($l) use ($f, $z, &$__fn) { return $__fn($f, $z, $l); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($f)($z, ($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "foldMap" => (function() use (&$__fn) {
-  $__fn = function($dictMonoid, $f = null, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($l) use ($dictMonoid, $f, &$__fn) { return $__fn($dictMonoid, $f, $l); };
-    if ($__num === 1) return function($f, $l = null) use ($dictMonoid, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($dictMonoid, $f, $l);
-      if ($__num2 === 1) return function($l) use ($dictMonoid, $f, &$__fn) { return $__fn($dictMonoid, $f, $l); };
-      return phpurs_curry_fallback($__fn, [$dictMonoid], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($f)(($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Lazy_foldr': $v = (($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy')))->foldr; break;
-      case 'Data_Lazy_foldl': $v = (($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy')))->foldl; break;
-      case 'Data_Lazy_foldMap': $v = (($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy')))->foldMap; break;
-      case 'Data_Lazy_foldableWithIndexLazy': $v = (object)["foldrWithIndex" => function($f) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldr = ($GLOBALS['Data_Lazy_foldr'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldr'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = ($__global_Data_Lazy_foldr)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "foldlWithIndex" => function($f) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldl = ($GLOBALS['Data_Lazy_foldl'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldl'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = ($__global_Data_Lazy_foldl)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "foldMapWithIndex" => function($dictMonoid) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldMap = ($GLOBALS['Data_Lazy_foldMap'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldMap'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $foldMap1 = ($__global_Data_Lazy_foldMap)($dictMonoid);
-  $__res = function($f) use ($foldMap1, $__global_Data_Unit_unit) {
-  $__num = func_num_args();
-  $__res = ($foldMap1)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Foldable0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldableLazy = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy'));
-  $__res = $__global_Data_Lazy_foldableLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_traversableLazy': $v = (object)["traverse" => function($dictApplicative) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_compose = ($GLOBALS['Data_Lazy_compose'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_compose'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $map1 = ((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $__res = (function() use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($f, $l = null) use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($f, &$__fn) { return $__fn($f, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($map1)(($__global_Data_Lazy_compose)($__global_Data_Lazy_defer, $__global_Data_Function_const), ($f)(($__global_Data_Lazy_force)($l)));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "sequence" => function($dictApplicative) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_compose = ($GLOBALS['Data_Lazy_compose'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_compose'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $map1 = ((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $__res = function($l) use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force) {
-  $__num = func_num_args();
-  $__res = ($map1)(($__global_Data_Lazy_compose)($__global_Data_Lazy_defer, $__global_Data_Function_const), ($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_functorLazy = ($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy'));
-  $__res = $__global_Data_Lazy_functorLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Foldable1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldableLazy = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy'));
-  $__res = $__global_Data_Lazy_foldableLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_traverse': $v = (($GLOBALS['Data_Lazy_traversableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_traversableLazy')))->traverse; break;
-      case 'Data_Lazy_traversableWithIndexLazy': $v = (object)["traverseWithIndex" => function($dictApplicative) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_traverse = ($GLOBALS['Data_Lazy_traverse'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_traverse'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $traverse1 = ($__global_Data_Lazy_traverse)($dictApplicative);
-  $__res = function($f) use ($traverse1, $__global_Data_Unit_unit) {
-  $__num = func_num_args();
-  $__res = ($traverse1)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "FunctorWithIndex0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_functorWithIndexLazy = ($GLOBALS['Data_Lazy_functorWithIndexLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorWithIndexLazy'));
-  $__res = $__global_Data_Lazy_functorWithIndexLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "FoldableWithIndex1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldableWithIndexLazy = ($GLOBALS['Data_Lazy_foldableWithIndexLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableWithIndexLazy'));
-  $__res = $__global_Data_Lazy_foldableWithIndexLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Traversable2" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_traversableLazy = ($GLOBALS['Data_Lazy_traversableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_traversableLazy'));
-  $__res = $__global_Data_Lazy_traversableLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_foldable1Lazy': $v = (object)["foldMap1" => (function() use (&$__fn) {
-  $__fn = function($dictSemigroup, $f = null, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 3) {
-    if ($__num === 2) return function($l) use ($dictSemigroup, $f, &$__fn) { return $__fn($dictSemigroup, $f, $l); };
-    if ($__num === 1) return function($f, $l = null) use ($dictSemigroup, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($dictSemigroup, $f, $l);
-      if ($__num2 === 1) return function($l) use ($dictSemigroup, $f, &$__fn) { return $__fn($dictSemigroup, $f, $l); };
-      return phpurs_curry_fallback($__fn, [$dictSemigroup], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($f)(($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})(), "foldr1" => (function() use (&$__fn) {
-  $__fn = function($v, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($v, &$__fn) { return $__fn($v, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($__global_Data_Lazy_force)($l);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "foldl1" => (function() use (&$__fn) {
-  $__fn = function($v, $l = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($v, &$__fn) { return $__fn($v, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($__global_Data_Lazy_force)($l);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Foldable0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldableLazy = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldableLazy'));
-  $__res = $__global_Data_Lazy_foldableLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_traversable1Lazy': $v = (object)["traverse1" => function($dictApply) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_compose = ($GLOBALS['Data_Lazy_compose'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_compose'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $map1 = ((($dictApply)->Functor0)($__global_Prim_undefined))->map;
-  $__res = (function() use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($f, $l = null) use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($f, &$__fn) { return $__fn($f, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($map1)(($__global_Data_Lazy_compose)($__global_Data_Lazy_defer, $__global_Data_Function_const), ($f)(($__global_Data_Lazy_force)($l)));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "sequence1" => function($dictApply) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_compose = ($GLOBALS['Data_Lazy_compose'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_compose'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $map1 = ((($dictApply)->Functor0)($__global_Prim_undefined))->map;
-  $__res = function($l) use ($map1, $__global_Data_Lazy_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const, $__global_Data_Lazy_force) {
-  $__num = func_num_args();
-  $__res = ($map1)(($__global_Data_Lazy_compose)($__global_Data_Lazy_defer, $__global_Data_Function_const), ($__global_Data_Lazy_force)($l));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Foldable10" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_foldable1Lazy = ($GLOBALS['Data_Lazy_foldable1Lazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_foldable1Lazy'));
-  $__res = $__global_Data_Lazy_foldable1Lazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Traversable1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_traversableLazy = ($GLOBALS['Data_Lazy_traversableLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_traversableLazy'));
-  $__res = $__global_Data_Lazy_traversableLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_extendLazy': $v = (object)["extend" => (function() use (&$__fn) {
-  $__fn = function($f, $x = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($x) use ($f, &$__fn) { return $__fn($f, $x); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($f, $x) {
-  $__num = func_num_args();
-  $__res = ($f)($x);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_functorLazy = ($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy'));
-  $__res = $__global_Data_Lazy_functorLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_eq1Lazy': $v = (object)["eq1" => function($dictEq) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_eqLazy = ($GLOBALS['Data_Lazy_eqLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_eqLazy'));
-  $__res = (($__global_Data_Lazy_eqLazy)($dictEq))->eq;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_ord1Lazy': $v = (object)["compare1" => function($dictOrd) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_ordLazy = ($GLOBALS['Data_Lazy_ordLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_ordLazy'));
-  $__res = (($__global_Data_Lazy_ordLazy)($dictOrd))->compare;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Eq10" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_eq1Lazy = ($GLOBALS['Data_Lazy_eq1Lazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_eq1Lazy'));
-  $__res = $__global_Data_Lazy_eq1Lazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_comonadLazy': $v = (object)["extract" => ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force')), "Extend0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_extendLazy = ($GLOBALS['Data_Lazy_extendLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_extendLazy'));
-  $__res = $__global_Data_Lazy_extendLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_applyLazy': $v = (object)["apply" => (function() use (&$__fn) {
-  $__fn = function($f, $x = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($x) use ($f, &$__fn) { return $__fn($f, $x); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($__global_Data_Lazy_force, $f, $x) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Lazy_force)($f, ($__global_Data_Lazy_force)($x));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_functorLazy = ($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy'));
-  $__res = $__global_Data_Lazy_functorLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_apply': $v = (($GLOBALS['Data_Lazy_applyLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_applyLazy')))->apply; break;
-      case 'Data_Lazy_bindLazy': $v = (object)["bind" => (function() use (&$__fn) {
-  $__fn = function($l, $f = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($f) use ($l, &$__fn) { return $__fn($l, $f); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($__global_Data_Lazy_force, $f, $l) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Lazy_force)(($f)(($__global_Data_Lazy_force)($l)));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_applyLazy = ($GLOBALS['Data_Lazy_applyLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_applyLazy'));
-  $__res = $__global_Data_Lazy_applyLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_applicativeLazy': $v = (object)["pure" => function($a) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($a) {
-  $__num = func_num_args();
-  $__res = $a;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Apply0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_applyLazy = ($GLOBALS['Data_Lazy_applyLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_applyLazy'));
-  $__res = $__global_Data_Lazy_applyLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Lazy_monadLazy': $v = (object)["Applicative0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_applicativeLazy = ($GLOBALS['Data_Lazy_applicativeLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_applicativeLazy'));
-  $__res = $__global_Data_Lazy_applicativeLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Bind1" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Lazy_bindLazy = ($GLOBALS['Data_Lazy_bindLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_bindLazy'));
-  $__res = $__global_Data_Lazy_bindLazy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-// Data_Lazy_showLazy
-function Data_Lazy_showLazy($dictShow) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_showLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($x) use ($show, $__global_Data_Lazy_force) {
-  $__num = func_num_args();
-  $__res = ("(defer \_ -> " . (($show)(($__global_Data_Lazy_force)($x)) . ")"));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_showLazy'] = __NAMESPACE__ . '\\Data_Lazy_showLazy';
-
-// Data_Lazy_semiringLazy
-function Data_Lazy_semiringLazy($dictSemiring) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_semiringLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $add = ($dictSemiring)->add;
-  $zero = ($dictSemiring)->zero;
-  $mul = ($dictSemiring)->mul;
-  $one = ($dictSemiring)->one;
-  $__res = (object)["add" => (function() use ($__global_Data_Lazy_defer, $add, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $add, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_semiringLazy'] = function() { $v = function($dictSemiring) {
+  $__num = \func_num_args();
+  $zero_0 = ($dictSemiring)->zero;
+  $one_1 = ($dictSemiring)->one;
+  $__res = (object)["add" => (function() use (&$dictSemiring) {
+  $__fn = function($a, $b = null) use (&$dictSemiring, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($add, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($add)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictSemiring) {
+  $__num = \func_num_args();
+  $__res = ((($dictSemiring)->add)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "zero" => ($__global_Data_Lazy_defer)(function($v) use ($zero) {
-  $__num = func_num_args();
-  $__res = $zero;
+})(), "zero" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$zero_0) {
+  $__num = \func_num_args();
+  $__res = $zero_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "mul" => (function() use ($__global_Data_Lazy_defer, $mul, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $mul, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "mul" => (function() use (&$dictSemiring) {
+  $__fn = function($a, $b = null) use (&$dictSemiring, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($mul, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($mul)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictSemiring) {
+  $__num = \func_num_args();
+  $__res = ((($dictSemiring)->mul)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "one" => ($__global_Data_Lazy_defer)(function($v) use ($one) {
-  $__num = func_num_args();
-  $__res = $one;
+})(), "one" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$one_1) {
+  $__num = \func_num_args();
+  $__res = $one_1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 })];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_semiringLazy'] = __NAMESPACE__ . '\\Data_Lazy_semiringLazy';
-
-// Data_Lazy_semigroupLazy
-function Data_Lazy_semigroupLazy($dictSemigroup) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_semigroupLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $append1 = ($dictSemigroup)->append;
-  $__res = (object)["append" => (function() use ($__global_Data_Lazy_defer, $append1, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $append1, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_semigroupLazy'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => (function() use (&$dictSemigroup) {
+  $__fn = function($a, $b = null) use (&$dictSemigroup, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($append1, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($append1)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = ((($dictSemigroup)->append)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_semigroupLazy'] = __NAMESPACE__ . '\\Data_Lazy_semigroupLazy';
-
-// Data_Lazy_ringLazy
-function Data_Lazy_ringLazy($dictRing) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_ringLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_semiringLazy = ($GLOBALS['Data_Lazy_semiringLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_semiringLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $sub = ($dictRing)->sub;
-  $semiringLazy1 = ($__global_Data_Lazy_semiringLazy)((($dictRing)->Semiring0)($__global_Prim_undefined));
-  $__res = (object)["sub" => (function() use ($__global_Data_Lazy_defer, $sub, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $sub, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_ringLazy'] = function() { $v = function($dictRing) {
+  $__num = \func_num_args();
+  $semiringLazy1_0 = (($GLOBALS['Data_Lazy_semiringLazy'] ?? \PhpursThunks::eval('Data_Lazy_semiringLazy')))((($dictRing)->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["sub" => (function() use (&$dictRing) {
+  $__fn = function($a, $b = null) use (&$dictRing, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($sub, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($sub)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictRing) {
+  $__num = \func_num_args();
+  $__res = ((($dictRing)->sub)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Semiring0" => function($__dollar____unused) use ($semiringLazy1) {
-  $__num = func_num_args();
-  $__res = $semiringLazy1;
+})(), "Semiring0" => function($dollar__unused_0) use (&$semiringLazy1_0) {
+  $__num = \func_num_args();
+  $__res = $semiringLazy1_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_ringLazy'] = __NAMESPACE__ . '\\Data_Lazy_ringLazy';
-
-// Data_Lazy_monoidLazy
-function Data_Lazy_monoidLazy($dictMonoid) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_monoidLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_semigroupLazy = ($GLOBALS['Data_Lazy_semigroupLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_semigroupLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $mempty = ($dictMonoid)->mempty;
-  $semigroupLazy1 = ($__global_Data_Lazy_semigroupLazy)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["mempty" => ($__global_Data_Lazy_defer)(function($v) use ($mempty) {
-  $__num = func_num_args();
-  $__res = $mempty;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_monoidLazy'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $mempty_0 = ($dictMonoid)->mempty;
+  $semigroupLazy1_1 = (($GLOBALS['Data_Lazy_semigroupLazy'] ?? \PhpursThunks::eval('Data_Lazy_semigroupLazy')))((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["mempty" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$mempty_0) {
+  $__num = \func_num_args();
+  $__res = $mempty_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "Semigroup0" => function($__dollar____unused) use ($semigroupLazy1) {
-  $__num = func_num_args();
-  $__res = $semigroupLazy1;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "Semigroup0" => function($dollar__unused_0) use (&$semigroupLazy1_1) {
+  $__num = \func_num_args();
+  $__res = $semigroupLazy1_1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_monoidLazy'] = __NAMESPACE__ . '\\Data_Lazy_monoidLazy';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Data_Lazy_eqLazy
-function Data_Lazy_eqLazy($dictEq) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_eqLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $eq = ($dictEq)->eq;
-  $__res = (object)["eq" => (function() use ($eq, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($x, $y = null) use ($eq, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_lazyLazy'] = function() { $v = (object)["defer" => function($f) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$f) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_functorLazy'] = function() { $v = (object)["map" => (function() {
+  $__fn = function($f, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($eq)(($__global_Data_Lazy_force)($x), ($__global_Data_Lazy_force)($y));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$f, &$l) {
+  $__num = \func_num_args();
+  $__res = ($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_functorWithIndexLazy'] = function() { $v = (object)["mapWithIndex" => function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy')))->map)(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_invariantLazy'] = function() { $v = (object)["imap" => (function() {
+  $__fn = function($f, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy')))->map)($f);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_foldableLazy'] = function() { $v = (object)["foldr" => (function() {
+  $__fn = function($f, $z = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = (($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l)))($z);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "foldl" => (function() {
+  $__fn = function($f, $z = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = (($f)($z))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "foldMap" => (function() {
+  $__fn = function($dictMonoid, $f = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_foldableWithIndexLazy'] = function() { $v = (object)["foldrWithIndex" => function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy')))->foldr)(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "foldlWithIndex" => function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy')))->foldl)(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "foldMapWithIndex" => (function() {
+  $__fn = function($dictMonoid, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy')))->foldMap)($dictMonoid))(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Foldable0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_traversableLazy'] = function() { $v = (object)["traverse" => (function() {
+  $__fn = function($dictApplicative, $f = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((((((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const')))))(($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l)));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "sequence" => (function() {
+  $__fn = function($dictApplicative, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((((((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const')))))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Foldable1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_traversableWithIndexLazy'] = function() { $v = (object)["traverseWithIndex" => (function() {
+  $__fn = function($dictApplicative, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Data_Lazy_traversableLazy'] ?? \PhpursThunks::eval('Data_Lazy_traversableLazy')))->traverse)($dictApplicative))(($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "FunctorWithIndex0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_functorWithIndexLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorWithIndexLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "FoldableWithIndex1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_foldableWithIndexLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableWithIndexLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Traversable2" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_traversableLazy'] ?? \PhpursThunks::eval('Data_Lazy_traversableLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_foldable1Lazy'] = function() { $v = (object)["foldMap1" => (function() {
+  $__fn = function($dictSemigroup, $f = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "foldr1" => (function() {
+  $__fn = function($v, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "foldl1" => (function() {
+  $__fn = function($v, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Foldable0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_foldableLazy'] ?? \PhpursThunks::eval('Data_Lazy_foldableLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_traversable1Lazy'] = function() { $v = (object)["traverse1" => (function() {
+  $__fn = function($dictApply, $f = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((((($dictApply)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const')))))(($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l)));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "sequence1" => (function() {
+  $__fn = function($dictApply, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((((($dictApply)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const')))))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Foldable10" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_foldable1Lazy'] ?? \PhpursThunks::eval('Data_Lazy_foldable1Lazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Traversable1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_traversableLazy'] ?? \PhpursThunks::eval('Data_Lazy_traversableLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_extendLazy'] = function() { $v = (object)["extend" => (function() {
+  $__fn = function($f, $x = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$f, &$x) {
+  $__num = \func_num_args();
+  $__res = ($f)($x);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_eqLazy'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = (object)["eq" => (function() use (&$dictEq) {
+  $__fn = function($x, $y = null) use (&$dictEq, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictEq)->eq)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($y));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_eqLazy'] = __NAMESPACE__ . '\\Data_Lazy_eqLazy';
-
-// Data_Lazy_ordLazy
-function Data_Lazy_ordLazy($dictOrd) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_ordLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_eqLazy = ($GLOBALS['Data_Lazy_eqLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_eqLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $compare = ($dictOrd)->compare;
-  $eqLazy1 = ($__global_Data_Lazy_eqLazy)((($dictOrd)->Eq0)($__global_Prim_undefined));
-  $__res = (object)["compare" => (function() use ($compare, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($x, $y = null) use ($compare, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_ordLazy'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $eqLazy1_1 = (object)["eq" => (function() use (&$__local_var_0) {
+  $__fn = function($x, $y = null) use (&$__local_var_0, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($compare)(($__global_Data_Lazy_force)($x), ($__global_Data_Lazy_force)($y));
+  $__res = ((($__local_var_0)->eq)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($y));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => function($__dollar____unused) use ($eqLazy1) {
-  $__num = func_num_args();
-  $__res = $eqLazy1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_ordLazy'] = __NAMESPACE__ . '\\Data_Lazy_ordLazy';
-
-
-
-
-// Data_Lazy_commutativeRingLazy
-function Data_Lazy_commutativeRingLazy($dictCommutativeRing) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_commutativeRingLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_ringLazy = ($GLOBALS['Data_Lazy_ringLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_ringLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $ringLazy1 = ($__global_Data_Lazy_ringLazy)((($dictCommutativeRing)->Ring0)($__global_Prim_undefined));
-  $__res = (object)["Ring0" => function($__dollar____unused) use ($ringLazy1) {
-  $__num = func_num_args();
-  $__res = $ringLazy1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_commutativeRingLazy'] = __NAMESPACE__ . '\\Data_Lazy_commutativeRingLazy';
-
-// Data_Lazy_euclideanRingLazy
-function Data_Lazy_euclideanRingLazy($dictEuclideanRing) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_euclideanRingLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_commutativeRingLazy = ($GLOBALS['Data_Lazy_commutativeRingLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_commutativeRingLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_compose = ($GLOBALS['Data_Lazy_compose'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_compose'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $div = ($dictEuclideanRing)->div;
-  $mod = ($dictEuclideanRing)->mod;
-  $commutativeRingLazy1 = ($__global_Data_Lazy_commutativeRingLazy)((($dictEuclideanRing)->CommutativeRing0)($__global_Prim_undefined));
-  $__res = (object)["degree" => ($__global_Data_Lazy_compose)(($dictEuclideanRing)->degree, $__global_Data_Lazy_force), "div" => (function() use ($__global_Data_Lazy_defer, $div, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $div, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+})()];
+  $__res = (object)["compare" => (function() use (&$dictOrd) {
+  $__fn = function($x, $y = null) use (&$dictOrd, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($div, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($div)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = ((($dictOrd)->compare)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($y));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) use (&$eqLazy1_1) {
+  $__num = \func_num_args();
+  $__res = $eqLazy1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_eq1Lazy'] = function() { $v = (object)["eq1" => (function() {
+  $__fn = function($dictEq, $x = null, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($dictEq)->eq)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($y));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_ord1Lazy'] = function() { $v = (object)["compare1" => function($dictOrd) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_ordLazy'] ?? \PhpursThunks::eval('Data_Lazy_ordLazy')))($dictOrd))->compare;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Eq10" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_eq1Lazy'] ?? \PhpursThunks::eval('Data_Lazy_eq1Lazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_comonadLazy'] = function() { $v = (object)["extract" => ($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')), "Extend0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_extendLazy'] ?? \PhpursThunks::eval('Data_Lazy_extendLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_commutativeRingLazy'] = function() { $v = function($dictCommutativeRing) {
+  $__num = \func_num_args();
+  $ringLazy1_0 = (($GLOBALS['Data_Lazy_ringLazy'] ?? \PhpursThunks::eval('Data_Lazy_ringLazy')))((($dictCommutativeRing)->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["Ring0" => function($dollar__unused_0) use (&$ringLazy1_0) {
+  $__num = \func_num_args();
+  $__res = $ringLazy1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_euclideanRingLazy'] = function() { $v = function($dictEuclideanRing) {
+  $__num = \func_num_args();
+  $ringLazy1_0 = (($GLOBALS['Data_Lazy_ringLazy'] ?? \PhpursThunks::eval('Data_Lazy_ringLazy')))((((($dictEuclideanRing)->CommutativeRing0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["degree" => ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($dictEuclideanRing)->degree))(($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force'))), "div" => (function() use (&$dictEuclideanRing) {
+  $__fn = function($a, $b = null) use (&$dictEuclideanRing, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictEuclideanRing) {
+  $__num = \func_num_args();
+  $__res = ((($dictEuclideanRing)->div)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "mod" => (function() use ($__global_Data_Lazy_defer, $mod, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_defer, $mod, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
+})(), "mod" => (function() use (&$dictEuclideanRing) {
+  $__fn = function($a, $b = null) use (&$dictEuclideanRing, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_defer)(function($v) use ($mod, $__global_Data_Lazy_force, $a, $b) {
-  $__num = func_num_args();
-  $__res = ($mod)(($__global_Data_Lazy_force)($a), ($__global_Data_Lazy_force)($b));
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$b, &$dictEuclideanRing) {
+  $__num = \func_num_args();
+  $__res = ((($dictEuclideanRing)->mod)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a)))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "CommutativeRing0" => function($__dollar____unused) use ($commutativeRingLazy1) {
-  $__num = func_num_args();
-  $__res = $commutativeRingLazy1;
+})(), "CommutativeRing0" => function($dollar__unused_0) use (&$ringLazy1_0) {
+  $__num = \func_num_args();
+  $__res = (object)["Ring0" => function($dollar__unused_0) use (&$ringLazy1_0) {
+  $__num = \func_num_args();
+  $__res = $ringLazy1_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_euclideanRingLazy'] = __NAMESPACE__ . '\\Data_Lazy_euclideanRingLazy';
-
-// Data_Lazy_boundedLazy
-function Data_Lazy_boundedLazy($dictBounded) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_boundedLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_ordLazy = ($GLOBALS['Data_Lazy_ordLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_ordLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $top = ($dictBounded)->top;
-  $bottom = ($dictBounded)->bottom;
-  $ordLazy1 = ($__global_Data_Lazy_ordLazy)((($dictBounded)->Ord0)($__global_Prim_undefined));
-  $__res = (object)["top" => ($__global_Data_Lazy_defer)(function($v) use ($top) {
-  $__num = func_num_args();
-  $__res = $top;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "bottom" => ($__global_Data_Lazy_defer)(function($v) use ($bottom) {
-  $__num = func_num_args();
-  $__res = $bottom;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "Ord0" => function($__dollar____unused) use ($ordLazy1) {
-  $__num = func_num_args();
-  $__res = $ordLazy1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_boundedLazy'] = __NAMESPACE__ . '\\Data_Lazy_boundedLazy';
-
-
-
-
-// Data_Lazy_heytingAlgebraLazy
-function Data_Lazy_heytingAlgebraLazy($dictHeytingAlgebra) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_heytingAlgebraLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Lazy_apply = ($GLOBALS['Data_Lazy_apply'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_apply'));
-  $__global_Data_Lazy_map = ($GLOBALS['Data_Lazy_map'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_map'));
-  $ff = ($dictHeytingAlgebra)->ff;
-  $tt = ($dictHeytingAlgebra)->tt;
-  $implies = ($dictHeytingAlgebra)->implies;
-  $conj = ($dictHeytingAlgebra)->conj;
-  $disj = ($dictHeytingAlgebra)->disj;
-  $not = ($dictHeytingAlgebra)->not;
-  $__res = (object)["ff" => ($__global_Data_Lazy_defer)(function($v) use ($ff) {
-  $__num = func_num_args();
-  $__res = $ff;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_boundedLazy'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
+  $top_0 = ($dictBounded)->top;
+  $bottom_1 = ($dictBounded)->bottom;
+  $ordLazy1_2 = (($GLOBALS['Data_Lazy_ordLazy'] ?? \PhpursThunks::eval('Data_Lazy_ordLazy')))((($dictBounded)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["top" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$top_0) {
+  $__num = \func_num_args();
+  $__res = $top_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "tt" => ($__global_Data_Lazy_defer)(function($v) use ($tt) {
-  $__num = func_num_args();
-  $__res = $tt;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "bottom" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$bottom_1) {
+  $__num = \func_num_args();
+  $__res = $bottom_1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), "implies" => (function() use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $implies, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $implies, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "Ord0" => function($dollar__unused_0) use (&$ordLazy1_2) {
+  $__num = \func_num_args();
+  $__res = $ordLazy1_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_applyLazy'] = function() { $v = (object)["apply" => (function() {
+  $__fn = function($f, $x = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_apply)(($__global_Data_Lazy_map)($implies, $a), $b);
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$f, &$x) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($f))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($x));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "conj" => (function() use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $conj, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $conj, &$__fn) {
-  $__num = func_num_args();
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_functorLazy'] ?? \PhpursThunks::eval('Data_Lazy_functorLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_bindLazy'] = function() { $v = (object)["bind" => (function() {
+  $__fn = function($l, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_apply)(($__global_Data_Lazy_map)($conj, $a), $b);
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$f, &$l) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($f)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($l)));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "disj" => (function() use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $disj, &$__fn) {
-  $__fn = function($a, $b = null) use ($__global_Data_Lazy_apply, $__global_Data_Lazy_map, $disj, &$__fn) {
-  $__num = func_num_args();
+})(), "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_applyLazy'] ?? \PhpursThunks::eval('Data_Lazy_applyLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_heytingAlgebraLazy'] = function() { $v = function($dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $ff_0 = ($dictHeytingAlgebra)->ff;
+  $tt_1 = ($dictHeytingAlgebra)->tt;
+  $__res = (object)["ff" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$ff_0) {
+  $__num = \func_num_args();
+  $__res = $ff_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "tt" => (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$tt_1) {
+  $__num = \func_num_args();
+  $__res = $tt_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), "implies" => (function() use (&$dictHeytingAlgebra) {
+  $__fn = function($a, $b = null) use (&$dictHeytingAlgebra, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__res = ($__global_Data_Lazy_apply)(($__global_Data_Lazy_map)($disj, $a), $b);
+  $__local_var_2 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = (($dictHeytingAlgebra)->implies)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_2, &$b) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_2))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "not" => function($a) use ($__global_Data_Lazy_map, $not) {
-  $__num = func_num_args();
-  $__res = ($__global_Data_Lazy_map)($not, $a);
+})(), "conj" => (function() use (&$dictHeytingAlgebra) {
+  $__fn = function($a, $b = null) use (&$dictHeytingAlgebra, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__local_var_3 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = (($dictHeytingAlgebra)->conj)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3, &$b) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_3))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "disj" => (function() use (&$dictHeytingAlgebra) {
+  $__fn = function($a, $b = null) use (&$dictHeytingAlgebra, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__local_var_4 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = (($dictHeytingAlgebra)->disj)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4, &$b) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_4))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($b));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "not" => function($a) use (&$dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a, &$dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $__res = (($dictHeytingAlgebra)->not)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($a));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_heytingAlgebraLazy'] = __NAMESPACE__ . '\\Data_Lazy_heytingAlgebraLazy';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_booleanAlgebraLazy'] = function() { $v = function($dictBooleanAlgebra) {
+  $__num = \func_num_args();
+  $heytingAlgebraLazy1_0 = (($GLOBALS['Data_Lazy_heytingAlgebraLazy'] ?? \PhpursThunks::eval('Data_Lazy_heytingAlgebraLazy')))((($dictBooleanAlgebra)->HeytingAlgebra0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["HeytingAlgebra0" => function($dollar__unused_0) use (&$heytingAlgebraLazy1_0) {
+  $__num = \func_num_args();
+  $__res = $heytingAlgebraLazy1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_applicativeLazy'] = function() { $v = (object)["pure" => function($a) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$a) {
+  $__num = \func_num_args();
+  $__res = $a;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Apply0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_applyLazy'] ?? \PhpursThunks::eval('Data_Lazy_applyLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Lazy_monadLazy'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_applicativeLazy'] ?? \PhpursThunks::eval('Data_Lazy_applicativeLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Lazy_bindLazy'] ?? \PhpursThunks::eval('Data_Lazy_bindLazy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
-// Data_Lazy_booleanAlgebraLazy
-function Data_Lazy_booleanAlgebraLazy($dictBooleanAlgebra) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Lazy_booleanAlgebraLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_heytingAlgebraLazy = ($GLOBALS['Data_Lazy_heytingAlgebraLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_heytingAlgebraLazy'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $heytingAlgebraLazy1 = ($__global_Data_Lazy_heytingAlgebraLazy)((($dictBooleanAlgebra)->HeytingAlgebra0)($__global_Prim_undefined));
-  $__res = (object)["HeytingAlgebra0" => function($__dollar____unused) use ($heytingAlgebraLazy1) {
-  $__num = func_num_args();
-  $__res = $heytingAlgebraLazy1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Lazy_booleanAlgebraLazy'] = __NAMESPACE__ . '\\Data_Lazy_booleanAlgebraLazy';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,14 +2,44 @@
 
 namespace Data\Tuple;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Control.Semigroupoid, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.Function, Data.Functor, Data.Functor.Invariant, Data.Generic.Rep, Data.HeytingAlgebra, Data.Monoid, Data.Ord, Data.Ordering, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.Tuple, Data.Unit, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Control.Bind, Control.Comonad, Control.Extend, Control.Lazy, Control.Monad, Control.Semigroupoid, Data.BooleanAlgebra, Data.Bounded, Data.CommutativeRing, Data.Eq, Data.Function, Data.Functor, Data.Functor.Invariant, Data.Generic.Rep, Data.HeytingAlgebra, Data.Monoid, Data.Ord, Data.Ordering, Data.Ring, Data.Semigroup, Data.Semiring, Data.Show, Data.Tuple, Data.Unit, Prelude
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Comonad/index.php';
+require_once __DIR__ . '/../Control.Extend/index.php';
+require_once __DIR__ . '/../Control.Lazy/index.php';
+require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Control.Semigroupoid/index.php';
+require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.CommutativeRing/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Function/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
+require_once __DIR__ . '/../Data.Generic.Rep/index.php';
+require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Ordering/index.php';
+require_once __DIR__ . '/../Data.Ring/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Semiring/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Data.Tuple/index.php';
+require_once __DIR__ . '/../Data.Unit/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,1256 +111,7 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Tuple_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Tuple_conj': $v = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj')); break;
-      case 'Data_Tuple_semigroupoidTuple': $v = (object)["compose" => (function() {
-  $__fn = function($v, $v1 = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$c = ($__case_0)->v1;
-$a = ($__case_1)->v0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", $a, $c);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Tuple_genericTuple': $v = (object)["to" => function($x) {
-  $__num = \func_num_args();
-  $__case_0 = $x;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Product":
-$arg = ($__case_0)->v0;
-$arg1 = ($__case_0)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", $arg, $arg1);
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "from" => function($x) {
-  $__num = \func_num_args();
-  $__case_0 = $x;
-  $__match_1 = false;
-  if (($__match_1 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$arg = ($__case_0)->v0;
-$arg1 = ($__case_0)->v1;
-if (($__match_1 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Product", $arg, $arg1);
-goto __end;;
-$__match_1 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Tuple_functorTuple': $v = (object)["map" => (function() {
-  $__fn = function($f, $m = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $m;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$v = ($__case_0)->v0;
-$v1 = ($__case_0)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", $v, ($f)($v1));
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Tuple_invariantTuple': $v = (object)["imap" => \Data\Functor\Invariant\majData_majFunctor_majInvariant_imapmajF(($GLOBALS['Data_Tuple_functorTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_functorTuple')))]; break;
-      case 'Data_Tuple_extendTuple': $v = (object)["extend" => (function() {
-  $__fn = function($f, $v = null) use (&$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_1)->tag) {
-case "Tuple":
-$f1 = $__case_0;
-$t = $__case_1;
-$a = ($__case_1)->v0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", $a, ($f1)($t));
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Tuple_functorTuple = ($GLOBALS['Data_Tuple_functorTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_functorTuple'));
-  $__res = $__global_Data_Tuple_functorTuple;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Tuple_comonadTuple': $v = (object)["extract" => "\\Data\\Tuple\\majData_majTuple_snd", "Extend0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Tuple_extendTuple = ($GLOBALS['Data_Tuple_extendTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_extendTuple'));
-  $__res = $__global_Data_Tuple_extendTuple;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Comonad/index.php';
-require_once __DIR__ . '/../Control.Extend/index.php';
-require_once __DIR__ . '/../Control.Lazy/index.php';
-require_once __DIR__ . '/../Control.Monad/index.php';
-require_once __DIR__ . '/../Control.Semigroupoid/index.php';
-require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.CommutativeRing/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Function/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
-require_once __DIR__ . '/../Data.Generic.Rep/index.php';
-require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Ordering/index.php';
-require_once __DIR__ . '/../Data.Ring/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Semiring/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Data.Tuple/index.php';
-require_once __DIR__ . '/../Data.Unit/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-
-// Data_Tuple_Tuple
-function majData_majTuple_majTuple($value0, $value1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_majTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__res = new Phpurs_Data2("Tuple", $value0, $value1);
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_Tuple'] = __NAMESPACE__ . '\\majData_majTuple_majTuple';
-
-// Data_Tuple_uncurry
-function majData_majTuple_uncurry($f, $v = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_uncurry';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_1)->tag) {
-case "Tuple":
-$f1 = $__case_0;
-$a = ($__case_1)->v0;
-$b = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($f1)($a))($b);
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_uncurry'] = __NAMESPACE__ . '\\majData_majTuple_uncurry';
-
-// Data_Tuple_swap
-function majData_majTuple_swap($v) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_swap';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$a = ($__case_0)->v0;
-$b = ($__case_0)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", $b, $a);
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_swap'] = __NAMESPACE__ . '\\majData_majTuple_swap';
-
-// Data_Tuple_snd
-function majData_majTuple_snd($v) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_snd';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$b = ($__case_0)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $b;
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_snd'] = __NAMESPACE__ . '\\majData_majTuple_snd';
-
-// Data_Tuple_showTuple
-function majData_majTuple_showmajTuple($dictShow, $dictShow1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_showmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_append = ($GLOBALS['Data_Tuple_append'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_append'));
-  $show = ($dictShow)->show;
-  $show1 = ($dictShow1)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Tuple_append, $show, $show1) {
-  $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$a = ($__case_0)->v0;
-$b = ($__case_0)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Tuple_append)("(Tuple "))((($__global_Data_Tuple_append)(($show)($a)))((($__global_Data_Tuple_append)(" "))((($__global_Data_Tuple_append)(($show1)($b)))(")"))));
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_showTuple'] = __NAMESPACE__ . '\\majData_majTuple_showmajTuple';
-
-// Data_Tuple_semiringTuple
-function majData_majTuple_semiringmajTuple($dictSemiring, $dictSemiring1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_semiringmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $add = ($dictSemiring)->add;
-  $one = ($dictSemiring)->one;
-  $mul = ($dictSemiring)->mul;
-  $zero = ($dictSemiring)->zero;
-  $add1 = ($dictSemiring1)->add;
-  $mul1 = ($dictSemiring1)->mul;
-  $__res = (object)["add" => (function() use ($add, $add1) {
-  $__fn = function($v, $v1 = null) use ($add, $add1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($add)($x1))($x2), (($add1)($y1))($y2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "one" => new Phpurs_Data2("Tuple", $one, ($dictSemiring1)->one), "mul" => (function() use ($mul, $mul1) {
-  $__fn = function($v, $v1 = null) use ($mul, $mul1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_1 = false;
-  if (($__match_1 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_1 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($mul)($x1))($x2), (($mul1)($y1))($y2));
-goto __end;;
-$__match_1 = true;
-};
-};
-};
-};
-  if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "zero" => new Phpurs_Data2("Tuple", $zero, ($dictSemiring1)->zero)];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_semiringTuple'] = __NAMESPACE__ . '\\majData_majTuple_semiringmajTuple';
-
-
-// Data_Tuple_semigroupTuple
-function majData_majTuple_semigroupmajTuple($dictSemigroup, $dictSemigroup1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_semigroupmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $append1 = ($dictSemigroup)->append;
-  $append2 = ($dictSemigroup1)->append;
-  $__res = (object)["append" => (function() use ($append1, $append2) {
-  $__fn = function($v, $v1 = null) use ($append1, $append2, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$a1 = ($__case_0)->v0;
-$b1 = ($__case_0)->v1;
-$a2 = ($__case_1)->v0;
-$b2 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($append1)($a1))($a2), (($append2)($b1))($b2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_semigroupTuple'] = __NAMESPACE__ . '\\majData_majTuple_semigroupmajTuple';
-
-// Data_Tuple_ringTuple
-function majData_majTuple_ringmajTuple($dictRing, $dictRing1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_ringmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_semiringTuple = ($GLOBALS['Data_Tuple_semiringTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_semiringTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $sub = ($dictRing)->sub;
-  $semiringTuple1 = ($__global_Data_Tuple_semiringTuple)((($dictRing)->Semiring0)($__global_Prim_undefined));
-  $sub1 = ($dictRing1)->sub;
-  $semiringTuple2 = ($semiringTuple1)((($dictRing1)->Semiring0)($__global_Prim_undefined));
-  $__res = (object)["sub" => (function() use ($sub, $sub1) {
-  $__fn = function($v, $v1 = null) use ($sub, $sub1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($sub)($x1))($x2), (($sub1)($y1))($y2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Semiring0" => function($dollar__unused) use ($semiringTuple2) {
-  $__num = \func_num_args();
-  $__res = $semiringTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_ringTuple'] = __NAMESPACE__ . '\\majData_majTuple_ringmajTuple';
-
-// Data_Tuple_monoidTuple
-function majData_majTuple_monoidmajTuple($dictMonoid, $dictMonoid1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_monoidmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_semigroupTuple = ($GLOBALS['Data_Tuple_semigroupTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_semigroupTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $mempty = ($dictMonoid)->mempty;
-  $semigroupTuple1 = ($__global_Data_Tuple_semigroupTuple)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $semigroupTuple2 = ($semigroupTuple1)((($dictMonoid1)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["mempty" => new Phpurs_Data2("Tuple", $mempty, ($dictMonoid1)->mempty), "Semigroup0" => function($dollar__unused) use ($semigroupTuple2) {
-  $__num = \func_num_args();
-  $__res = $semigroupTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_monoidTuple'] = __NAMESPACE__ . '\\majData_majTuple_monoidmajTuple';
-
-// Data_Tuple_heytingAlgebraTuple
-function majData_majTuple_heytingmajAlgebramajTuple($dictHeytingAlgebra, $dictHeytingAlgebra1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_heytingmajAlgebramajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $tt = ($dictHeytingAlgebra)->tt;
-  $ff = ($dictHeytingAlgebra)->ff;
-  $implies = ($dictHeytingAlgebra)->implies;
-  $conj1 = ($dictHeytingAlgebra)->conj;
-  $disj = ($dictHeytingAlgebra)->disj;
-  $not = ($dictHeytingAlgebra)->not;
-  $implies1 = ($dictHeytingAlgebra1)->implies;
-  $conj2 = ($dictHeytingAlgebra1)->conj;
-  $disj1 = ($dictHeytingAlgebra1)->disj;
-  $not1 = ($dictHeytingAlgebra1)->not;
-  $__res = (object)["tt" => new Phpurs_Data2("Tuple", $tt, ($dictHeytingAlgebra1)->tt), "ff" => new Phpurs_Data2("Tuple", $ff, ($dictHeytingAlgebra1)->ff), "implies" => (function() use ($implies, $implies1) {
-  $__fn = function($v, $v1 = null) use ($implies, $implies1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($implies)($x1))($x2), (($implies1)($y1))($y2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "conj" => (function() use ($conj1, $conj2) {
-  $__fn = function($v, $v1 = null) use ($conj1, $conj2, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_1 = false;
-  if (($__match_1 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_1 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($conj1)($x1))($x2), (($conj2)($y1))($y2));
-goto __end;;
-$__match_1 = true;
-};
-};
-};
-};
-  if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "disj" => (function() use ($disj, $disj1) {
-  $__fn = function($v, $v1 = null) use ($disj, $disj1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_2 = false;
-  if (($__match_2 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->v0;
-$y1 = ($__case_0)->v1;
-$x2 = ($__case_1)->v0;
-$y2 = ($__case_1)->v1;
-if (($__match_2 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($disj)($x1))($x2), (($disj1)($y1))($y2));
-goto __end;;
-$__match_2 = true;
-};
-};
-};
-};
-  if (($__match_2 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "not" => function($v) use ($not, $not1) {
-  $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_3 = false;
-  if (($__match_3 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$x = ($__case_0)->v0;
-$y = ($__case_0)->v1;
-if (($__match_3 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", ($not)($x), ($not1)($y));
-goto __end;;
-$__match_3 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_3 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_heytingAlgebraTuple'] = __NAMESPACE__ . '\\majData_majTuple_heytingmajAlgebramajTuple';
-
-
-
-
-// Data_Tuple_fst
-function majData_majTuple_fst($v) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_fst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$a = ($__case_0)->v0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $a;
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_fst'] = __NAMESPACE__ . '\\majData_majTuple_fst';
-
-// Data_Tuple_lazyTuple
-function majData_majTuple_lazymajTuple($dictLazy, $dictLazy1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_lazymajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_fst = ($GLOBALS['Data_Tuple_fst'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_fst'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__global_Data_Tuple_snd = ($GLOBALS['Data_Tuple_snd'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_snd'));
-  $defer = ($dictLazy)->defer;
-  $defer1 = ($dictLazy1)->defer;
-  $__res = (object)["defer" => function($f) use ($defer, $__global_Data_Tuple_fst, $__global_Data_Unit_unit, $defer1, $__global_Data_Tuple_snd) {
-  $__num = \func_num_args();
-  $__res = new Phpurs_Data2("Tuple", ($defer)(function($v) use ($__global_Data_Tuple_fst, $f, $__global_Data_Unit_unit) {
-  $__num = \func_num_args();
-  $__res = ($__global_Data_Tuple_fst)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}), ($defer1)(function($v) use ($__global_Data_Tuple_snd, $f, $__global_Data_Unit_unit) {
-  $__num = \func_num_args();
-  $__res = ($__global_Data_Tuple_snd)(($f)($__global_Data_Unit_unit));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_lazyTuple'] = __NAMESPACE__ . '\\majData_majTuple_lazymajTuple';
-
-
-// Data_Tuple_eqTuple
-function majData_majTuple_eqmajTuple($dictEq, $dictEq1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_eqmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_conj = ($GLOBALS['Data_Tuple_conj'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_conj'));
-  $eq = ($dictEq)->eq;
-  $eq1 = ($dictEq1)->eq;
-  $__res = (object)["eq" => (function() use ($__global_Data_Tuple_conj, $eq, $eq1) {
-  $__fn = function($x, $y = null) use ($__global_Data_Tuple_conj, $eq, $eq1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $x;
-  $__case_1 = $y;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l = ($__case_0)->v0;
-$l1 = ($__case_0)->v1;
-$r = ($__case_1)->v0;
-$r1 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Tuple_conj)((($eq)($l))($r)))((($eq1)($l1))($r1));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_eqTuple'] = __NAMESPACE__ . '\\majData_majTuple_eqmajTuple';
-
-// Data_Tuple_ordTuple
-function majData_majTuple_ordmajTuple($dictOrd, $dictOrd1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_ordmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_eqTuple = ($GLOBALS['Data_Tuple_eqTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_eqTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $compare = ($dictOrd)->compare;
-  $eqTuple1 = ($__global_Data_Tuple_eqTuple)((($dictOrd)->Eq0)($__global_Prim_undefined));
-  $compare1 = ($dictOrd1)->compare;
-  $eqTuple2 = ($eqTuple1)((($dictOrd1)->Eq0)($__global_Prim_undefined));
-  $__res = (object)["compare" => (function() use ($compare, $compare1) {
-  $__fn = function($x, $y = null) use ($compare, $compare1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $x;
-  $__case_1 = $y;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l = ($__case_0)->v0;
-$l1 = ($__case_0)->v1;
-$r = ($__case_1)->v0;
-$r1 = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$v = (($compare)($l))($r);
-$__case_0 = $v;
-$__match_1 = false;
-if (($__match_1 === false)) {
-switch (($__case_0)->tag) {
-case "LT":
-if (($__match_1 === false)) {
-if (true) {
-$__res = ($GLOBALS['__phpurs_data0_LT'] ??= new Phpurs_Data0("LT"));
-goto __end;;
-$__match_1 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-if (($__match_1 === false)) {
-switch (($__case_0)->tag) {
-case "GT":
-if (($__match_1 === false)) {
-if (true) {
-$__res = ($GLOBALS['__phpurs_data0_GT'] ??= new Phpurs_Data0("GT"));
-goto __end;;
-$__match_1 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-if (($__match_1 === false)) {
-if (true) {
-if (($__match_1 === false)) {
-if (true) {
-$__res = (($compare1)($l1))($r1);
-goto __end;;
-$__match_1 = true;
-};
-};
-};
-};
-if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Eq0" => function($dollar__unused) use ($eqTuple2) {
-  $__num = \func_num_args();
-  $__res = $eqTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_ordTuple'] = __NAMESPACE__ . '\\majData_majTuple_ordmajTuple';
-
-// Data_Tuple_eq1Tuple
-function majData_majTuple_eq1majTuple($dictEq) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_eq1majTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Tuple_eqTuple = ($GLOBALS['Data_Tuple_eqTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_eqTuple'));
-  $eqTuple1 = ($__global_Data_Tuple_eqTuple)($dictEq);
-  $__res = (object)["eq1" => function($dictEq1) use ($eqTuple1) {
-  $__num = \func_num_args();
-  $__res = (($eqTuple1)($dictEq1))->eq;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_eq1Tuple'] = __NAMESPACE__ . '\\majData_majTuple_eq1majTuple';
-
-// Data_Tuple_ord1Tuple
-function majData_majTuple_ord1majTuple($dictOrd) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_ord1majTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Tuple_ordTuple = ($GLOBALS['Data_Tuple_ordTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_ordTuple'));
-  $__global_Data_Tuple_eq1Tuple = ($GLOBALS['Data_Tuple_eq1Tuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_eq1Tuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $ordTuple1 = ($__global_Data_Tuple_ordTuple)($dictOrd);
-  $eq1Tuple1 = ($__global_Data_Tuple_eq1Tuple)((($dictOrd)->Eq0)($__global_Prim_undefined));
-  $__res = (object)["compare1" => function($dictOrd1) use ($ordTuple1) {
-  $__num = \func_num_args();
-  $__res = (($ordTuple1)($dictOrd1))->compare;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Eq10" => function($dollar__unused) use ($eq1Tuple1) {
-  $__num = \func_num_args();
-  $__res = $eq1Tuple1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_ord1Tuple'] = __NAMESPACE__ . '\\majData_majTuple_ord1majTuple';
-
-// Data_Tuple_curry
-function majData_majTuple_curry($f, $a = null, $b = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_curry';
-  if ($__num < 3) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
-  }
-  $__res = ($f)(new Phpurs_Data2("Tuple", $a, $b));
-  goto __end;;
-  __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Tuple_curry'] = __NAMESPACE__ . '\\majData_majTuple_curry';
-
-
-// Data_Tuple_commutativeRingTuple
-function majData_majTuple_commutativemajRingmajTuple($dictCommutativeRing, $dictCommutativeRing1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_commutativemajRingmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_ringTuple = ($GLOBALS['Data_Tuple_ringTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_ringTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $ringTuple1 = ($__global_Data_Tuple_ringTuple)((($dictCommutativeRing)->Ring0)($__global_Prim_undefined));
-  $ringTuple2 = ($ringTuple1)((($dictCommutativeRing1)->Ring0)($__global_Prim_undefined));
-  $__res = (object)["Ring0" => function($dollar__unused) use ($ringTuple2) {
-  $__num = \func_num_args();
-  $__res = $ringTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_commutativeRingTuple'] = __NAMESPACE__ . '\\majData_majTuple_commutativemajRingmajTuple';
-
-// Data_Tuple_boundedTuple
-function majData_majTuple_boundedmajTuple($dictBounded, $dictBounded1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_boundedmajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_ordTuple = ($GLOBALS['Data_Tuple_ordTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_ordTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $top = ($dictBounded)->top;
-  $bottom = ($dictBounded)->bottom;
-  $ordTuple1 = ($__global_Data_Tuple_ordTuple)((($dictBounded)->Ord0)($__global_Prim_undefined));
-  $ordTuple2 = ($ordTuple1)((($dictBounded1)->Ord0)($__global_Prim_undefined));
-  $__res = (object)["top" => new Phpurs_Data2("Tuple", $top, ($dictBounded1)->top), "bottom" => new Phpurs_Data2("Tuple", $bottom, ($dictBounded1)->bottom), "Ord0" => function($dollar__unused) use ($ordTuple2) {
-  $__num = \func_num_args();
-  $__res = $ordTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_boundedTuple'] = __NAMESPACE__ . '\\majData_majTuple_boundedmajTuple';
-
-// Data_Tuple_booleanAlgebraTuple
-function majData_majTuple_booleanmajAlgebramajTuple($dictBooleanAlgebra, $dictBooleanAlgebra1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_booleanmajAlgebramajTuple';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Tuple_heytingAlgebraTuple = ($GLOBALS['Data_Tuple_heytingAlgebraTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_heytingAlgebraTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $heytingAlgebraTuple1 = ($__global_Data_Tuple_heytingAlgebraTuple)((($dictBooleanAlgebra)->HeytingAlgebra0)($__global_Prim_undefined));
-  $heytingAlgebraTuple2 = ($heytingAlgebraTuple1)((($dictBooleanAlgebra1)->HeytingAlgebra0)($__global_Prim_undefined));
-  $__res = (object)["HeytingAlgebra0" => function($dollar__unused) use ($heytingAlgebraTuple2) {
-  $__num = \func_num_args();
-  $__res = $heytingAlgebraTuple2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Tuple_booleanAlgebraTuple'] = __NAMESPACE__ . '\\majData_majTuple_booleanmajAlgebramajTuple';
-
-// Data_Tuple_applyTuple
-function majData_majTuple_applymajTuple($dictSemigroup) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_applymajTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Tuple_functorTuple = ($GLOBALS['Data_Tuple_functorTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_functorTuple'));
-  $append1 = ($dictSemigroup)->append;
-  $__res = (object)["apply" => (function() use ($append1) {
-  $__fn = function($v, $v1 = null) use ($append1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$a1 = ($__case_0)->v0;
-$f = ($__case_0)->v1;
-$a2 = ($__case_1)->v0;
-$x = ($__case_1)->v1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($append1)($a1))($a2), ($f)($x));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Functor0" => function($dollar__unused) use ($__global_Data_Tuple_functorTuple) {
-  $__num = \func_num_args();
-  $__res = $__global_Data_Tuple_functorTuple;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_applyTuple'] = __NAMESPACE__ . '\\majData_majTuple_applymajTuple';
-
-// Data_Tuple_bindTuple
-function majData_majTuple_bindmajTuple($dictSemigroup) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_bindmajTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Tuple_applyTuple = ($GLOBALS['Data_Tuple_applyTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_applyTuple'));
-  $append1 = ($dictSemigroup)->append;
-  $applyTuple1 = ($__global_Data_Tuple_applyTuple)($dictSemigroup);
-  $__res = (object)["bind" => (function() use ($append1) {
-  $__fn = function($v, $f = null) use ($append1, &$__fn) {
-  $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $f;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$a1 = ($__case_0)->v0;
-$b = ($__case_0)->v1;
-$f1 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$v1 = ($f1)($b);
-$__case_0 = $v1;
-$__match_1 = false;
-if (($__match_1 === false)) {
-switch (($__case_0)->tag) {
-case "Tuple":
-$a2 = ($__case_0)->v0;
-$c = ($__case_0)->v1;
-if (($__match_1 === false)) {
-if (true) {
-$__res = new Phpurs_Data2("Tuple", (($append1)($a1))($a2), $c);
-goto __end;;
-$__match_1 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), "Apply0" => function($dollar__unused) use ($applyTuple1) {
-  $__num = \func_num_args();
-  $__res = $applyTuple1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_bindTuple'] = __NAMESPACE__ . '\\majData_majTuple_bindmajTuple';
-
-// Data_Tuple_applicativeTuple
-function majData_majTuple_applicativemajTuple($dictMonoid) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_applicativemajTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Tuple_applyTuple = ($GLOBALS['Data_Tuple_applyTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_applyTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $applyTuple1 = ($__global_Data_Tuple_applyTuple)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["pure" => ((function() {
+\PhpursThunks::$thunks['Data_Tuple_Tuple'] = function() { $v = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
@@ -1342,47 +123,695 @@ function majData_majTuple_applicativemajTuple($dictMonoid) {
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})())(($dictMonoid)->mempty), "Apply0" => function($dollar__unused) use ($applyTuple1) {
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_uncurry'] = function() { $v = (function() {
+  $__fn = function($f, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__res = $applyTuple1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_applicativeTuple'] = __NAMESPACE__ . '\\majData_majTuple_applicativemajTuple';
-
-// Data_Tuple_monadTuple
-function majData_majTuple_monadmajTuple($dictMonoid) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTuple_monadmajTuple';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Tuple_applicativeTuple = ($GLOBALS['Data_Tuple_applicativeTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_applicativeTuple'));
-  $__global_Data_Tuple_bindTuple = ($GLOBALS['Data_Tuple_bindTuple'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_bindTuple'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $applicativeTuple1 = ($__global_Data_Tuple_applicativeTuple)($dictMonoid);
-  $bindTuple1 = ($__global_Data_Tuple_bindTuple)((($dictMonoid)->Semigroup0)($__global_Prim_undefined));
-  $__res = (object)["Applicative0" => function($dollar__unused) use ($applicativeTuple1) {
+  $__res = (($f)(($v)->value0))(($v)->value1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_swap'] = function() { $v = function($v) {
   $__num = \func_num_args();
-  $__res = $applicativeTuple1;
+  $__res = new Phpurs_Data2("Tuple", ($v)->value1, ($v)->value0);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Bind1" => function($dollar__unused) use ($bindTuple1) {
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_snd'] = function() { $v = function($v) {
   $__num = \func_num_args();
-  $__res = $bindTuple1;
+  $__res = ($v)->value1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_showTuple'] = function() { $v = (function() {
+  $__fn = function($dictShow, $dictShow1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["show" => function($v) use (&$dictShow, &$dictShow1) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Tuple "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)(($v)->value0)))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))(" "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow1)->show)(($v)->value1)))(")"))));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Tuple_monadTuple'] = __NAMESPACE__ . '\\majData_majTuple_monadmajTuple';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_semiringTuple'] = function() { $v = function($dictSemiring) {
+  $__num = \func_num_args();
+  $one_0 = ($dictSemiring)->one;
+  $zero_1 = ($dictSemiring)->zero;
+  $__res = function($dictSemiring1) use (&$dictSemiring, &$one_0, &$zero_1) {
+  $__num = \func_num_args();
+  $__res = (object)["add" => (function() use (&$dictSemiring, &$dictSemiring1) {
+  $__fn = function($v, $v1 = null) use (&$dictSemiring, &$dictSemiring1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictSemiring)->add)(($v)->value0))(($v1)->value0), ((($dictSemiring1)->add)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "one" => new Phpurs_Data2("Tuple", $one_0, ($dictSemiring1)->one), "mul" => (function() use (&$dictSemiring, &$dictSemiring1) {
+  $__fn = function($v, $v1 = null) use (&$dictSemiring, &$dictSemiring1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictSemiring)->mul)(($v)->value0))(($v1)->value0), ((($dictSemiring1)->mul)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "zero" => new Phpurs_Data2("Tuple", $zero_1, ($dictSemiring1)->zero)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_semigroupoidTuple'] = function() { $v = (object)["compose" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ($v1)->value0, ($v)->value1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_semigroupTuple'] = function() { $v = (function() {
+  $__fn = function($dictSemigroup, $dictSemigroup1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["append" => (function() use (&$dictSemigroup, &$dictSemigroup1) {
+  $__fn = function($v, $v1 = null) use (&$dictSemigroup, &$dictSemigroup1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictSemigroup)->append)(($v)->value0))(($v1)->value0), ((($dictSemigroup1)->append)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_ringTuple'] = function() { $v = function($dictRing) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictRing)->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $one_1 = ($__local_var_0)->one;
+  $zero_2 = ($__local_var_0)->zero;
+  $semiringTuple1_3 = function($dictSemiring1) use (&$__local_var_0, &$one_1, &$zero_2) {
+  $__num = \func_num_args();
+  $__res = (object)["add" => (function() use (&$__local_var_0, &$dictSemiring1) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_0, &$dictSemiring1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($__local_var_0)->add)(($v)->value0))(($v1)->value0), ((($dictSemiring1)->add)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "one" => new Phpurs_Data2("Tuple", $one_1, ($dictSemiring1)->one), "mul" => (function() use (&$__local_var_0, &$dictSemiring1) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_0, &$dictSemiring1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($__local_var_0)->mul)(($v)->value0))(($v1)->value0), ((($dictSemiring1)->mul)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "zero" => new Phpurs_Data2("Tuple", $zero_2, ($dictSemiring1)->zero)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  $__res = function($dictRing1) use (&$dictRing, &$semiringTuple1_3) {
+  $__num = \func_num_args();
+  $semiringTuple2_4 = ($semiringTuple1_3)((($dictRing1)->Semiring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["sub" => (function() use (&$dictRing, &$dictRing1) {
+  $__fn = function($v, $v1 = null) use (&$dictRing, &$dictRing1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictRing)->sub)(($v)->value0))(($v1)->value0), ((($dictRing1)->sub)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Semiring0" => function($dollar__unused_0) use (&$semiringTuple2_4) {
+  $__num = \func_num_args();
+  $__res = $semiringTuple2_4;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_monoidTuple'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $mempty_0 = ($dictMonoid)->mempty;
+  $__local_var_1 = (($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = function($dictMonoid1) use (&$__local_var_1, &$mempty_0) {
+  $__num = \func_num_args();
+  $__local_var_2 = (($dictMonoid1)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $semigroupTuple2_3 = (object)["append" => (function() use (&$__local_var_1, &$__local_var_2) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_1, &$__local_var_2, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($__local_var_1)->append)(($v)->value0))(($v1)->value0), ((($__local_var_2)->append)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["mempty" => new Phpurs_Data2("Tuple", $mempty_0, ($dictMonoid1)->mempty), "Semigroup0" => function($dollar__unused_0) use (&$semigroupTuple2_3) {
+  $__num = \func_num_args();
+  $__res = $semigroupTuple2_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_heytingAlgebraTuple'] = function() { $v = function($dictHeytingAlgebra) {
+  $__num = \func_num_args();
+  $tt_0 = ($dictHeytingAlgebra)->tt;
+  $ff_1 = ($dictHeytingAlgebra)->ff;
+  $__res = function($dictHeytingAlgebra1) use (&$dictHeytingAlgebra, &$ff_1, &$tt_0) {
+  $__num = \func_num_args();
+  $__res = (object)["tt" => new Phpurs_Data2("Tuple", $tt_0, ($dictHeytingAlgebra1)->tt), "ff" => new Phpurs_Data2("Tuple", $ff_1, ($dictHeytingAlgebra1)->ff), "implies" => (function() use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1) {
+  $__fn = function($v, $v1 = null) use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictHeytingAlgebra)->implies)(($v)->value0))(($v1)->value0), ((($dictHeytingAlgebra1)->implies)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "conj" => (function() use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1) {
+  $__fn = function($v, $v1 = null) use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictHeytingAlgebra)->conj)(($v)->value0))(($v1)->value0), ((($dictHeytingAlgebra1)->conj)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "disj" => (function() use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1) {
+  $__fn = function($v, $v1 = null) use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictHeytingAlgebra)->disj)(($v)->value0))(($v1)->value0), ((($dictHeytingAlgebra1)->disj)(($v)->value1))(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "not" => function($v) use (&$dictHeytingAlgebra, &$dictHeytingAlgebra1) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data2("Tuple", (($dictHeytingAlgebra)->not)(($v)->value0), (($dictHeytingAlgebra1)->not)(($v)->value1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_genericTuple'] = function() { $v = (object)["to" => function($x) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data2("Tuple", ($x)->value0, ($x)->value1);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "from" => function($x) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data2("Product", ($x)->value0, ($x)->value1);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_functorTuple'] = function() { $v = (object)["map" => (function() {
+  $__fn = function($f, $m = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ($m)->value0, ($f)(($m)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_invariantTuple'] = function() { $v = (object)["imap" => (function() {
+  $__fn = function($f, $v = null, $m = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = new Phpurs_Data2("Tuple", ($m)->value0, ($f)(($m)->value1));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_fst'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = ($v)->value0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_lazyTuple'] = function() { $v = (function() {
+  $__fn = function($dictLazy, $dictLazy1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["defer" => function($f) use (&$dictLazy, &$dictLazy1) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data2("Tuple", (($dictLazy)->defer)(function($v) use (&$f) {
+  $__num = \func_num_args();
+  $__res = (($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))))->value0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}), (($dictLazy1)->defer)(function($v) use (&$f) {
+  $__num = \func_num_args();
+  $__res = (($f)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit'))))->value1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_extendTuple'] = function() { $v = (object)["extend" => (function() {
+  $__fn = function($f, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ($v)->value0, ($f)($v));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Tuple_functorTuple'] ?? \PhpursThunks::eval('Data_Tuple_functorTuple'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_eqTuple'] = function() { $v = (function() {
+  $__fn = function($dictEq, $dictEq1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)["eq" => (function() use (&$dictEq, &$dictEq1) {
+  $__fn = function($x, $y = null) use (&$dictEq, &$dictEq1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_boolConj')))(((($dictEq)->eq)(($x)->value0))(($y)->value0)))(((($dictEq1)->eq)(($x)->value1))(($y)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_ordTuple'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $eqTuple1_0 = (($GLOBALS['Data_Tuple_eqTuple'] ?? \PhpursThunks::eval('Data_Tuple_eqTuple')))((($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictOrd1) use (&$dictOrd, &$eqTuple1_0) {
+  $__num = \func_num_args();
+  $eqTuple2_1 = ($eqTuple1_0)((($dictOrd1)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["compare" => (function() use (&$dictOrd, &$dictOrd1) {
+  $__fn = function($x, $y = null) use (&$dictOrd, &$dictOrd1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $v_2 = ((($dictOrd)->compare)(($x)->value0))(($y)->value0);
+  if ((is_object($v_2) && (($v_2)->tag === "LT"))) {
+$__t3 = new Phpurs_Data0("LT");
+} else {
+if ((is_object($v_2) && (($v_2)->tag === "GT"))) {
+$__t3 = new Phpurs_Data0("GT");
+} else {
+$__t3 = ((($dictOrd1)->compare)(($x)->value1))(($y)->value1);
+};
+};
+  $__res = $__t3;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Eq0" => function($dollar__unused_0) use (&$eqTuple2_1) {
+  $__num = \func_num_args();
+  $__res = $eqTuple2_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_eq1Tuple'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = (object)["eq1" => function($dictEq1) use (&$dictEq) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Data_Tuple_eqTuple'] ?? \PhpursThunks::eval('Data_Tuple_eqTuple')))($dictEq))($dictEq1))->eq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_ord1Tuple'] = function() { $v = function($dictOrd) {
+  $__num = \func_num_args();
+  $ordTuple1_0 = (($GLOBALS['Data_Tuple_ordTuple'] ?? \PhpursThunks::eval('Data_Tuple_ordTuple')))($dictOrd);
+  $__local_var_1 = (($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $eq1Tuple1_2 = (object)["eq1" => function($dictEq1) use (&$__local_var_1) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Data_Tuple_eqTuple'] ?? \PhpursThunks::eval('Data_Tuple_eqTuple')))($__local_var_1))($dictEq1))->eq;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  $__res = (object)["compare1" => function($dictOrd1) use (&$ordTuple1_0) {
+  $__num = \func_num_args();
+  $__res = (($ordTuple1_0)($dictOrd1))->compare;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Eq10" => function($dollar__unused_0) use (&$eq1Tuple1_2) {
+  $__num = \func_num_args();
+  $__res = $eq1Tuple1_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_curry'] = function() { $v = (function() {
+  $__fn = function($f, $a = null, $b = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ($f)(new Phpurs_Data2("Tuple", $a, $b));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Tuple_comonadTuple'] = function() { $v = (object)["extract" => ($GLOBALS['Data_Tuple_snd'] ?? \PhpursThunks::eval('Data_Tuple_snd')), "Extend0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Tuple_extendTuple'] ?? \PhpursThunks::eval('Data_Tuple_extendTuple'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_commutativeRingTuple'] = function() { $v = function($dictCommutativeRing) {
+  $__num = \func_num_args();
+  $ringTuple1_0 = (($GLOBALS['Data_Tuple_ringTuple'] ?? \PhpursThunks::eval('Data_Tuple_ringTuple')))((($dictCommutativeRing)->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictCommutativeRing1) use (&$ringTuple1_0) {
+  $__num = \func_num_args();
+  $ringTuple2_1 = ($ringTuple1_0)((($dictCommutativeRing1)->Ring0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["Ring0" => function($dollar__unused_0) use (&$ringTuple2_1) {
+  $__num = \func_num_args();
+  $__res = $ringTuple2_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_boundedTuple'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
+  $top_0 = ($dictBounded)->top;
+  $bottom_1 = ($dictBounded)->bottom;
+  $ordTuple1_2 = (($GLOBALS['Data_Tuple_ordTuple'] ?? \PhpursThunks::eval('Data_Tuple_ordTuple')))((($dictBounded)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictBounded1) use (&$bottom_1, &$ordTuple1_2, &$top_0) {
+  $__num = \func_num_args();
+  $ordTuple2_3 = ($ordTuple1_2)((($dictBounded1)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["top" => new Phpurs_Data2("Tuple", $top_0, ($dictBounded1)->top), "bottom" => new Phpurs_Data2("Tuple", $bottom_1, ($dictBounded1)->bottom), "Ord0" => function($dollar__unused_0) use (&$ordTuple2_3) {
+  $__num = \func_num_args();
+  $__res = $ordTuple2_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_booleanAlgebraTuple'] = function() { $v = function($dictBooleanAlgebra) {
+  $__num = \func_num_args();
+  $heytingAlgebraTuple1_0 = (($GLOBALS['Data_Tuple_heytingAlgebraTuple'] ?? \PhpursThunks::eval('Data_Tuple_heytingAlgebraTuple')))((($dictBooleanAlgebra)->HeytingAlgebra0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictBooleanAlgebra1) use (&$heytingAlgebraTuple1_0) {
+  $__num = \func_num_args();
+  $heytingAlgebraTuple2_1 = ($heytingAlgebraTuple1_0)((($dictBooleanAlgebra1)->HeytingAlgebra0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["HeytingAlgebra0" => function($dollar__unused_0) use (&$heytingAlgebraTuple2_1) {
+  $__num = \func_num_args();
+  $__res = $heytingAlgebraTuple2_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_applyTuple'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $__res = (object)["apply" => (function() use (&$dictSemigroup) {
+  $__fn = function($v, $v1 = null) use (&$dictSemigroup, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = new Phpurs_Data2("Tuple", ((($dictSemigroup)->append)(($v)->value0))(($v1)->value0), (($v)->value1)(($v1)->value1));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Tuple_functorTuple'] ?? \PhpursThunks::eval('Data_Tuple_functorTuple'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_bindTuple'] = function() { $v = function($dictSemigroup) {
+  $__num = \func_num_args();
+  $applyTuple1_0 = (($GLOBALS['Data_Tuple_applyTuple'] ?? \PhpursThunks::eval('Data_Tuple_applyTuple')))($dictSemigroup);
+  $__res = (object)["bind" => (function() use (&$dictSemigroup) {
+  $__fn = function($v, $f = null) use (&$dictSemigroup, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $v1_1 = ($f)(($v)->value1);
+  $__res = new Phpurs_Data2("Tuple", ((($dictSemigroup)->append)(($v)->value0))(($v1_1)->value0), ($v1_1)->value1);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Apply0" => function($dollar__unused_0) use (&$applyTuple1_0) {
+  $__num = \func_num_args();
+  $__res = $applyTuple1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_applicativeTuple'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $applyTuple1_0 = (($GLOBALS['Data_Tuple_applyTuple'] ?? \PhpursThunks::eval('Data_Tuple_applyTuple')))((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["pure" => (($GLOBALS['Data_Tuple_Tuple'] ?? \PhpursThunks::eval('Data_Tuple_Tuple')))(($dictMonoid)->mempty), "Apply0" => function($dollar__unused_0) use (&$applyTuple1_0) {
+  $__num = \func_num_args();
+  $__res = $applyTuple1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Tuple_monadTuple'] = function() { $v = function($dictMonoid) {
+  $__num = \func_num_args();
+  $applicativeTuple1_0 = (($GLOBALS['Data_Tuple_applicativeTuple'] ?? \PhpursThunks::eval('Data_Tuple_applicativeTuple')))($dictMonoid);
+  $bindTuple1_1 = (($GLOBALS['Data_Tuple_bindTuple'] ?? \PhpursThunks::eval('Data_Tuple_bindTuple')))((($dictMonoid)->Semigroup0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["Applicative0" => function($dollar__unused_0) use (&$applicativeTuple1_0) {
+  $__num = \func_num_args();
+  $__res = $applicativeTuple1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$bindTuple1_1) {
+  $__num = \func_num_args();
+  $__res = $bindTuple1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

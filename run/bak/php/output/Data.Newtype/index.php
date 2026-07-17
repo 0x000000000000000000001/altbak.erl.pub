@@ -2,14 +2,27 @@
 
 namespace Data\Newtype;
 
+// ALL IMPORTS: Data.Monoid.Additive, Data.Monoid.Conj, Data.Monoid.Disj, Data.Monoid.Dual, Data.Monoid.Endo, Data.Monoid.Multiplicative, Data.Newtype, Data.Semigroup.First, Data.Semigroup.Last, Prim, Safe.Coerce
+// TO REQUIRE: Data.Monoid.Additive, Data.Monoid.Conj, Data.Monoid.Disj, Data.Monoid.Dual, Data.Monoid.Endo, Data.Monoid.Multiplicative, Data.Newtype, Data.Semigroup.First, Data.Semigroup.Last, Safe.Coerce
+require_once __DIR__ . '/../Data.Monoid.Additive/index.php';
+require_once __DIR__ . '/../Data.Monoid.Conj/index.php';
+require_once __DIR__ . '/../Data.Monoid.Disj/index.php';
+require_once __DIR__ . '/../Data.Monoid.Dual/index.php';
+require_once __DIR__ . '/../Data.Monoid.Endo/index.php';
+require_once __DIR__ . '/../Data.Monoid.Multiplicative/index.php';
+require_once __DIR__ . '/../Data.Newtype/index.php';
+require_once __DIR__ . '/../Data.Semigroup.First/index.php';
+require_once __DIR__ . '/../Data.Semigroup.Last/index.php';
+require_once __DIR__ . '/../Safe.Coerce/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,398 +94,282 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Newtype_newtypeMultiplicative': $v = (object)["Coercible0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Data_Newtype_wrap'] = function() { $v = function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeLast': $v = (object)["Coercible0" => function($dollar__unused) {
+}; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_unwrap'] = function() { $v = function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeFirst': $v = (object)["Coercible0" => function($dollar__unused) {
+}; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_underF2'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $dollar__unused_3 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeEndo': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeDual': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeDisj': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeConj': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Newtype_newtypeAdditive': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Data.Monoid.Additive/index.php';
-require_once __DIR__ . '/../Data.Monoid.Conj/index.php';
-require_once __DIR__ . '/../Data.Monoid.Disj/index.php';
-require_once __DIR__ . '/../Data.Monoid.Dual/index.php';
-require_once __DIR__ . '/../Data.Monoid.Endo/index.php';
-require_once __DIR__ . '/../Data.Monoid.Multiplicative/index.php';
-require_once __DIR__ . '/../Data.Newtype/index.php';
-require_once __DIR__ . '/../Data.Semigroup.First/index.php';
-require_once __DIR__ . '/../Data.Semigroup.Last/index.php';
-require_once __DIR__ . '/../Safe.Coerce/index.php';
-
-// Data_Newtype_coerce
-function majData_majNewtype_coerce($__x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_coerce';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $__x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_coerce'] = __NAMESPACE__ . '\\majData_majNewtype_coerce';
-
-// Data_Newtype_Newtype$Dict
-function majData_majNewtype_majNewtypedollarmajDict($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_majNewtypedollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_NewtypedollarDict'] = __NAMESPACE__ . '\\majData_majNewtype_majNewtypedollarmajDict';
-
-// Data_Newtype_wrap
-function majData_majNewtype_wrap($dollar__unused) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_wrap';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_wrap'] = __NAMESPACE__ . '\\majData_majNewtype_wrap';
-
-// Data_Newtype_wrap1
-function majData_majNewtype_wrap1($__x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_wrap1';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $__x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_wrap1'] = __NAMESPACE__ . '\\majData_majNewtype_wrap1';
-
-// Data_Newtype_unwrap
-function majData_majNewtype_unwrap($dollar__unused) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_unwrap';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_unwrap'] = __NAMESPACE__ . '\\majData_majNewtype_unwrap';
-
-// Data_Newtype_unwrap1
-function majData_majNewtype_unwrap1($__x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_unwrap1';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $__x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Newtype_unwrap1'] = __NAMESPACE__ . '\\majData_majNewtype_unwrap1';
-
-// Data_Newtype_underF2
-function majData_majNewtype_undermajF2($dollar__unused___, $dollar__unused__ = null, $dollar__unused_ = null, $dollar__unused = null, $v = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_undermajF2';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_underF2'] = __NAMESPACE__ . '\\majData_majNewtype_undermajF2';
-
-// Data_Newtype_underF
-function majData_majNewtype_undermajF($dollar__unused___, $dollar__unused__ = null, $dollar__unused_ = null, $dollar__unused = null, $v = null) {
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_underF'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $dollar__unused_3 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_undermajF';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_underF'] = __NAMESPACE__ . '\\majData_majNewtype_undermajF';
-
-// Data_Newtype_under2
-function majData_majNewtype_under2($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_under2'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_under2';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_under2'] = __NAMESPACE__ . '\\majData_majNewtype_under2';
-
-// Data_Newtype_under
-function majData_majNewtype_under($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_under'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_under';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_under'] = __NAMESPACE__ . '\\majData_majNewtype_under';
-
-// Data_Newtype_un
-function majData_majNewtype_un($dollar__unused, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_un'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_un';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Newtype_unwrap1 = ($GLOBALS['Data_Newtype_unwrap1'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_unwrap1'));
-  $__res = $__global_Data_Newtype_unwrap1;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Newtype_un'] = __NAMESPACE__ . '\\majData_majNewtype_un';
-
-// Data_Newtype_traverse
-function majData_majNewtype_traverse($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_traverse'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_traverse';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_traverse'] = __NAMESPACE__ . '\\majData_majNewtype_traverse';
-
-// Data_Newtype_overF2
-function majData_majNewtype_overmajF2($dollar__unused___, $dollar__unused__ = null, $dollar__unused_ = null, $dollar__unused = null, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_overF2'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $dollar__unused_3 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_overmajF2';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_overF2'] = __NAMESPACE__ . '\\majData_majNewtype_overmajF2';
-
-// Data_Newtype_overF
-function majData_majNewtype_overmajF($dollar__unused___, $dollar__unused__ = null, $dollar__unused_ = null, $dollar__unused = null, $v = null) {
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_overF'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $dollar__unused_3 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_overmajF';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_overF'] = __NAMESPACE__ . '\\majData_majNewtype_overmajF';
-
-// Data_Newtype_over2
-function majData_majNewtype_over2($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_over2'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_over2';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_over2'] = __NAMESPACE__ . '\\majData_majNewtype_over2';
-
-// Data_Newtype_over
-function majData_majNewtype_over($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_over'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_over';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_over'] = __NAMESPACE__ . '\\majData_majNewtype_over';
-
-
-
-
-
-
-
-
-
-// Data_Newtype_modify
-function majData_majNewtype_modify($dollar__unused, $fn = null, $t = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeMultiplicative'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_modify';
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeLast'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeFirst'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeEndo'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeDual'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeDisj'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeConj'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_newtypeAdditive'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Newtype_modify'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $fn = null, $t = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_wrap1 = ($GLOBALS['Data_Newtype_wrap1'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_wrap1'));
-  $__global_Data_Newtype_unwrap1 = ($GLOBALS['Data_Newtype_unwrap1'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_unwrap1'));
-  $__res = ($__global_Data_Newtype_wrap1)(($fn)(($__global_Data_Newtype_unwrap1)($t)));
+  $__res = (($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))(($fn)((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))($t)));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_modify'] = __NAMESPACE__ . '\\majData_majNewtype_modify';
-
-// Data_Newtype_collect
-function majData_majNewtype_collect($dollar__unused_, $dollar__unused = null, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_collect'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_collect';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Newtype_collect'] = __NAMESPACE__ . '\\majData_majNewtype_collect';
-
-// Data_Newtype_alaF
-function majData_majNewtype_alamajF($dollar__unused___, $dollar__unused__ = null, $dollar__unused_ = null, $dollar__unused = null, $v = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_alaF'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $dollar__unused_3 = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_alamajF';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__res = $__global_Data_Newtype_coerce;
+  $__res = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_alaF'] = __NAMESPACE__ . '\\majData_majNewtype_alamajF';
-
-// Data_Newtype_ala
-function majData_majNewtype_ala($dollar__unused__, $dollar__unused_ = null, $dollar__unused = null, $v = null, $f = null) {
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Newtype_ala'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dollar__unused_2 = null, $v = null, $f = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNewtype_ala';
   if ($__num < 5) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 5);
   }
-  $__global_Data_Newtype_coerce = ($GLOBALS['Data_Newtype_coerce'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_coerce'));
-  $__global_Data_Newtype_wrap1 = ($GLOBALS['Data_Newtype_wrap1'] ?? \Data\Newtype\phpurs_eval_thunk('Data_Newtype_wrap1'));
-  $__res = ($__global_Data_Newtype_coerce)(($f)($__global_Data_Newtype_wrap1));
+  $__res = (($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))(($f)(($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce'))));
   goto __end;;
   __end:
-  return 5 < $__num ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
-}
-$GLOBALS['Data_Newtype_ala'] = __NAMESPACE__ . '\\majData_majNewtype_ala';
+  return $__num > 5 ? $__res(...\array_slice(\func_get_args(), 5)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

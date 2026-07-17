@@ -2,14 +2,23 @@
 
 namespace Data\Traversable\Accum\Internal;
 
+// ALL IMPORTS: Control.Applicative, Control.Apply, Data.Functor, Data.Traversable.Accum, Data.Traversable.Accum.Internal, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Apply, Data.Functor, Data.Traversable.Accum, Data.Traversable.Accum.Internal, Prelude
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Traversable.Accum/index.php';
+require_once __DIR__ . '/../Data.Traversable.Accum.Internal/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,184 +90,105 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Traversable_Accum_Internal_functorStateR': $v = (object)["map" => (function() {
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_StateR'] = function() { $v = function($x) {
+  $__num = \func_num_args();
+  $__res = $x;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_StateL'] = function() { $v = function($x) {
+  $__num = \func_num_args();
+  $__res = $x;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_stateR'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_stateL'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_functorStateR'] = function() { $v = (object)["map" => (function() {
   $__fn = function($f, $k = null, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Traversable_Accum_Internal_stateR = ($GLOBALS['Data_Traversable_Accum_Internal_stateR'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_stateR'));
-  $v = (($__global_Data_Traversable_Accum_Internal_stateR)($k))($s);
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (is_object($__case_0)) {
-$s1 = ($__case_0)->accum;
-$a = ($__case_0)->value;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (object)["accum" => $s1, "value" => ($f)($a)];
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $v_0 = ($k)($s);
+  $__res = (object)["accum" => ($v_0)->accum, "value" => ($f)(($v_0)->value)];
+  goto __end;;
   __end:
   return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})()]; break;
-      case 'Data_Traversable_Accum_Internal_functorStateL': $v = (object)["map" => (function() {
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_functorStateL'] = function() { $v = (object)["map" => (function() {
   $__fn = function($f, $k = null, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Traversable_Accum_Internal_stateL = ($GLOBALS['Data_Traversable_Accum_Internal_stateL'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_stateL'));
-  $v = (($__global_Data_Traversable_Accum_Internal_stateL)($k))($s);
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (is_object($__case_0)) {
-$s1 = ($__case_0)->accum;
-$a = ($__case_0)->value;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (object)["accum" => $s1, "value" => ($f)($a)];
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $v_0 = ($k)($s);
+  $__res = (object)["accum" => ($v_0)->accum, "value" => ($f)(($v_0)->value)];
+  goto __end;;
   __end:
   return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})()]; break;
-      case 'Data_Traversable_Accum_Internal_applyStateR': $v = (object)["apply" => (function() {
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_applyStateR'] = function() { $v = (object)["apply" => (function() {
   $__fn = function($f, $x = null, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Traversable_Accum_Internal_stateR = ($GLOBALS['Data_Traversable_Accum_Internal_stateR'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_stateR'));
-  $v = (($__global_Data_Traversable_Accum_Internal_stateR)($x))($s);
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (is_object($__case_0)) {
-$s1 = ($__case_0)->accum;
-$x__prime__ = ($__case_0)->value;
-if (($__match_0 === false)) {
-if (true) {
-$v1 = (($__global_Data_Traversable_Accum_Internal_stateR)($f))($s1);
-$__case_0 = $v1;
-$__match_1 = false;
-if (($__match_1 === false)) {
-if (is_object($__case_0)) {
-$s2 = ($__case_0)->accum;
-$f__prime__ = ($__case_0)->value;
-if (($__match_1 === false)) {
-if (true) {
-$__res = (object)["accum" => $s2, "value" => ($f__prime__)($x__prime__)];
-goto __end;;
-$__match_1 = true;
-};
-};
-};
-};
-if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $v_0 = ($x)($s);
+  $v1_1 = ($f)(($v_0)->accum);
+  $__res = (object)["accum" => ($v1_1)->accum, "value" => (($v1_1)->value)(($v_0)->value)];
+  goto __end;;
   __end:
   return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) {
+})(), "Functor0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Traversable_Accum_Internal_functorStateR = ($GLOBALS['Data_Traversable_Accum_Internal_functorStateR'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_functorStateR'));
-  $__res = $__global_Data_Traversable_Accum_Internal_functorStateR;
+  $__res = ($GLOBALS['Data_Traversable_Accum_Internal_functorStateR'] ?? \PhpursThunks::eval('Data_Traversable_Accum_Internal_functorStateR'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Traversable_Accum_Internal_applyStateL': $v = (object)["apply" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_applyStateL'] = function() { $v = (object)["apply" => (function() {
   $__fn = function($f, $x = null, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Traversable_Accum_Internal_stateL = ($GLOBALS['Data_Traversable_Accum_Internal_stateL'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_stateL'));
-  $v = (($__global_Data_Traversable_Accum_Internal_stateL)($f))($s);
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (is_object($__case_0)) {
-$s1 = ($__case_0)->accum;
-$f__prime__ = ($__case_0)->value;
-if (($__match_0 === false)) {
-if (true) {
-$v1 = (($__global_Data_Traversable_Accum_Internal_stateL)($x))($s1);
-$__case_0 = $v1;
-$__match_1 = false;
-if (($__match_1 === false)) {
-if (is_object($__case_0)) {
-$s2 = ($__case_0)->accum;
-$x__prime__ = ($__case_0)->value;
-if (($__match_1 === false)) {
-if (true) {
-$__res = (object)["accum" => $s2, "value" => ($f__prime__)($x__prime__)];
-goto __end;;
-$__match_1 = true;
-};
-};
-};
-};
-if (($__match_1 === false)) {
-throw new \Exception("Pattern match failure");
-};
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $v_0 = ($f)($s);
+  $v1_1 = ($x)(($v_0)->accum);
+  $__res = (object)["accum" => ($v1_1)->accum, "value" => (($v_0)->value)(($v1_1)->value)];
+  goto __end;;
   __end:
   return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) {
+})(), "Functor0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Traversable_Accum_Internal_functorStateL = ($GLOBALS['Data_Traversable_Accum_Internal_functorStateL'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_functorStateL'));
-  $__res = $__global_Data_Traversable_Accum_Internal_functorStateL;
+  $__res = ($GLOBALS['Data_Traversable_Accum_Internal_functorStateL'] ?? \PhpursThunks::eval('Data_Traversable_Accum_Internal_functorStateL'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Traversable_Accum_Internal_applicativeStateR': $v = (object)["pure" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_applicativeStateR'] = function() { $v = (object)["pure" => (function() {
   $__fn = function($a, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
@@ -270,15 +200,14 @@ throw new \Exception("Pattern match failure");
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => function($dollar__unused) {
+})(), "Apply0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Traversable_Accum_Internal_applyStateR = ($GLOBALS['Data_Traversable_Accum_Internal_applyStateR'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_applyStateR'));
-  $__res = $__global_Data_Traversable_Accum_Internal_applyStateR;
+  $__res = ($GLOBALS['Data_Traversable_Accum_Internal_applyStateR'] ?? \PhpursThunks::eval('Data_Traversable_Accum_Internal_applyStateR'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Traversable_Accum_Internal_applicativeStateL': $v = (object)["pure" => (function() {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Traversable_Accum_Internal_applicativeStateL'] = function() { $v = (object)["pure" => (function() {
   $__fn = function($a, $s = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
@@ -290,115 +219,19 @@ throw new \Exception("Pattern match failure");
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => function($dollar__unused) {
+})(), "Apply0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_Traversable_Accum_Internal_applyStateL = ($GLOBALS['Data_Traversable_Accum_Internal_applyStateL'] ?? \Data\Traversable\Accum\Internal\phpurs_eval_thunk('Data_Traversable_Accum_Internal_applyStateL'));
-  $__res = $__global_Data_Traversable_Accum_Internal_applyStateL;
+  $__res = ($GLOBALS['Data_Traversable_Accum_Internal_applyStateL'] ?? \PhpursThunks::eval('Data_Traversable_Accum_Internal_applyStateL'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
+}]; return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
 
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Traversable.Accum/index.php';
-require_once __DIR__ . '/../Data.Traversable.Accum.Internal/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 
-// Data_Traversable_Accum_Internal_StateR
-function majData_majTraversable_majAccum_majInternal_majStatemajR($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTraversable_majAccum_majInternal_majStatemajR';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Traversable_Accum_Internal_StateR'] = __NAMESPACE__ . '\\majData_majTraversable_majAccum_majInternal_majStatemajR';
 
-// Data_Traversable_Accum_Internal_StateL
-function majData_majTraversable_majAccum_majInternal_majStatemajL($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTraversable_majAccum_majInternal_majStatemajL';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Traversable_Accum_Internal_StateL'] = __NAMESPACE__ . '\\majData_majTraversable_majAccum_majInternal_majStatemajL';
 
-// Data_Traversable_Accum_Internal_stateR
-function majData_majTraversable_majAccum_majInternal_statemajR($v) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTraversable_majAccum_majInternal_statemajR';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$k = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $k;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Traversable_Accum_Internal_stateR'] = __NAMESPACE__ . '\\majData_majTraversable_majAccum_majInternal_statemajR';
-
-// Data_Traversable_Accum_Internal_stateL
-function majData_majTraversable_majAccum_majInternal_statemajL($v) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majTraversable_majAccum_majInternal_statemajL';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$k = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $k;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Traversable_Accum_Internal_stateL'] = __NAMESPACE__ . '\\majData_majTraversable_majAccum_majInternal_statemajL';
 
 
 

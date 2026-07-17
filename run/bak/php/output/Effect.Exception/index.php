@@ -2,14 +2,26 @@
 
 namespace Effect\Exception;
 
+// ALL IMPORTS: Control.Applicative, Control.Semigroupoid, Data.Either, Data.Functor, Data.Maybe, Data.Show, Effect, Effect.Exception, Prelude, Prim
+// TO REQUIRE: Control.Applicative, Control.Semigroupoid, Data.Either, Data.Functor, Data.Maybe, Data.Show, Effect, Effect.Exception, Prelude
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Semigroupoid/index.php';
+require_once __DIR__ . '/../Data.Either/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Maybe/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Effect/index.php';
+require_once __DIR__ . '/../Effect.Exception/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,28 +93,16 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Effect_Exception_compose': $v = ($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_composeImpl')); break;
-      case 'Effect_Exception_pure': $v = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE')); break;
-      case 'Effect_Exception_map': $v = (($GLOBALS['Effect_functorEffect'] ?? \Effect\phpurs_eval_thunk('Effect_functorEffect')))->map; break;
-      case 'Effect_Exception_stack': $v = ((($GLOBALS['Effect_Exception_stackImpl'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_stackImpl')))(function($value0) {
+\PhpursThunks::$thunks['Effect_Exception_try'] = function() { $v = function($action) {
   $__num = \func_num_args();
-  $__res = new Phpurs_Data1("Just", $value0);
+  $__res = ((($GLOBALS['Effect_Exception_catchException'] ?? \PhpursThunks::eval('Effect_Exception_catchException')))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Effect_pureE'] ?? \PhpursThunks::eval('Effect_pureE'))))(($GLOBALS['Data_Either_Left'] ?? \PhpursThunks::eval('Data_Either_Left')))))((((($GLOBALS['Effect_applyEffect'] ?? \PhpursThunks::eval('Effect_applyEffect')))->apply)((($GLOBALS['Effect_pureE'] ?? \PhpursThunks::eval('Effect_pureE')))(($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right')))))($action));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}))(($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"))); break;
-      case 'Effect_Exception_showError': $v = (object)["show" => ($GLOBALS['Effect_Exception_showErrorImpl'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_showErrorImpl'))]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
+}; return $v; };
+\PhpursThunks::$thunks['Effect_Exception_throw'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Effect_Exception_throwException'] ?? \PhpursThunks::eval('Effect_Exception_throwException'))))(($GLOBALS['Effect_Exception_error'] ?? \PhpursThunks::eval('Effect_Exception_error'))); return $v; };
+\PhpursThunks::$thunks['Effect_Exception_stack'] = function() { $v = ((($GLOBALS['Effect_Exception_stackImpl'] ?? \PhpursThunks::eval('Effect_Exception_stackImpl')))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing")); return $v; };
+\PhpursThunks::$thunks['Effect_Exception_showError'] = function() { $v = (object)["show" => ($GLOBALS['Effect_Exception_showErrorImpl'] ?? \PhpursThunks::eval('Effect_Exception_showErrorImpl'))]; return $v; };
 $GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Effect_Exception = \call_user_func(function() {
   $exports = [];
@@ -133,78 +133,18 @@ $exports['showErrorImpl'] = $showErrorImpl;
 return $exports;
   return $exports;
 });
-$GLOBALS['Effect_Exception_showErrorImpl'] = $ffi_Effect_Exception['showErrorImpl'] ?? null;
-$GLOBALS['Effect_Exception_error'] = $ffi_Effect_Exception['error'] ?? null;
-$GLOBALS['Effect_Exception_errorWithCause'] = $ffi_Effect_Exception['errorWithCause'] ?? null;
-$GLOBALS['Effect_Exception_errorWithName'] = $ffi_Effect_Exception['errorWithName'] ?? null;
-$GLOBALS['Effect_Exception_message'] = $ffi_Effect_Exception['message'] ?? null;
-$GLOBALS['Effect_Exception_name'] = $ffi_Effect_Exception['name'] ?? null;
-$GLOBALS['Effect_Exception_stackImpl'] = $ffi_Effect_Exception['stackImpl'] ?? null;
-$GLOBALS['Effect_Exception_throwException'] = $ffi_Effect_Exception['throwException'] ?? null;
-$GLOBALS['Effect_Exception_catchException'] = $ffi_Effect_Exception['catchException'] ?? null;
-
-
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Semigroupoid/index.php';
-require_once __DIR__ . '/../Data.Either/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Maybe/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Effect/index.php';
-require_once __DIR__ . '/../Effect.Exception/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
+\PhpursThunks::$thunks['Effect_Exception_catchException'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['catchException']; };
+\PhpursThunks::$thunks['Effect_Exception_error'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['error']; };
+\PhpursThunks::$thunks['Effect_Exception_errorWithCause'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['errorWithCause']; };
+\PhpursThunks::$thunks['Effect_Exception_errorWithName'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['errorWithName']; };
+\PhpursThunks::$thunks['Effect_Exception_message'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['message']; };
+\PhpursThunks::$thunks['Effect_Exception_name'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['name']; };
+\PhpursThunks::$thunks['Effect_Exception_showErrorImpl'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['showErrorImpl']; };
+\PhpursThunks::$thunks['Effect_Exception_stackImpl'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['stackImpl']; };
+\PhpursThunks::$thunks['Effect_Exception_throwException'] = function() use (&$ffi_Effect_Exception) { return $ffi_Effect_Exception['throwException']; };
 
 
 
-
-// Effect_Exception_try
-function majEffect_majException_try($action) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majEffect_majException_try';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Effect_Exception_catchException = ($GLOBALS['Effect_Exception_catchException'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_catchException'));
-  $__global_Effect_Exception_pure = ($GLOBALS['Effect_Exception_pure'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_pure'));
-  $__global_Effect_Exception_map = ($GLOBALS['Effect_Exception_map'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_map'));
-  $__res = (($__global_Effect_Exception_catchException)(function($__x) use ($__global_Effect_Exception_pure) {
-  $__num = \func_num_args();
-  $__res = ($__global_Effect_Exception_pure)((function($value0) {
-  $__num = \func_num_args();
-  $__res = new Phpurs_Data1("Left", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-})($__x));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}))((($__global_Effect_Exception_map)(function($value0) {
-  $__num = \func_num_args();
-  $__res = new Phpurs_Data1("Right", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}))($action));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Exception_try'] = __NAMESPACE__ . '\\majEffect_majException_try';
-
-// Effect_Exception_throw
-function majEffect_majException_throw($__x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majEffect_majException_throw';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = (($GLOBALS['Effect_Exception_throwException'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_throwException')))((($GLOBALS['Effect_Exception_error'] ?? \Effect\Exception\phpurs_eval_thunk('Effect_Exception_error')))($__x));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Exception_throw'] = __NAMESPACE__ . '\\majEffect_majException_throw';
 
 
 

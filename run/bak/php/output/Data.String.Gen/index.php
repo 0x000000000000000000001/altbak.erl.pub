@@ -2,6 +2,8 @@
 
 namespace Data\String\Gen;
 
+// ALL IMPORTS: Control.Bind, Control.Monad.Gen, Control.Monad.Gen.Class, Control.Monad.Rec.Class, Data.Char.Gen, Data.Function, Data.Functor, Data.Ord, Data.String.CodeUnits, Data.String.Gen, Data.Unfoldable, Prelude, Prim
+// TO REQUIRE: Control.Bind, Control.Monad.Gen, Control.Monad.Gen.Class, Control.Monad.Rec.Class, Data.Char.Gen, Data.Function, Data.Functor, Data.Ord, Data.String.CodeUnits, Data.String.Gen, Data.Unfoldable, Prelude
 require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Control.Monad.Gen/index.php';
 require_once __DIR__ . '/../Control.Monad.Gen.Class/index.php';
@@ -17,23 +19,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -41,12 +43,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -54,13 +56,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -68,255 +70,199 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_String_Gen_max': $v = \Data\Ord\Data_Ord_max(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+\PhpursThunks::$thunks['Data_String_Gen_max'] = function() { $v = (function() {
+  $__fn = function($x, $y = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-// Data_String_Gen_genString
-function Data_String_Gen_genString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_Gen_unfoldable = ($GLOBALS['Control_Monad_Gen_unfoldable'] ?? \Control\Monad\Gen\phpurs_eval_thunk('Control_Monad_Gen_unfoldable'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Unfoldable_unfoldableArray = ($GLOBALS['Data_Unfoldable_unfoldableArray'] ?? \Data\Unfoldable\phpurs_eval_thunk('Data_Unfoldable_unfoldableArray'));
-  $__global_Data_String_Gen_max = ($GLOBALS['Data_String_Gen_max'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_max'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Data_String_CodeUnits_fromCharArray = ($GLOBALS['Data_String_CodeUnits_fromCharArray'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_fromCharArray'));
-  $unfoldable = ($__global_Control_Monad_Gen_unfoldable)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($__global_Prim_undefined, $unfoldable, $__global_Data_Unfoldable_unfoldableArray, $__global_Data_String_Gen_max, $__global_Data_Function_const, $__global_Data_String_CodeUnits_fromCharArray) {
-  $__num = func_num_args();
-  $sized = ($dictMonadGen)->sized;
-  $Bind1 = (((($dictMonadGen)->Monad0)($__global_Prim_undefined))->Bind1)($__global_Prim_undefined);
-  $bind = ($Bind1)->bind;
-  $chooseInt = ($dictMonadGen)->chooseInt;
-  $resize = ($dictMonadGen)->resize;
-  $map = ((((($Bind1)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $unfoldable1 = ($unfoldable)($dictMonadGen, $__global_Data_Unfoldable_unfoldableArray);
-  $__res = function($genChar) use ($sized, $bind, $chooseInt, $__global_Data_String_Gen_max, $resize, $__global_Data_Function_const, $map, $__global_Data_String_CodeUnits_fromCharArray, $unfoldable1) {
-  $__num = func_num_args();
-  $__res = ($sized)(function($size) use ($bind, $chooseInt, $__global_Data_String_Gen_max, $resize, $__global_Data_Function_const, $map, $__global_Data_String_CodeUnits_fromCharArray, $unfoldable1, $genChar) {
-  $__num = func_num_args();
-  $__res = ($bind)(($chooseInt)(1, ($__global_Data_String_Gen_max)(1, $size)), function($newSize) use ($resize, $__global_Data_Function_const, $map, $__global_Data_String_CodeUnits_fromCharArray, $unfoldable1, $genChar) {
-  $__num = func_num_args();
-  $__res = ($resize)(($__global_Data_Function_const)($newSize), ($map)($__global_Data_String_CodeUnits_fromCharArray, ($unfoldable1)($genChar)));
+  $v_0 = (((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($x))($y);
+  if ((is_object($v_0) && (($v_0)->tag === "LT"))) {
+$__t1 = $y;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "EQ"))) {
+$__t1 = $x;
+} else {
+if ((is_object($v_0) && (($v_0)->tag === "GT"))) {
+$__t1 = $x;
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+};
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $Bind1_0 = (((($dictMonadGen)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $unfoldable1_1 = (((($GLOBALS['Control_Monad_Gen_unfoldable'] ?? \PhpursThunks::eval('Control_Monad_Gen_unfoldable')))($dictMonadRec))($dictMonadGen))(($GLOBALS['Data_Unfoldable_unfoldableArray'] ?? \PhpursThunks::eval('Data_Unfoldable_unfoldableArray')));
+  $__res = function($genChar) use (&$Bind1_0, &$dictMonadGen, &$unfoldable1_1) {
+  $__num = \func_num_args();
+  $__res = (($dictMonadGen)->sized)(function($size) use (&$Bind1_0, &$dictMonadGen, &$genChar, &$unfoldable1_1) {
+  $__num = \func_num_args();
+  $__res = ((($Bind1_0)->bind)(((($dictMonadGen)->chooseInt)(1))(((($GLOBALS['Data_String_Gen_max'] ?? \PhpursThunks::eval('Data_String_Gen_max')))(1))($size))))(function($newSize) use (&$Bind1_0, &$dictMonadGen, &$genChar, &$unfoldable1_1) {
+  $__num = \func_num_args();
+  $__res = ((($dictMonadGen)->resize)(function($v) use (&$newSize) {
+  $__num = \func_num_args();
+  $__res = $newSize;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(((((((($Bind1_0)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(($GLOBALS['Data_String_CodeUnits_fromCharArray'] ?? \PhpursThunks::eval('Data_String_CodeUnits_fromCharArray'))))(($unfoldable1_1)($genChar)));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 };
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genString'] = __NAMESPACE__ . '\\Data_String_Gen_genString';
-
-// Data_String_Gen_genUnicodeString
-function Data_String_Gen_genUnicodeString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genUnicodeString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genUnicodeString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genUnicodeChar = ($GLOBALS['Data_Char_Gen_genUnicodeChar'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genUnicodeChar'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genUnicodeChar) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genUnicodeChar)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genUnicodeChar'] ?? \PhpursThunks::eval('Data_Char_Gen_genUnicodeChar')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genUnicodeString'] = __NAMESPACE__ . '\\Data_String_Gen_genUnicodeString';
-
-// Data_String_Gen_genDigitString
-function Data_String_Gen_genDigitString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genDigitString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genDigitString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genDigitChar = ($GLOBALS['Data_Char_Gen_genDigitChar'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genDigitChar'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genDigitChar) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genDigitChar)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genDigitChar'] ?? \PhpursThunks::eval('Data_Char_Gen_genDigitChar')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genDigitString'] = __NAMESPACE__ . '\\Data_String_Gen_genDigitString';
-
-// Data_String_Gen_genAsciiString'
-function Data_String_Gen_genAsciiString__prime__($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genAsciiString__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genAsciiString__prime__'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genAsciiChar__prime__ = ($GLOBALS['Data_Char_Gen_genAsciiChar__prime__'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genAsciiChar__prime__'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genAsciiChar__prime__) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genAsciiChar__prime__)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genAsciiChar__prime__'] ?? \PhpursThunks::eval('Data_Char_Gen_genAsciiChar__prime__')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genAsciiString__prime__'] = __NAMESPACE__ . '\\Data_String_Gen_genAsciiString__prime__';
-
-// Data_String_Gen_genAsciiString
-function Data_String_Gen_genAsciiString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genAsciiString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genAsciiString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genAsciiChar = ($GLOBALS['Data_Char_Gen_genAsciiChar'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genAsciiChar'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genAsciiChar) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genAsciiChar)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genAsciiChar'] ?? \PhpursThunks::eval('Data_Char_Gen_genAsciiChar')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genAsciiString'] = __NAMESPACE__ . '\\Data_String_Gen_genAsciiString';
-
-// Data_String_Gen_genAlphaUppercaseString
-function Data_String_Gen_genAlphaUppercaseString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genAlphaUppercaseString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genAlphaUppercaseString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genAlphaUppercase = ($GLOBALS['Data_Char_Gen_genAlphaUppercase'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genAlphaUppercase'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genAlphaUppercase) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genAlphaUppercase)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genAlphaUppercase'] ?? \PhpursThunks::eval('Data_Char_Gen_genAlphaUppercase')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genAlphaUppercaseString'] = __NAMESPACE__ . '\\Data_String_Gen_genAlphaUppercaseString';
-
-// Data_String_Gen_genAlphaString
-function Data_String_Gen_genAlphaString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genAlphaString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genAlphaString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genAlpha = ($GLOBALS['Data_Char_Gen_genAlpha'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genAlpha'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genAlpha) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genAlpha)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genAlpha'] ?? \PhpursThunks::eval('Data_Char_Gen_genAlpha')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genAlphaString'] = __NAMESPACE__ . '\\Data_String_Gen_genAlphaString';
-
-// Data_String_Gen_genAlphaLowercaseString
-function Data_String_Gen_genAlphaLowercaseString($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Gen_genAlphaLowercaseString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Gen_genAlphaLowercaseString'] = function() { $v = (function() {
+  $__fn = function($dictMonadRec, $dictMonadGen = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_Gen_genString = ($GLOBALS['Data_String_Gen_genString'] ?? \Data\String\Gen\phpurs_eval_thunk('Data_String_Gen_genString'));
-  $__global_Data_Char_Gen_genAlphaLowercase = ($GLOBALS['Data_Char_Gen_genAlphaLowercase'] ?? \Data\Char\Gen\phpurs_eval_thunk('Data_Char_Gen_genAlphaLowercase'));
-  $genString1 = ($__global_Data_String_Gen_genString)($dictMonadRec);
-  $__res = function($dictMonadGen) use ($genString1, $__global_Data_Char_Gen_genAlphaLowercase) {
-  $__num = func_num_args();
-  $__res = ($genString1)($dictMonadGen, ($__global_Data_Char_Gen_genAlphaLowercase)($dictMonadGen));
+  $__res = (((($GLOBALS['Data_String_Gen_genString'] ?? \PhpursThunks::eval('Data_String_Gen_genString')))($dictMonadRec))($dictMonadGen))((($GLOBALS['Data_Char_Gen_genAlphaLowercase'] ?? \PhpursThunks::eval('Data_Char_Gen_genAlphaLowercase')))($dictMonadGen));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Gen_genAlphaLowercaseString'] = __NAMESPACE__ . '\\Data_String_Gen_genAlphaLowercaseString';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
 

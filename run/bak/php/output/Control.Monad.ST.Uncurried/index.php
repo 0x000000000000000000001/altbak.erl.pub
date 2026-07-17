@@ -2,27 +2,29 @@
 
 namespace Control\Monad\ST\Uncurried;
 
+// ALL IMPORTS: Control.Monad.ST.Internal, Prim
+// TO REQUIRE: Control.Monad.ST.Internal
 require_once __DIR__ . '/../Control.Monad.ST.Internal/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -30,12 +32,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -43,13 +45,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -57,43 +59,36 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
 
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Control_Monad_ST_Uncurried = \call_user_func(function() {
+  $exports = [];
 $mkSTFn1 = function($fn) use (&$mkSTFn1) {
     return function($x) use ($fn) { return $fn($x)(); };
 };
@@ -247,27 +242,28 @@ $exports['runSTFn8'] = $runSTFn8;
 $exports['runSTFn9'] = $runSTFn9;
 $exports['runSTFn10'] = $runSTFn10;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn1'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn1'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn2'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn2'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn3'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn3'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn4'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn4'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn5'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn5'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn6'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn6'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn7'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn7'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn8'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn8'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn9'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn9'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_mkSTFn10'] = $ffi_Control_Monad_ST_Uncurried['mkSTFn10'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn1'] = $ffi_Control_Monad_ST_Uncurried['runSTFn1'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn2'] = $ffi_Control_Monad_ST_Uncurried['runSTFn2'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn3'] = $ffi_Control_Monad_ST_Uncurried['runSTFn3'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn4'] = $ffi_Control_Monad_ST_Uncurried['runSTFn4'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn5'] = $ffi_Control_Monad_ST_Uncurried['runSTFn5'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn6'] = $ffi_Control_Monad_ST_Uncurried['runSTFn6'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn7'] = $ffi_Control_Monad_ST_Uncurried['runSTFn7'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn8'] = $ffi_Control_Monad_ST_Uncurried['runSTFn8'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn9'] = $ffi_Control_Monad_ST_Uncurried['runSTFn9'] ?? null;
-$GLOBALS['Control_Monad_ST_Uncurried_runSTFn10'] = $ffi_Control_Monad_ST_Uncurried['runSTFn10'] ?? null;
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn1'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn1']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn10'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn10']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn2'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn2']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn3'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn3']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn4'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn4']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn5'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn5']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn6'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn6']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn7'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn7']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn8'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn8']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_mkSTFn9'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['mkSTFn9']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn1'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn1']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn10'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn10']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn2'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn2']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn3'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn3']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn4'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn4']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn5'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn5']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn6'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn6']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn7'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn7']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn8'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn8']; };
+\PhpursThunks::$thunks['Control_Monad_ST_Uncurried_runSTFn9'] = function() use (&$ffi_Control_Monad_ST_Uncurried) { return $ffi_Control_Monad_ST_Uncurried['runSTFn9']; };
 
 
 

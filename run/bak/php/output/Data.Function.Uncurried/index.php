@@ -2,27 +2,29 @@
 
 namespace Data\Function\Uncurried;
 
+// ALL IMPORTS: Data.Unit, Prim
+// TO REQUIRE: Data.Unit
 require_once __DIR__ . '/../Data.Unit/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -30,12 +32,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -43,13 +45,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -57,43 +59,49 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn1'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = $f;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn1'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = $f;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Data_Function_Uncurried = \call_user_func(function() {
+  $exports = [];
 $mkFn0 = function($fn) use (&$mkFn0) {
     if (\func_num_args() < 1) {
         $__args = \func_get_args();
@@ -337,27 +345,29 @@ $exports['runFn9'] = $runFn9;
 $exports['mkFn10'] = $mkFn10;
 $exports['runFn10'] = $runFn10;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Data_Function_Uncurried_mkFn0'] = $ffi_Data_Function_Uncurried['mkFn0'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn2'] = $ffi_Data_Function_Uncurried['mkFn2'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn3'] = $ffi_Data_Function_Uncurried['mkFn3'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn4'] = $ffi_Data_Function_Uncurried['mkFn4'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn5'] = $ffi_Data_Function_Uncurried['mkFn5'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn6'] = $ffi_Data_Function_Uncurried['mkFn6'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn7'] = $ffi_Data_Function_Uncurried['mkFn7'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn8'] = $ffi_Data_Function_Uncurried['mkFn8'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn9'] = $ffi_Data_Function_Uncurried['mkFn9'] ?? null;
-$GLOBALS['Data_Function_Uncurried_mkFn10'] = $ffi_Data_Function_Uncurried['mkFn10'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn0'] = $ffi_Data_Function_Uncurried['runFn0'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn2'] = $ffi_Data_Function_Uncurried['runFn2'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn3'] = $ffi_Data_Function_Uncurried['runFn3'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn4'] = $ffi_Data_Function_Uncurried['runFn4'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn5'] = $ffi_Data_Function_Uncurried['runFn5'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn6'] = $ffi_Data_Function_Uncurried['runFn6'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn7'] = $ffi_Data_Function_Uncurried['runFn7'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn8'] = $ffi_Data_Function_Uncurried['runFn8'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn9'] = $ffi_Data_Function_Uncurried['runFn9'] ?? null;
-$GLOBALS['Data_Function_Uncurried_runFn10'] = $ffi_Data_Function_Uncurried['runFn10'] ?? null;
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn0'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn0']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn10'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn10']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn2'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn2']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn3'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn3']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn4'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn4']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn5'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn5']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn6'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn6']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn7'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn7']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn8'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn8']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_mkFn9'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['mkFn9']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn0'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn0']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn10'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn10']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn2'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn2']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn3'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn3']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn4'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn4']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn5'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn5']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn6'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn6']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn7'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn7']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn8'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn8']; };
+\PhpursThunks::$thunks['Data_Function_Uncurried_runFn9'] = function() use (&$ffi_Data_Function_Uncurried) { return $ffi_Data_Function_Uncurried['runFn9']; };
+
 
 
 

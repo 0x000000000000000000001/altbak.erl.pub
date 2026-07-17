@@ -2,6 +2,8 @@
 
 namespace Data\String\NonEmpty\CodeUnits;
 
+// ALL IMPORTS: Control.Semigroupoid, Data.Array.NonEmpty, Data.Maybe, Data.Ord, Data.Semigroup, Data.Semigroup.Foldable, Data.String.CodeUnits, Data.String.NonEmpty.CodeUnits, Data.String.NonEmpty.Internal, Data.String.Pattern, Data.String.Unsafe, Partial.Unsafe, Prelude, Prim
+// TO REQUIRE: Control.Semigroupoid, Data.Array.NonEmpty, Data.Maybe, Data.Ord, Data.Semigroup, Data.Semigroup.Foldable, Data.String.CodeUnits, Data.String.NonEmpty.CodeUnits, Data.String.NonEmpty.Internal, Data.String.Pattern, Data.String.Unsafe, Partial.Unsafe, Prelude
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Array.NonEmpty/index.php';
 require_once __DIR__ . '/../Data.Maybe/index.php';
@@ -18,23 +20,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -42,12 +44,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -55,13 +57,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -69,432 +71,320 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_String_NonEmpty_CodeUnits_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_String_NonEmpty_CodeUnits_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Data_String_NonEmpty_CodeUnits_lessThan': $v = \Data\Ord\Data_Ord_lessThan(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_fromJust': $v = \Data\Maybe\Data_Maybe_fromJust(($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_greaterThanOrEq': $v = \Data\Ord\Data_Ord_greaterThanOrEq(($GLOBALS['Data_Ord_ordInt'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordInt'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_toNonEmptyString': $v = "\\Data\\String\\NonEmpty\\Internal\\Data_String_NonEmpty_Internal_NonEmptyString"; break;
-      case 'Data_String_NonEmpty_CodeUnits_singleton': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\Internal\\Data_String_NonEmpty_Internal_NonEmptyString", ($GLOBALS['Data_String_CodeUnits_singleton'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_singleton'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_lastIndexOf': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_liftS", ($GLOBALS['Data_String_CodeUnits_lastIndexOf'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_lastIndexOf'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_indexOf': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_liftS", ($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_indexOf'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_length': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))(($GLOBALS['Data_String_CodeUnits_length'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_length')), "\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_fromNonEmptyString"); break;
-      case 'Data_String_NonEmpty_CodeUnits_toChar': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))(($GLOBALS['Data_String_CodeUnits_toChar'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_toChar')), "\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_fromNonEmptyString"); break;
-      case 'Data_String_NonEmpty_CodeUnits_toCharArray': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))(($GLOBALS['Data_String_CodeUnits_toCharArray'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_toCharArray')), "\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_fromNonEmptyString"); break;
-      case 'Data_String_NonEmpty_CodeUnits_toNonEmptyCharArray': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))((($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \Partial\Unsafe\phpurs_eval_thunk('Partial_Unsafe__unsafePartial')))(function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_String_NonEmpty_CodeUnits_fromJust = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromJust'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromJust'));
-  $__res = $__global_Data_String_NonEmpty_CodeUnits_fromJust;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\Array\\NonEmpty\\Data_Array_NonEmpty_fromArray", ($GLOBALS['Data_String_NonEmpty_CodeUnits_toCharArray'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_toCharArray')))); break;
-      case 'Data_String_NonEmpty_CodeUnits_fromNonEmptyCharArray': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))((($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \Partial\Unsafe\phpurs_eval_thunk('Partial_Unsafe__unsafePartial')))(function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_String_NonEmpty_CodeUnits_fromJust = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromJust'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromJust'));
-  $__res = $__global_Data_String_NonEmpty_CodeUnits_fromJust;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_fromCharArray", "\\Data\\Array\\NonEmpty\\Data_Array_NonEmpty_toArray")); break;
-      case 'Data_String_NonEmpty_CodeUnits_countPrefix': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_liftS", ($GLOBALS['Data_String_CodeUnits_countPrefix'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_countPrefix'))); break;
-      case 'Data_String_NonEmpty_CodeUnits_charAt': $v = (($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose')))("\\Data\\String\\NonEmpty\\CodeUnits\\Data_String_NonEmpty_CodeUnits_liftS", ($GLOBALS['Data_String_CodeUnits_charAt'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_charAt'))); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-
-// Data_String_NonEmpty_CodeUnits_snoc
-function Data_String_NonEmpty_CodeUnits_snoc($c, $s = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_snoc';
-  if ($__num < 2) {
-    if ($__num === 1) return function($s) use ($c, $__fn) { return $__fn($c, $s); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_CodeUnits_singleton = ($GLOBALS['Data_String_CodeUnits_singleton'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_singleton'));
-  $__res = ($s . ($__global_Data_String_CodeUnits_singleton)($c));
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_snoc'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_snoc';
-
-
-// Data_String_NonEmpty_CodeUnits_liftS
-function Data_String_NonEmpty_CodeUnits_liftS($f, $v = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_liftS';
-  if ($__num < 2) {
-    if ($__num === 1) return function($v) use ($f, $__fn) { return $__fn($f, $v); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  if (true) {
-$f1 = $__case_0;
-$s = $__case_1;
-$__res = ($f1)($s);
-goto __end;;
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_fromJust'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Just"))) {
+$__t0 = ($v)->value0;
 } else {
-throw new \Exception("Pattern match failure");
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
 };
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_liftS';
-
-// Data_String_NonEmpty_CodeUnits_takeWhile
-function Data_String_NonEmpty_CodeUnits_takeWhile($f) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_takeWhile';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_compose = ($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose'));
-  $__global_Data_String_NonEmpty_Internal_fromString = ($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \Data\String\NonEmpty\Internal\phpurs_eval_thunk('Data_String_NonEmpty_Internal_fromString'));
-  $__global_Data_String_NonEmpty_CodeUnits_liftS = ($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_liftS'));
-  $__global_Data_String_CodeUnits_takeWhile = ($GLOBALS['Data_String_CodeUnits_takeWhile'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_takeWhile'));
-  $__res = ($__global_Data_String_NonEmpty_CodeUnits_compose)($__global_Data_String_NonEmpty_Internal_fromString, ($__global_Data_String_NonEmpty_CodeUnits_liftS)(($__global_Data_String_CodeUnits_takeWhile)($f)));
+  $__res = $__t0;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_takeWhile'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_takeWhile';
-
-// Data_String_NonEmpty_CodeUnits_lastIndexOf'
-function Data_String_NonEmpty_CodeUnits_lastIndexOf__prime__($pat) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_lastIndexOf__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_compose = ($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose'));
-  $__global_Data_String_NonEmpty_CodeUnits_liftS = ($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_liftS'));
-  $__global_Data_String_CodeUnits_lastIndexOf__prime__ = ($GLOBALS['Data_String_CodeUnits_lastIndexOf__prime__'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_lastIndexOf__prime__'));
-  $__res = ($__global_Data_String_NonEmpty_CodeUnits_compose)($__global_Data_String_NonEmpty_CodeUnits_liftS, ($__global_Data_String_CodeUnits_lastIndexOf__prime__)($pat));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_lastIndexOf__prime__'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_lastIndexOf__prime__';
-
-
-// Data_String_NonEmpty_CodeUnits_indexOf'
-function Data_String_NonEmpty_CodeUnits_indexOf__prime__($pat) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_indexOf__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_compose = ($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose'));
-  $__global_Data_String_NonEmpty_CodeUnits_liftS = ($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_liftS'));
-  $__global_Data_String_CodeUnits_indexOf__prime__ = ($GLOBALS['Data_String_CodeUnits_indexOf__prime__'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_indexOf__prime__'));
-  $__res = ($__global_Data_String_NonEmpty_CodeUnits_compose)($__global_Data_String_NonEmpty_CodeUnits_liftS, ($__global_Data_String_CodeUnits_indexOf__prime__)($pat));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_indexOf__prime__'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_indexOf__prime__';
-
-
-// Data_String_NonEmpty_CodeUnits_fromNonEmptyString
-function Data_String_NonEmpty_CodeUnits_fromNonEmptyString($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_fromNonEmptyString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $v;
-  if (true) {
-$s = $__case_0;
-$__res = $s;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_fromNonEmptyString';
-
-
-// Data_String_NonEmpty_CodeUnits_splitAt
-function Data_String_NonEmpty_CodeUnits_splitAt($i, $nes = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_splitAt';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_snoc'] = function() { $v = (function() {
+  $__fn = function($c, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($nes) use ($i, $__fn) { return $__fn($i, $nes); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_CodeUnits_splitAt = ($GLOBALS['Data_String_CodeUnits_splitAt'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_splitAt'));
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_NonEmpty_Internal_fromString = ($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \Data\String\NonEmpty\Internal\phpurs_eval_thunk('Data_String_NonEmpty_Internal_fromString'));
-  $v = ($__global_Data_String_CodeUnits_splitAt)($i, ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes));
-  $__case_0 = $v;
-  if (is_object($__case_0)) {
-$before = ($__case_0)->before;
-$after = ($__case_0)->after;
-$__res = (object)["before" => ($__global_Data_String_NonEmpty_Internal_fromString)($before), "after" => ($__global_Data_String_NonEmpty_Internal_fromString)($after)];
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($s))((($GLOBALS['Data_String_CodeUnits_singleton'] ?? \PhpursThunks::eval('Data_String_CodeUnits_singleton')))($c));
+  goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_splitAt'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_splitAt';
-
-// Data_String_NonEmpty_CodeUnits_take
-function Data_String_NonEmpty_CodeUnits_take($i, $nes = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_take';
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_singleton'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_Internal_NonEmptyString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_Internal_NonEmptyString'))))(($GLOBALS['Data_String_CodeUnits_singleton'] ?? \PhpursThunks::eval('Data_String_CodeUnits_singleton'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_liftS'] = function() { $v = (function() {
+  $__fn = function($f, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($nes) use ($i, $__fn) { return $__fn($i, $nes); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_NonEmpty_CodeUnits_lessThan = ($GLOBALS['Data_String_NonEmpty_CodeUnits_lessThan'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_lessThan'));
-  $__global_Data_String_CodeUnits_take = ($GLOBALS['Data_String_CodeUnits_take'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_take'));
-  $s = ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes);
-  $__case_0 = ($__global_Data_String_NonEmpty_CodeUnits_lessThan)($i, 1);
-  switch ($__case_0) {
-case true:
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
+  $__res = ($f)($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_takeWhile'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_Internal_fromString'))))(function($v) use (&$f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(((($GLOBALS['Data_String_CodeUnits_countPrefix'] ?? \PhpursThunks::eval('Data_String_CodeUnits_countPrefix')))($f))($v)))($v);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_lastIndexOf__prime__'] = function() { $v = function($pat) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))((($GLOBALS['Data_String_CodeUnits_lastIndexOf__prime__'] ?? \PhpursThunks::eval('Data_String_CodeUnits_lastIndexOf__prime__')))($pat));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_lastIndexOf'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))(($GLOBALS['Data_String_CodeUnits_lastIndexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_lastIndexOf'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_indexOf__prime__'] = function() { $v = function($pat) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))((($GLOBALS['Data_String_CodeUnits_indexOf__prime__'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf__prime__')))($pat));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_indexOf'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))(($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  $__res = $v;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_length'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length'))))(($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_splitAt'] = function() { $v = (function() {
+  $__fn = function($i, $nes = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $v_0 = ((($GLOBALS['Data_String_CodeUnits_splitAt'] ?? \PhpursThunks::eval('Data_String_CodeUnits_splitAt')))($i))($nes);
+  switch (($v_0)->before) {
+case "":
+$__t1 = new Phpurs_Data0("Nothing");
 break;
 default:
-$__res = new Phpurs_Data1("Just", ($__global_Data_String_CodeUnits_take)($i, $s));
-goto __end;;
+$__t1 = new Phpurs_Data1("Just", ($v_0)->before);
 break;
 };
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_take'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_take';
-
-// Data_String_NonEmpty_CodeUnits_takeRight
-function Data_String_NonEmpty_CodeUnits_takeRight($i, $nes = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_takeRight';
-  if ($__num < 2) {
-    if ($__num === 1) return function($nes) use ($i, $__fn) { return $__fn($i, $nes); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_NonEmpty_CodeUnits_lessThan = ($GLOBALS['Data_String_NonEmpty_CodeUnits_lessThan'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_lessThan'));
-  $__global_Data_String_CodeUnits_takeRight = ($GLOBALS['Data_String_CodeUnits_takeRight'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_takeRight'));
-  $s = ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes);
-  $__case_0 = ($__global_Data_String_NonEmpty_CodeUnits_lessThan)($i, 1);
-  switch ($__case_0) {
-case true:
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
+  switch (($v_0)->after) {
+case "":
+$__t2 = new Phpurs_Data0("Nothing");
 break;
 default:
-$__res = new Phpurs_Data1("Just", ($__global_Data_String_CodeUnits_takeRight)($i, $s));
-goto __end;;
+$__t2 = new Phpurs_Data1("Just", ($v_0)->after);
 break;
 };
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_takeRight'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_takeRight';
-
-
-
-
-// Data_String_NonEmpty_CodeUnits_uncons
-function Data_String_NonEmpty_CodeUnits_uncons($nes) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_uncons';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_Unsafe_charAt = ($GLOBALS['Data_String_Unsafe_charAt'] ?? \Data\String\Unsafe\phpurs_eval_thunk('Data_String_Unsafe_charAt'));
-  $__global_Data_String_NonEmpty_Internal_fromString = ($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \Data\String\NonEmpty\Internal\phpurs_eval_thunk('Data_String_NonEmpty_Internal_fromString'));
-  $__global_Data_String_CodeUnits_drop = ($GLOBALS['Data_String_CodeUnits_drop'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_drop'));
-  $s = ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes);
-  $__res = (object)["head" => ($__global_Data_String_Unsafe_charAt)(0, $s), "tail" => ($__global_Data_String_NonEmpty_Internal_fromString)(($__global_Data_String_CodeUnits_drop)(1, $s))];
+  $__res = (object)["before" => $__t1, "after" => $__t2];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_uncons'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_uncons';
-
-// Data_String_NonEmpty_CodeUnits_fromFoldable1
-function Data_String_NonEmpty_CodeUnits_fromFoldable1($dictFoldable1) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_fromFoldable1';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_take'] = function() { $v = (function() {
+  $__fn = function($i, $nes = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Semigroup_semigroupString = ($GLOBALS['Data_Semigroup_semigroupString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_semigroupString'));
-  $__global_Data_String_NonEmpty_CodeUnits_singleton = ($GLOBALS['Data_String_NonEmpty_CodeUnits_singleton'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_singleton'));
-  $__res = (($dictFoldable1)->foldMap1)($__global_Data_Semigroup_semigroupString, $__global_Data_String_NonEmpty_CodeUnits_singleton);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_fromFoldable1'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_fromFoldable1';
-
-// Data_String_NonEmpty_CodeUnits_fromCharArray
-function Data_String_NonEmpty_CodeUnits_fromCharArray($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_fromCharArray';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_CodeUnits_fromCharArray = ($GLOBALS['Data_String_CodeUnits_fromCharArray'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_fromCharArray'));
-  $__case_0 = $v;
-  if (($__case_0 === /* ArrayLiteral */)) {
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
+  if ((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))(1)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))(1))->tag === "LT"))) {
+$__t0 = new Phpurs_Data0("Nothing");
 } else {
-if (true) {
-$cs = $__case_0;
-$__res = new Phpurs_Data1("Just", ($__global_Data_String_CodeUnits_fromCharArray)($cs));
-goto __end;;
+$__t0 = new Phpurs_Data1("Just", ((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))($i))($nes));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_takeRight'] = function() { $v = (function() {
+  $__fn = function($i, $nes = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))(1)) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))(1))->tag === "LT"))) {
+$__t0 = new Phpurs_Data0("Nothing");
 } else {
-throw new \Exception("Pattern match failure");
+$__t0 = new Phpurs_Data1("Just", ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes)))($i)))($nes));
 };
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_fromCharArray'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_fromCharArray';
-
-
-// Data_String_NonEmpty_CodeUnits_dropWhile
-function Data_String_NonEmpty_CodeUnits_dropWhile($f) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_dropWhile';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_compose = ($GLOBALS['Data_String_NonEmpty_CodeUnits_compose'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_compose'));
-  $__global_Data_String_NonEmpty_Internal_fromString = ($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \Data\String\NonEmpty\Internal\phpurs_eval_thunk('Data_String_NonEmpty_Internal_fromString'));
-  $__global_Data_String_NonEmpty_CodeUnits_liftS = ($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_liftS'));
-  $__global_Data_String_CodeUnits_dropWhile = ($GLOBALS['Data_String_CodeUnits_dropWhile'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_dropWhile'));
-  $__res = ($__global_Data_String_NonEmpty_CodeUnits_compose)($__global_Data_String_NonEmpty_Internal_fromString, ($__global_Data_String_NonEmpty_CodeUnits_liftS)(($__global_Data_String_CodeUnits_dropWhile)($f)));
+  $__res = $__t0;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_dropWhile'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_dropWhile';
-
-// Data_String_NonEmpty_CodeUnits_dropRight
-function Data_String_NonEmpty_CodeUnits_dropRight($i, $nes = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_dropRight';
-  if ($__num < 2) {
-    if ($__num === 1) return function($nes) use ($i, $__fn) { return $__fn($i, $nes); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_NonEmpty_CodeUnits_greaterThanOrEq = ($GLOBALS['Data_String_NonEmpty_CodeUnits_greaterThanOrEq'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_greaterThanOrEq'));
-  $__global_Data_String_CodeUnits_length = ($GLOBALS['Data_String_CodeUnits_length'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_length'));
-  $__global_Data_String_CodeUnits_dropRight = ($GLOBALS['Data_String_CodeUnits_dropRight'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_dropRight'));
-  $s = ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes);
-  $__case_0 = ($__global_Data_String_NonEmpty_CodeUnits_greaterThanOrEq)($i, ($__global_Data_String_CodeUnits_length)($s));
-  switch ($__case_0) {
-case true:
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
-break;
-default:
-$__res = new Phpurs_Data1("Just", ($__global_Data_String_CodeUnits_dropRight)($i, $s));
-goto __end;;
-break;
-};
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_dropRight'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_dropRight';
-
-// Data_String_NonEmpty_CodeUnits_drop
-function Data_String_NonEmpty_CodeUnits_drop($i, $nes = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_drop';
-  if ($__num < 2) {
-    if ($__num === 1) return function($nes) use ($i, $__fn) { return $__fn($i, $nes); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'));
-  $__global_Data_String_NonEmpty_CodeUnits_greaterThanOrEq = ($GLOBALS['Data_String_NonEmpty_CodeUnits_greaterThanOrEq'] ?? \Data\String\NonEmpty\CodeUnits\phpurs_eval_thunk('Data_String_NonEmpty_CodeUnits_greaterThanOrEq'));
-  $__global_Data_String_CodeUnits_length = ($GLOBALS['Data_String_CodeUnits_length'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_length'));
-  $__global_Data_String_CodeUnits_drop = ($GLOBALS['Data_String_CodeUnits_drop'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_drop'));
-  $s = ($__global_Data_String_NonEmpty_CodeUnits_fromNonEmptyString)($nes);
-  $__case_0 = ($__global_Data_String_NonEmpty_CodeUnits_greaterThanOrEq)($i, ($__global_Data_String_CodeUnits_length)($s));
-  switch ($__case_0) {
-case true:
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
-break;
-default:
-$__res = new Phpurs_Data1("Just", ($__global_Data_String_CodeUnits_drop)($i, $s));
-goto __end;;
-break;
-};
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_drop'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_drop';
-
-
-// Data_String_NonEmpty_CodeUnits_cons
-function Data_String_NonEmpty_CodeUnits_cons($c, $s = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_NonEmpty_CodeUnits_cons';
-  if ($__num < 2) {
-    if ($__num === 1) return function($s) use ($c, $__fn) { return $__fn($c, $s); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_CodeUnits_singleton = ($GLOBALS['Data_String_CodeUnits_singleton'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_singleton'));
-  $__res = (($__global_Data_String_CodeUnits_singleton)($c) . $s);
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_toChar'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_CodeUnits_toChar'] ?? \PhpursThunks::eval('Data_String_CodeUnits_toChar'))))(($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_toCharArray'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_CodeUnits_toCharArray'] ?? \PhpursThunks::eval('Data_String_CodeUnits_toCharArray'))))(($GLOBALS['Data_String_NonEmpty_CodeUnits_fromNonEmptyString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromNonEmptyString'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_toNonEmptyCharArray'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))((($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \PhpursThunks::eval('Partial_Unsafe__unsafePartial')))(function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromJust'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromJust'));
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_NonEmpty_CodeUnits_cons'] = __NAMESPACE__ . '\\Data_String_NonEmpty_CodeUnits_cons';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Array_NonEmpty_fromArray'] ?? \PhpursThunks::eval('Data_Array_NonEmpty_fromArray'))))(($GLOBALS['Data_String_NonEmpty_CodeUnits_toCharArray'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_toCharArray')))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_uncons'] = function() { $v = function($nes) {
+  $__num = \func_num_args();
+  $__local_var_0 = ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))(1))($nes);
+  switch ($__local_var_0) {
+case "":
+$__t1 = new Phpurs_Data0("Nothing");
+break;
+default:
+$__t1 = new Phpurs_Data1("Just", $__local_var_0);
+break;
+};
+  $__res = (object)["head" => ((($GLOBALS['Data_String_Unsafe_charAt'] ?? \PhpursThunks::eval('Data_String_Unsafe_charAt')))(0))($nes), "tail" => $__t1];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_fromFoldable1'] = function() { $v = function($dictFoldable1) {
+  $__num = \func_num_args();
+  $__res = ((($dictFoldable1)->foldMap1)(($GLOBALS['Data_Semigroup_semigroupString'] ?? \PhpursThunks::eval('Data_Semigroup_semigroupString'))))(($GLOBALS['Data_String_NonEmpty_CodeUnits_singleton'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_singleton')));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_fromCharArray'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  switch (count($v)) {
+case 0:
+$__t0 = new Phpurs_Data0("Nothing");
+break;
+default:
+$__t0 = new Phpurs_Data1("Just", (($GLOBALS['Data_String_CodeUnits_fromCharArray'] ?? \PhpursThunks::eval('Data_String_CodeUnits_fromCharArray')))($v));
+break;
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_fromNonEmptyCharArray'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))((($GLOBALS['Partial_Unsafe__unsafePartial'] ?? \PhpursThunks::eval('Partial_Unsafe__unsafePartial')))(function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_String_NonEmpty_CodeUnits_fromJust'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromJust'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_fromCharArray'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_fromCharArray'))))(($GLOBALS['Data_Array_NonEmpty_toArray'] ?? \PhpursThunks::eval('Data_Array_NonEmpty_toArray')))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_dropWhile'] = function() { $v = function($f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_Internal_fromString'] ?? \PhpursThunks::eval('Data_String_NonEmpty_Internal_fromString'))))(function($v) use (&$f) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))(((($GLOBALS['Data_String_CodeUnits_countPrefix'] ?? \PhpursThunks::eval('Data_String_CodeUnits_countPrefix')))($f))($v)))($v);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_dropRight'] = function() { $v = (function() {
+  $__fn = function($i, $nes = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if (( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes))) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes)))->tag === "LT")))) {
+$__t0 = new Phpurs_Data0("Nothing");
+} else {
+$__t0 = new Phpurs_Data1("Just", ((($GLOBALS['Data_String_CodeUnits_take'] ?? \PhpursThunks::eval('Data_String_CodeUnits_take')))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes)))($i)))($nes));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_drop'] = function() { $v = (function() {
+  $__fn = function($i, $nes = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if (( ! (is_object((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes))) && (((((($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt')))->compare)($i))((($GLOBALS['Data_String_CodeUnits_length'] ?? \PhpursThunks::eval('Data_String_CodeUnits_length')))($nes)))->tag === "LT")))) {
+$__t0 = new Phpurs_Data0("Nothing");
+} else {
+$__t0 = new Phpurs_Data1("Just", ((($GLOBALS['Data_String_CodeUnits_drop'] ?? \PhpursThunks::eval('Data_String_CodeUnits_drop')))($i))($nes));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_countPrefix'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))(($GLOBALS['Data_String_CodeUnits_countPrefix'] ?? \PhpursThunks::eval('Data_String_CodeUnits_countPrefix'))); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_cons'] = function() { $v = (function() {
+  $__fn = function($c, $s = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($GLOBALS['Data_String_CodeUnits_singleton'] ?? \PhpursThunks::eval('Data_String_CodeUnits_singleton')))($c)))($s);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_NonEmpty_CodeUnits_charAt'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_NonEmpty_CodeUnits_liftS'] ?? \PhpursThunks::eval('Data_String_NonEmpty_CodeUnits_liftS'))))(($GLOBALS['Data_String_CodeUnits_charAt'] ?? \PhpursThunks::eval('Data_String_CodeUnits_charAt'))); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

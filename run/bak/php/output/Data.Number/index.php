@@ -2,14 +2,20 @@
 
 namespace Data\Number;
 
+// ALL IMPORTS: Data.Function.Uncurried, Data.Maybe, Data.Number, Prim
+// TO REQUIRE: Data.Function.Uncurried, Data.Maybe, Data.Number
+require_once __DIR__ . '/../Data.Function.Uncurried/index.php';
+require_once __DIR__ . '/../Data.Maybe/index.php';
+require_once __DIR__ . '/../Data.Number/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,62 +87,32 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Number_tau': $v = 6.283185307179586; break;
-      case 'Data_Number_sqrt2': $v = 1.4142135623730951; break;
-      case 'Data_Number_sqrt1_2': $v = 0.7071067811865476; break;
-      case 'Data_Number_pi': $v = 3.141592653589793; break;
-      case 'Data_Number_log2e': $v = 1.4426950408889634; break;
-      case 'Data_Number_log10e': $v = 0.4342944819032518; break;
-      case 'Data_Number_ln2': $v = 0.6931471805599453; break;
-      case 'Data_Number_ln10': $v = 2.302585092994046; break;
-      case 'Data_Number_e': $v = 2.718281828459045; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Data.Function.Uncurried/index.php';
-require_once __DIR__ . '/../Data.Maybe/index.php';
-require_once __DIR__ . '/../Data.Number/index.php';
-
-
-
-
-
-
-
-
-
-// Data_Number_fromString
-function majData_majNumber_frommajString($str) {
+\PhpursThunks::$thunks['Data_Number_tau'] = function() { $v = 6.283185307179586; return $v; };
+\PhpursThunks::$thunks['Data_Number_sqrt2'] = function() { $v = 1.4142135623730951; return $v; };
+\PhpursThunks::$thunks['Data_Number_sqrt1_2'] = function() { $v = 0.7071067811865476; return $v; };
+\PhpursThunks::$thunks['Data_Number_pi'] = function() { $v = 3.141592653589793; return $v; };
+\PhpursThunks::$thunks['Data_Number_log2e'] = function() { $v = 1.4426950408889634; return $v; };
+\PhpursThunks::$thunks['Data_Number_log10e'] = function() { $v = 0.4342944819032518; return $v; };
+\PhpursThunks::$thunks['Data_Number_ln2'] = function() { $v = 0.6931471805599453; return $v; };
+\PhpursThunks::$thunks['Data_Number_ln10'] = function() { $v = 2.302585092994046; return $v; };
+\PhpursThunks::$thunks['Data_Number_fromString'] = function() { $v = function($str) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majNumber_frommajString';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Function_Uncurried_runFn4 = ($GLOBALS['Data_Function_Uncurried_runFn4'] ?? \Data\Function\Uncurried\phpurs_eval_thunk('Data_Function_Uncurried_runFn4'));
-  $__global_Data_Number_fromStringImpl = ($GLOBALS['Data_Number_fromStringImpl'] ?? \Data\Number\phpurs_eval_thunk('Data_Number_fromStringImpl'));
-  $__global_Data_Number_isFinite = ($GLOBALS['Data_Number_isFinite'] ?? \Data\Number\phpurs_eval_thunk('Data_Number_isFinite'));
-  $__res = ((((($__global_Data_Function_Uncurried_runFn4)($__global_Data_Number_fromStringImpl))($str))($__global_Data_Number_isFinite))(function($value0) {
-  $__num = \func_num_args();
-  $__res = new Phpurs_Data1("Just", $value0);
+  $__res = (((((($GLOBALS['Data_Function_Uncurried_runFn4'] ?? \PhpursThunks::eval('Data_Function_Uncurried_runFn4')))(($GLOBALS['Data_Number_fromStringImpl'] ?? \PhpursThunks::eval('Data_Number_fromStringImpl'))))($str))(($GLOBALS['Data_Number_isFinite'] ?? \PhpursThunks::eval('Data_Number_isFinite'))))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing"));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}))(($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing")));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Number_fromString'] = __NAMESPACE__ . '\\majData_majNumber_frommajString';
+}; return $v; };
+\PhpursThunks::$thunks['Data_Number_e'] = function() { $v = 2.718281828459045; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
 
 

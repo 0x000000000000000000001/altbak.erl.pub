@@ -2,14 +2,22 @@
 
 namespace Data\BooleanAlgebra;
 
+// ALL IMPORTS: Data.BooleanAlgebra, Data.HeytingAlgebra, Data.Symbol, Data.Unit, Prim, Prim.Row, Prim.RowList, Type.Proxy
+// TO REQUIRE: Data.BooleanAlgebra, Data.HeytingAlgebra, Data.Symbol, Data.Unit, Type.Proxy
+require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
+require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
+require_once __DIR__ . '/../Data.Symbol/index.php';
+require_once __DIR__ . '/../Data.Unit/index.php';
+require_once __DIR__ . '/../Type.Proxy/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,160 +89,166 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_BooleanAlgebra_heytingAlgebraRecord': $v = \Data\HeytingAlgebra\majData_majHeytingmajAlgebra_heytingmajAlgebramajRecord(($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'))); break;
-      case 'Data_BooleanAlgebra_booleanAlgebraUnit': $v = (object)["HeytingAlgebra0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraUnit'] = function() { $v = (object)["HeytingAlgebra0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_HeytingAlgebra_heytingAlgebraUnit = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraUnit'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraUnit'));
-  $__res = $__global_Data_HeytingAlgebra_heytingAlgebraUnit;
+  $__res = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraUnit'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_heytingAlgebraUnit'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_BooleanAlgebra_booleanAlgebraRecordNil': $v = (object)["HeytingAlgebraRecord0" => function($dollar__unused) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraRecordNil'] = function() { $v = (object)["HeytingAlgebraRecord0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__global_Data_HeytingAlgebra_heytingAlgebraRecordNil = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraRecordNil'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraRecordNil'));
-  $__res = $__global_Data_HeytingAlgebra_heytingAlgebraRecordNil;
+  $__res = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraRecordNil'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_heytingAlgebraRecordNil'));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_BooleanAlgebra_booleanAlgebraProxy': $v = (object)["HeytingAlgebra0" => function($dollar__unused) {
+}]; return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraRecordCons'] = function() { $v = (function() {
+  $__fn = function($dictIsSymbol, $dollar__unused_1 = null, $dictBooleanAlgebraRecord = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__global_Data_HeytingAlgebra_heytingAlgebraProxy = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraProxy'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraProxy'));
-  $__res = $__global_Data_HeytingAlgebra_heytingAlgebraProxy;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_BooleanAlgebra_booleanAlgebraBoolean': $v = (object)["HeytingAlgebra0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_HeytingAlgebra_heytingAlgebraBoolean = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraBoolean'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraBoolean'));
-  $__res = $__global_Data_HeytingAlgebra_heytingAlgebraBoolean;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Data.BooleanAlgebra/index.php';
-require_once __DIR__ . '/../Data.HeytingAlgebra/index.php';
-require_once __DIR__ . '/../Data.Symbol/index.php';
-require_once __DIR__ . '/../Data.Unit/index.php';
-require_once __DIR__ . '/../Type.Proxy/index.php';
-
-
-// Data_BooleanAlgebra_BooleanAlgebraRecord$Dict
-function majData_majBooleanmajAlgebra_majBooleanmajAlgebramajRecorddollarmajDict($x) {
+  $heytingAlgebraRecordCons1_0 = (((($GLOBALS['Data_HeytingAlgebra_heytingAlgebraRecordCons'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_heytingAlgebraRecordCons')))($dictIsSymbol))(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))((($dictBooleanAlgebraRecord)->HeytingAlgebraRecord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictBooleanAlgebra) use (&$heytingAlgebraRecordCons1_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majBooleanmajAlgebra_majBooleanmajAlgebramajRecorddollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_BooleanAlgebra_BooleanAlgebraRecorddollarDict'] = __NAMESPACE__ . '\\majData_majBooleanmajAlgebra_majBooleanmajAlgebramajRecorddollarmajDict';
-
-// Data_BooleanAlgebra_BooleanAlgebra$Dict
-function majData_majBooleanmajAlgebra_majBooleanmajAlgebradollarmajDict($x) {
+  $heytingAlgebraRecordCons2_1 = ($heytingAlgebraRecordCons1_0)((($dictBooleanAlgebra)->HeytingAlgebra0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["HeytingAlgebraRecord0" => function($dollar__unused_0) use (&$heytingAlgebraRecordCons2_1) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majBooleanmajAlgebra_majBooleanmajAlgebradollarmajDict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_BooleanAlgebra_BooleanAlgebradollarDict'] = __NAMESPACE__ . '\\majData_majBooleanmajAlgebra_majBooleanmajAlgebradollarmajDict';
-
-
-
-// Data_BooleanAlgebra_booleanAlgebraRecordCons
-function majData_majBooleanmajAlgebra_booleanmajAlgebramajRecordmajCons($dictIsSymbol, $dollar__unused = null, $dictBooleanAlgebraRecord = null, $dictBooleanAlgebra = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majBooleanmajAlgebra_booleanmajAlgebramajRecordmajCons';
-  if ($__num < 4) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 4);
-  }
-  $__global_Data_HeytingAlgebra_heytingAlgebraRecordCons = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraRecordCons'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraRecordCons'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $heytingAlgebraRecordCons = (($__global_Data_HeytingAlgebra_heytingAlgebraRecordCons)($dictIsSymbol))($__global_Prim_undefined);
-  $heytingAlgebraRecordCons1 = ($heytingAlgebraRecordCons)((($dictBooleanAlgebraRecord)->HeytingAlgebraRecord0)($__global_Prim_undefined));
-  $heytingAlgebraRecordCons2 = ($heytingAlgebraRecordCons1)((($dictBooleanAlgebra)->HeytingAlgebra0)($__global_Prim_undefined));
-  $__res = (object)["HeytingAlgebraRecord0" => function($dollar__unused) use ($heytingAlgebraRecordCons2) {
-  $__num = \func_num_args();
-  $__res = $heytingAlgebraRecordCons2;
+  $__res = $heytingAlgebraRecordCons2_1;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 4 < $__num ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
-}
-$GLOBALS['Data_BooleanAlgebra_booleanAlgebraRecordCons'] = __NAMESPACE__ . '\\majData_majBooleanmajAlgebra_booleanmajAlgebramajRecordmajCons';
-
-// Data_BooleanAlgebra_booleanAlgebraRecord
-function majData_majBooleanmajAlgebra_booleanmajAlgebramajRecord($dollar__unused, $dictBooleanAlgebraRecord = null) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraRecord'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dictBooleanAlgebraRecord = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majBooleanmajAlgebra_booleanmajAlgebramajRecord';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_BooleanAlgebra_heytingAlgebraRecord = ($GLOBALS['Data_BooleanAlgebra_heytingAlgebraRecord'] ?? \Data\BooleanAlgebra\phpurs_eval_thunk('Data_BooleanAlgebra_heytingAlgebraRecord'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $heytingAlgebraRecord1 = ($__global_Data_BooleanAlgebra_heytingAlgebraRecord)((($dictBooleanAlgebraRecord)->HeytingAlgebraRecord0)($__global_Prim_undefined));
-  $__res = (object)["HeytingAlgebra0" => function($dollar__unused) use ($heytingAlgebraRecord1) {
+  $__local_var_0 = (($dictBooleanAlgebraRecord)->HeytingAlgebraRecord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $heytingAlgebraRecord1_1 = (object)["ff" => ((($__local_var_0)->ffRecord)(new Phpurs_Data0("Proxy")))(new Phpurs_Data0("Proxy")), "tt" => ((($__local_var_0)->ttRecord)(new Phpurs_Data0("Proxy")))(new Phpurs_Data0("Proxy")), "conj" => (($__local_var_0)->conjRecord)(new Phpurs_Data0("Proxy")), "disj" => (($__local_var_0)->disjRecord)(new Phpurs_Data0("Proxy")), "implies" => (($__local_var_0)->impliesRecord)(new Phpurs_Data0("Proxy")), "not" => (($__local_var_0)->notRecord)(new Phpurs_Data0("Proxy"))];
+  $__res = (object)["HeytingAlgebra0" => function($dollar__unused_0) use (&$heytingAlgebraRecord1_1) {
   $__num = \func_num_args();
-  $__res = $heytingAlgebraRecord1;
+  $__res = $heytingAlgebraRecord1_1;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_BooleanAlgebra_booleanAlgebraRecord'] = __NAMESPACE__ . '\\majData_majBooleanmajAlgebra_booleanmajAlgebramajRecord';
-
-
-// Data_BooleanAlgebra_booleanAlgebraFn
-function majData_majBooleanmajAlgebra_booleanmajAlgebramajFn($dictBooleanAlgebra) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraProxy'] = function() { $v = (object)["HeytingAlgebra0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majBooleanmajAlgebra_booleanmajAlgebramajFn';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  $__res = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraProxy'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_heytingAlgebraProxy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraFn'] = function() { $v = function($dictBooleanAlgebra) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictBooleanAlgebra)->HeytingAlgebra0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $ff1_1 = ($__local_var_0)->ff;
+  $tt1_2 = ($__local_var_0)->tt;
+  $heytingAlgebraFunction_3 = (object)["ff" => function($v) use (&$ff1_1) {
+  $__num = \func_num_args();
+  $__res = $ff1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "tt" => function($v) use (&$tt1_2) {
+  $__num = \func_num_args();
+  $__res = $tt1_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "implies" => (function() use (&$__local_var_0) {
+  $__fn = function($f, $g = null, $a = null) use (&$__local_var_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_HeytingAlgebra_heytingAlgebraFunction = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraFunction'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_heytingAlgebraFunction'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $heytingAlgebraFunction = ($__global_Data_HeytingAlgebra_heytingAlgebraFunction)((($dictBooleanAlgebra)->HeytingAlgebra0)($__global_Prim_undefined));
-  $__res = (object)["HeytingAlgebra0" => function($dollar__unused) use ($heytingAlgebraFunction) {
+  $__res = ((($__local_var_0)->implies)(($f)($a)))(($g)($a));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "conj" => (function() use (&$__local_var_0) {
+  $__fn = function($f, $g = null, $a = null) use (&$__local_var_0, &$__fn) {
   $__num = \func_num_args();
-  $__res = $heytingAlgebraFunction;
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($__local_var_0)->conj)(($f)($a)))(($g)($a));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "disj" => (function() use (&$__local_var_0) {
+  $__fn = function($f, $g = null, $a = null) use (&$__local_var_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($__local_var_0)->disj)(($f)($a)))(($g)($a));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(), "not" => (function() use (&$__local_var_0) {
+  $__fn = function($f, $a = null) use (&$__local_var_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($__local_var_0)->not)(($f)($a));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["HeytingAlgebra0" => function($dollar__unused_0) use (&$heytingAlgebraFunction_3) {
+  $__num = \func_num_args();
+  $__res = $heytingAlgebraFunction_3;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_BooleanAlgebra_booleanAlgebraFn'] = __NAMESPACE__ . '\\majData_majBooleanmajAlgebra_booleanmajAlgebramajFn';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_BooleanAlgebra_booleanAlgebraBoolean'] = function() { $v = (object)["HeytingAlgebra0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_HeytingAlgebra_heytingAlgebraBoolean'] ?? \PhpursThunks::eval('Data_HeytingAlgebra_heytingAlgebraBoolean'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
 
 

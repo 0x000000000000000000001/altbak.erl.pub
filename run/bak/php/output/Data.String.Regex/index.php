@@ -2,36 +2,41 @@
 
 namespace Data\String\Regex;
 
+// ALL IMPORTS: Control.Semigroupoid, Data.Array.NonEmpty, Data.Either, Data.Function, Data.Maybe, Data.Semigroup, Data.Show, Data.String, Data.String.CodeUnits, Data.String.Pattern, Data.String.Regex, Data.String.Regex.Flags, Prelude, Prim
+// TO REQUIRE: Control.Semigroupoid, Data.Array.NonEmpty, Data.Either, Data.Function, Data.Maybe, Data.Semigroup, Data.Show, Data.String, Data.String.CodeUnits, Data.String.Pattern, Data.String.Regex, Data.String.Regex.Flags, Prelude
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
+require_once __DIR__ . '/../Data.Array.NonEmpty/index.php';
 require_once __DIR__ . '/../Data.Either/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Data.String/index.php';
 require_once __DIR__ . '/../Data.String.CodeUnits/index.php';
 require_once __DIR__ . '/../Data.String.Pattern/index.php';
 require_once __DIR__ . '/../Data.String.Regex/index.php';
 require_once __DIR__ . '/../Data.String.Regex.Flags/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -39,12 +44,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -52,13 +57,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -66,43 +71,97 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_String_Regex_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+\PhpursThunks::$thunks['Data_String_Regex_showRegex'] = function() { $v = (object)["show" => ($GLOBALS['Data_String_Regex_showRegexImpl'] ?? \PhpursThunks::eval('Data_String_Regex_showRegexImpl'))]; return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_search'] = function() { $v = ((($GLOBALS['Data_String_Regex__search'] ?? \PhpursThunks::eval('Data_String_Regex__search')))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing")); return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_replace__prime__'] = function() { $v = ((($GLOBALS['Data_String_Regex__replaceBy'] ?? \PhpursThunks::eval('Data_String_Regex__replaceBy')))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing")); return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_renderFlags'] = function() { $v = function($v) {
+  $__num = \func_num_args();
+  if (($v)->global) {
+$__t0 = "g";
+} else {
+$__t0 = "";
+};
+  if (($v)->ignoreCase) {
+$__t1 = "i";
+} else {
+$__t1 = "";
+};
+  if (($v)->multiline) {
+$__t2 = "m";
+} else {
+$__t2 = "";
+};
+  if (($v)->dotAll) {
+$__t3 = "s";
+} else {
+$__t3 = "";
+};
+  if (($v)->sticky) {
+$__t4 = "y";
+} else {
+$__t4 = "";
+};
+  if (($v)->unicode) {
+$__t5 = "u";
+} else {
+$__t5 = "";
+};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t0))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t1))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t2))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t3))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))($__t4))($__t5)))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_regex'] = function() { $v = (function() {
+  $__fn = function($s, $f = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  $__res = ((((($GLOBALS['Data_String_Regex_regexImpl'] ?? \PhpursThunks::eval('Data_String_Regex_regexImpl')))(($GLOBALS['Data_Either_Left'] ?? \PhpursThunks::eval('Data_Either_Left'))))(($GLOBALS['Data_Either_Right'] ?? \PhpursThunks::eval('Data_Either_Right'))))($s))((($GLOBALS['Data_String_Regex_renderFlags'] ?? \PhpursThunks::eval('Data_String_Regex_renderFlags')))($f));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_parseFlags'] = function() { $v = function($s) {
+  $__num = \func_num_args();
+  $__res = (object)["global" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("g")))($s), "ignoreCase" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("i")))($s), "multiline" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("m")))($s), "dotAll" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("s")))($s), "sticky" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("y")))($s), "unicode" => (((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Maybe_isJust'] ?? \PhpursThunks::eval('Data_Maybe_isJust'))))((($GLOBALS['Data_String_CodeUnits_indexOf'] ?? \PhpursThunks::eval('Data_String_CodeUnits_indexOf')))("u")))($s)];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_match'] = function() { $v = ((($GLOBALS['Data_String_Regex__match'] ?? \PhpursThunks::eval('Data_String_Regex__match')))(($GLOBALS['Data_Maybe_Just'] ?? \PhpursThunks::eval('Data_Maybe_Just'))))(new Phpurs_Data0("Nothing")); return $v; };
+\PhpursThunks::$thunks['Data_String_Regex_flags'] = function() { $v = ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_String_Regex_Flags_RegexFlags'] ?? \PhpursThunks::eval('Data_String_Regex_Flags_RegexFlags'))))(($GLOBALS['Data_String_Regex_flagsImpl'] ?? \PhpursThunks::eval('Data_String_Regex_flagsImpl'))); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Data_String_Regex = \call_user_func(function() {
+  $exports = [];
 $showRegexImpl = function($r) use (&$showRegexImpl) {
     return $r->pattern;
 };
@@ -246,127 +305,25 @@ $exports['_replaceBy'] = $_replaceBy;
 $exports['_search'] = $_search;
 $exports['split'] = $split;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Data_String_Regex_showRegexImpl'] = $ffi_Data_String_Regex['showRegexImpl'] ?? null;
-$GLOBALS['Data_String_Regex_regexImpl'] = $ffi_Data_String_Regex['regexImpl'] ?? null;
-$GLOBALS['Data_String_Regex_source'] = $ffi_Data_String_Regex['source'] ?? null;
-$GLOBALS['Data_String_Regex_flagsImpl'] = $ffi_Data_String_Regex['flagsImpl'] ?? null;
-$GLOBALS['Data_String_Regex_test'] = $ffi_Data_String_Regex['test'] ?? null;
-$GLOBALS['Data_String_Regex__match'] = $ffi_Data_String_Regex['_match'] ?? null;
-$GLOBALS['Data_String_Regex_replace'] = $ffi_Data_String_Regex['replace'] ?? null;
-$GLOBALS['Data_String_Regex__replaceBy'] = $ffi_Data_String_Regex['_replaceBy'] ?? null;
-$GLOBALS['Data_String_Regex__search'] = $ffi_Data_String_Regex['_search'] ?? null;
-$GLOBALS['Data_String_Regex_split'] = $ffi_Data_String_Regex['split'] ?? null;
+\PhpursThunks::$thunks['Data_String_Regex__match'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['_match']; };
+\PhpursThunks::$thunks['Data_String_Regex__replaceBy'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['_replaceBy']; };
+\PhpursThunks::$thunks['Data_String_Regex__search'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['_search']; };
+\PhpursThunks::$thunks['Data_String_Regex_flagsImpl'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['flagsImpl']; };
+\PhpursThunks::$thunks['Data_String_Regex_regexImpl'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['regexImpl']; };
+\PhpursThunks::$thunks['Data_String_Regex_replace'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['replace']; };
+\PhpursThunks::$thunks['Data_String_Regex_showRegexImpl'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['showRegexImpl']; };
+\PhpursThunks::$thunks['Data_String_Regex_source'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['source']; };
+\PhpursThunks::$thunks['Data_String_Regex_split'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['split']; };
+\PhpursThunks::$thunks['Data_String_Regex_test'] = function() use (&$ffi_Data_String_Regex) { return $ffi_Data_String_Regex['test']; };
 
 
 
-// Data_String_Regex_renderFlags
-function Data_String_Regex_renderFlags($v) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Regex_renderFlags';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_String_Regex_append = ($GLOBALS['Data_String_Regex_append'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_append'));
-  $__case_0 = $v;
-  if (true) {
-$f = $__case_0;
-$__case_0 = ($f)->global;
-$__case_res_0 = null;
-switch ($__case_0) {
-case true:
-$__case_res_0 = "g";
-break;
-default:
-$__case_res_0 = "";
-break;
-};
-$__case_0 = ($f)->ignoreCase;
-$__case_res_1 = null;
-switch ($__case_0) {
-case true:
-$__case_res_1 = "i";
-break;
-default:
-$__case_res_1 = "";
-break;
-};
-$__case_0 = ($f)->multiline;
-$__case_res_2 = null;
-switch ($__case_0) {
-case true:
-$__case_res_2 = "m";
-break;
-default:
-$__case_res_2 = "";
-break;
-};
-$__case_0 = ($f)->dotAll;
-$__case_res_3 = null;
-switch ($__case_0) {
-case true:
-$__case_res_3 = "s";
-break;
-default:
-$__case_res_3 = "";
-break;
-};
-$__case_0 = ($f)->sticky;
-$__case_res_4 = null;
-switch ($__case_0) {
-case true:
-$__case_res_4 = "y";
-break;
-default:
-$__case_res_4 = "";
-break;
-};
-$__case_0 = ($f)->unicode;
-$__case_res_5 = null;
-switch ($__case_0) {
-case true:
-$__case_res_5 = "u";
-break;
-default:
-$__case_res_5 = "";
-break;
-};
-$__res = ($__global_Data_String_Regex_append)($__case_res_0, ($__global_Data_String_Regex_append)($__case_res_1, ($__global_Data_String_Regex_append)($__case_res_2, ($__global_Data_String_Regex_append)($__case_res_3, ($__global_Data_String_Regex_append)($__case_res_4, $__case_res_5)))));
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_String_Regex_renderFlags'] = __NAMESPACE__ . '\\Data_String_Regex_renderFlags';
 
-// Data_String_Regex_regex
-function Data_String_Regex_regex($s, $f = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_String_Regex_regex';
-  if ($__num < 2) {
-    if ($__num === 1) return function($f) use ($s, $__fn) { return $__fn($s, $f); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Data_String_Regex_regexImpl = ($GLOBALS['Data_String_Regex_regexImpl'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_regexImpl'));
-  $__global_Data_String_Regex_renderFlags = ($GLOBALS['Data_String_Regex_renderFlags'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_renderFlags'));
-  $__res = ($__global_Data_String_Regex_regexImpl)(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Left", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Right", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $s, ($__global_Data_String_Regex_renderFlags)($f));
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_String_Regex_regex'] = __NAMESPACE__ . '\\Data_String_Regex_regex';
+
+
+
+
+
 

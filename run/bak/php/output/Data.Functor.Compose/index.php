@@ -2,14 +2,33 @@
 
 namespace Data\Functor\Compose;
 
+// ALL IMPORTS: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Plus, Control.Semigroupoid, Data.Eq, Data.Function, Data.Functor, Data.Functor.App, Data.Functor.Compose, Data.Newtype, Data.Ord, Data.Semigroup, Data.Show, Prelude, Prim
+// TO REQUIRE: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Plus, Control.Semigroupoid, Data.Eq, Data.Function, Data.Functor, Data.Functor.App, Data.Functor.Compose, Data.Newtype, Data.Ord, Data.Semigroup, Data.Show, Prelude
+require_once __DIR__ . '/../Control.Alt/index.php';
+require_once __DIR__ . '/../Control.Alternative/index.php';
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Plus/index.php';
+require_once __DIR__ . '/../Control.Semigroupoid/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Function/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Functor.App/index.php';
+require_once __DIR__ . '/../Data.Functor.Compose/index.php';
+require_once __DIR__ . '/../Data.Newtype/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,135 +100,47 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Functor_Compose_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Functor_Compose_compose': $v = ($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_composeImpl')); break;
-      case 'Data_Functor_Compose_newtypeCompose': $v = (object)["Coercible0" => function($dollar__unused) {
+\PhpursThunks::$thunks['Data_Functor_Compose_Compose'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Alt/index.php';
-require_once __DIR__ . '/../Control.Alternative/index.php';
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Plus/index.php';
-require_once __DIR__ . '/../Control.Semigroupoid/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Function/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Functor.App/index.php';
-require_once __DIR__ . '/../Data.Functor.Compose/index.php';
-require_once __DIR__ . '/../Data.Newtype/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-
-// Data_Functor_Compose_Compose
-function majData_majFunctor_majCompose_majCompose($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_majCompose';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_Compose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_majCompose';
-
-// Data_Functor_Compose_showCompose
-function majData_majFunctor_majCompose_showmajCompose($dictShow) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_showCompose'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_showmajCompose';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Functor_Compose_append = ($GLOBALS['Data_Functor_Compose_append'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_append'));
-  $show = ($dictShow)->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Functor_Compose_append, $show) {
+  $__res = (object)["show" => function($v) use (&$dictShow) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$fga = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Functor_Compose_append)("(Compose "))((($__global_Data_Functor_Compose_append)(($show)($fga)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("(Compose "))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((($dictShow)->show)($v)))(")"));
+  goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_showCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_showmajCompose';
-
-
-// Data_Functor_Compose_functorCompose
-function majData_majFunctor_majCompose_functormajCompose($dictFunctor, $dictFunctor1 = null) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_newtypeCompose'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_functormajCompose';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $map = ($dictFunctor)->map;
-  $map1 = ($dictFunctor1)->map;
-  $__res = (object)["map" => (function() use ($map, $map1) {
-  $__fn = function($f, $v = null) use ($map, $map1, &$__fn) {
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_functorCompose'] = function() { $v = (function() {
+  $__fn = function($dictFunctor, $dictFunctor1 = null) use (&$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$f1 = $__case_0;
-$fga = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($map)(($map1)($f1)))($fga);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = (object)["map" => (function() use (&$dictFunctor, &$dictFunctor1) {
+  $__fn = function($f, $v = null) use (&$dictFunctor, &$dictFunctor1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictFunctor)->map)((($dictFunctor1)->map)($f)))($v);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
@@ -217,47 +148,38 @@ throw new \Exception("Pattern match failure");
 })()];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_functorCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_functormajCompose';
-
-// Data_Functor_Compose_eqCompose
-function majData_majFunctor_majCompose_eqmajCompose($dictEq1, $dictEq11 = null, $dictEq = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_eqCompose'] = function() { $v = (function() {
+  $__fn = function($dictEq1, $dictEq11 = null, $dictEq = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_eqmajCompose';
   if ($__num < 3) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Data_Functor_App_eqApp = ($GLOBALS['Data_Functor_App_eqApp'] ?? \Data\Functor\App\phpurs_eval_thunk('Data_Functor_App_eqApp'));
-  $__global_Unsafe_Coerce_unsafeCoerce = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \Unsafe\Coerce\phpurs_eval_thunk('Unsafe_Coerce_unsafeCoerce'));
-  $eq1 = ($dictEq1)->eq1;
-  $eqApp = ($__global_Data_Functor_App_eqApp)($dictEq11);
-  $eq11 = ($eq1)(($eqApp)($dictEq));
-  $__res = (object)["eq" => (function() use ($eq11, $__global_Unsafe_Coerce_unsafeCoerce) {
-  $__fn = function($v, $v1 = null) use ($eq11, $__global_Unsafe_Coerce_unsafeCoerce, &$__fn) {
+  $eq11_0 = (($dictEq11)->eq1)($dictEq);
+  $eq11_1 = (($dictEq1)->eq1)((object)["eq" => (function() use (&$eq11_0) {
+  $__fn = function($x, $y = null) use (&$eq11_0, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$fga1 = $__case_0;
-$fga2 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($eq11)(($__global_Unsafe_Coerce_unsafeCoerce)($fga1)))(($__global_Unsafe_Coerce_unsafeCoerce)($fga2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = (($eq11_0)($x))($y);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]);
+  $__res = (object)["eq" => (function() use (&$eq11_1) {
+  $__fn = function($v, $v1 = null) use (&$eq11_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (($eq11_1)((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))($v)))((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))($v1));
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
@@ -265,363 +187,292 @@ throw new \Exception("Pattern match failure");
 })()];
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_eqCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_eqmajCompose';
-
-// Data_Functor_Compose_ordCompose
-function majData_majFunctor_majCompose_ordmajCompose($dictOrd1, $dictOrd11 = null, $dictOrd = null) {
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_ordCompose'] = function() { $v = function($dictOrd1) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_ordmajCompose';
-  if ($__num < 3) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
-  }
-  $__global_Data_Functor_Compose_eqCompose = ($GLOBALS['Data_Functor_Compose_eqCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_eqCompose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Functor_App_ordApp = ($GLOBALS['Data_Functor_App_ordApp'] ?? \Data\Functor\App\phpurs_eval_thunk('Data_Functor_App_ordApp'));
-  $__global_Unsafe_Coerce_unsafeCoerce = ($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \Unsafe\Coerce\phpurs_eval_thunk('Unsafe_Coerce_unsafeCoerce'));
-  $compare1 = ($dictOrd1)->compare1;
-  $eqCompose1 = ($__global_Data_Functor_Compose_eqCompose)((($dictOrd1)->Eq10)($__global_Prim_undefined));
-  $ordApp = ($__global_Data_Functor_App_ordApp)($dictOrd11);
-  $eqCompose2 = ($eqCompose1)((($dictOrd11)->Eq10)($__global_Prim_undefined));
-  $compare11 = ($compare1)(($ordApp)($dictOrd));
-  $eqCompose3 = ($eqCompose2)((($dictOrd)->Eq0)($__global_Prim_undefined));
-  $__res = (object)["compare" => (function() use ($compare11, $__global_Unsafe_Coerce_unsafeCoerce) {
-  $__fn = function($v, $v1 = null) use ($compare11, $__global_Unsafe_Coerce_unsafeCoerce, &$__fn) {
+  $eqCompose1_0 = (($GLOBALS['Data_Functor_Compose_eqCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_eqCompose')))((($dictOrd1)->Eq10)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictOrd11) use (&$dictOrd1, &$eqCompose1_0) {
+  $__num = \func_num_args();
+  $ordApp_1 = (($GLOBALS['Data_Functor_App_ordApp'] ?? \PhpursThunks::eval('Data_Functor_App_ordApp')))($dictOrd11);
+  $eqCompose2_2 = ($eqCompose1_0)((($dictOrd11)->Eq10)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictOrd) use (&$dictOrd1, &$eqCompose2_2, &$ordApp_1) {
+  $__num = \func_num_args();
+  $compare11_3 = (($dictOrd1)->compare1)(($ordApp_1)($dictOrd));
+  $eqCompose3_4 = ($eqCompose2_2)((($dictOrd)->Eq0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["compare" => (function() use (&$compare11_3) {
+  $__fn = function($v, $v1 = null) use (&$compare11_3, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$fga1 = $__case_0;
-$fga2 = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($compare11)(($__global_Unsafe_Coerce_unsafeCoerce)($fga1)))(($__global_Unsafe_Coerce_unsafeCoerce)($fga2));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = (($compare11_3)((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))($v)))((($GLOBALS['Unsafe_Coerce_unsafeCoerce'] ?? \PhpursThunks::eval('Unsafe_Coerce_unsafeCoerce')))($v1));
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Eq0" => function($dollar__unused) use ($eqCompose3) {
+})(), "Eq0" => function($dollar__unused_0) use (&$eqCompose3_4) {
   $__num = \func_num_args();
-  $__res = $eqCompose3;
+  $__res = $eqCompose3_4;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 3 < $__num ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_ordCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_ordmajCompose';
-
-// Data_Functor_Compose_eq1Compose
-function majData_majFunctor_majCompose_eq1majCompose($dictEq1, $dictEq11 = null) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_eq1Compose'] = function() { $v = (function() {
+  $__fn = function($dictEq1, $dictEq11 = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_eq1majCompose';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Functor_Compose_eqCompose = ($GLOBALS['Data_Functor_Compose_eqCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_eqCompose'));
-  $eqCompose1 = ($__global_Data_Functor_Compose_eqCompose)($dictEq1);
-  $eqCompose2 = ($eqCompose1)($dictEq11);
-  $__res = (object)["eq1" => function($dictEq) use ($eqCompose2) {
+  $__res = (object)["eq1" => function($dictEq) use (&$dictEq1, &$dictEq11) {
   $__num = \func_num_args();
-  $__res = (($eqCompose2)($dictEq))->eq;
+  $__res = ((((($GLOBALS['Data_Functor_Compose_eqCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_eqCompose')))($dictEq1))($dictEq11))($dictEq))->eq;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_eq1Compose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_eq1majCompose';
-
-// Data_Functor_Compose_ord1Compose
-function majData_majFunctor_majCompose_ord1majCompose($dictOrd1, $dictOrd11 = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_ord1Compose'] = function() { $v = function($dictOrd1) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_ord1majCompose';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Functor_Compose_ordCompose = ($GLOBALS['Data_Functor_Compose_ordCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_ordCompose'));
-  $__global_Data_Functor_Compose_eq1Compose = ($GLOBALS['Data_Functor_Compose_eq1Compose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_eq1Compose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $ordCompose1 = ($__global_Data_Functor_Compose_ordCompose)($dictOrd1);
-  $eq1Compose1 = ($__global_Data_Functor_Compose_eq1Compose)((($dictOrd1)->Eq10)($__global_Prim_undefined));
-  $ordCompose2 = ($ordCompose1)($dictOrd11);
-  $eq1Compose2 = ($eq1Compose1)((($dictOrd11)->Eq10)($__global_Prim_undefined));
-  $__res = (object)["compare1" => function($dictOrd) use ($ordCompose2) {
+  $ordCompose1_0 = (($GLOBALS['Data_Functor_Compose_ordCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_ordCompose')))($dictOrd1);
+  $eq1Compose1_1 = (($GLOBALS['Data_Functor_Compose_eq1Compose'] ?? \PhpursThunks::eval('Data_Functor_Compose_eq1Compose')))((($dictOrd1)->Eq10)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictOrd11) use (&$eq1Compose1_1, &$ordCompose1_0) {
   $__num = \func_num_args();
-  $__res = (($ordCompose2)($dictOrd))->compare;
+  $ordCompose2_2 = ($ordCompose1_0)($dictOrd11);
+  $eq1Compose2_3 = ($eq1Compose1_1)((($dictOrd11)->Eq10)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["compare1" => function($dictOrd) use (&$ordCompose2_2) {
+  $__num = \func_num_args();
+  $__res = (($ordCompose2_2)($dictOrd))->compare;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Eq10" => function($dollar__unused) use ($eq1Compose2) {
+}, "Eq10" => function($dollar__unused_0) use (&$eq1Compose2_3) {
   $__num = \func_num_args();
-  $__res = $eq1Compose2;
+  $__res = $eq1Compose2_3;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_ord1Compose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_ord1majCompose';
-
-// Data_Functor_Compose_bihoistCompose
-function majData_majFunctor_majCompose_bihoistmajCompose($dictFunctor, $natF = null, $natG = null, $v = null) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_bihoistCompose'] = function() { $v = (function() {
+  $__fn = function($dictFunctor, $natF = null, $natG = null, $v = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_bihoistmajCompose';
   if ($__num < 4) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 4);
   }
-  $map = ($dictFunctor)->map;
-  $__case_0 = $natF;
-  $__case_1 = $natG;
-  $__case_2 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$natF1 = $__case_0;
-$natG1 = $__case_1;
-$fga = $__case_2;
-if (($__match_0 === false)) {
-if (true) {
-$__res = ($natF1)((($map)($natG1))($fga));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ($natF)(((($dictFunctor)->map)($natG))($v));
+  goto __end;;
   __end:
-  return 4 < $__num ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_bihoistCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_bihoistmajCompose';
-
-// Data_Functor_Compose_applyCompose
-function majData_majFunctor_majCompose_applymajCompose($dictApply, $dictApply1 = null) {
+  return $__num > 4 ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_applyCompose'] = function() { $v = function($dictApply) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_applymajCompose';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Functor_Compose_functorCompose = ($GLOBALS['Data_Functor_Compose_functorCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_functorCompose'));
-  $apply = ($dictApply)->apply;
-  $Functor0 = (($dictApply)->Functor0)($__global_Prim_undefined);
-  $map = ($Functor0)->map;
-  $functorCompose1 = ($__global_Data_Functor_Compose_functorCompose)($Functor0);
-  $apply1 = ($dictApply1)->apply;
-  $functorCompose2 = ($functorCompose1)((($dictApply1)->Functor0)($__global_Prim_undefined));
-  $__res = (object)["apply" => (function() use ($apply, $map, $apply1) {
-  $__fn = function($v, $v1 = null) use ($apply, $map, $apply1, &$__fn) {
+  $Functor0_0 = (($dictApply)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = function($dictApply1) use (&$Functor0_0, &$dictApply) {
+  $__num = \func_num_args();
+  $apply1_1 = ($dictApply1)->apply;
+  $__local_var_2 = (($dictApply1)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $functorCompose2_3 = (object)["map" => (function() use (&$Functor0_0, &$__local_var_2) {
+  $__fn = function($f, $v = null) use (&$Functor0_0, &$__local_var_2, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$f = $__case_0;
-$x = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($apply)((($map)($apply1))($f)))($x);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($Functor0_0)->map)((($__local_var_2)->map)($f)))($v);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) use ($functorCompose2) {
-  $__num = \func_num_args();
-  $__res = $functorCompose2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_applyCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_applymajCompose';
-
-// Data_Functor_Compose_applicativeCompose
-function majData_majFunctor_majCompose_applicativemajCompose($dictApplicative, $dictApplicative1 = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_applicativemajCompose';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Functor_Compose_applyCompose = ($GLOBALS['Data_Functor_Compose_applyCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_applyCompose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Functor_Compose_Compose = ($GLOBALS['Data_Functor_Compose_Compose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_Compose'));
-  $pure = ($dictApplicative)->pure;
-  $applyCompose1 = ($__global_Data_Functor_Compose_applyCompose)((($dictApplicative)->Apply0)($__global_Prim_undefined));
-  $applyCompose2 = ($applyCompose1)((($dictApplicative1)->Apply0)($__global_Prim_undefined));
-  $__res = (object)["pure" => function($__x) use ($__global_Data_Functor_Compose_Compose, $pure, $dictApplicative1) {
-  $__num = \func_num_args();
-  $__res = ($__global_Data_Functor_Compose_Compose)((function($__x) use ($pure, $dictApplicative1) {
-  $__num = \func_num_args();
-  $__res = ($pure)((($dictApplicative1)->pure)($__x));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-})($__x));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Apply0" => function($dollar__unused) use ($applyCompose2) {
-  $__num = \func_num_args();
-  $__res = $applyCompose2;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_applicativeCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_applicativemajCompose';
-
-// Data_Functor_Compose_altCompose
-function majData_majFunctor_majCompose_altmajCompose($dictAlt, $dictFunctor = null) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_altmajCompose';
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__global_Data_Functor_Compose_functorCompose = ($GLOBALS['Data_Functor_Compose_functorCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_functorCompose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $alt = ($dictAlt)->alt;
-  $functorCompose1 = ($__global_Data_Functor_Compose_functorCompose)((($dictAlt)->Functor0)($__global_Prim_undefined));
-  $functorCompose2 = ($functorCompose1)($dictFunctor);
-  $__res = (object)["alt" => (function() use ($alt) {
-  $__fn = function($v, $v1 = null) use ($alt, &$__fn) {
+})()];
+  $__res = (object)["apply" => (function() use (&$Functor0_0, &$apply1_1, &$dictApply) {
+  $__fn = function($v, $v1 = null) use (&$Functor0_0, &$apply1_1, &$dictApply, &$__fn) {
   $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-$b = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($alt)($a))($b);
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($dictApply)->apply)(((($Functor0_0)->map)($apply1_1))($v)))($v1);
+  goto __end;;
   __end:
   return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Functor0" => function($dollar__unused) use ($functorCompose2) {
+})(), "Functor0" => function($dollar__unused_0) use (&$functorCompose2_3) {
   $__num = \func_num_args();
-  $__res = $functorCompose2;
+  $__res = $functorCompose2_3;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_altCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_altmajCompose';
-
-// Data_Functor_Compose_plusCompose
-function majData_majFunctor_majCompose_plusmajCompose($dictPlus, $dictFunctor = null) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_applicativeCompose'] = function() { $v = function($dictApplicative) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_plusmajCompose';
+  $pure_0 = ($dictApplicative)->pure;
+  $applyCompose1_1 = (($GLOBALS['Data_Functor_Compose_applyCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_applyCompose')))((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictApplicative1) use (&$applyCompose1_1, &$pure_0) {
+  $__num = \func_num_args();
+  $applyCompose2_2 = ($applyCompose1_1)((($dictApplicative1)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["pure" => ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Functor_Compose_Compose'] ?? \PhpursThunks::eval('Data_Functor_Compose_Compose'))))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))($pure_0))(($dictApplicative1)->pure)), "Apply0" => function($dollar__unused_0) use (&$applyCompose2_2) {
+  $__num = \func_num_args();
+  $__res = $applyCompose2_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_altCompose'] = function() { $v = function($dictAlt) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictAlt)->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = function($dictFunctor) use (&$__local_var_0, &$dictAlt) {
+  $__num = \func_num_args();
+  $functorCompose2_1 = (object)["map" => (function() use (&$__local_var_0, &$dictFunctor) {
+  $__fn = function($f, $v = null) use (&$__local_var_0, &$dictFunctor, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Functor_Compose_altCompose = ($GLOBALS['Data_Functor_Compose_altCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_altCompose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $empty = ($dictPlus)->empty;
-  $altCompose1 = ($__global_Data_Functor_Compose_altCompose)((($dictPlus)->Alt0)($__global_Prim_undefined));
-  $altCompose2 = ($altCompose1)($dictFunctor);
-  $__res = (object)["empty" => $empty, "Alt0" => function($dollar__unused) use ($altCompose2) {
-  $__num = \func_num_args();
-  $__res = $altCompose2;
+  $__res = ((($__local_var_0)->map)((($dictFunctor)->map)($f)))($v);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_plusCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_plusmajCompose';
-
-// Data_Functor_Compose_alternativeCompose
-function majData_majFunctor_majCompose_alternativemajCompose($dictAlternative, $dictApplicative = null) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  $__res = (object)["alt" => (function() use (&$dictAlt) {
+  $__fn = function($v, $v1 = null) use (&$dictAlt, &$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majFunctor_majCompose_alternativemajCompose';
   if ($__num < 2) {
     return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Functor_Compose_applicativeCompose = ($GLOBALS['Data_Functor_Compose_applicativeCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_applicativeCompose'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Functor_Compose_plusCompose = ($GLOBALS['Data_Functor_Compose_plusCompose'] ?? \Data\Functor\Compose\phpurs_eval_thunk('Data_Functor_Compose_plusCompose'));
-  $applicativeCompose1 = ($__global_Data_Functor_Compose_applicativeCompose)((($dictAlternative)->Applicative0)($__global_Prim_undefined));
-  $plusCompose1 = ($__global_Data_Functor_Compose_plusCompose)((($dictAlternative)->Plus1)($__global_Prim_undefined));
-  $applicativeCompose2 = ($applicativeCompose1)($dictApplicative);
-  $plusCompose2 = ($plusCompose1)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-  $__res = (object)["Applicative0" => function($dollar__unused) use ($applicativeCompose2) {
-  $__num = \func_num_args();
-  $__res = $applicativeCompose2;
+  $__res = ((($dictAlt)->alt)($v))($v1);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Plus1" => function($dollar__unused) use ($plusCompose2) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Functor0" => function($dollar__unused_0) use (&$functorCompose2_1) {
   $__num = \func_num_args();
-  $__res = $plusCompose2;
+  $__res = $functorCompose2_1;
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Data_Functor_Compose_alternativeCompose'] = __NAMESPACE__ . '\\majData_majFunctor_majCompose_alternativemajCompose';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_plusCompose'] = function() { $v = function($dictPlus) {
+  $__num = \func_num_args();
+  $empty_0 = ($dictPlus)->empty;
+  $altCompose1_1 = (($GLOBALS['Data_Functor_Compose_altCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_altCompose')))((($dictPlus)->Alt0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictFunctor) use (&$altCompose1_1, &$empty_0) {
+  $__num = \func_num_args();
+  $altCompose2_2 = ($altCompose1_1)($dictFunctor);
+  $__res = (object)["empty" => $empty_0, "Alt0" => function($dollar__unused_0) use (&$altCompose2_2) {
+  $__num = \func_num_args();
+  $__res = $altCompose2_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Functor_Compose_alternativeCompose'] = function() { $v = function($dictAlternative) {
+  $__num = \func_num_args();
+  $applicativeCompose1_0 = (($GLOBALS['Data_Functor_Compose_applicativeCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_applicativeCompose')))((($dictAlternative)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $plusCompose1_1 = (($GLOBALS['Data_Functor_Compose_plusCompose'] ?? \PhpursThunks::eval('Data_Functor_Compose_plusCompose')))((($dictAlternative)->Plus1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = function($dictApplicative) use (&$applicativeCompose1_0, &$plusCompose1_1) {
+  $__num = \func_num_args();
+  $applicativeCompose2_2 = ($applicativeCompose1_0)($dictApplicative);
+  $plusCompose2_3 = ($plusCompose1_1)((((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["Applicative0" => function($dollar__unused_0) use (&$applicativeCompose2_2) {
+  $__num = \func_num_args();
+  $__res = $applicativeCompose2_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Plus1" => function($dollar__unused_0) use (&$plusCompose2_3) {
+  $__num = \func_num_args();
+  $__res = $plusCompose2_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

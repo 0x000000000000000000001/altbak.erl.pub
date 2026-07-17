@@ -2,6 +2,8 @@
 
 namespace Control\Monad\List\Trans;
 
+// ALL IMPORTS: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Bind, Control.Category, Control.Monad, Control.Monad.List.Trans, Control.Monad.Rec.Class, Control.Monad.ST.Class, Control.Monad.Trans.Class, Control.MonadPlus, Control.Plus, Control.Semigroupoid, Data.Function, Data.Functor, Data.Lazy, Data.Maybe, Data.Monoid, Data.Newtype, Data.Ring, Data.Semigroup, Data.Tuple, Data.Unfoldable, Data.Unfoldable1, Data.Unit, Effect.Class, Prelude, Prim
+// TO REQUIRE: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Bind, Control.Category, Control.Monad, Control.Monad.List.Trans, Control.Monad.Rec.Class, Control.Monad.ST.Class, Control.Monad.Trans.Class, Control.MonadPlus, Control.Plus, Control.Semigroupoid, Data.Function, Data.Functor, Data.Lazy, Data.Maybe, Data.Monoid, Data.Newtype, Data.Ring, Data.Semigroup, Data.Tuple, Data.Unfoldable, Data.Unfoldable1, Data.Unit, Effect.Class, Prelude
 require_once __DIR__ . '/../Control.Alt/index.php';
 require_once __DIR__ . '/../Control.Alternative/index.php';
 require_once __DIR__ . '/../Control.Applicative/index.php';
@@ -33,23 +35,23 @@ require_once __DIR__ . '/../Prelude/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -57,12 +59,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -70,13 +72,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -84,2225 +86,1662 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Control_Monad_List_Trans_compose': $v = (($GLOBALS['Control_Semigroupoid_semigroupoidFn'] ?? \Control\Semigroupoid\phpurs_eval_thunk('Control_Semigroupoid_semigroupoidFn')))->compose; break;
-      case 'Control_Monad_List_Trans_map': $v = (($GLOBALS['Data_Maybe_functorMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_functorMaybe')))->map; break;
-      case 'Control_Monad_List_Trans_map1': $v = (($GLOBALS['Data_Lazy_functorLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_functorLazy')))->map; break;
-      case 'Control_Monad_List_Trans_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
-      case 'Control_Monad_List_Trans_identity': $v = (($GLOBALS['Control_Category_categoryFn'] ?? \Control\Category\phpurs_eval_thunk('Control_Category_categoryFn')))->identity; break;
-      case 'Control_Monad_List_Trans_pure': $v = (($GLOBALS['Data_Lazy_applicativeLazy'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_applicativeLazy')))->pure; break;
-      case 'Control_Monad_List_Trans_Done': $v = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done")); break;
-      case 'Control_Monad_List_Trans_newtypeListT': $v = (object)["Coercible0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_List_Trans_monadTransListT': $v = (object)["lift" => function($dictMonad) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_fromEffect = ($GLOBALS['Control_Monad_List_Trans_fromEffect'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_fromEffect'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = ($__global_Control_Monad_List_Trans_fromEffect)((($dictMonad)->Applicative0)($__global_Prim_undefined));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Control_Monad_List_Trans_lift': $v = (($GLOBALS['Control_Monad_List_Trans_monadTransListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_monadTransListT')))->lift; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-
-
-
-// Control_Monad_List_Trans_Yield
-function Control_Monad_List_Trans_Yield($value0, $value1 = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_Yield';
+\PhpursThunks::$thunks['Control_Monad_List_Trans_Yield'] = function() { $v = (function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($value1) use ($value0, $__fn) { return $__fn($value0, $value1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
   $__res = new Phpurs_Data2("Yield", $value0, $value1);
   goto __end;;
   __end:
-  return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_Yield'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_Yield';
-
-// Control_Monad_List_Trans_Skip
-function Control_Monad_List_Trans_Skip($value0) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_Skip';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_Skip'] = function() { $v = function($value0) {
+  $__num = \func_num_args();
   $__res = new Phpurs_Data1("Skip", $value0);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_Skip'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_Skip';
-
-
-// Control_Monad_List_Trans_ListT
-function Control_Monad_List_Trans_ListT($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_ListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_Done'] = function() { $v = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done")); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_ListT'] = function() { $v = function($x) {
+  $__num = \func_num_args();
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_ListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_ListT';
-
-// Control_Monad_List_Trans_wrapLazy
-function Control_Monad_List_Trans_wrapLazy($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_wrapLazy';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $pure1 = ($dictApplicative)->pure;
-  $__res = function($v) use ($pure1) {
-  $__num = func_num_args();
-  $__res = ($pure1)(new Phpurs_Data1("Skip", $v));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_wrapLazy'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_wrapLazy';
-
-// Control_Monad_List_Trans_wrapEffect
-function Control_Monad_List_Trans_wrapEffect($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_wrapEffect';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_compose = ($GLOBALS['Control_Monad_List_Trans_compose'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_compose'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $map2 = ($dictFunctor)->map;
-  $__res = function($v) use ($map2, $__global_Control_Monad_List_Trans_compose, $__global_Data_Lazy_defer, $__global_Data_Function_const) {
-  $__num = func_num_args();
-  $__res = ($map2)(($__global_Control_Monad_List_Trans_compose)(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Skip", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, ($__global_Control_Monad_List_Trans_compose)($__global_Data_Lazy_defer, $__global_Data_Function_const)), $v);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_wrapEffect'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_wrapEffect';
-
-// Control_Monad_List_Trans_unfold
-function Control_Monad_List_Trans_unfold($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_unfold';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  while (true) {
-$map2 = ((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-$__res = (function() use ($__global_Data_Lazy_defer, $dictMonad, $map2, &$__fn) {
-  $__fn = function($f, $z = null) use ($__global_Data_Lazy_defer, $dictMonad, $map2, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_wrapLazy'] = function() { $v = (function() {
+  $__fn = function($dictApplicative, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($z) use ($f, &$__fn) { return $__fn($f, $z); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Control_Monad_List_Trans_unfold = ($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_unfold'));
-  $g = function($v) use ($__global_Data_Lazy_defer, $__global_Control_Monad_List_Trans_unfold, $dictMonad, $f) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$z__prime__ = (($__case_0)->v0)->v0;
-$a = (($__case_0)->v0)->v1;
-$__res = new Phpurs_Data2("Yield", $a, ($__global_Data_Lazy_defer)(function($v1) use ($__global_Control_Monad_List_Trans_unfold, $dictMonad, $f, $z__prime__) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_unfold)($dictMonad, $f, $z__prime__);
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data1("Skip", $v));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}));
-goto __end;;
-} else {
-switch (($__case_0)->tag) {
-case "Nothing":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($map2)($g, ($f)($z));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})();
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_unfold'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_unfold';
-
-// Control_Monad_List_Trans_uncons
-function Control_Monad_List_Trans_uncons($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_uncons';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  while (true) {
-$pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-$bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-$__res = function($v) use ($pure1, $__global_Data_Lazy_force, $dictMonad, $bind) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__case_0 = $v;
-  if (true) {
-$l = $__case_0;
-$g = function($v1) use ($pure1, $__global_Data_Lazy_force, $__global_Control_Monad_List_Trans_uncons, $dictMonad) {
-  $__num = func_num_args();
-  $__case_0 = $v1;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__res = ($pure1)(new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", $a, ($__global_Data_Lazy_force)($s))));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = ($__global_Control_Monad_List_Trans_uncons)($dictMonad, ($__global_Data_Lazy_force)($s));
-goto __end;;
-break;
-case "Done":
-$__res = ($pure1)(($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing")));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($bind)($l, $g);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_uncons'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_uncons';
-
-// Control_Monad_List_Trans_tail
-function Control_Monad_List_Trans_tail($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_tail';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Control_Monad_List_Trans_map = ($GLOBALS['Control_Monad_List_Trans_map'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map'));
-  $__global_Data_Tuple_snd = ($GLOBALS['Data_Tuple_snd'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_snd'));
-  $map2 = ((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($dictMonad);
-  $__res = function($l) use ($map2, $__global_Control_Monad_List_Trans_map, $__global_Data_Tuple_snd, $uncons1) {
-  $__num = func_num_args();
-  $__res = ($map2)(($__global_Control_Monad_List_Trans_map)($__global_Data_Tuple_snd), ($uncons1)($l));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_tail'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_tail';
-
-// Control_Monad_List_Trans_stepMap
-function Control_Monad_List_Trans_stepMap($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_stepMap';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $map2 = ($dictFunctor)->map;
-  $__res = (function() use ($map2, &$__fn) {
-  $__fn = function($f, $v = null) use ($map2, &$__fn) {
-  $__num = func_num_args();
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_wrapEffect'] = function() { $v = (function() {
+  $__fn = function($dictFunctor, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($v) use ($f, &$__fn) { return $__fn($f, $v); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__case_0 = $f;
-  $__case_1 = $v;
-  if (true) {
-$f1 = $__case_0;
-$l = $__case_1;
-$__res = ($map2)($f1, $l);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($dictFunctor)->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Control_Monad_List_Trans_Skip'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_Skip'))))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const'))))))($v);
+  goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_stepMap'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_stepMap';
-
-// Control_Monad_List_Trans_takeWhile
-function Control_Monad_List_Trans_takeWhile($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_takeWhile';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = function($f) use ($__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_takeWhile = ($GLOBALS['Control_Monad_List_Trans_takeWhile'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_takeWhile'));
-  $g = function($v) use ($f, $__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_takeWhile, $dictApplicative) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__case_0 = ($f)($a);
-switch ($__case_0) {
-case true:
-$__res = new Phpurs_Data2("Yield", $a, ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_takeWhile)($dictApplicative, $f), $s));
-goto __end;;
-break;
-default:
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-};
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_takeWhile)($dictApplicative, $f), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($stepMap1)($g);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_takeWhile'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_takeWhile';
-
-// Control_Monad_List_Trans_scanl
-function Control_Monad_List_Trans_scanl($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_scanl';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_unfold = ($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_unfold'));
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $map2 = ((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $unfold1 = ($__global_Control_Monad_List_Trans_unfold)($dictMonad);
-  $__res = (function() use ($__global_Data_Lazy_force, $map2, $unfold1, &$__fn) {
-  $__fn = function($f, $b = null, $l = null) use ($__global_Data_Lazy_force, $map2, $unfold1, &$__fn) {
-  $__num = func_num_args();
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_unfold'] = function() { $v = (function() {
+  $__fn = function($dictMonad, $f = null, $z = null) use (&$__fn) {
+  $__num = \func_num_args();
   if ($__num < 3) {
-    if ($__num === 2) return function($l) use ($f, $b, &$__fn) { return $__fn($f, $b, $l); };
-    if ($__num === 1) return function($b, $l = null) use ($f, &$__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($f, $b, $l);
-      if ($__num2 === 1) return function($l) use ($f, $b, &$__fn) { return $__fn($f, $b, $l); };
-      return phpurs_curry_fallback($__fn, [$f], 3);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 3);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $g = function($v) use ($f, $__global_Data_Lazy_force, $map2) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Tuple":
-$b__prime__ = ($__case_0)->v0;
-$l__prime__ = ($__case_0)->v1;
-$h = function($v1) use ($f, $b__prime__, $__global_Data_Lazy_force) {
-  $__num = func_num_args();
-  $__case_0 = $v1;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$b__prime____prime__ = ($f)($b__prime__, $a);
-$__res = new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", new Phpurs_Data2("Tuple", $b__prime____prime__, ($__global_Data_Lazy_force)($s)), $b__prime__));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", new Phpurs_Data2("Tuple", $b__prime__, ($__global_Data_Lazy_force)($s)), $b__prime__));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($map2)($h, $l__prime__);
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($unfold1)($g, new Phpurs_Data2("Tuple", $b, $l));
+  $__res = ((((((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($v) use (&$dictMonad, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Just"))) {
+$__local_var_1 = (($v)->value0)->value0;
+$__t0 = new Phpurs_Data2("Yield", (($v)->value0)->value1, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v1) use (&$__local_var_1, &$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_unfold')))($dictMonad))($f))($__local_var_1);
   goto __end;;
   __end:
-  return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_scanl'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_scanl';
-
-// Control_Monad_List_Trans_prepend'
-function Control_Monad_List_Trans_prepend__prime__($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_prepend__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $pure1 = ($dictApplicative)->pure;
-  $__res = (function() use ($pure1, &$__fn) {
-  $__fn = function($h, $t = null) use ($pure1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($t) use ($h, &$__fn) { return $__fn($h, $t); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($pure1)(new Phpurs_Data2("Yield", $h, $t));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_prepend__prime__'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_prepend__prime__';
-
-// Control_Monad_List_Trans_prepend
-function Control_Monad_List_Trans_prepend($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_prepend';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_prepend__prime__ = ($GLOBALS['Control_Monad_List_Trans_prepend__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_prepend__prime__'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $prepend__prime__1 = ($__global_Control_Monad_List_Trans_prepend__prime__)($dictApplicative);
-  $__res = (function() use ($prepend__prime__1, $__global_Data_Lazy_defer, $__global_Data_Function_const, &$__fn) {
-  $__fn = function($h, $t = null) use ($prepend__prime__1, $__global_Data_Lazy_defer, $__global_Data_Function_const, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($t) use ($h, &$__fn) { return $__fn($h, $t); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($prepend__prime__1)($h, ($__global_Data_Lazy_defer)(($__global_Data_Function_const)($t)));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_prepend'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_prepend';
-
-// Control_Monad_List_Trans_nil
-function Control_Monad_List_Trans_nil($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_nil';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = (($dictApplicative)->pure)(($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done")));
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_nil'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_nil';
-
-// Control_Monad_List_Trans_singleton
-function Control_Monad_List_Trans_singleton($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_singleton';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_prepend = ($GLOBALS['Control_Monad_List_Trans_prepend'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_prepend'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $prepend1 = ($__global_Control_Monad_List_Trans_prepend)($dictApplicative);
-  $nil1 = ($__global_Control_Monad_List_Trans_nil)($dictApplicative);
-  $__res = function($a) use ($prepend1, $nil1) {
-  $__num = func_num_args();
-  $__res = ($prepend1)($a, $nil1);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_singleton'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_singleton';
-
-// Control_Monad_List_Trans_take
-function Control_Monad_List_Trans_take($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_take';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$nil1 = ($__global_Control_Monad_List_Trans_nil)($dictApplicative);
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = (function() use ($nil1, $__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($nil1, $__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Control_Monad_List_Trans_take = ($GLOBALS['Control_Monad_List_Trans_take'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_take'));
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  switch ($__case_0) {
-case 0:
-$__res = $nil1;
-goto __end;;
-break;
-default:
-$n = $__case_0;
-$fa = $__case_1;
-$f = function($v2) use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_take, $dictApplicative, $n) {
-  $__num = func_num_args();
-  $__case_0 = $v2;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__res = new Phpurs_Data2("Yield", $a, ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_take)($dictApplicative, ($n - 1)), $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_take)($dictApplicative, $n), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($stepMap1)($f, $fa);
-goto __end;;
-break;
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_take'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_take';
-
-// Control_Monad_List_Trans_zipWith'
-function Control_Monad_List_Trans_zipWith__prime__($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_zipWith__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $__global_Control_Monad_List_Trans_prepend__prime__ = ($GLOBALS['Control_Monad_List_Trans_prepend__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_prepend__prime__'));
-  $__global_Control_Monad_List_Trans_wrapEffect = ($GLOBALS['Control_Monad_List_Trans_wrapEffect'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_wrapEffect'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Data_Function_flip = ($GLOBALS['Data_Function_flip'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_flip'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  while (true) {
-$Applicative0 = (($dictMonad)->Applicative0)($__global_Prim_undefined);
-$pure1 = ($Applicative0)->pure;
-$nil1 = ($__global_Control_Monad_List_Trans_nil)($Applicative0);
-$Bind1 = (($dictMonad)->Bind1)($__global_Prim_undefined);
-$Functor0 = (((($Bind1)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined);
-$map2 = ($Functor0)->map;
-$prepend__prime__1 = ($__global_Control_Monad_List_Trans_prepend__prime__)($Applicative0);
-$wrapEffect1 = ($__global_Control_Monad_List_Trans_wrapEffect)($Functor0);
-$bind = ($Bind1)->bind;
-$uncons1 = ($__global_Control_Monad_List_Trans_uncons)($dictMonad);
-$__res = function($f) use ($pure1, $nil1, $map2, $__global_Data_Function_flip, $prepend__prime__1, $__global_Data_Lazy_defer, $dictMonad, $wrapEffect1, $bind, $uncons1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_zipWith__prime__ = ($GLOBALS['Control_Monad_List_Trans_zipWith__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_zipWith__prime__'));
-  $g = (function() use ($pure1, $nil1, $map2, $__global_Data_Function_flip, $prepend__prime__1, $__global_Data_Lazy_defer, $__global_Control_Monad_List_Trans_zipWith__prime__, $dictMonad, $f, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($pure1, $nil1, $map2, $__global_Data_Function_flip, $prepend__prime__1, $__global_Data_Lazy_defer, $__global_Control_Monad_List_Trans_zipWith__prime__, $dictMonad, $f, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  if ((($__case_1)->tag === "Nothing")) {
-$__res = ($pure1)($nil1);
-goto __end;;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
 } else {
-if ((($__case_0)->tag === "Nothing")) {
-$__res = ($pure1)($nil1);
-goto __end;;
+if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t0 = new Phpurs_Data0("Done");
 } else {
-if ((((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple")) && ((($__case_1)->tag === "Just") && ((($__case_1)->v0)->tag === "Tuple")))) {
-$ha = (($__case_0)->v0)->v0;
-$ta = (($__case_0)->v0)->v1;
-$hb = (($__case_1)->v0)->v0;
-$tb = (($__case_1)->v0)->v1;
-$__res = ($map2)(($__global_Data_Function_flip)($prepend__prime__1, ($__global_Data_Lazy_defer)(function($v2) use ($__global_Control_Monad_List_Trans_zipWith__prime__, $dictMonad, $f, $ta, $tb) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_zipWith__prime__)($dictMonad, $f, $ta, $tb);
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-})), ($f)($ha, $hb));
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-};
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($f)($z));
+  goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})();
-  $loop = (function() use ($wrapEffect1, $bind, $uncons1, $g, &$__fn) {
-  $__fn = function($fa, $fb = null) use ($wrapEffect1, $bind, $uncons1, $g, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($fb) use ($fa, &$__fn) { return $__fn($fa, $fb); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($wrapEffect1)(($bind)(($uncons1)($fa), function($ua) use ($bind, $uncons1, $fb, $g) {
-  $__num = func_num_args();
-  $__res = ($bind)(($uncons1)($fb), function($ub) use ($g, $ua) {
-  $__num = func_num_args();
-  $__res = ($g)($ua, $ub);
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_uncons'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = function($v) use (&$__local_var_0, &$dictMonad) {
+  $__num = \func_num_args();
+  $__res = ((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->bind)($v))(function($v1) use (&$__local_var_0, &$dictMonad) {
+  $__num = \func_num_args();
+  if ((is_object($v1) && (($v1)->tag === "Yield"))) {
+$__t1 = (($__local_var_0)->pure)(new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", ($v1)->value0, (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v1)->value1))));
+} else {
+if ((is_object($v1) && (($v1)->tag === "Skip"))) {
+$__t1 = ((($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v1)->value0));
+} else {
+if ((is_object($v1) && (($v1)->tag === "Done"))) {
+$__t1 = (($__local_var_0)->pure)(new Phpurs_Data0("Nothing"));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+};
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 });
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_tail'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $uncons1_0 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad);
+  $__res = function($l) use (&$dictMonad, &$uncons1_0) {
+  $__num = \func_num_args();
+  $__res = ((((((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($v1) {
+  $__num = \func_num_args();
+  if ((is_object($v1) && (($v1)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", (($v1)->value0)->value1);
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($uncons1_0)($l));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_takeWhile'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__local_var_0 = (((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_0, &$dictApplicative) {
+  $__fn = function($f, $v = null) use (&$__local_var_0, &$dictApplicative, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($__local_var_0)->map)(function($v) use (&$dictApplicative, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+if (($f)(($v)->value0)) {
+$__local_var_3 = ((($GLOBALS['Control_Monad_List_Trans_takeWhile'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_takeWhile')))($dictApplicative))($f);
+$__t2 = new Phpurs_Data2("Yield", ($v)->value0, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_3)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v)->value1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  $__res = $loop;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+} else {
+$__t2 = new Phpurs_Data0("Done");
 };
-goto __end;;
+$__t1 = $__t2;
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_4 = ($v)->value0;
+$__local_var_5 = ((($GLOBALS['Control_Monad_List_Trans_takeWhile'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_takeWhile')))($dictApplicative))($f);
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4, &$__local_var_5) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_5)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_4));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t1 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_zipWith__prime__'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_zipWith__prime__';
-
-// Control_Monad_List_Trans_zipWith
-function Control_Monad_List_Trans_zipWith($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_zipWith';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_zipWith__prime__ = ($GLOBALS['Control_Monad_List_Trans_zipWith__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_zipWith__prime__'));
-  $pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-  $zipWith__prime__1 = ($__global_Control_Monad_List_Trans_zipWith__prime__)($dictMonad);
-  $__res = function($f) use ($pure1, $zipWith__prime__1) {
-  $__num = func_num_args();
-  $g = (function() use ($pure1, $f, &$__fn) {
-  $__fn = function($a, $b = null) use ($pure1, $f, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($pure1)(($f)($a, $b));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  $__res = ($zipWith__prime__1)($g);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 };
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_zipWith'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_zipWith';
-
-
-// Control_Monad_List_Trans_mapMaybe
-function Control_Monad_List_Trans_mapMaybe($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_mapMaybe';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Data_Maybe_fromMaybe = ($GLOBALS['Data_Maybe_fromMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_fromMaybe'));
-  $__global_Control_Monad_List_Trans_map = ($GLOBALS['Control_Monad_List_Trans_map'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)($dictFunctor);
-$__res = function($f) use ($__global_Data_Maybe_fromMaybe, $__global_Control_Monad_List_Trans_map, $__global_Control_Monad_List_Trans_map1, $dictFunctor, $stepMap1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_mapMaybe = ($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_mapMaybe'));
-  $g = function($v) use ($__global_Data_Maybe_fromMaybe, $__global_Control_Monad_List_Trans_map, $f, $__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_mapMaybe, $dictFunctor) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__res = ($__global_Data_Maybe_fromMaybe)(function($value0) {
-  $__num = func_num_args();
-  $__res = new Phpurs_Data1("Skip", $value0);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, ($__global_Control_Monad_List_Trans_map)((function() use (&$__fn) {
-  $__fn = function($value0, $value1 = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = new Phpurs_Data2("Yield", $value0, $value1);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), ($f)($a)), ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_mapMaybe)($dictFunctor, $f), $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_mapMaybe)($dictFunctor, $f), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
 };
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($stepMap1)($g);
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-};
-  $__res = null;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_mapMaybe'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_mapMaybe';
-
-// Control_Monad_List_Trans_iterate
-function Control_Monad_List_Trans_iterate($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_iterate';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_unfold = ($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_unfold'));
-  $pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-  $unfold1 = ($__global_Control_Monad_List_Trans_unfold)($dictMonad);
-  $__res = (function() use ($pure1, $unfold1, &$__fn) {
-  $__fn = function($f, $a = null) use ($pure1, $unfold1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($a) use ($f, &$__fn) { return $__fn($f, $a); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $g = function($x) use ($pure1, $f) {
-  $__num = func_num_args();
-  $__res = ($pure1)(new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", ($f)($x), $x)));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($unfold1)($g, $a);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_iterate'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_iterate';
-
-// Control_Monad_List_Trans_repeat
-function Control_Monad_List_Trans_repeat($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_repeat';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_scanl'] = function() { $v = (function() {
+  $__fn = function($dictMonad, $f = null, $b = null, $l = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 4) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 4);
   }
-  $__global_Control_Monad_List_Trans_iterate = ($GLOBALS['Control_Monad_List_Trans_iterate'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_iterate'));
-  $__global_Control_Monad_List_Trans_identity = ($GLOBALS['Control_Monad_List_Trans_identity'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_identity'));
-  $__res = ($__global_Control_Monad_List_Trans_iterate)($dictMonad, $__global_Control_Monad_List_Trans_identity);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_repeat'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_repeat';
-
-// Control_Monad_List_Trans_head
-function Control_Monad_List_Trans_head($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_head';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Control_Monad_List_Trans_map = ($GLOBALS['Control_Monad_List_Trans_map'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map'));
-  $__global_Data_Tuple_fst = ($GLOBALS['Data_Tuple_fst'] ?? \Data\Tuple\phpurs_eval_thunk('Data_Tuple_fst'));
-  $map2 = ((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($dictMonad);
-  $__res = function($l) use ($map2, $__global_Control_Monad_List_Trans_map, $__global_Data_Tuple_fst, $uncons1) {
-  $__num = func_num_args();
-  $__res = ($map2)(($__global_Control_Monad_List_Trans_map)($__global_Data_Tuple_fst), ($uncons1)($l));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_unfold')))($dictMonad))(function($v) use (&$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__local_var_0 = ($v)->value0;
+  $__res = ((((((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($v1) use (&$__local_var_0, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v1) && (($v1)->tag === "Yield"))) {
+$__t1 = new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", new Phpurs_Data2("Tuple", (($f)($__local_var_0))(($v1)->value0), (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v1)->value1)), $__local_var_0));
+} else {
+if ((is_object($v1) && (($v1)->tag === "Skip"))) {
+$__t1 = new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", new Phpurs_Data2("Tuple", $__local_var_0, (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v1)->value0)), $__local_var_0));
+} else {
+if ((is_object($v1) && (($v1)->tag === "Done"))) {
+$__t1 = new Phpurs_Data0("Nothing");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_head'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_head';
-
-// Control_Monad_List_Trans_functorListT
-function Control_Monad_List_Trans_functorListT($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_functorListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)($dictFunctor);
-$__res = (object)["map" => function($f) use ($__global_Control_Monad_List_Trans_map1, $dictFunctor, $stepMap1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_functorListT = ($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_functorListT'));
-  $g = function($v) use ($f, $__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_functorListT, $dictFunctor) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__res = new Phpurs_Data2("Yield", ($f)($a), ($__global_Control_Monad_List_Trans_map1)(((($__global_Control_Monad_List_Trans_functorListT)($dictFunctor))->map)($f), $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(((($__global_Control_Monad_List_Trans_functorListT)($dictFunctor))->map)($f), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
 };
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 };
-  $__res = ($stepMap1)($g);
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-goto __end;;
-};
-  $__res = null;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($v)->value1);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_functorListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_functorListT';
-
-// Control_Monad_List_Trans_fromEffect
-function Control_Monad_List_Trans_fromEffect($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_fromEffect';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $__global_Data_Function_flip = ($GLOBALS['Data_Function_flip'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_flip'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $map2 = ((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined))->map;
-  $nil1 = ($__global_Control_Monad_List_Trans_nil)($dictApplicative);
-  $__res = function($fa) use ($map2, $__global_Data_Function_flip, $__global_Data_Lazy_defer, $nil1) {
-  $__num = func_num_args();
-  $__res = ($map2)(($__global_Data_Function_flip)((function() use (&$__fn) {
-  $__fn = function($value0, $value1 = null) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = new Phpurs_Data2("Yield", $value0, $value1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(new Phpurs_Data2("Tuple", $b, $l));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 4 ? $__res(...\array_slice(\func_get_args(), 4)) : $__res;
   };
   return $__fn;
-})(), ($__global_Data_Lazy_defer)(function($v) use ($nil1) {
-  $__num = func_num_args();
-  $__res = $nil1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-})), $fa);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_fromEffect'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_fromEffect';
-
-
-
-// Control_Monad_List_Trans_foldlRec'
-function Control_Monad_List_Trans_foldlRec__prime__($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_foldlRec__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_prepend__prime__'] = function() { $v = (function() {
+  $__fn = function($dictApplicative, $h = null, $t = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Control_Monad_Rec_Class_tailRecM2 = ($GLOBALS['Control_Monad_Rec_Class_tailRecM2'] ?? \Control\Monad\Rec\Class\phpurs_eval_thunk('Control_Monad_Rec_Class_tailRecM2'));
-  $Monad0 = (($dictMonadRec)->Monad0)($__global_Prim_undefined);
-  $pure1 = ((($Monad0)->Applicative0)($__global_Prim_undefined))->pure;
-  $bind = ((($Monad0)->Bind1)($__global_Prim_undefined))->bind;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($Monad0);
-  $tailRecM2 = ($__global_Control_Monad_Rec_Class_tailRecM2)($dictMonadRec);
-  $__res = function($f) use ($pure1, $bind, $uncons1, $tailRecM2) {
-  $__num = func_num_args();
-  $loop = (function() use ($pure1, $bind, $f, $uncons1, &$__fn) {
-  $__fn = function($b, $l = null) use ($pure1, $bind, $f, $uncons1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($b, &$__fn) { return $__fn($b, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $g = function($v) use ($pure1, $b, $bind, $f) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if ((($__case_0)->tag === "Nothing")) {
-$__res = ($pure1)(new Phpurs_Data1("Done", $b));
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$a = (($__case_0)->v0)->v0;
-$as = (($__case_0)->v0)->v1;
-$__res = ($bind)(($f)($b, $a), function($b__prime__) use ($pure1, $as) {
-  $__num = func_num_args();
-  $__res = ($pure1)(new Phpurs_Data1("Loop", (object)["a" => $b__prime__, "b" => $as]));
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data2("Yield", $h, $t));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-});
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($bind)(($uncons1)($l), $g);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})();
-  $__res = ($tailRecM2)($loop);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_foldlRec__prime__'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_foldlRec__prime__';
-
-// Control_Monad_List_Trans_runListTRec
-function Control_Monad_List_Trans_runListTRec($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_runListTRec';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_prepend'] = function() { $v = (function() {
+  $__fn = function($dictApplicative, $h = null, $t = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_foldlRec__prime__ = ($GLOBALS['Control_Monad_List_Trans_foldlRec__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_foldlRec__prime__'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $pure1 = ((((($dictMonadRec)->Monad0)($__global_Prim_undefined))->Applicative0)($__global_Prim_undefined))->pure;
-  $__res = ($__global_Control_Monad_List_Trans_foldlRec__prime__)($dictMonadRec, (function() use ($pure1, $__global_Data_Unit_unit, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($pure1, $__global_Data_Unit_unit, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($pure1)($__global_Data_Unit_unit);
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data2("Yield", $h, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$t) {
+  $__num = \func_num_args();
+  $__res = $t;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
   };
   return $__fn;
-})(), $__global_Data_Unit_unit);
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_nil'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data0("Done"));
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_runListTRec'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_runListTRec';
-
-// Control_Monad_List_Trans_foldlRec
-function Control_Monad_List_Trans_foldlRec($dictMonadRec) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_foldlRec';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Control_Monad_Rec_Class_tailRecM2 = ($GLOBALS['Control_Monad_Rec_Class_tailRecM2'] ?? \Control\Monad\Rec\Class\phpurs_eval_thunk('Control_Monad_Rec_Class_tailRecM2'));
-  $Monad0 = (($dictMonadRec)->Monad0)($__global_Prim_undefined);
-  $pure1 = ((($Monad0)->Applicative0)($__global_Prim_undefined))->pure;
-  $bind = ((($Monad0)->Bind1)($__global_Prim_undefined))->bind;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($Monad0);
-  $tailRecM2 = ($__global_Control_Monad_Rec_Class_tailRecM2)($dictMonadRec);
-  $__res = function($f) use ($pure1, $bind, $uncons1, $tailRecM2) {
-  $__num = func_num_args();
-  $loop = (function() use ($pure1, $f, $bind, $uncons1, &$__fn) {
-  $__fn = function($b, $l = null) use ($pure1, $f, $bind, $uncons1, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_singleton'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $nil1_0 = (($dictApplicative)->pure)(new Phpurs_Data0("Done"));
+  $__res = function($a) use (&$dictApplicative, &$nil1_0) {
+  $__num = \func_num_args();
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data2("Yield", $a, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$nil1_0) {
+  $__num = \func_num_args();
+  $__res = $nil1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_take'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $nil1_0 = (($dictApplicative)->pure)(new Phpurs_Data0("Done"));
+  $__local_var_1 = (((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_1, &$dictApplicative, &$nil1_0) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_1, &$dictApplicative, &$nil1_0, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($b, &$__fn) { return $__fn($b, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $g = function($v) use ($pure1, $b, $f) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if ((($__case_0)->tag === "Nothing")) {
-$__res = ($pure1)(new Phpurs_Data1("Done", $b));
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$a = (($__case_0)->v0)->v0;
-$as = (($__case_0)->v0)->v1;
-$__res = ($pure1)(new Phpurs_Data1("Loop", (object)["a" => ($f)($b, $a), "b" => $as]));
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($bind)(($uncons1)($l), $g);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  $__res = ($tailRecM2)($loop);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_foldlRec'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_foldlRec';
-
-// Control_Monad_List_Trans_foldl'
-function Control_Monad_List_Trans_foldl__prime__($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_foldl__prime__';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $__global_Data_Function_flip = ($GLOBALS['Data_Function_flip'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_flip'));
-  $pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-  $bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($dictMonad);
-  $__res = function($f) use ($pure1, $bind, $__global_Data_Function_flip, $uncons1) {
-  $__num = func_num_args();
-  $loop = (function() use ($pure1, $bind, $f, $__global_Data_Function_flip, &$loop, $uncons1, &$__fn) {
-  $__fn = function($b, $l = null) use ($pure1, $bind, $f, $__global_Data_Function_flip, &$loop, $uncons1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($b, &$__fn) { return $__fn($b, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  while (true) {
-$g = function($v) use ($pure1, $b, $bind, $f, $__global_Data_Function_flip, &$loop) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if ((($__case_0)->tag === "Nothing")) {
-$__res = ($pure1)($b);
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$a = (($__case_0)->v0)->v0;
-$as = (($__case_0)->v0)->v1;
-$__res = ($bind)(($f)($b, $a), ($__global_Data_Function_flip)($loop, $as));
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($bind)(($uncons1)($l), $g);
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  $__res = $loop;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_foldl__prime__'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_foldl__prime__';
-
-// Control_Monad_List_Trans_runListT
-function Control_Monad_List_Trans_runListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_runListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_foldl__prime__ = ($GLOBALS['Control_Monad_List_Trans_foldl__prime__'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_foldl__prime__'));
-  $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-  $__res = ($__global_Control_Monad_List_Trans_foldl__prime__)($dictMonad, (function() use ($pure1, $__global_Data_Unit_unit, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($pure1, $__global_Data_Unit_unit, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($pure1)($__global_Data_Unit_unit);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})(), $__global_Data_Unit_unit);
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_runListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_runListT';
-
-// Control_Monad_List_Trans_foldl
-function Control_Monad_List_Trans_foldl($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_foldl';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_uncons = ($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_uncons'));
-  $pure1 = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-  $bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-  $uncons1 = ($__global_Control_Monad_List_Trans_uncons)($dictMonad);
-  $__res = function($f) use ($pure1, $bind, $uncons1) {
-  $__num = func_num_args();
-  $loop = (function() use ($pure1, &$loop, $f, $bind, $uncons1, &$__fn) {
-  $__fn = function($b, $l = null) use ($pure1, &$loop, $f, $bind, $uncons1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($l) use ($b, &$__fn) { return $__fn($b, $l); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  while (true) {
-$g = function($v) use ($pure1, $b, &$loop, $f) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  if ((($__case_0)->tag === "Nothing")) {
-$__res = ($pure1)($b);
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$a = (($__case_0)->v0)->v0;
-$as = (($__case_0)->v0)->v1;
-$__res = ($loop)(($f)($b, $a), $as);
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($bind)(($uncons1)($l), $g);
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  $__res = $loop;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_foldl'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_foldl';
-
-// Control_Monad_List_Trans_filter
-function Control_Monad_List_Trans_filter($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_filter';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)($dictFunctor);
-$__res = function($f) use ($__global_Control_Monad_List_Trans_map1, $dictFunctor, $stepMap1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_filter = ($GLOBALS['Control_Monad_List_Trans_filter'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_filter'));
-  $g = function($v) use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_filter, $dictFunctor, $f) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$s__prime__ = ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_filter)($dictFunctor, $f), $s);
-$__case_0 = ($f)($a);
-switch ($__case_0) {
-case true:
-$__res = new Phpurs_Data2("Yield", $a, $s__prime__);
-goto __end;;
-break;
-default:
-$__res = new Phpurs_Data1("Skip", $s__prime__);
-goto __end;;
-break;
-};
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$s__prime__ = ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_filter)($dictFunctor, $f), $s);
-$__res = new Phpurs_Data1("Skip", $s__prime__);
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($stepMap1)($g);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_filter'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_filter';
-
-// Control_Monad_List_Trans_dropWhile
-function Control_Monad_List_Trans_dropWhile($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_dropWhile';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = function($f) use ($__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1) {
-  $__num = func_num_args();
-  $__global_Control_Monad_List_Trans_dropWhile = ($GLOBALS['Control_Monad_List_Trans_dropWhile'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_dropWhile'));
-  $g = function($v) use ($f, $__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_dropWhile, $dictApplicative) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__case_0 = ($f)($a);
-switch ($__case_0) {
-case true:
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_dropWhile)($dictApplicative, $f), $s));
-goto __end;;
-break;
-default:
-$__res = new Phpurs_Data2("Yield", $a, $s);
-goto __end;;
-break;
-};
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_dropWhile)($dictApplicative, $f), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-  $__res = ($stepMap1)($g);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_dropWhile'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_dropWhile';
-
-// Control_Monad_List_Trans_drop
-function Control_Monad_List_Trans_drop($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_drop';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = (function() use ($__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($__global_Control_Monad_List_Trans_map1, $dictApplicative, $stepMap1, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__global_Control_Monad_List_Trans_drop = ($GLOBALS['Control_Monad_List_Trans_drop'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_drop'));
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  switch ($__case_0) {
+  switch ($v) {
 case 0:
-$fa = $__case_1;
-$__res = $fa;
-goto __end;;
+$__t7 = $nil1_0;
 break;
 default:
-$n = $__case_0;
-$fa = $__case_1;
-$f = function($v2) use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_drop, $dictApplicative, $n) {
-  $__num = func_num_args();
-  $__case_0 = $v2;
-  switch (($__case_0)->tag) {
-case "Yield":
-$s = ($__case_0)->v1;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_drop)($dictApplicative, ($n - 1)), $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(($__global_Control_Monad_List_Trans_drop)($dictApplicative, $n), $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
-};
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = ($stepMap1)($f, $fa);
-goto __end;;
-break;
-};
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-goto __end;;
-};
-  $__res = null;
+$__t7 = ((($__local_var_1)->map)(function($v2) use (&$dictApplicative, &$v) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Yield"))) {
+$__local_var_3 = ($v2)->value1;
+$__local_var_4 = ((($GLOBALS['Control_Monad_List_Trans_take'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_take')))($dictApplicative))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1));
+$__t2 = new Phpurs_Data2("Yield", ($v2)->value0, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3, &$__local_var_4) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_4)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_3));
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_drop'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_drop';
-
-// Control_Monad_List_Trans_cons
-function Control_Monad_List_Trans_cons($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_cons';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Data_Lazy_force = ($GLOBALS['Data_Lazy_force'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_force'));
-  $pure1 = ($dictApplicative)->pure;
-  $__res = (function() use ($pure1, $__global_Data_Lazy_force, &$__fn) {
-  $__fn = function($lh, $t = null) use ($pure1, $__global_Data_Lazy_force, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($t) use ($lh, &$__fn) { return $__fn($lh, $t); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($pure1)(new Phpurs_Data2("Yield", ($__global_Data_Lazy_force)($lh), $t));
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_cons'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_cons';
-
-// Control_Monad_List_Trans_unfoldable1ListT
-function Control_Monad_List_Trans_unfoldable1ListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_unfoldable1ListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_singleton = ($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_singleton'));
-  $__global_Control_Monad_List_Trans_cons = ($GLOBALS['Control_Monad_List_Trans_cons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_cons'));
-  $__global_Control_Monad_List_Trans_pure = ($GLOBALS['Control_Monad_List_Trans_pure'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_pure'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $Applicative0 = (($dictMonad)->Applicative0)($__global_Prim_undefined);
-  $singleton1 = ($__global_Control_Monad_List_Trans_singleton)($Applicative0);
-  $cons1 = ($__global_Control_Monad_List_Trans_cons)($Applicative0);
-  $__res = (object)["unfoldr1" => (function() use ($singleton1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$__fn) {
-  $__fn = function($f, $b = null) use ($singleton1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($f, &$__fn) { return $__fn($f, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $go = function($v) use ($singleton1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$go, $f) {
-  $__num = func_num_args();
-  while (true) {
-$__case_0 = $v;
-if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Nothing"))) {
-$x = ($__case_0)->v0;
-$__res = ($singleton1)($x);
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Just"))) {
-$x = ($__case_0)->v0;
-$y = (($__case_0)->v1)->v0;
-$__res = ($cons1)(($__global_Control_Monad_List_Trans_pure)($x), ($__global_Data_Lazy_defer)(function($v1) use (&$go, $f, $y) {
-  $__num = func_num_args();
-  $__res = ($go)(($f)($y));
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }));
-goto __end;;
 } else {
-throw new \Exception("Pattern match failure");
-};
-};
-};
-  $__res = null;
+if ((is_object($v2) && (($v2)->tag === "Skip"))) {
+$__local_var_5 = ($v2)->value0;
+$__local_var_6 = ((($GLOBALS['Control_Monad_List_Trans_take'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_take')))($dictApplicative))($v);
+$__t2 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_5, &$__local_var_6) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_6)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_5));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v2) && (($v2)->tag === "Done"))) {
+$__t2 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
 };
-  $__res = ($go)(($f)($b));
+};
+};
+  $__res = $__t2;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v1);
+break;
+};
+  $__res = $__t7;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_zipWith__prime__'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $Applicative0_0 = (($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $nil1_1 = (($Applicative0_0)->pure)(new Phpurs_Data0("Done"));
+  $Bind1_2 = (($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $Functor0_3 = (((($Bind1_2)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $uncons1_4 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad);
+  $__res = (function() use (&$Applicative0_0, &$Bind1_2, &$Functor0_3, &$dictMonad, &$nil1_1, &$uncons1_4) {
+  $__fn = function($f, $fa = null, $fb = null) use (&$Applicative0_0, &$Bind1_2, &$Functor0_3, &$dictMonad, &$nil1_1, &$uncons1_4, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($Functor0_3)->map)(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Control_Monad_List_Trans_Skip'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_Skip'))))(((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))(($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer'))))(($GLOBALS['Data_Function_const'] ?? \PhpursThunks::eval('Data_Function_const'))))))(((($Bind1_2)->bind)(($uncons1_4)($fa)))(function($ua) use (&$Applicative0_0, &$Bind1_2, &$Functor0_3, &$dictMonad, &$f, &$fb, &$nil1_1, &$uncons1_4) {
+  $__num = \func_num_args();
+  $__res = ((($Bind1_2)->bind)(($uncons1_4)($fb)))(function($ub) use (&$Applicative0_0, &$Functor0_3, &$dictMonad, &$f, &$nil1_1, &$ua) {
+  $__num = \func_num_args();
+  if ((is_object($ub) && (($ub)->tag === "Nothing"))) {
+$__t5 = (($Applicative0_0)->pure)($nil1_1);
+} else {
+if ((is_object($ua) && (($ua)->tag === "Nothing"))) {
+$__t5 = (($Applicative0_0)->pure)($nil1_1);
+} else {
+if (((is_object($ua) && (($ua)->tag === "Just")) && (is_object($ub) && (($ub)->tag === "Just")))) {
+$__local_var_6 = (($ua)->value0)->value1;
+$__local_var_7 = (($ub)->value0)->value1;
+$__local_var_8 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v2) use (&$__local_var_6, &$__local_var_7, &$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__res = ((((($GLOBALS['Control_Monad_List_Trans_zipWith__prime__'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_zipWith__prime__')))($dictMonad))($f))($__local_var_6))($__local_var_7);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+$__t5 = ((($Functor0_3)->map)(function($a) use (&$Applicative0_0, &$__local_var_8) {
+  $__num = \func_num_args();
+  $__res = (($Applicative0_0)->pure)(new Phpurs_Data2("Yield", $a, $__local_var_8));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))((($f)((($ua)->value0)->value0))((($ub)->value0)->value0));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t5 = null;
+};
+};
+};
+  $__res = $__t5;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_zipWith'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $zipWith__prime__1_0 = (($GLOBALS['Control_Monad_List_Trans_zipWith__prime__'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_zipWith__prime__')))($dictMonad);
+  $__res = function($f) use (&$dictMonad, &$zipWith__prime__1_0) {
+  $__num = \func_num_args();
+  $__res = ($zipWith__prime__1_0)((function() use (&$dictMonad, &$f) {
+  $__fn = function($a, $b = null) use (&$dictMonad, &$f, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)((($f)($a))($b));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})());
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_newtypeListT'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_mapMaybe'] = function() { $v = (function() {
+  $__fn = function($dictFunctor, $f = null, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($dictFunctor)->map)(function($v) use (&$dictFunctor, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+$__local_var_1 = ($f)(($v)->value0);
+if ((is_object($__local_var_1) && (($__local_var_1)->tag === "Just"))) {
+$__local_var_4 = ((($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_mapMaybe')))($dictFunctor))($f);
+$__t3 = new Phpurs_Data2("Yield", ($__local_var_1)->value0, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_4)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v)->value1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+$__local_var_2 = ((($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_mapMaybe')))($dictFunctor))($f);
+$__t3 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_2) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_2)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v)->value1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+};
+$__t0 = $__t3;
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_5 = ($v)->value0;
+$__local_var_6 = ((($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_mapMaybe')))($dictFunctor))($f);
+$__t0 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_5, &$__local_var_6) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_6)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_5));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t0 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_iterate'] = function() { $v = (function() {
+  $__fn = function($dictMonad, $f = null, $a = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_unfold'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_unfold')))($dictMonad))(function($x) use (&$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__res = (((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)(new Phpurs_Data1("Just", new Phpurs_Data2("Tuple", ($f)($x), $x)));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($a);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_repeat'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Monad_List_Trans_iterate'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_iterate')))($dictMonad))((($GLOBALS['Control_Category_categoryFn'] ?? \PhpursThunks::eval('Control_Category_categoryFn')))->identity);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_head'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $uncons1_0 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad);
+  $__res = function($l) use (&$dictMonad, &$uncons1_0) {
+  $__num = \func_num_args();
+  $__res = ((((((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($v1) {
+  $__num = \func_num_args();
+  if ((is_object($v1) && (($v1)->tag === "Just"))) {
+$__t1 = new Phpurs_Data1("Just", (($v1)->value0)->value0);
+} else {
+$__t1 = new Phpurs_Data0("Nothing");
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))(($uncons1_0)($l));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_functorListT'] = function() { $v = function($dictFunctor) {
+  $__num = \func_num_args();
+  $__res = (object)["map" => (function() use (&$dictFunctor) {
+  $__fn = function($f, $v = null) use (&$dictFunctor, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($dictFunctor)->map)(function($v) use (&$dictFunctor, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+$__local_var_1 = ($v)->value1;
+$__local_var_2 = (((($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_functorListT')))($dictFunctor))->map)($f);
+$__t0 = new Phpurs_Data2("Yield", ($f)(($v)->value0), (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_1, &$__local_var_2) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_2)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_3 = ($v)->value0;
+$__local_var_4 = (((($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_functorListT')))($dictFunctor))->map)($f);
+$__t0 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3, &$__local_var_4) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_4)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_3));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t0 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
+};
+};
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })()];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_unfoldable1ListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_unfoldable1ListT';
-
-// Control_Monad_List_Trans_unfoldableListT
-function Control_Monad_List_Trans_unfoldableListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_unfoldableListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_fromEffect'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $nil1_0 = (($dictApplicative)->pure)(new Phpurs_Data0("Done"));
+  $__res = function($fa) use (&$dictApplicative, &$nil1_0) {
+  $__num = \func_num_args();
+  $__local_var_1 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$nil1_0) {
+  $__num = \func_num_args();
+  $__res = $nil1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  $__res = ((((((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->map)(function($a) use (&$__local_var_1) {
+  $__num = \func_num_args();
+  $__res = new Phpurs_Data2("Yield", $a, $__local_var_1);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($fa);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monadTransListT'] = function() { $v = (object)["lift" => function($dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_fromEffect'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_fromEffect')))((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_foldlRec__prime__'] = function() { $v = function($dictMonadRec) {
+  $__num = \func_num_args();
+  $Monad0_0 = (($dictMonadRec)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__local_var_1 = (($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__local_var_2 = (($Monad0_0)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $uncons1_3 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($Monad0_0);
+  $__res = (function() use (&$__local_var_1, &$__local_var_2, &$dictMonadRec, &$uncons1_3) {
+  $__fn = function($f, $a = null, $b = null) use (&$__local_var_1, &$__local_var_2, &$dictMonadRec, &$uncons1_3, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
   }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $__global_Control_Monad_List_Trans_cons = ($GLOBALS['Control_Monad_List_Trans_cons'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_cons'));
-  $__global_Control_Monad_List_Trans_unfoldable1ListT = ($GLOBALS['Control_Monad_List_Trans_unfoldable1ListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_unfoldable1ListT'));
-  $__global_Control_Monad_List_Trans_pure = ($GLOBALS['Control_Monad_List_Trans_pure'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_pure'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $Applicative0 = (($dictMonad)->Applicative0)($__global_Prim_undefined);
-  $nil1 = ($__global_Control_Monad_List_Trans_nil)($Applicative0);
-  $cons1 = ($__global_Control_Monad_List_Trans_cons)($Applicative0);
-  $unfoldable1ListT1 = ($__global_Control_Monad_List_Trans_unfoldable1ListT)($dictMonad);
-  $__res = (object)["unfoldr" => (function() use ($nil1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$__fn) {
-  $__fn = function($f, $b = null) use ($nil1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$__fn) {
-  $__num = func_num_args();
+  $__res = ((($dictMonadRec)->tailRecM)(function($o) use (&$__local_var_1, &$__local_var_2, &$f, &$uncons1_3) {
+  $__num = \func_num_args();
+  $__local_var_4 = ($o)->a;
+  $__res = ((($__local_var_2)->bind)(($uncons1_3)(($o)->b)))(function($v) use (&$__local_var_1, &$__local_var_2, &$__local_var_4, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t5 = (($__local_var_1)->pure)(new Phpurs_Data1("Done", $__local_var_4));
+} else {
+if ((is_object($v) && (($v)->tag === "Just"))) {
+$__local_var_6 = (($v)->value0)->value1;
+$__t5 = ((($__local_var_2)->bind)((($f)($__local_var_4))((($v)->value0)->value0)))(function($b__prime__) use (&$__local_var_1, &$__local_var_6) {
+  $__num = \func_num_args();
+  $__res = (($__local_var_1)->pure)(new Phpurs_Data1("Loop", (object)["a" => $b__prime__, "b" => $__local_var_6]));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t5 = null;
+};
+};
+  $__res = $__t5;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))((object)["a" => $a, "b" => $b]);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_runListTRec'] = function() { $v = function($dictMonadRec) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_foldlRec__prime__'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_foldlRec__prime__')))($dictMonadRec))((function() use (&$dictMonadRec) {
+  $__fn = function($v, $v1 = null) use (&$dictMonadRec, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($f, &$__fn) { return $__fn($f, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $go = function($v) use ($nil1, $cons1, $__global_Control_Monad_List_Trans_pure, $__global_Data_Lazy_defer, &$go, $f) {
-  $__num = func_num_args();
-  while (true) {
-$__case_0 = $v;
-if ((($__case_0)->tag === "Nothing")) {
-$__res = $nil1;
-goto __end;;
-} else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
-$x = (($__case_0)->v0)->v0;
-$y = (($__case_0)->v0)->v1;
-$__res = ($cons1)(($__global_Control_Monad_List_Trans_pure)($x), ($__global_Data_Lazy_defer)(function($v1) use (&$go, $f, $y) {
-  $__num = func_num_args();
-  $__res = ($go)(($f)($y));
+  $__res = (((((($dictMonadRec)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()))(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_foldlRec'] = function() { $v = function($dictMonadRec) {
+  $__num = \func_num_args();
+  $Monad0_0 = (($dictMonadRec)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__local_var_1 = (($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $uncons1_2 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($Monad0_0);
+  $__res = (function() use (&$Monad0_0, &$__local_var_1, &$dictMonadRec, &$uncons1_2) {
+  $__fn = function($f, $a = null, $b = null) use (&$Monad0_0, &$__local_var_1, &$dictMonadRec, &$uncons1_2, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($dictMonadRec)->tailRecM)(function($o) use (&$Monad0_0, &$__local_var_1, &$f, &$uncons1_2) {
+  $__num = \func_num_args();
+  $__local_var_3 = ($o)->a;
+  $__res = ((((($Monad0_0)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->bind)(($uncons1_2)(($o)->b)))(function($v) use (&$__local_var_1, &$__local_var_3, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t4 = (($__local_var_1)->pure)(new Phpurs_Data1("Done", $__local_var_3));
+} else {
+if ((is_object($v) && (($v)->tag === "Just"))) {
+$__t4 = (($__local_var_1)->pure)(new Phpurs_Data1("Loop", (object)["a" => (($f)($__local_var_3))((($v)->value0)->value0), "b" => (($v)->value0)->value1]));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t4 = null;
+};
+};
+  $__res = $__t4;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))((object)["a" => $a, "b" => $b]);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_foldl__prime__'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__local_var_0 = (($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $uncons1_1 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad);
+  $__res = function($f) use (&$__local_var_0, &$dictMonad, &$uncons1_1) {
+  $__num = \func_num_args();
+  $loop = null;
+  $loop = (function() use (&$__local_var_0, &$dictMonad, &$f, &$loop, &$uncons1_1) {
+  $__fn = function($b, $l = null) use (&$__local_var_0, &$dictMonad, &$f, &$loop, &$uncons1_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($__local_var_0)->bind)(($uncons1_1)($l)))(function($v) use (&$__local_var_0, &$b, &$dictMonad, &$f, &$loop) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t2 = (((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)($b);
+} else {
+if ((is_object($v) && (($v)->tag === "Just"))) {
+$__local_var_3 = (($v)->value0)->value1;
+$__t2 = ((($__local_var_0)->bind)((($f)($b))((($v)->value0)->value0)))(function($a) use (&$__local_var_3, &$loop) {
+  $__num = \func_num_args();
+  $__res = (($loop)($a))($__local_var_3);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  $__res = $loop;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_runListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_foldl__prime__'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_foldl__prime__')))($dictMonad))((function() use (&$dictMonad) {
+  $__fn = function($v, $v1 = null) use (&$dictMonad, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()))(($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_foldl'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $uncons1_0 = (($GLOBALS['Control_Monad_List_Trans_uncons'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_uncons')))($dictMonad);
+  $__res = function($f) use (&$dictMonad, &$uncons1_0) {
+  $__num = \func_num_args();
+  $loop = null;
+  $loop = (function() use (&$dictMonad, &$f, &$loop, &$uncons1_0) {
+  $__fn = function($b, $l = null) use (&$dictMonad, &$f, &$loop, &$uncons1_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->bind)(($uncons1_0)($l)))(function($v) use (&$b, &$dictMonad, &$f, &$loop) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t1 = (((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->pure)($b);
+} else {
+if ((is_object($v) && (($v)->tag === "Just"))) {
+$__t1 = (($loop)((($f)($b))((($v)->value0)->value0)))((($v)->value0)->value1);
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  $__res = $loop;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_filter'] = function() { $v = (function() {
+  $__fn = function($dictFunctor, $f = null, $v = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = ((($dictFunctor)->map)(function($v) use (&$dictFunctor, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+$__local_var_1 = ($v)->value1;
+$__local_var_2 = ((($GLOBALS['Control_Monad_List_Trans_filter'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_filter')))($dictFunctor))($f);
+$s__prime___3 = (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_1, &$__local_var_2) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_2)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+});
+if (($f)(($v)->value0)) {
+$__t4 = new Phpurs_Data2("Yield", ($v)->value0, $s__prime___3);
+} else {
+$__t4 = new Phpurs_Data1("Skip", $s__prime___3);
+};
+$__t0 = $__t4;
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_5 = ($v)->value0;
+$__local_var_6 = ((($GLOBALS['Control_Monad_List_Trans_filter'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_filter')))($dictFunctor))($f);
+$__t0 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_5, &$__local_var_6) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_6)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_5));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }));
-goto __end;;
 } else {
-throw new \Exception("Pattern match failure");
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t0 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t0 = null;
 };
 };
 };
-  $__res = null;
+  $__res = $__t0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_dropWhile'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__local_var_0 = (((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_0, &$dictApplicative) {
+  $__fn = function($f, $v = null) use (&$__local_var_0, &$dictApplicative, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = ((($__local_var_0)->map)(function($v) use (&$dictApplicative, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+if (($f)(($v)->value0)) {
+$__local_var_3 = ((($GLOBALS['Control_Monad_List_Trans_dropWhile'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_dropWhile')))($dictApplicative))($f);
+$__t2 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_3)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))(($v)->value1));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+$__t2 = new Phpurs_Data2("Yield", ($v)->value0, ($v)->value1);
+};
+$__t1 = $__t2;
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_4 = ($v)->value0;
+$__local_var_5 = ((($GLOBALS['Control_Monad_List_Trans_dropWhile'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_dropWhile')))($dictApplicative))($f);
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4, &$__local_var_5) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_5)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_4));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t1 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_drop'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__local_var_0 = (((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_0, &$dictApplicative) {
+  $__fn = function($v, $v1 = null) use (&$__local_var_0, &$dictApplicative, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  switch ($v) {
+case 0:
+$__t6 = $v1;
+break;
+default:
+$__t6 = ((($__local_var_0)->map)(function($v2) use (&$dictApplicative, &$v) {
+  $__num = \func_num_args();
+  if ((is_object($v2) && (($v2)->tag === "Yield"))) {
+$__local_var_2 = ($v2)->value1;
+$__local_var_3 = ((($GLOBALS['Control_Monad_List_Trans_drop'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_drop')))($dictApplicative))(((($GLOBALS['Data_Ring_intSub'] ?? \PhpursThunks::eval('Data_Ring_intSub')))($v))(1));
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_2, &$__local_var_3) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_3)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_2));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v2) && (($v2)->tag === "Skip"))) {
+$__local_var_4 = ($v2)->value0;
+$__local_var_5 = ((($GLOBALS['Control_Monad_List_Trans_drop'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_drop')))($dictApplicative))($v);
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4, &$__local_var_5) {
+  $__num = \func_num_args();
+  $__res = ($__local_var_5)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_4));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v2) && (($v2)->tag === "Done"))) {
+$__t1 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
+};
+};
+};
+  $__res = $__t1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($v1);
+break;
+};
+  $__res = $__t6;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_cons'] = function() { $v = (function() {
+  $__fn = function($dictApplicative, $lh = null, $t = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $__res = (($dictApplicative)->pure)(new Phpurs_Data2("Yield", (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($lh), $t));
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_unfoldable1ListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $Applicative0_0 = (($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $singleton1_1 = (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))($Applicative0_0);
+  $__res = (object)["unfoldr1" => (function() use (&$Applicative0_0, &$singleton1_1) {
+  $__fn = function($f, $b = null) use (&$Applicative0_0, &$singleton1_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $go = null;
+  $go = function($v) use (&$Applicative0_0, &$f, &$go, &$singleton1_1) {
+  $__num = \func_num_args();
+  if ((is_object(($v)->value1) && ((($v)->value1)->tag === "Nothing"))) {
+$__t2 = ($singleton1_1)(($v)->value0);
+} else {
+if ((is_object(($v)->value1) && ((($v)->value1)->tag === "Just"))) {
+$__local_var_3 = ($v)->value0;
+$__local_var_4 = (($v)->value1)->value0;
+$__t2 = (($Applicative0_0)->pure)(new Phpurs_Data2("Yield", (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))((($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3) {
+  $__num = \func_num_args();
+  $__res = $__local_var_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})), (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v1) use (&$__local_var_4, &$f, &$go) {
+  $__num = \func_num_args();
+  $__res = ($go)(($f)($__local_var_4));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
+};
+};
+  $__res = $__t2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 };
   $__res = ($go)(($f)($b));
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Unfoldable10" => function($__dollar____unused) use ($unfoldable1ListT1) {
-  $__num = func_num_args();
-  $__res = $unfoldable1ListT1;
+})()];
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_unfoldableListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $Applicative0_0 = (($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $nil1_1 = (($Applicative0_0)->pure)(new Phpurs_Data0("Done"));
+  $unfoldable1ListT1_2 = (($GLOBALS['Control_Monad_List_Trans_unfoldable1ListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_unfoldable1ListT')))($dictMonad);
+  $__res = (object)["unfoldr" => (function() use (&$Applicative0_0, &$nil1_1) {
+  $__fn = function($f, $b = null) use (&$Applicative0_0, &$nil1_1, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $go = null;
+  $go = function($v) use (&$Applicative0_0, &$f, &$go, &$nil1_1) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Nothing"))) {
+$__t3 = $nil1_1;
+} else {
+if ((is_object($v) && (($v)->tag === "Just"))) {
+$__local_var_4 = (($v)->value0)->value0;
+$__local_var_5 = (($v)->value0)->value1;
+$__t3 = (($Applicative0_0)->pure)(new Phpurs_Data2("Yield", (($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))((($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_4) {
+  $__num = \func_num_args();
+  $__res = $__local_var_4;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})), (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v1) use (&$__local_var_5, &$f, &$go) {
+  $__num = \func_num_args();
+  $__res = ($go)(($f)($__local_var_5));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+})));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t3 = null;
+};
+};
+  $__res = $__t3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+};
+  $__res = ($go)(($f)($b));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "Unfoldable10" => function($dollar__unused_0) use (&$unfoldable1ListT1_2) {
+  $__num = \func_num_args();
+  $__res = $unfoldable1ListT1_2;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_unfoldableListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_unfoldableListT';
-
-// Control_Monad_List_Trans_semigroupListT
-function Control_Monad_List_Trans_semigroupListT($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_semigroupListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_concat = ($GLOBALS['Control_Monad_List_Trans_concat'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_concat'));
-  while (true) {
-$__res = (object)["append" => ($__global_Control_Monad_List_Trans_concat)($dictApplicative)];
-goto __end;;
-};
-  $__res = null;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_semigroupListT'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__res = (object)["append" => (($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))($dictApplicative)];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_semigroupListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_semigroupListT';
-
-// Control_Monad_List_Trans_concat
-function Control_Monad_List_Trans_concat($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_concat';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  $__global_Control_Monad_List_Trans_semigroupListT = ($GLOBALS['Control_Monad_List_Trans_semigroupListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_semigroupListT'));
-  $__global_Data_Lazy_defer = ($GLOBALS['Data_Lazy_defer'] ?? \Data\Lazy\phpurs_eval_thunk('Data_Lazy_defer'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  while (true) {
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = (function() use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_semigroupListT, $dictApplicative, $__global_Data_Lazy_defer, $__global_Data_Function_const, $stepMap1, &$__fn) {
-  $__fn = function($x, $y = null) use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_semigroupListT, $dictApplicative, $__global_Data_Lazy_defer, $__global_Data_Function_const, $stepMap1, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_concat'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $__local_var_0 = (((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$__local_var_0, &$dictApplicative) {
+  $__fn = function($x, $y = null) use (&$__local_var_0, &$dictApplicative, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $f = function($v) use ($__global_Control_Monad_List_Trans_map1, $__global_Control_Monad_List_Trans_semigroupListT, $dictApplicative, $y, $__global_Data_Lazy_defer, $__global_Data_Function_const) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$__res = new Phpurs_Data2("Yield", $a, ($__global_Control_Monad_List_Trans_map1)(function($v1) use ($__global_Control_Monad_List_Trans_semigroupListT, $dictApplicative, $y) {
-  $__num = func_num_args();
-  $__res = ((($__global_Control_Monad_List_Trans_semigroupListT)($dictApplicative))->append)($v1, $y);
+  $__res = ((($__local_var_0)->map)(function($v) use (&$dictApplicative, &$y) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+$__local_var_2 = ($v)->value1;
+$__t1 = new Phpurs_Data2("Yield", ($v)->value0, (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_2, &$dictApplicative, &$y) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))($dictApplicative))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_2)))($y);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(function($v1) use ($__global_Control_Monad_List_Trans_semigroupListT, $dictApplicative, $y) {
-  $__num = func_num_args();
-  $__res = ((($__global_Control_Monad_List_Trans_semigroupListT)($dictApplicative))->append)($v1, $y);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_3 = ($v)->value0;
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3, &$dictApplicative, &$y) {
+  $__num = \func_num_args();
+  $__res = (((($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))($dictApplicative))((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_3)))($y);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $s));
-goto __end;;
-break;
-case "Done":
-$__res = new Phpurs_Data1("Skip", ($__global_Data_Lazy_defer)(($__global_Data_Function_const)($y)));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t1 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$y) {
+  $__num = \func_num_args();
+  $__res = $y;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t1 = null;
 };
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 };
-  $__res = ($stepMap1)($f, $x);
+};
+  $__res = $__t1;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($x);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
-goto __end;;
-};
-  $__res = null;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_concat'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_concat';
-
-// Control_Monad_List_Trans_monoidListT
-function Control_Monad_List_Trans_monoidListT($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_monoidListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_semigroupListT = ($GLOBALS['Control_Monad_List_Trans_semigroupListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_semigroupListT'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $semigroupListT1 = ($__global_Control_Monad_List_Trans_semigroupListT)($dictApplicative);
-  $__res = (object)["mempty" => ($__global_Control_Monad_List_Trans_nil)($dictApplicative), "Semigroup0" => function($__dollar____unused) use ($semigroupListT1) {
-  $__num = func_num_args();
-  $__res = $semigroupListT1;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monoidListT'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $semigroupListT1_0 = (object)["append" => (($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))($dictApplicative)];
+  $__res = (object)["mempty" => (($dictApplicative)->pure)(new Phpurs_Data0("Done")), "Semigroup0" => function($dollar__unused_0) use (&$semigroupListT1_0) {
+  $__num = \func_num_args();
+  $__res = $semigroupListT1_0;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_monoidListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_monoidListT';
-
-// Control_Monad_List_Trans_catMaybes
-function Control_Monad_List_Trans_catMaybes($dictFunctor) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_catMaybes';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_mapMaybe = ($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_mapMaybe'));
-  $__global_Control_Monad_List_Trans_identity = ($GLOBALS['Control_Monad_List_Trans_identity'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_identity'));
-  $__res = ($__global_Control_Monad_List_Trans_mapMaybe)($dictFunctor, $__global_Control_Monad_List_Trans_identity);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_catMaybes'] = function() { $v = function($dictFunctor) {
+  $__num = \func_num_args();
+  $__res = ((($GLOBALS['Control_Monad_List_Trans_mapMaybe'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_mapMaybe')))($dictFunctor))((($GLOBALS['Control_Category_categoryFn'] ?? \PhpursThunks::eval('Control_Category_categoryFn')))->identity);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_catMaybes'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_catMaybes';
-
-// Control_Monad_List_Trans_monadListT
-function Control_Monad_List_Trans_monadListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_monadListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_applicativeListT = ($GLOBALS['Control_Monad_List_Trans_applicativeListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_applicativeListT'));
-  $__global_Control_Monad_List_Trans_bindListT = ($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_bindListT'));
-  while (true) {
-$__res = (object)["Applicative0" => function($__dollar____unused) use ($__global_Control_Monad_List_Trans_applicativeListT, $dictMonad) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_applicativeListT)($dictMonad);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monadListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__res = (object)["Applicative0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applicativeListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applicativeListT')))($dictMonad);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Bind1" => function($__dollar____unused) use ($__global_Control_Monad_List_Trans_bindListT, $dictMonad) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_bindListT)($dictMonad);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($dictMonad);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
-goto __end;;
-};
-  $__res = null;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_monadListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_monadListT';
-
-// Control_Monad_List_Trans_bindListT
-function Control_Monad_List_Trans_bindListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_bindListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_semigroupListT = ($GLOBALS['Control_Monad_List_Trans_semigroupListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_semigroupListT'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_stepMap = ($GLOBALS['Control_Monad_List_Trans_stepMap'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_stepMap'));
-  $__global_Control_Monad_List_Trans_map1 = ($GLOBALS['Control_Monad_List_Trans_map1'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_map1'));
-  $__global_Control_Monad_List_Trans_applyListT = ($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_applyListT'));
-  while (true) {
-$append = (($__global_Control_Monad_List_Trans_semigroupListT)((($dictMonad)->Applicative0)($__global_Prim_undefined)))->append;
-$stepMap1 = ($__global_Control_Monad_List_Trans_stepMap)((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = (object)["bind" => (function() use ($append, $dictMonad, $__global_Control_Monad_List_Trans_map1, $stepMap1, &$__fn) {
-  $__fn = function($fa, $f = null) use ($append, $dictMonad, $__global_Control_Monad_List_Trans_map1, $stepMap1, &$__fn) {
-  $__num = func_num_args();
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_bindListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $append_0 = (($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__local_var_1 = (((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (object)["bind" => (function() use (&$__local_var_1, &$append_0, &$dictMonad) {
+  $__fn = function($fa, $f = null) use (&$__local_var_1, &$append_0, &$dictMonad, &$__fn) {
+  $__num = \func_num_args();
   if ($__num < 2) {
-    if ($__num === 1) return function($f) use ($fa, &$__fn) { return $__fn($fa, $f); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Control_Monad_List_Trans_bindListT = ($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_bindListT'));
-  $g = function($v) use ($append, $f, $__global_Control_Monad_List_Trans_bindListT, $dictMonad, $__global_Control_Monad_List_Trans_map1) {
-  $__num = func_num_args();
-  $__case_0 = $v;
-  switch (($__case_0)->tag) {
-case "Yield":
-$a = ($__case_0)->v0;
-$s = ($__case_0)->v1;
-$h = function($s__prime__) use ($append, $f, $a, $__global_Control_Monad_List_Trans_bindListT, $dictMonad) {
-  $__num = func_num_args();
-  $__res = ($append)(($f)($a), ((($__global_Control_Monad_List_Trans_bindListT)($dictMonad))->bind)($s__prime__, $f));
+  $__res = ((($__local_var_1)->map)(function($v) use (&$append_0, &$dictMonad, &$f) {
+  $__num = \func_num_args();
+  if ((is_object($v) && (($v)->tag === "Yield"))) {
+$__local_var_3 = ($v)->value0;
+$__local_var_4 = ($v)->value1;
+$__t2 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_3, &$__local_var_4, &$append_0, &$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__res = (($append_0)(($f)($__local_var_3)))(((((($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($dictMonad))->bind)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_4)))($f));
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-};
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)($h, $s));
-goto __end;;
-break;
-case "Skip":
-$s = ($__case_0)->v0;
-$__res = new Phpurs_Data1("Skip", ($__global_Control_Monad_List_Trans_map1)(function($v1) use ($__global_Control_Monad_List_Trans_bindListT, $dictMonad, $f) {
-  $__num = func_num_args();
-  $__res = ((($__global_Control_Monad_List_Trans_bindListT)($dictMonad))->bind)($v1, $f);
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Skip"))) {
+$__local_var_5 = ($v)->value0;
+$__t2 = new Phpurs_Data1("Skip", (($GLOBALS['Data_Lazy_defer'] ?? \PhpursThunks::eval('Data_Lazy_defer')))(function($v) use (&$__local_var_5, &$dictMonad, &$f) {
+  $__num = \func_num_args();
+  $__res = ((((($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($dictMonad))->bind)((($GLOBALS['Data_Lazy_force'] ?? \PhpursThunks::eval('Data_Lazy_force')))($__local_var_5)))($f);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, $s));
-goto __end;;
-break;
-case "Done":
-$__res = ($GLOBALS['__phpurs_data0_Done'] ??= new Phpurs_Data0("Done"));
-goto __end;;
-break;
-default:
-throw new \Exception("Pattern match failure");
-break;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}));
+} else {
+if ((is_object($v) && (($v)->tag === "Done"))) {
+$__t2 = new Phpurs_Data0("Done");
+} else {
+throw new \Exception("Failed pattern match at " . __FILE__ . ":" . __LINE__);
+$__t2 = null;
 };
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 };
-  $__res = ($stepMap1)($g, $fa);
+};
+  $__res = $__t2;
   goto __end;;
   __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}))($fa);
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})(), "Apply0" => function($__dollar____unused) use ($__global_Control_Monad_List_Trans_applyListT, $dictMonad) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_applyListT)($dictMonad);
+})(), "Apply0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($dictMonad);
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
-goto __end;;
-};
-  $__res = null;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_bindListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_bindListT';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_applyListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $functorListT1_0 = (($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_functorListT')))((((((($dictMonad)->Bind1)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["apply" => (($GLOBALS['Control_Monad_ap'] ?? \PhpursThunks::eval('Control_Monad_ap')))((object)["Applicative0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applicativeListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applicativeListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]), "Functor0" => function($dollar__unused_0) use (&$functorListT1_0) {
+  $__num = \func_num_args();
+  $__res = $functorListT1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_applicativeListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $__res = (object)["pure" => (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))), "Apply0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monadEffectListT'] = function() { $v = function($dictMonadEffect) {
+  $__num = \func_num_args();
+  $Monad0_0 = (($dictMonadEffect)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $monadListT1_1 = (object)["Applicative0" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (object)["pure" => (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))((($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))), "Apply0" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($Monad0_0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($Monad0_0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  $__res = (object)["liftEffect" => ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))((($GLOBALS['Control_Monad_List_Trans_fromEffect'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_fromEffect')))((($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))))(($dictMonadEffect)->liftEffect), "Monad0" => function($dollar__unused_0) use (&$monadListT1_1) {
+  $__num = \func_num_args();
+  $__res = $monadListT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monadSTListT'] = function() { $v = function($dictMonadST) {
+  $__num = \func_num_args();
+  $Monad0_0 = (($dictMonadST)->Monad0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $monadListT1_1 = (object)["Applicative0" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (object)["pure" => (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))((($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))), "Apply0" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($Monad0_0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$Monad0_0) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($Monad0_0);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  $__res = (object)["liftST" => ((($GLOBALS['Control_Semigroupoid_composeImpl'] ?? \PhpursThunks::eval('Control_Semigroupoid_composeImpl')))((($GLOBALS['Control_Monad_List_Trans_fromEffect'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_fromEffect')))((($Monad0_0)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))))(($dictMonadST)->liftST), "Monad0" => function($dollar__unused_0) use (&$monadListT1_1) {
+  $__num = \func_num_args();
+  $__res = $monadListT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_altListT'] = function() { $v = function($dictApplicative) {
+  $__num = \func_num_args();
+  $functorListT1_0 = (($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_functorListT')))((((($dictApplicative)->Apply0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))->Functor0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["alt" => (($GLOBALS['Control_Monad_List_Trans_concat'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_concat')))($dictApplicative), "Functor0" => function($dollar__unused_0) use (&$functorListT1_0) {
+  $__num = \func_num_args();
+  $__res = $functorListT1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_plusListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $Applicative0_0 = (($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $altListT1_1 = (($GLOBALS['Control_Monad_List_Trans_altListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_altListT')))($Applicative0_0);
+  $__res = (object)["empty" => (($Applicative0_0)->pure)(new Phpurs_Data0("Done")), "Alt0" => function($dollar__unused_0) use (&$altListT1_1) {
+  $__num = \func_num_args();
+  $__res = $altListT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_alternativeListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $applicativeListT1_0 = (object)["pure" => (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))), "Apply0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  $plusListT1_1 = (($GLOBALS['Control_Monad_List_Trans_plusListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_plusListT')))($dictMonad);
+  $__res = (object)["Applicative0" => function($dollar__unused_0) use (&$applicativeListT1_0) {
+  $__num = \func_num_args();
+  $__res = $applicativeListT1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Plus1" => function($dollar__unused_0) use (&$plusListT1_1) {
+  $__num = \func_num_args();
+  $__res = $plusListT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Control_Monad_List_Trans_monadPlusListT'] = function() { $v = function($dictMonad) {
+  $__num = \func_num_args();
+  $monadListT1_0 = (object)["Applicative0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (object)["pure" => (($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_singleton')))((($dictMonad)->Applicative0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))), "Apply0" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_applyListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Bind1" => function($dollar__unused_0) use (&$dictMonad) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Control_Monad_List_Trans_bindListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_bindListT')))($dictMonad);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  $alternativeListT1_1 = (($GLOBALS['Control_Monad_List_Trans_alternativeListT'] ?? \PhpursThunks::eval('Control_Monad_List_Trans_alternativeListT')))($dictMonad);
+  $__res = (object)["Monad0" => function($dollar__unused_0) use (&$monadListT1_0) {
+  $__num = \func_num_args();
+  $__res = $monadListT1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Alternative1" => function($dollar__unused_0) use (&$alternativeListT1_1) {
+  $__num = \func_num_args();
+  $__res = $alternativeListT1_1;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 
-// Control_Monad_List_Trans_applyListT
-function Control_Monad_List_Trans_applyListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_applyListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_functorListT = ($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_functorListT'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_ap = ($GLOBALS['Control_Monad_ap'] ?? \Control\Monad\phpurs_eval_thunk('Control_Monad_ap'));
-  $__global_Control_Monad_List_Trans_monadListT = ($GLOBALS['Control_Monad_List_Trans_monadListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_monadListT'));
-  while (true) {
-$functorListT1 = ($__global_Control_Monad_List_Trans_functorListT)((((((($dictMonad)->Bind1)($__global_Prim_undefined))->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-$__res = (object)["apply" => ($__global_Control_Monad_ap)(($__global_Control_Monad_List_Trans_monadListT)($dictMonad)), "Functor0" => function($__dollar____unused) use ($functorListT1) {
-  $__num = func_num_args();
-  $__res = $functorListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_applyListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_applyListT';
 
-// Control_Monad_List_Trans_applicativeListT
-function Control_Monad_List_Trans_applicativeListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_applicativeListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_singleton = ($GLOBALS['Control_Monad_List_Trans_singleton'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_singleton'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_applyListT = ($GLOBALS['Control_Monad_List_Trans_applyListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_applyListT'));
-  while (true) {
-$__res = (object)["pure" => ($__global_Control_Monad_List_Trans_singleton)((($dictMonad)->Applicative0)($__global_Prim_undefined)), "Apply0" => function($__dollar____unused) use ($__global_Control_Monad_List_Trans_applyListT, $dictMonad) {
-  $__num = func_num_args();
-  $__res = ($__global_Control_Monad_List_Trans_applyListT)($dictMonad);
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-goto __end;;
-};
-  $__res = null;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_applicativeListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_applicativeListT';
 
-// Control_Monad_List_Trans_monadEffectListT
-function Control_Monad_List_Trans_monadEffectListT($dictMonadEffect) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_monadEffectListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_monadListT = ($GLOBALS['Control_Monad_List_Trans_monadListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_monadListT'));
-  $__global_Control_Monad_List_Trans_compose = ($GLOBALS['Control_Monad_List_Trans_compose'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_compose'));
-  $__global_Control_Monad_List_Trans_lift = ($GLOBALS['Control_Monad_List_Trans_lift'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_lift'));
-  $Monad0 = (($dictMonadEffect)->Monad0)($__global_Prim_undefined);
-  $monadListT1 = ($__global_Control_Monad_List_Trans_monadListT)($Monad0);
-  $__res = (object)["liftEffect" => ($__global_Control_Monad_List_Trans_compose)(($__global_Control_Monad_List_Trans_lift)($Monad0), ($dictMonadEffect)->liftEffect), "Monad0" => function($__dollar____unused) use ($monadListT1) {
-  $__num = func_num_args();
-  $__res = $monadListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_monadEffectListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_monadEffectListT';
 
-// Control_Monad_List_Trans_monadSTListT
-function Control_Monad_List_Trans_monadSTListT($dictMonadST) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_monadSTListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_monadListT = ($GLOBALS['Control_Monad_List_Trans_monadListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_monadListT'));
-  $__global_Control_Monad_List_Trans_compose = ($GLOBALS['Control_Monad_List_Trans_compose'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_compose'));
-  $__global_Control_Monad_List_Trans_lift = ($GLOBALS['Control_Monad_List_Trans_lift'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_lift'));
-  $Monad0 = (($dictMonadST)->Monad0)($__global_Prim_undefined);
-  $monadListT1 = ($__global_Control_Monad_List_Trans_monadListT)($Monad0);
-  $__res = (object)["liftST" => ($__global_Control_Monad_List_Trans_compose)(($__global_Control_Monad_List_Trans_lift)($Monad0), ($dictMonadST)->liftST), "Monad0" => function($__dollar____unused) use ($monadListT1) {
-  $__num = func_num_args();
-  $__res = $monadListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_monadSTListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_monadSTListT';
 
-// Control_Monad_List_Trans_altListT
-function Control_Monad_List_Trans_altListT($dictApplicative) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_altListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_functorListT = ($GLOBALS['Control_Monad_List_Trans_functorListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_functorListT'));
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_concat = ($GLOBALS['Control_Monad_List_Trans_concat'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_concat'));
-  $functorListT1 = ($__global_Control_Monad_List_Trans_functorListT)((((($dictApplicative)->Apply0)($__global_Prim_undefined))->Functor0)($__global_Prim_undefined));
-  $__res = (object)["alt" => ($__global_Control_Monad_List_Trans_concat)($dictApplicative), "Functor0" => function($__dollar____unused) use ($functorListT1) {
-  $__num = func_num_args();
-  $__res = $functorListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_altListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_altListT';
 
-// Control_Monad_List_Trans_plusListT
-function Control_Monad_List_Trans_plusListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_plusListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Control_Monad_List_Trans_altListT = ($GLOBALS['Control_Monad_List_Trans_altListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_altListT'));
-  $__global_Control_Monad_List_Trans_nil = ($GLOBALS['Control_Monad_List_Trans_nil'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_nil'));
-  $Applicative0 = (($dictMonad)->Applicative0)($__global_Prim_undefined);
-  $altListT1 = ($__global_Control_Monad_List_Trans_altListT)($Applicative0);
-  $__res = (object)["empty" => ($__global_Control_Monad_List_Trans_nil)($Applicative0), "Alt0" => function($__dollar____unused) use ($altListT1) {
-  $__num = func_num_args();
-  $__res = $altListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_plusListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_plusListT';
 
-// Control_Monad_List_Trans_alternativeListT
-function Control_Monad_List_Trans_alternativeListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_alternativeListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_applicativeListT = ($GLOBALS['Control_Monad_List_Trans_applicativeListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_applicativeListT'));
-  $__global_Control_Monad_List_Trans_plusListT = ($GLOBALS['Control_Monad_List_Trans_plusListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_plusListT'));
-  $applicativeListT1 = ($__global_Control_Monad_List_Trans_applicativeListT)($dictMonad);
-  $plusListT1 = ($__global_Control_Monad_List_Trans_plusListT)($dictMonad);
-  $__res = (object)["Applicative0" => function($__dollar____unused) use ($applicativeListT1) {
-  $__num = func_num_args();
-  $__res = $applicativeListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Plus1" => function($__dollar____unused) use ($plusListT1) {
-  $__num = func_num_args();
-  $__res = $plusListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_alternativeListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_alternativeListT';
 
-// Control_Monad_List_Trans_monadPlusListT
-function Control_Monad_List_Trans_monadPlusListT($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_List_Trans_monadPlusListT';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Control_Monad_List_Trans_monadListT = ($GLOBALS['Control_Monad_List_Trans_monadListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_monadListT'));
-  $__global_Control_Monad_List_Trans_alternativeListT = ($GLOBALS['Control_Monad_List_Trans_alternativeListT'] ?? \Control\Monad\List\Trans\phpurs_eval_thunk('Control_Monad_List_Trans_alternativeListT'));
-  $monadListT1 = ($__global_Control_Monad_List_Trans_monadListT)($dictMonad);
-  $alternativeListT1 = ($__global_Control_Monad_List_Trans_alternativeListT)($dictMonad);
-  $__res = (object)["Monad0" => function($__dollar____unused) use ($monadListT1) {
-  $__num = func_num_args();
-  $__res = $monadListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}, "Alternative1" => function($__dollar____unused) use ($alternativeListT1) {
-  $__num = func_num_args();
-  $__res = $alternativeListT1;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}];
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_List_Trans_monadPlusListT'] = __NAMESPACE__ . '\\Control_Monad_List_Trans_monadPlusListT';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

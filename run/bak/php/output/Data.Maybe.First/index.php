@@ -2,14 +2,37 @@
 
 namespace Data\Maybe\First;
 
+// ALL IMPORTS: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Bind, Control.Extend, Control.Monad, Control.Plus, Data.Bounded, Data.Eq, Data.Functor, Data.Functor.Invariant, Data.Maybe, Data.Maybe.First, Data.Monoid, Data.Newtype, Data.Ord, Data.Semigroup, Data.Show, Prelude, Prim
+// TO REQUIRE: Control.Alt, Control.Alternative, Control.Applicative, Control.Apply, Control.Bind, Control.Extend, Control.Monad, Control.Plus, Data.Bounded, Data.Eq, Data.Functor, Data.Functor.Invariant, Data.Maybe, Data.Maybe.First, Data.Monoid, Data.Newtype, Data.Ord, Data.Semigroup, Data.Show, Prelude
+require_once __DIR__ . '/../Control.Alt/index.php';
+require_once __DIR__ . '/../Control.Alternative/index.php';
+require_once __DIR__ . '/../Control.Applicative/index.php';
+require_once __DIR__ . '/../Control.Apply/index.php';
+require_once __DIR__ . '/../Control.Bind/index.php';
+require_once __DIR__ . '/../Control.Extend/index.php';
+require_once __DIR__ . '/../Control.Monad/index.php';
+require_once __DIR__ . '/../Control.Plus/index.php';
+require_once __DIR__ . '/../Data.Bounded/index.php';
+require_once __DIR__ . '/../Data.Eq/index.php';
+require_once __DIR__ . '/../Data.Functor/index.php';
+require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
+require_once __DIR__ . '/../Data.Maybe/index.php';
+require_once __DIR__ . '/../Data.Maybe.First/index.php';
+require_once __DIR__ . '/../Data.Monoid/index.php';
+require_once __DIR__ . '/../Data.Newtype/index.php';
+require_once __DIR__ . '/../Data.Ord/index.php';
+require_once __DIR__ . '/../Data.Semigroup/index.php';
+require_once __DIR__ . '/../Data.Show/index.php';
+require_once __DIR__ . '/../Prelude/index.php';
+
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
 if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
@@ -81,250 +104,148 @@ if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     };
   }
 }
-if (!\function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (isset($cache[$id]) || array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Maybe_First_append': $v = ($GLOBALS['Data_Semigroup_concatString'] ?? \Data\Semigroup\phpurs_eval_thunk('Data_Semigroup_concatString')); break;
-      case 'Data_Maybe_First_semigroupFirst': $v = (object)["append" => (function() {
-  $__fn = function($v, $v1 = null) use (&$__fn) {
+\PhpursThunks::$thunks['Data_Maybe_First_First'] = function() { $v = function($x) {
   $__num = \func_num_args();
-  if ($__num < 2) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
-  }
-  $__case_0 = $v;
-  $__case_1 = $v1;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-switch (($__case_0)->tag) {
-case "Just":
-$first = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $first;
-goto __end;;
-$__match_0 = true;
-};
-};
-break;
-default:
-;
-break;
-};
-};
-  if (($__match_0 === false)) {
-if (true) {
-$second = $__case_1;
-if (($__match_0 === false)) {
-if (true) {
-$__res = $second;
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})()]; break;
-      case 'Data_Maybe_First_ord1First': $v = ($GLOBALS['Data_Maybe_ord1Maybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_ord1Maybe')); break;
-      case 'Data_Maybe_First_newtypeFirst': $v = (object)["Coercible0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__res = $__global_Prim_undefined;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Maybe_First_monoidFirst': $v = (object)["mempty" => ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing")), "Semigroup0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Maybe_First_semigroupFirst = ($GLOBALS['Data_Maybe_First_semigroupFirst'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_semigroupFirst'));
-  $__res = $__global_Data_Maybe_First_semigroupFirst;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Maybe_First_monadFirst': $v = ($GLOBALS['Data_Maybe_monadMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_monadMaybe')); break;
-      case 'Data_Maybe_First_invariantFirst': $v = ($GLOBALS['Data_Maybe_invariantMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_invariantMaybe')); break;
-      case 'Data_Maybe_First_functorFirst': $v = ($GLOBALS['Data_Maybe_functorMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_functorMaybe')); break;
-      case 'Data_Maybe_First_extendFirst': $v = ($GLOBALS['Data_Maybe_extendMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_extendMaybe')); break;
-      case 'Data_Maybe_First_eq1First': $v = ($GLOBALS['Data_Maybe_eq1Maybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_eq1Maybe')); break;
-      case 'Data_Maybe_First_bindFirst': $v = ($GLOBALS['Data_Maybe_bindMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_bindMaybe')); break;
-      case 'Data_Maybe_First_applyFirst': $v = ($GLOBALS['Data_Maybe_applyMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_applyMaybe')); break;
-      case 'Data_Maybe_First_applicativeFirst': $v = ($GLOBALS['Data_Maybe_applicativeMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_applicativeMaybe')); break;
-      case 'Data_Maybe_First_altFirst': $v = (object)["alt" => (($GLOBALS['Data_Maybe_First_semigroupFirst'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_semigroupFirst')))->append, "Functor0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Maybe_functorMaybe = ($GLOBALS['Data_Maybe_functorMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_functorMaybe'));
-  $__res = $__global_Data_Maybe_functorMaybe;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Maybe_First_plusFirst': $v = (object)["empty" => (($GLOBALS['Data_Maybe_First_monoidFirst'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_monoidFirst')))->mempty, "Alt0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Maybe_First_altFirst = ($GLOBALS['Data_Maybe_First_altFirst'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_altFirst'));
-  $__res = $__global_Data_Maybe_First_altFirst;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      case 'Data_Maybe_First_alternativeFirst': $v = (object)["Applicative0" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Maybe_applicativeMaybe = ($GLOBALS['Data_Maybe_applicativeMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_applicativeMaybe'));
-  $__res = $__global_Data_Maybe_applicativeMaybe;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}, "Plus1" => function($dollar__unused) {
-  $__num = \func_num_args();
-  $__global_Data_Maybe_First_plusFirst = ($GLOBALS['Data_Maybe_First_plusFirst'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_plusFirst'));
-  $__res = $__global_Data_Maybe_First_plusFirst;
-  goto __end;;
-  __end:
-  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
-  }
-}
-$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
-
-
-require_once __DIR__ . '/../Control.Alt/index.php';
-require_once __DIR__ . '/../Control.Alternative/index.php';
-require_once __DIR__ . '/../Control.Applicative/index.php';
-require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Extend/index.php';
-require_once __DIR__ . '/../Control.Monad/index.php';
-require_once __DIR__ . '/../Control.Plus/index.php';
-require_once __DIR__ . '/../Data.Bounded/index.php';
-require_once __DIR__ . '/../Data.Eq/index.php';
-require_once __DIR__ . '/../Data.Functor/index.php';
-require_once __DIR__ . '/../Data.Functor.Invariant/index.php';
-require_once __DIR__ . '/../Data.Maybe/index.php';
-require_once __DIR__ . '/../Data.Maybe.First/index.php';
-require_once __DIR__ . '/../Data.Monoid/index.php';
-require_once __DIR__ . '/../Data.Newtype/index.php';
-require_once __DIR__ . '/../Data.Ord/index.php';
-require_once __DIR__ . '/../Data.Semigroup/index.php';
-require_once __DIR__ . '/../Data.Show/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
-
-
-// Data_Maybe_First_First
-function majData_majMaybe_majFirst_majFirst($x) {
-  $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMaybe_majFirst_majFirst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
   $__res = $x;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Maybe_First_First'] = __NAMESPACE__ . '\\majData_majMaybe_majFirst_majFirst';
-
-// Data_Maybe_First_showFirst
-function majData_majMaybe_majFirst_showmajFirst($dictShow) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_showFirst'] = function() { $v = function($dictShow) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMaybe_majFirst_showmajFirst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Maybe_showMaybe = ($GLOBALS['Data_Maybe_showMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_showMaybe'));
-  $__global_Data_Maybe_First_append = ($GLOBALS['Data_Maybe_First_append'] ?? \Data\Maybe\First\phpurs_eval_thunk('Data_Maybe_First_append'));
-  $show = (($__global_Data_Maybe_showMaybe)($dictShow))->show;
-  $__res = (object)["show" => function($v) use ($__global_Data_Maybe_First_append, $show) {
+  $__res = (object)["show" => function($v) use (&$dictShow) {
   $__num = \func_num_args();
-  $__case_0 = $v;
-  $__match_0 = false;
-  if (($__match_0 === false)) {
-if (true) {
-$a = $__case_0;
-if (($__match_0 === false)) {
-if (true) {
-$__res = (($__global_Data_Maybe_First_append)("First ("))((($__global_Data_Maybe_First_append)(($show)($a)))(")"));
-goto __end;;
-$__match_0 = true;
-};
-};
-};
-};
-  if (($__match_0 === false)) {
-throw new \Exception("Pattern match failure");
-};
+  $__res = ((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))("First ("))(((($GLOBALS['Data_Semigroup_concatString'] ?? \PhpursThunks::eval('Data_Semigroup_concatString')))((((($GLOBALS['Data_Maybe_showMaybe'] ?? \PhpursThunks::eval('Data_Maybe_showMaybe')))($dictShow))->show)($v)))(")"));
+  goto __end;;
   __end:
   return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
 }];
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Maybe_First_showFirst'] = __NAMESPACE__ . '\\majData_majMaybe_majFirst_showmajFirst';
-
-
-// Data_Maybe_First_ordFirst
-function majData_majMaybe_majFirst_ordmajFirst($dictOrd) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_semigroupFirst'] = function() { $v = (object)["append" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMaybe_majFirst_ordmajFirst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-  $__global_Data_Maybe_ordMaybe = ($GLOBALS['Data_Maybe_ordMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_ordMaybe'));
-  $__res = ($__global_Data_Maybe_ordMaybe)($dictOrd);
+  if ((is_object($v) && (($v)->tag === "Just"))) {
+$__t0 = $v;
+} else {
+$__t0 = $v1;
+};
+  $__res = $__t0;
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Maybe_First_ordFirst'] = __NAMESPACE__ . '\\majData_majMaybe_majFirst_ordmajFirst';
-
-
-
-
-
-
-
-
-// Data_Maybe_First_eqFirst
-function majData_majMaybe_majFirst_eqmajFirst($dictEq) {
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()]; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_ordFirst'] = function() { $v = function($dictOrd) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMaybe_majFirst_eqmajFirst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Maybe_eqMaybe = ($GLOBALS['Data_Maybe_eqMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_eqMaybe'));
-  $__res = ($__global_Data_Maybe_eqMaybe)($dictEq);
+  $__res = (($GLOBALS['Data_Maybe_ordMaybe'] ?? \PhpursThunks::eval('Data_Maybe_ordMaybe')))($dictOrd);
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Maybe_First_eqFirst'] = __NAMESPACE__ . '\\majData_majMaybe_majFirst_eqmajFirst';
-
-
-// Data_Maybe_First_boundedFirst
-function majData_majMaybe_majFirst_boundedmajFirst($dictBounded) {
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_ord1First'] = function() { $v = ($GLOBALS['Data_Maybe_ord1Maybe'] ?? \PhpursThunks::eval('Data_Maybe_ord1Maybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_newtypeFirst'] = function() { $v = (object)["Coercible0" => function($dollar__unused_0) {
   $__num = \func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'majData_majMaybe_majFirst_boundedmajFirst';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, \func_get_args(), 1);
-  }
-  $__global_Data_Maybe_boundedMaybe = ($GLOBALS['Data_Maybe_boundedMaybe'] ?? \Data\Maybe\phpurs_eval_thunk('Data_Maybe_boundedMaybe'));
-  $__res = ($__global_Data_Maybe_boundedMaybe)($dictBounded);
+  $__res = ($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'));
   goto __end;;
   __end:
-  return 1 < $__num ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Maybe_First_boundedFirst'] = __NAMESPACE__ . '\\majData_majMaybe_majFirst_boundedmajFirst';
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_monoidFirst'] = function() { $v = (object)["mempty" => new Phpurs_Data0("Nothing"), "Semigroup0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Maybe_First_semigroupFirst'] ?? \PhpursThunks::eval('Data_Maybe_First_semigroupFirst'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_monadFirst'] = function() { $v = ($GLOBALS['Data_Maybe_monadMaybe'] ?? \PhpursThunks::eval('Data_Maybe_monadMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_invariantFirst'] = function() { $v = ($GLOBALS['Data_Maybe_invariantMaybe'] ?? \PhpursThunks::eval('Data_Maybe_invariantMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_functorFirst'] = function() { $v = ($GLOBALS['Data_Maybe_functorMaybe'] ?? \PhpursThunks::eval('Data_Maybe_functorMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_extendFirst'] = function() { $v = ($GLOBALS['Data_Maybe_extendMaybe'] ?? \PhpursThunks::eval('Data_Maybe_extendMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_eqFirst'] = function() { $v = function($dictEq) {
+  $__num = \func_num_args();
+  $__res = (object)["eq" => (function() use (&$dictEq) {
+  $__fn = function($x, $y = null) use (&$dictEq, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  if ((is_object($x) && (($x)->tag === "Nothing"))) {
+$__t0 = (is_object($y) && (($y)->tag === "Nothing"));
+} else {
+$__t0 = ((is_object($x) && (($x)->tag === "Just")) && ((is_object($y) && (($y)->tag === "Just")) && ((($dictEq)->eq)(($x)->value0))(($y)->value0)));
+};
+  $__res = $__t0;
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})()];
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_eq1First'] = function() { $v = ($GLOBALS['Data_Maybe_eq1Maybe'] ?? \PhpursThunks::eval('Data_Maybe_eq1Maybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_boundedFirst'] = function() { $v = function($dictBounded) {
+  $__num = \func_num_args();
+  $__res = (($GLOBALS['Data_Maybe_boundedMaybe'] ?? \PhpursThunks::eval('Data_Maybe_boundedMaybe')))($dictBounded);
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_bindFirst'] = function() { $v = ($GLOBALS['Data_Maybe_bindMaybe'] ?? \PhpursThunks::eval('Data_Maybe_bindMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_applyFirst'] = function() { $v = ($GLOBALS['Data_Maybe_applyMaybe'] ?? \PhpursThunks::eval('Data_Maybe_applyMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_applicativeFirst'] = function() { $v = ($GLOBALS['Data_Maybe_applicativeMaybe'] ?? \PhpursThunks::eval('Data_Maybe_applicativeMaybe')); return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_altFirst'] = function() { $v = (object)["alt" => (($GLOBALS['Data_Maybe_First_semigroupFirst'] ?? \PhpursThunks::eval('Data_Maybe_First_semigroupFirst')))->append, "Functor0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Maybe_functorMaybe'] ?? \PhpursThunks::eval('Data_Maybe_functorMaybe'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_plusFirst'] = function() { $v = (object)["empty" => new Phpurs_Data0("Nothing"), "Alt0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Maybe_First_altFirst'] ?? \PhpursThunks::eval('Data_Maybe_First_altFirst'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Maybe_First_alternativeFirst'] = function() { $v = (object)["Applicative0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Maybe_applicativeMaybe'] ?? \PhpursThunks::eval('Data_Maybe_applicativeMaybe'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}, "Plus1" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Maybe_First_plusFirst'] ?? \PhpursThunks::eval('Data_Maybe_First_plusFirst'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

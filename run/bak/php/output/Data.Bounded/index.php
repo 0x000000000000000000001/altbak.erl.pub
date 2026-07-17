@@ -2,30 +2,35 @@
 
 namespace Data\Bounded;
 
+// ALL IMPORTS: Data.Bounded, Data.Ord, Data.Ordering, Data.Symbol, Data.Unit, Prim, Prim.Row, Prim.RowList, Record.Unsafe, Type.Proxy
+// TO REQUIRE: Data.Bounded, Data.Ord, Data.Ordering, Data.Symbol, Data.Unit, Record.Unsafe, Type.Proxy
 require_once __DIR__ . '/../Data.Bounded/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
 require_once __DIR__ . '/../Data.Ordering/index.php';
+require_once __DIR__ . '/../Data.Symbol/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
+require_once __DIR__ . '/../Record.Unsafe/index.php';
+require_once __DIR__ . '/../Type.Proxy/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
-  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
-  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
-  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
-  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
-  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
-  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+  class Phpurs_Data1 { public $tag; public $value0; public function __construct($t, $value0) { $this->tag = $t; $this->value0 = $value0; } }
+  class Phpurs_Data2 { public $tag; public $value0, $value1; public function __construct($t, $value0, $value1) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; } }
+  class Phpurs_Data3 { public $tag; public $value0, $value1, $value2; public function __construct($t, $value0, $value1, $value2) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; } }
+  class Phpurs_Data4 { public $tag; public $value0, $value1, $value2, $value3; public function __construct($t, $value0, $value1, $value2, $value3) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; } }
+  class Phpurs_Data5 { public $tag; public $value0, $value1, $value2, $value3, $value4; public function __construct($t, $value0, $value1, $value2, $value3, $value4) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; } }
+  class Phpurs_Data6 { public $tag; public $value0, $value1, $value2, $value3, $value4, $value5; public function __construct($t, $value0, $value1, $value2, $value3, $value4, $value5) { $this->tag = $t; $this->value0 = $value0; $this->value1 = $value1; $this->value2 = $value2; $this->value3 = $value3; $this->value4 = $value4; $this->value5 = $value5; } }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
+if (!\function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
-    $missing = $expected - count($args);
+    $missing = $expected - \count($args);
     if ($missing === 1) {
       return function($a) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num > 1) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a;
         return $fn(...$args);
@@ -33,12 +38,12 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 2) {
       return function($a, $b = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 2) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b;
         return $fn(...$args);
@@ -46,13 +51,13 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 3) {
       return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 3) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c;
         return $fn(...$args);
@@ -60,50 +65,222 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
     }
     if ($missing === 4) {
       return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
-        $num = func_num_args();
+        $num = \func_num_args();
         if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
         if ($num > 4) {
-          $merged = array_merge($args, func_get_args());
-          $res = $fn(...array_slice($merged, 0, $expected));
-          return $res(...array_slice($merged, $expected));
+          $merged = \array_merge($args, \func_get_args());
+          $res = $fn(...\array_slice($merged, 0, $expected));
+          return $res(...\array_slice($merged, $expected));
         }
         $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
         return $fn(...$args);
       };
     }
     return function(...$more) use ($fn, $args, $expected) {
-      $merged = array_merge($args, $more);
-      if (count($merged) >= $expected) {
-        $res = $fn(...array_slice($merged, 0, $expected));
-        return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
+      $merged = \array_merge($args, $more);
+      if (\count($merged) >= $expected) {
+        $res = $fn(...\array_slice($merged, 0, $expected));
+        if (\count($merged) > $expected) {
+          return $res(...\array_slice($merged, $expected));
+        }
+        return $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
     };
   }
 }
-if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
-  function phpurs_eval_thunk($id) {
-    static $cache = [];
-    if (array_key_exists($id, $cache)) return $cache[$id];
-    switch ($id) {
-      case 'Data_Bounded_boundedChar': $v = (object)["top" => ($GLOBALS['Data_Bounded_topChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_topChar')), "bottom" => ($GLOBALS['Data_Bounded_bottomChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_bottomChar')), "Ord0" => function($__dollar____unused) {
-  $__num = func_num_args();
-  $__global_Data_Ord_ordChar = ($GLOBALS['Data_Ord_ordChar'] ?? \Data\Ord\phpurs_eval_thunk('Data_Ord_ordChar'));
-  $__res = $__global_Data_Ord_ordChar;
+\PhpursThunks::$thunks['Data_Bounded_topRecord'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->topRecord;
   goto __end;;
   __end:
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}]; break;
-      default: throw new \Exception("Unknown thunk " . $id);
-    }
-    $GLOBALS[$id] = $v;
-    return $cache[$id] = $v;
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_top'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->top;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedUnit'] = function() { $v = (object)["top" => ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), "bottom" => ($GLOBALS['Data_Unit_unit'] ?? \PhpursThunks::eval('Data_Unit_unit')), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordUnit'] ?? \PhpursThunks::eval('Data_Ord_ordUnit'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedRecordNil'] = function() { $v = (object)["topRecord" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
   }
-}
-$Prim_undefined = function() { throw new \Exception("undefined"); };
+  $__res = (object)[];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "bottomRecord" => (function() {
+  $__fn = function($v, $v1 = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (object)[];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "OrdRecord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordRecordNil'] ?? \PhpursThunks::eval('Data_Ord_ordRecordNil'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedProxy'] = function() { $v = (object)["bottom" => new Phpurs_Data0("Proxy"), "top" => new Phpurs_Data0("Proxy"), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordProxy'] ?? \PhpursThunks::eval('Data_Ord_ordProxy'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedOrdering'] = function() { $v = (object)["top" => new Phpurs_Data0("GT"), "bottom" => new Phpurs_Data0("LT"), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordOrdering'] ?? \PhpursThunks::eval('Data_Ord_ordOrdering'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedNumber'] = function() { $v = (object)["top" => ($GLOBALS['Data_Bounded_topNumber'] ?? \PhpursThunks::eval('Data_Bounded_topNumber')), "bottom" => ($GLOBALS['Data_Bounded_bottomNumber'] ?? \PhpursThunks::eval('Data_Bounded_bottomNumber')), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordNumber'] ?? \PhpursThunks::eval('Data_Ord_ordNumber'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedInt'] = function() { $v = (object)["top" => ($GLOBALS['Data_Bounded_topInt'] ?? \PhpursThunks::eval('Data_Bounded_topInt')), "bottom" => ($GLOBALS['Data_Bounded_bottomInt'] ?? \PhpursThunks::eval('Data_Bounded_bottomInt')), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordInt'] ?? \PhpursThunks::eval('Data_Ord_ordInt'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedChar'] = function() { $v = (object)["top" => ($GLOBALS['Data_Bounded_topChar'] ?? \PhpursThunks::eval('Data_Bounded_topChar')), "bottom" => ($GLOBALS['Data_Bounded_bottomChar'] ?? \PhpursThunks::eval('Data_Bounded_bottomChar')), "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordChar'] ?? \PhpursThunks::eval('Data_Ord_ordChar'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedBoolean'] = function() { $v = (object)["top" => true, "bottom" => false, "Ord0" => function($dollar__unused_0) {
+  $__num = \func_num_args();
+  $__res = ($GLOBALS['Data_Ord_ordBoolean'] ?? \PhpursThunks::eval('Data_Ord_ordBoolean'));
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}]; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_bottomRecord'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->bottomRecord;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedRecord'] = function() { $v = (function() {
+  $__fn = function($dollar__unused_0, $dictBoundedRecord = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $ordRecord1_0 = ((($GLOBALS['Data_Ord_ordRecord'] ?? \PhpursThunks::eval('Data_Ord_ordRecord')))(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))((($dictBoundedRecord)->OrdRecord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))));
+  $__res = (object)["top" => ((($dictBoundedRecord)->topRecord)(new Phpurs_Data0("Proxy")))(new Phpurs_Data0("Proxy")), "bottom" => ((($dictBoundedRecord)->bottomRecord)(new Phpurs_Data0("Proxy")))(new Phpurs_Data0("Proxy")), "Ord0" => function($dollar__unused_0) use (&$ordRecord1_0) {
+  $__num = \func_num_args();
+  $__res = $ordRecord1_0;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+\PhpursThunks::$thunks['Data_Bounded_bottom'] = function() { $v = function($dict) {
+  $__num = \func_num_args();
+  $__res = ($dict)->bottom;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}; return $v; };
+\PhpursThunks::$thunks['Data_Bounded_boundedRecordCons'] = function() { $v = (function() {
+  $__fn = function($dictIsSymbol, $dictBounded = null) use (&$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $top1_0 = ($dictBounded)->top;
+  $bottom1_1 = ($dictBounded)->bottom;
+  $Ord0_2 = (($dictBounded)->Ord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')));
+  $__res = (function() use (&$Ord0_2, &$bottom1_1, &$dictIsSymbol, &$top1_0) {
+  $__fn = function($dollar__unused_0, $dollar__unused_1 = null, $dictBoundedRecord = null) use (&$Ord0_2, &$bottom1_1, &$dictIsSymbol, &$top1_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 3) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 3);
+  }
+  $ordRecordCons_3 = ((((($GLOBALS['Data_Ord_ordRecordCons'] ?? \PhpursThunks::eval('Data_Ord_ordRecordCons')))((($dictBoundedRecord)->OrdRecord0)(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined')))))(($GLOBALS['Prim_undefined'] ?? \PhpursThunks::eval('Prim_undefined'))))($dictIsSymbol))($Ord0_2);
+  $__res = (object)["topRecord" => (function() use (&$dictBoundedRecord, &$dictIsSymbol, &$top1_0) {
+  $__fn = function($v, $rowProxy = null) use (&$dictBoundedRecord, &$dictIsSymbol, &$top1_0, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Record_Unsafe_unsafeSet'] ?? \PhpursThunks::eval('Record_Unsafe_unsafeSet')))((($dictIsSymbol)->reflectSymbol)(new Phpurs_Data0("Proxy"))))($top1_0))(((($dictBoundedRecord)->topRecord)(new Phpurs_Data0("Proxy")))($rowProxy));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "bottomRecord" => (function() use (&$bottom1_1, &$dictBoundedRecord, &$dictIsSymbol) {
+  $__fn = function($v, $rowProxy = null) use (&$bottom1_1, &$dictBoundedRecord, &$dictIsSymbol, &$__fn) {
+  $__num = \func_num_args();
+  if ($__num < 2) {
+    return phpurs_curry_fallback($__fn, \func_get_args(), 2);
+  }
+  $__res = (((($GLOBALS['Record_Unsafe_unsafeSet'] ?? \PhpursThunks::eval('Record_Unsafe_unsafeSet')))((($dictIsSymbol)->reflectSymbol)(new Phpurs_Data0("Proxy"))))($bottom1_1))(((($dictBoundedRecord)->bottomRecord)(new Phpurs_Data0("Proxy")))($rowProxy));
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(), "OrdRecord0" => function($dollar__unused_0) use (&$ordRecordCons_3) {
+  $__num = \func_num_args();
+  $__res = $ordRecordCons_3;
+  goto __end;;
+  __end:
+  return $__num > 1 ? $__res(...\array_slice(\func_get_args(), 1)) : $__res;
+}];
+  goto __end;;
+  __end:
+  return $__num > 3 ? $__res(...\array_slice(\func_get_args(), 3)) : $__res;
+  };
+  return $__fn;
+})();
+  goto __end;;
+  __end:
+  return $__num > 2 ? $__res(...\array_slice(\func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})(); return $v; };
+$GLOBALS['Prim_undefined'] = function() { throw new \Exception("undefined"); };
 $ffi_Data_Bounded = \call_user_func(function() {
+  $exports = [];
 $topInt = 2147483647;
 $bottomInt = -2147483648;
 $topChar = "\u{10FFFF}";
@@ -118,67 +295,27 @@ $exports['bottomChar'] = $bottomChar;
 $exports['topNumber'] = $topNumber;
 $exports['bottomNumber'] = $bottomNumber;
 return $exports;
+  return $exports;
 });
-$GLOBALS['Data_Bounded_topInt'] = $ffi_Data_Bounded['topInt'] ?? null;
-$GLOBALS['Data_Bounded_bottomInt'] = $ffi_Data_Bounded['bottomInt'] ?? null;
-$GLOBALS['Data_Bounded_topChar'] = $ffi_Data_Bounded['topChar'] ?? null;
-$GLOBALS['Data_Bounded_bottomChar'] = $ffi_Data_Bounded['bottomChar'] ?? null;
-$GLOBALS['Data_Bounded_topNumber'] = $ffi_Data_Bounded['topNumber'] ?? null;
-$GLOBALS['Data_Bounded_bottomNumber'] = $ffi_Data_Bounded['bottomNumber'] ?? null;
+\PhpursThunks::$thunks['Data_Bounded_bottomChar'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['bottomChar']; };
+\PhpursThunks::$thunks['Data_Bounded_bottomInt'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['bottomInt']; };
+\PhpursThunks::$thunks['Data_Bounded_bottomNumber'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['bottomNumber']; };
+\PhpursThunks::$thunks['Data_Bounded_topChar'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['topChar']; };
+\PhpursThunks::$thunks['Data_Bounded_topInt'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['topInt']; };
+\PhpursThunks::$thunks['Data_Bounded_topNumber'] = function() use (&$ffi_Data_Bounded) { return $ffi_Data_Bounded['topNumber']; };
 
 
-// Data_Bounded_Bounded$Dict
-function Data_Bounded_Bounded__dollar__Dict($x) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Bounded_Bounded__dollar__Dict';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__res = $x;
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Bounded_Bounded__dollar__Dict'] = __NAMESPACE__ . '\\Data_Bounded_Bounded__dollar__Dict';
-
-// Data_Bounded_top
-function Data_Bounded_top($dict) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Bounded_top';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  if (true) {
-$v = $__case_0;
-$__res = ($v)->top;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Bounded_top'] = __NAMESPACE__ . '\\Data_Bounded_top';
 
 
-// Data_Bounded_bottom
-function Data_Bounded_bottom($dict) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Data_Bounded_bottom';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__case_0 = $dict;
-  if (true) {
-$v = $__case_0;
-$__res = ($v)->bottom;
-goto __end;;
-} else {
-throw new \Exception("Pattern match failure");
-};
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Data_Bounded_bottom'] = __NAMESPACE__ . '\\Data_Bounded_bottom';
+
+
+
+
+
+
+
+
+
+
+
 
