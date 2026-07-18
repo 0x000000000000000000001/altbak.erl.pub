@@ -1,3 +1,4 @@
 *.purs linguist-vendored=true
 src/** linguist-vendored=true
-run/bak/erl/** linguist-generated=false linguist-vendored=false linguist-language=Erlang
+run/bak/** linguist-vendored=true
+run/bak/erl/** linguist-vendored=false linguist-generated=false linguist-language=Erlang
