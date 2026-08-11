@@ -672,50 +672,50 @@
     },
     "extra_packages": {
       "aff": {
-        "path": "../phpurs-aff"
+        "path": "../phpurs/phpurs/phpurs-aff"
       },
       "arrays": {
-        "path": "../phpurs-arrays"
+        "path": "../phpurs/phpurs/phpurs-arrays"
       },
       "console": {
-        "path": "../phpurs-console"
+        "path": "../phpurs/phpurs/phpurs-console"
       },
       "effect": {
-        "path": "../phpurs-effect"
+        "path": "../phpurs/phpurs/phpurs-effect"
       },
       "exceptions": {
-        "path": "../phpurs-exceptions"
+        "path": "../phpurs/phpurs/phpurs-exceptions"
       },
       "foldable-traversable": {
-        "path": "../phpurs-foldable-traversable"
+        "path": "../phpurs/phpurs/phpurs-foldable-traversable"
       },
       "functions": {
-        "path": "../phpurs-functions"
+        "path": "../phpurs/phpurs/phpurs-functions"
       },
       "partial": {
-        "path": "../phpurs-partial"
+        "path": "../phpurs/phpurs/phpurs-partial"
       },
       "prelude": {
-        "path": "../phpurs-prelude"
+        "path": "../phpurs/phpurs/phpurs-prelude"
       },
       "refs": {
-        "path": "../phpurs-refs"
+        "path": "../phpurs/phpurs/phpurs-refs"
       },
       "st": {
-        "path": "../phpurs-st"
+        "path": "../phpurs/phpurs/phpurs-st"
       },
       "strings": {
-        "path": "../phpurs-strings"
+        "path": "../phpurs/phpurs/phpurs-strings"
       },
       "unsafe-coerce": {
-        "path": "../phpurs-unsafe-coerce"
+        "path": "../phpurs/phpurs/phpurs-unsafe-coerce"
       }
     }
   },
   "packages": {
     "aff": {
       "type": "local",
-      "path": "../phpurs-aff",
+      "path": "../phpurs/phpurs/phpurs-aff",
       "dependencies": [
         "arrays",
         "bifunctors",
@@ -738,7 +738,7 @@
     },
     "arrays": {
       "type": "local",
-      "path": "../phpurs-arrays",
+      "path": "../phpurs/phpurs/phpurs-arrays",
       "dependencies": [
         "bifunctors",
         "control",
@@ -770,7 +770,7 @@
     },
     "console": {
       "type": "local",
-      "path": "../phpurs-console",
+      "path": "../phpurs/phpurs/phpurs-console",
       "dependencies": [
         "effect",
         "prelude"
@@ -844,7 +844,7 @@
     },
     "effect": {
       "type": "local",
-      "path": "../phpurs-effect",
+      "path": "../phpurs/phpurs/phpurs-effect",
       "dependencies": [
         "prelude"
       ]
@@ -879,7 +879,7 @@
     },
     "exceptions": {
       "type": "local",
-      "path": "../phpurs-exceptions",
+      "path": "../phpurs/phpurs/phpurs-exceptions",
       "dependencies": [
         "effect",
         "either",
@@ -897,7 +897,7 @@
     },
     "foldable-traversable": {
       "type": "local",
-      "path": "../phpurs-foldable-traversable",
+      "path": "../phpurs/phpurs/phpurs-foldable-traversable",
       "dependencies": [
         "bifunctors",
         "const",
@@ -914,7 +914,7 @@
     },
     "functions": {
       "type": "local",
-      "path": "../phpurs-functions",
+      "path": "../phpurs/phpurs/phpurs-functions",
       "dependencies": [
         "prelude"
       ]
@@ -1109,12 +1109,12 @@
     },
     "partial": {
       "type": "local",
-      "path": "../phpurs-partial",
+      "path": "../phpurs/phpurs/phpurs-partial",
       "dependencies": []
     },
     "prelude": {
       "type": "local",
-      "path": "../phpurs-prelude",
+      "path": "../phpurs/phpurs/phpurs-prelude",
       "dependencies": []
     },
     "profunctor": {
@@ -1134,7 +1134,7 @@
     },
     "refs": {
       "type": "local",
-      "path": "../phpurs-refs",
+      "path": "../phpurs/phpurs/phpurs-refs",
       "dependencies": [
         "effect",
         "prelude"
@@ -1150,7 +1150,7 @@
     },
     "st": {
       "type": "local",
-      "path": "../phpurs-st",
+      "path": "../phpurs/phpurs/phpurs-st",
       "dependencies": [
         "partial",
         "prelude",
@@ -1160,7 +1160,7 @@
     },
     "strings": {
       "type": "local",
-      "path": "../phpurs-strings",
+      "path": "../phpurs/phpurs/phpurs-strings",
       "dependencies": [
         "arrays",
         "control",
@@ -1247,7 +1247,7 @@
     },
     "unsafe-coerce": {
       "type": "local",
-      "path": "../phpurs-unsafe-coerce",
+      "path": "../phpurs/phpurs/phpurs-unsafe-coerce",
       "dependencies": []
     }
   }
