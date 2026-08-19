@@ -1,2 +1,4 @@
 * linguist-vendored=true
 run/bak/erl/** !linguist-vendored linguist-generated=false linguist-language=Erlang
+*.sh linguist-detectable=false
+*.sh linguist-vendored
